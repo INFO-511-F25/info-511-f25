@@ -1,1 +1,1 @@
-Sitemap: https://sta199-s24.github.io/sitemap.xml
+Sitemap: https://info-511-f24.github.io/sitemap.xml
