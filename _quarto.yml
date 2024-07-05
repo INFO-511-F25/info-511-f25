@@ -3,32 +3,27 @@ project:
 
 website:
   page-navigation: true
-  title: "STA 199"
-  description: "Homepage for STA 199 - Introduction to Data Science at Duke University, Spring 2024."
-  site-url: "https://sta199-s24.github.io/"
+  title: "INFO 511"
+  description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Fall 2024."
+  site-url: "https://info-511-f24.github.io/"
 
-  repo-url: https://github.com/sta199-s24/sta199-s24.github.io/
+  repo-url: https://github.com/INFO-511-F24/info-511-f24.github.io
   repo-actions: [edit, issue]
 
   open-graph: true
-  twitter-card:
-    creator: "@minebocek"
-    image: "img/twitter-card.png"
 
   sidebar:
-    background: "#3A5883" # Pantone Chambray Blue - Spring 2024, darkened to pass contrast checks
+    background: "#0C234B" # Arizona Blue - Fall 2024
     logo: "img/logo.png"
     pinned: true
     align: center
     tools:
       - icon: github
-        href: https://github.com/sta199-s24
+        href: https://github.com/INFO-511-F24
         text: "GitHub organization"
-      - icon: code-square
-        href: https://cmgr.oit.duke.edu/containers
-        text: "RStudio containers"
+
       - icon: life-preserver
-        href: https://docs.google.com/spreadsheets/d/1Mw69d1Ro-_G1Y8x7FH1wqCI04bxLpVOJ7gp8QSFGJBU/edit#gid=0
+        href: course-support.html#office-hours
         text: "Office hours"
       - icon: chat-dots-fill
         href: https://edstem.org/us/courses/50730/discussion/
@@ -37,7 +32,7 @@ website:
         href: https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98
         text: "Class recordings"
       - icon: check-square-fill
-        text: "Canvas"
+        text: "D2L"
         menu:
           - text: Gradescope
             url: https://canvas.duke.edu/courses/26106/external_tools/181
@@ -113,19 +108,19 @@ website:
             
   page-footer:
     right: 'This page is built with [{{< fa heart >}}]{style="color: #FFBE98;"} and [Quarto](https://quarto.org/).'
-    left: "&copy; Copyright 2024, Mine Çetinkaya-Rundel"
-    background: "#3A5883" # Pantone Chambray Blue - Spring 2024, darkened to pass contrast checks
+    left: "&copy; Copyright 2024, Greg Chism"
+    background: "#0C234B" # Arizona Blue - Fall 2024
 
 format:
   html:
     theme:
-      light: [cosmo, style/sta199.scss]
-      dark: [cosmo, style/sta199.scss, style/dark.scss]
-    linkcolor: "#3A5883" # Pantone Chambray Blue - Spring 2024, darkened to pass contrast checks
+      light: [cosmo, style/info511.scss]
+      dark: [cosmo, style/info511.scss, style/dark.scss]
+    linkcolor: "#0C234B" # Arizona Blue - Fall 2024
     toc: true
     code-copy: true
     code-overflow: wrap
-    mainfont: "Atkinson Hyperlegible"
+    mainfont: "Lexend"
     highlight-style: a11y-dark
 
 execute:

@@ -1,5 +1,5 @@
 ---
-title: "STA 199: Introduction to Data Science and Statistical Thinking"
+title: "INFO 511: Fundamentals of Data Science"
 execute: 
   freeze: false
 ---
@@ -16,20 +16,17 @@ library(googlesheets4)
 library(gt)
 library(tidyverse)
 gs4_deauth()
-d <- read_sheet("https://docs.google.com/spreadsheets/d/1XBJwiTSZ9uYwLzTjEs-0lHFHkH4KPckP_MIO7q57SJ0/edit?usp=sharing")
+d <- read_sheet("https://docs.google.com/spreadsheets/d/11RteHqa99v62oN7nBb6o4F_Ax2C-43IVl8SnX6GEazo/edit?usp=sharing")
 ```
 
 ```{r}
 #| echo: false
 
 d |>
-  filter(!is.na(session)) |>
-  select(-dow, -admin_notes, -number, -session) |>
   mutate(date = as.Date(date)) |>
-  relocate(due, .after = materials) |>
   gt() |>
   fmt_date(date, date_style = 31) |>
-  sub_missing(columns = c(week, prepare, topic, materials, due), missing_text = "") |>
+  sub_missing(columns = c(week, prepare, topic, due), missing_text = "") |>
   cols_align(
     align = "center", 
     columns = c(week)
@@ -40,7 +37,7 @@ d |>
   ) |>
   cols_align(
     align = "left", 
-    columns = c(topic, prepare, materials, due)
+    columns = c(topic, prepare, due)
   ) |>
   tab_style(
     style = cell_borders(
@@ -49,18 +46,17 @@ d |>
       style = "solid"
     ),
     locations = cells_body(
-      columns = c(date, topic, prepare, materials)
+      columns = c(date, topic, prepare)
     )
   ) |>
   fmt_markdown(
-    columns = c(topic, prepare, materials, due)
+    columns = c(topic, prepare, due)
   ) |>
   cols_width(
     week ~ px(45),
     date ~ px(100), 
     prepare ~ px(200),
     topic ~ px(250),
-    materials ~ px(150),
     due ~ px(150)
   ) |>
   cols_label_with(fn = function(x) {

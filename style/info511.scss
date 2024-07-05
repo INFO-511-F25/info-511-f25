@@ -1,8 +1,8 @@
 /*-- scss:defaults --*/
 
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap';
 
-$font-family: "Atkinson Hyperlegible", sans-serif;
+$font-family: "Lexend", sans-serif;
 
 /*-- scss:rules --*/
 
@@ -10,9 +10,9 @@ $font-family: "Atkinson Hyperlegible", sans-serif;
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #3A5883;
-  border-bottom: 1px solid #3A5883;
+  background: #F4EDE5 5px center/3em no-repeat;
+  border-top: 1px solid #0C234B;
+  border-bottom: 1px solid #0C234B;
   background-image: url("img/render-commit-push.png");
   background-size: 2em;
   background-position: 0.5em 0.5em;
@@ -22,9 +22,9 @@ $font-family: "Atkinson Hyperlegible", sans-serif;
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: #f8f8f8 5px center/3em no-repeat;
-  border-top: 1px solid #FFBE98;
-  border-bottom: 1px solid #FFBE98;
+  background: #F4EDE5 5px center/3em no-repeat;
+  border-top: 1px solid #A95C42;
+  border-bottom: 1px solid #A95C42;
   background-image: url("img/pull.png");
   background-size: 1em;
   background-position: 1em 0.5em;
