@@ -5,19 +5,27 @@ format:
   pdf: default
 execute:
   echo: false
+  message: false
+  error: false
+  warning: false
 editor_options: 
   chunk_output_type: console
+jupyter: python3
 ---
 
-```{r}
+```{python}
 #| label: load-packages
 #| message: false
+#| output: false
 
-library(tidyverse)
-library(tidymodels)
-library(openintro)
-library(scales)
-theme_set(theme_minimal(base_size = 12))
+!pip install plotnine mizani
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+from plotnine import *
+from mizani.labels import label_dollar, label_percent
 ```
 
 ::: callout-note
@@ -43,28 +51,31 @@ $\vspace{2cm}$
 A bootstrap distribution with 1000 simulations is shown below.
 Approximate the bounds of the 95% confidence interval based on this distribution.
 
-```{r}
+```{python}
+#| output: false
 #| fig-asp: 0.5
-students <- tibble(
-  work = c(rep("work", 15), rep("do not work", 10))
+#| fig-width: 5 
+students = pd.DataFrame({
+    'work': ['work'] * 15 + ['do not work'] * 10
+})
+
+np.random.seed(23456)
+bootstrap_samples = [students.sample(frac=1, replace=True) for _ in range(1000)]
+boot_dist = pd.DataFrame({
+    'stat': [sample['work'].value_counts(normalize=True).get('work', 0) for sample in bootstrap_samples]
+})
+
+# Plot
+(
+    ggplot(boot_dist, aes(x='stat')) +
+    geom_histogram(binwidth=0.05, color="white") +
+    labs(title="Simulation-Based Bootstrap Distribution", x="stat", y="count") +
+    scale_x_continuous(breaks=np.arange(0.30, 0.91, 0.05)) +
+    theme_minimal(base_size=12)
 )
-    
-set.seed(23456)
-
-boot_dist <- students |>
-  specify(response = work, success = "work") |>
-  generate(reps = 1000, type = "bootstrap") |>
-  calculate(stat = "prop")
-
-ggplot(boot_dist, aes(x = stat)) + 
-  geom_histogram(binwidth = 0.05, color = "white") +
-  labs(
-    title = "Simulation-Based Bootstrap Distribution",
-    x = "stat",
-    y = "count"
-  ) +
-  scale_x_continuous(breaks = seq(0.30, 0.9, 0.05))
 ```
+
+![](images/sim-bootstrap.png){width="667"}
 
 ## Question 3
 
@@ -90,24 +101,30 @@ None of the above.
 
 # Part 2 - Blizzard
 
-```{r}
+```{python}
 #| label: blizzard-data-prep
 
-blizzard_salary <- blizzard_salary |>
-  mutate(
-    annual_salary = case_when(
-      salary_type == "week" ~ current_salary * 52,
-      salary_type == "hour" ~ current_salary * 40 * 52,
-      TRUE ~ current_salary
-    ),
-    performance_rating = if_else(performance_rating == "Developing", "Poor", performance_rating)
-  ) |>
-  filter(salary_type != "week") |>
-  mutate(
-    salary_type = if_else(salary_type == "hour", "Hourly", "Salaried")
-  ) |>
-  filter(!is.na(annual_salary)) |>
-  select(percent_incr, salary_type, annual_salary, performance_rating)
+# Load data
+blizzard_salary = pd.read_csv('data/blizzard_salary.csv')
+
+# Data preparation
+blizzard_salary['annual_salary'] = np.where(
+    blizzard_salary['salary_type'] == 'week',
+    blizzard_salary['current_salary'] * 52,
+    np.where(
+        blizzard_salary['salary_type'] == 'hour',
+        blizzard_salary['current_salary'] * 40 * 52,
+        blizzard_salary['current_salary']
+    )
+)
+
+blizzard_salary['performance_rating'] = blizzard_salary['performance_rating'].replace('Developing', 'Poor')
+blizzard_salary = blizzard_salary[blizzard_salary['salary_type'] != 'week']
+blizzard_salary['salary_type'] = blizzard_salary['salary_type'].replace('hour', 'Hourly').replace('week', 'Salaried')
+blizzard_salary = blizzard_salary.dropna(subset=['annual_salary'])
+
+blizzard_salary = blizzard_salary[['percent_incr', 'salary_type', 'annual_salary', 'performance_rating']]
+
 ```
 
 In 2020, employees of Blizzard Entertainment circulated a spreadsheet to anonymously share salaries and recent pay increases amidst rising tension in the video game industry over wage disparities and executive compensation.
@@ -126,31 +143,38 @@ The name of the data frame used for this analysis is `blizzard_salary` and the v
 
 The top ten rows of `blizzard_salary` are shown below:
 
-```{r}
-blizzard_salary |>
-  select(percent_incr, salary_type, annual_salary, performance_rating)
+```{python}
+print(blizzard_salary[['percent_incr', 'salary_type', 'annual_salary', 'performance_rating']].head(10))
 ```
 
 ## Question 4
 
 Next, you fit a model for predicting raises (`percent_incr`) from salaries (`annual_salary`).
 We'll call this model `raise_1_fit`.
-A tidy output of the model is shown below.
+An output of the model is shown below.
 
-```{r}
+```{python}
 #| label: raise-salary-fit
+# Drop rows with NaN values in 'percent_incr'
+blizzard_salary_clean = blizzard_salary.dropna(subset=['percent_incr'])
 
-raise_1_fit <- linear_reg() |>
-  fit(percent_incr ~ annual_salary, data = blizzard_salary)
+# Define the model formula
+formula = 'percent_incr ~ annual_salary'
 
-tidy(raise_1_fit)
+# Fit the model using statsmodels
+raise_1_fit = smf.ols(formula=formula, data=blizzard_salary_clean).fit()
+
+# Get the summary of the model, including p-values
+summary = raise_1_fit.summary2().tables[1]
+
+print(summary)
 ```
 
 Which of the following is the best interpretation of the slope coefficient?
 
-a.  For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 1.55%.
-b.  For every additional \$1,000 of annual salary, the raise goes up by 0.0155%.
-c.  For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 0.0155%.
+a.  For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 1.6%.
+b.  For every additional \$1,000 of annual salary, the raise goes up by 0.016%.
+c.  For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 0.016%.
 d.  For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 1.87%.
 
 ## Question 5
@@ -168,13 +192,27 @@ d.  $R^2$ of `raise_2_fit` is higher $R^2$ of `raise_1_fit`.
 
 The tidy model output for the `raise_2_fit` model you fit is shown below.
 
-```{r}
+```{python}
 #| label: raise-salary-rating-fit
 
-raise_2_fit <- linear_reg() |>
-  fit(percent_incr ~ annual_salary + performance_rating, data = blizzard_salary)
+# Ensure 'performance_rating' is treated as a categorical variable
+blizzard_salary_clean['performance_rating'] = pd.Categorical(
+    blizzard_salary_clean['performance_rating']
+)
 
-tidy(raise_2_fit)
+# One-hot encode the 'performance_rating' column
+blizzard_salary_encoded = pd.get_dummies(blizzard_salary_clean, columns=['performance_rating'], drop_first=True)
+
+# Define the model formula
+formula = 'percent_incr ~ annual_salary + ' + ' + '.join([col for col in blizzard_salary_encoded.columns if col.startswith('performance_rating_')])
+
+# Fit the model using statsmodels
+raise_2_fit = smf.ols(formula=formula, data=blizzard_salary_encoded).fit()
+
+# Get the summary of the model, including p-values
+summary = raise_2_fit.summary2().tables[1]
+
+print(summary)
 ```
 
 When your teammate sees this model output, they remark "The coefficient for `performance_ratingSuccessful` is negative, that's weird. I guess it means that people who get successful performance ratings get lower raises." How would you respond to your teammate?
@@ -186,26 +224,43 @@ $\vspace{2cm}$
 ## Question 7
 
 Ultimately, your teammate decides they don't like the negative slope coefficients in the model output you created (not that there's anything wrong with negative slope coefficients!), does something else, and comes up with the following model output.
+*Note however that the coefficient is still negative, but this satisfies your friend...*
 
-```{r}
-blizzard_salary <- blizzard_salary |>
-  mutate(performance_rating = fct_relevel(performance_rating, "Poor", "Successful", "High", "Top"))
+```{python}
+# Ensure 'performance_rating' is treated as a categorical variable
+blizzard_salary_clean['performance_rating'] = pd.Categorical(
+    blizzard_salary_clean['performance_rating'],
+    categories=["Poor", "Successful", "High", "Top"],
+    ordered=True
+)
 
-raise_2_fit <- linear_reg() |>
-  fit(percent_incr ~ annual_salary + performance_rating, data = blizzard_salary)
+# One-hot encode the 'performance_rating' column
+blizzard_salary_encoded = pd.get_dummies(blizzard_salary_clean, columns=['performance_rating'], drop_first=True)
 
-tidy(raise_2_fit)
+# Define the model formula
+formula = 'percent_incr ~ annual_salary + ' + ' + '.join([col for col in blizzard_salary_encoded.columns if col.startswith('performance_rating_')])
+
+# Fit the model using statsmodels
+raise_2_fit = smf.ols(formula=formula, data=blizzard_salary_encoded).fit()
+
+# Get the summary of the model, including p-values
+summary = raise_2_fit.summary2().tables[1]
+
+print(summary)
 ```
 
 Unfortunately they didn't write their code in a Quarto document, instead just wrote some code in the Console and then lost track of their work.
 They remember using the `fct_relevel()` function and doing something like the following:
 
-```{r}
+```{python}
 #| eval: false
 #| echo: true
 
-blizzard_salary <- blizzard_salary |>
-  mutate(performance_rating = fct_relevel(performance_rating, ___))
+blizzard_salary['performance_rating'] = pd.Categorical(
+    blizzard_salary['performance_rating'],
+    categories=[____],
+    ordered=True
+)
 ```
 
 What should they put in the blanks to get the same model output as above?
@@ -220,78 +275,146 @@ d.  Poor, Successful, High, Top
 Suppose we fit a model to predict `percent_incr` from `annual_salary` and `salary_type`.
 A tidy output of the model is shown below.
 
-```{r}
+```{python}
 #| label: raise-salary-type-fit
 
-raise_3_fit <- linear_reg() |>
-  fit(percent_incr ~ annual_salary + salary_type, data = blizzard_salary)
+# Convert 'salary_type' to categorical and one-hot encode it
+blizzard_salary_encoded['salary_type'] = blizzard_salary_encoded['salary_type'].astype('category')
+blizzard_salary_encoded = pd.get_dummies(blizzard_salary_encoded, columns=['salary_type'], drop_first=True)
 
-tidy(raise_3_fit)
+# Define the model formula
+formula = 'percent_incr ~ annual_salary + ' + ' + '.join([col for col in blizzard_salary_encoded.columns if col.startswith('salary_type_')])
+
+# Fit the model using statsmodels
+raise_3_fit = smf.ols(formula=formula, data=blizzard_salary_encoded).fit()
+
+# Get the summary of the model, including p-values
+summary = raise_3_fit.summary2().tables[1]
+
+print(summary)
 ```
 
 Which of the following visualizations represent this model?
 Explain your reasoning.
 
-```{r}
+::: columns
+::: {.column width="50%"}
+```{python}
 #| label: fig-raise-salary-type
 #| warning: false
-#| layout-ncol: 2
-#| fig-cap: |
-#|   Visualizations of the relationship between percent increase, annual 
-#|   salary, and salary type
 #| fig-subcap:
 #|   - Option 1
+
+# Plot 1
+plot1 = (
+    ggplot(blizzard_salary, aes(x='annual_salary', y='percent_incr', color='salary_type')) +
+    geom_point(aes(shape='salary_type'), alpha=0.5, size=2) +
+    geom_smooth(aes(linetype='salary_type'), method='lm', se=False, fullrange=True, size=1.5) +
+    labs(
+        x="Annual salary",
+        y="Percent increase",
+        color="Salary type",
+        linetype="Salary type",
+        shape="Salary type"
+    ) +
+    scale_x_continuous(labels=label_dollar()) +
+    scale_y_continuous(labels=label_percent(scale=1)) +
+    theme(legend_position="top") +
+    theme_minimal(base_size=12)
+)
+
+print(plot1) 
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| label: fig-raise-salary-type-2
+#| warning: false
+#| fig-subcap:
 #|   - Option 2
+
+# Plot 2
+plot2 = (
+    ggplot(blizzard_salary, aes(x='annual_salary', y='percent_incr', color='salary_type')) +
+    geom_point(aes(shape='salary_type'), alpha=0.5, size=2) +
+    geom_smooth(aes(linetype='salary_type'), se=False, fullrange=True, size=1.5) +
+    labs(
+        x="Annual salary",
+        y="Percent increase"
+    ) +
+    scale_x_continuous(labels=label_dollar()) +
+    scale_y_continuous(labels=label_percent(scale=1)) +
+    theme(legend_position="top") +
+    theme_minimal(base_size=12)
+)
+
+print(plot2)
+```
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+```{python}
+#| label: fig-raise-salary-type-3
+#| warning: false
+#| fig-subcap:
 #|   - Option 3
+
+
+# Plot 3
+plot3 = (
+    ggplot(blizzard_salary, aes(x='annual_salary', y='percent_incr', color='salary_type')) +
+    geom_point(aes(shape='salary_type'), alpha=0.5, size=2, show_legend=False) +
+    geom_abline(intercept=1.24, slope=0.0000137, color="#E87d72", size=1.5, linetype="solid") +
+    geom_abline(intercept=1.24+0.913, slope=0.0000137, color="#56bcc2", size=1.5, linetype="dashed") +
+    labs(
+        x="Annual salary",
+        y="Percent increase",
+    ) +
+    scale_x_continuous(labels=label_dollar()) +
+    scale_y_continuous(labels=label_percent(scale=1)) +
+    theme_minimal(base_size=12)
+)
+
+print(plot3)
+```
+:::
+
+::: {.column width="50%"}
+```{python}
+#| label: fig-raise-salary-type-4
+#| warning: false
+#| fig-subcap:
 #|   - Option 4
 
-ggplot(blizzard_salary, aes(x = annual_salary, y = percent_incr, color = salary_type)) +
-  geom_point(aes(shape = salary_type), alpha = 0.5, size = 2) +
-  geom_smooth(aes(linetype = salary_type), method = "lm", se = FALSE, fullrange = TRUE, linewidth = 1.5) +
-  labs(
-    x = "Annual salary",
-    y = "Percent increase",
-    color = "Salary type",
-    linetype = "Salary type",
-    shape = "Salary type"
-  ) +
-  scale_x_continuous(labels = label_dollar()) +
-  scale_y_continuous(labels = label_percent(scale = 1)) +
-  theme(legend.position = "top")
+# Plot 4
+plot4 = (
+    ggplot(blizzard_salary, aes(x='annual_salary', y='percent_incr', color='salary_type')) +
+    geom_point(alpha=0.5, size=2, show_legend=False) +
+    geom_abline(intercept=1.24, slope=0.0000137, color="#56bcc2", size=1.5, linetype="dashed") +
+    geom_abline(intercept=1.24+0.913, slope=0.0000137, color="#E87d72", size=1.5) +
+    labs(
+        x="Annual salary",
+        y="Percent increase",
+    ) +
+    scale_x_continuous(labels=label_dollar()) +
+    scale_y_continuous(labels=label_percent(scale=1)) +
+    theme_minimal(base_size=12)
+)
 
-ggplot(blizzard_salary, aes(x = annual_salary, y = percent_incr, color = salary_type)) +
-  geom_point(aes(shape = salary_type), alpha = 0.5, size = 2) +
-  geom_smooth(aes(linetype = salary_type), se = FALSE, fullrange = TRUE, linewidth = 1.5) +
-  labs(
-    x = "Annual salary",
-    y = "Percent increase"
-  ) +
-  scale_x_continuous(labels = label_dollar()) +
-  scale_y_continuous(labels = label_percent(scale = 1)) +
-  theme(legend.position = "top")
-
-ggplot(blizzard_salary, aes(x = annual_salary, y = percent_incr, color = salary_type)) +
-  geom_point(aes(shape = salary_type), alpha = 0.5, size = 2, show.legend = FALSE) +
-  geom_abline(intercept = 1.24, slope = 0.0000137, color = "#E87d72", linewidth = 1.5, linetype = "solid") +
-  geom_abline(intercept = 1.24+0.913, slope = 0.0000137, color = "#56bcc2", linewidth = 1.5, linetype = "dashed") +
-  labs(
-    x = "Annual salary",
-    y = "Percent increase",
-  ) +
-  scale_x_continuous(labels = label_dollar()) +
-  scale_y_continuous(labels = label_percent(scale = 1))
-
-ggplot(blizzard_salary, aes(x = annual_salary, y = percent_incr, color = salary_type)) +
-  geom_point(alpha = 0.5, size = 2, show.legend = FALSE) +
-  geom_abline(intercept = 1.24, slope = 0.0000137, color = "#56bcc2", linewidth = 1.5, linetype = "dashed") +
-  geom_abline(intercept = 1.24+0.913, slope = 0.0000137,  color = "#E87d72", linewidth = 1.5) +
-  labs(
-    x = "Annual salary",
-    y = "Percent increase",
-  ) +
-  scale_x_continuous(labels = label_dollar()) +
-  scale_y_continuous(labels = label_percent(scale = 1))
+print(plot4)
 ```
+:::
+:::
+
+Visualizations of the relationship between percent increase, annual salary, and salary type
+
+a.  Figure 1
+b.  Figure 2
+c.  Figure 3
+d.  Figure 4
 
 ::: {.content-visible when-format="pdf"}
 {{< pagebreak >}}
@@ -312,18 +435,39 @@ $\vspace{2cm}$
 Suppose you now fit a model to predict the natural log of percent increase, `log(percent_incr)`, from performance rating.
 The model is called `raise_4_fit`.
 
-```{r}
-raise_4_fit <- linear_reg() |>
-  fit(log(percent_incr+0.0001) ~ performance_rating, data = blizzard_salary)
+```{python}
+# Create log-transformed response variable
+blizzard_salary_clean['log_percent_incr'] = np.log(blizzard_salary_clean['percent_incr'] + 0.0001)
+
+# Ensure 'performance_rating' is treated as a categorical variable
+blizzard_salary_clean['performance_rating'] = pd.Categorical(
+    blizzard_salary_clean['performance_rating'],
+    categories=["Poor", "Successful", "High", "Top"],
+    ordered=True
+)
+
+# One-hot encode the 'performance_rating' column
+blizzard_salary_encoded = pd.get_dummies(blizzard_salary_clean, columns=['performance_rating'], drop_first=True)
+
+# Fit the model for predicting log-transformed raises from performance ratings
+raise_4_fit = LinearRegression().fit(
+    blizzard_salary_encoded[[col for col in blizzard_salary_encoded.columns if col.startswith('performance_rating_')]],
+    blizzard_salary_encoded['log_percent_incr']
+)
+
+# Create a DataFrame for the model coefficients
+raise_4_fit_coefs = pd.DataFrame({
+    'term': ['Intercept'] + [col for col in blizzard_salary_encoded.columns if col.startswith('performance_rating_')],
+    'estimate': [raise_4_fit.intercept_] + list(raise_4_fit.coef_)
+})
 ```
 
 You're provided the following:
 
-```{r}
+```{python}
 #| echo: true
-tidy(raise_4_fit) |>
-  select(term, estimate) |>
-  mutate(exp_estimate = exp(estimate))
+raise_4_fit_coefs['exp_estimate'] = np.exp(raise_4_fit_coefs['estimate'])
+print(raise_4_fit_coefs)
 ```
 
 Based on this, which of the following is true?
@@ -335,12 +479,10 @@ b\.
 The model predicts that the percentage increase employees with Successful performance get, on average, is higher by 6.93% compared to the employees with Poor performance rating.
 
 c\.
-The model predicts that the percentage increase employees with Successful performance get, on average, is higher by a factor of 1025 compared to the employees with Poor performance rating.
+The model predicts that the percentage increase employees with Successful performance get, on average, is higher by a factor of 6.502427 compared to the employees with Poor performance rating.
 
 d\.
-The model predicts that the percentage increase employees with Successful performance get, on average, is higher by a factor of 6.93 compared to the employees with Poor performance rating.
-
-# Part 3 - Miscellaneous
+The model predicts that the percentage increase employees with Successful performance get, on average, is higher by a factor of 1.872176 compared to the employees with Poor performance rating.
 
 ## Question 11
 
@@ -359,17 +501,82 @@ $\hat{y} = \beta_0 + \beta_1 X_1 + \epsilon$
 d\.
 $y = \beta_0 + \beta_1 X_1 + \epsilon$
 
+# Part 3 - Calculus
+
 ## Question 12
 
-**Choose the best answer.**
+Compute the derivative $( \frac{d}{dx} )$ of the following function:
 
-A survey based on a random sample of 2,045 American teenagers found that a 95% confidence interval for the mean number of texts sent per month was (1450, 1550).
-A valid interpretation of this interval is
+$$
+g(x) = \left( \sin(x^2) + \cos(ax) \right)^k
+$$
 
-a.  95% of all teens who text send between 1450 and 1550 text messages per month.
-b.  If a new survey with the same sample size were to be taken, there is a 95% chance that the mean number of texts in the sample would be between 1450 and 1550.
-c.  We are 95% confident that the mean number of texts per month of all American teens is between 1450 and 1550.
-d.  We are 95% confident that, were we to repeat this survey, the mean number of texts per month of those taking part in the survey would be between 1450 and 1550.
+## Question 13
+
+Compute the following integral:
+
+$$
+\int_{a}^{b} \left( e^{cx} + \frac{1}{x^n} \right) dx
+$$
+
+# Part 4 - Linear algebra
+
+## Question 14
+
+Given a vector $y = \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix}$, write down its transpose $y^\top$.
+
+## Question 15
+
+Given the following matrix $N$:
+
+$$
+N = \begin{bmatrix}
+n_{11} & n_{12} \\
+n_{21} & n_{22} \\
+n_{31} & n_{32}
+\end{bmatrix}
+$$
+
+Write down its transpose, $N^\top$.
+
+## Question 16
+
+Consider the following matrices $C$ and $D$:
+
+$$
+C = 
+\begin{bmatrix}c_{11} & c_{12} \\c_{21} & c_{22} \\c_{31} & c_{32}\end{bmatrix}, \quad
+D =
+\begin{bmatrix}d_{11} & d_{12} & d_{13} \\d_{21} & d_{22} & d_{23}\end{bmatrix}
+$$
+
+1.  What are the dimensions of $C$?
+2.  What are the dimensions of $D$?
+3.  For the matrix product $CD$:
+    1.  Determine if the product is valid, and explain why.
+    2.  If the product is valid, write down the dimensions of the resulting matrix without computing the product.
+
+## Question 17
+
+Given the matrices $E$ and $F$:
+
+$$
+E = \begin{bmatrix}
+e_{11} & e_{12} \\
+e_{21} & e_{22} \\
+e_{31} & e_{32}
+\end{bmatrix}, \quad
+F = \begin{bmatrix}
+f_{11} \\
+f_{21}
+\end{bmatrix}
+$$
+
+1.  What are the dimensions of $E$?
+2.  What are the dimensions of $F$?
+3.  For the matrix product $EF$:
+    1.  Determine if the product is valid, and explain why.
+    2.  If the product is valid, compute the resulting matrix.
 
 {{< pagebreak >}}
 

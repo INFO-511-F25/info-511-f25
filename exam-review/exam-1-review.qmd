@@ -5,40 +5,52 @@ format:
   pdf: default
 execute:
   echo: false
+  message: false
+  error: false
+  warning: false
+jupyter: python3
 ---
 
-```{r}
+```{python}
 #| label: load-packages
 #| message: false
 
-library(tidyverse)
-library(openintro)
-library(scales)
-```
-
-```{r}
-#| label: blizzard-data-prep
-
-blizzard_salary <- blizzard_salary |>
-  mutate(
-    annual_salary = case_when(
-      salary_type == "week" ~ current_salary * 52,
-      salary_type == "hour" ~ current_salary * 40 * 52,
-      TRUE ~ current_salary
-    ),
-    performance_rating = if_else(performance_rating == "Developing", "Poor", performance_rating)
-  ) |>
-  filter(salary_type != "week") |>
-  mutate(
-    salary_type = if_else(salary_type == "hour", "Hourly", "Salaried")
-  ) |>
-  filter(!is.na(annual_salary)) |>
-  select(percent_incr, salary_type, annual_salary, performance_rating)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
 ::: callout-note
+You can find the `blizzard_salary.csv` data [here](https://raw.githubusercontent.com/INFO-511-F24/data/main/blizzard_salary.csv). 
+
 Suggested answers can be found [here](/exam-review/exam-1-review-A.qmd), but resist the urge to peek before you go through it yourself.
 :::
+
+```{python}
+#| label: blizzard-data-prep
+blizzard_salary = pd.read_csv('data/blizzard_salary.csv')
+
+# Data preparation
+blizzard_salary['annual_salary'] = np.where(
+    blizzard_salary['salary_type'] == 'week',
+    blizzard_salary['current_salary'] * 52,
+    np.where(
+        blizzard_salary['salary_type'] == 'hour',
+        blizzard_salary['current_salary'] * 40 * 52,
+        blizzard_salary['current_salary']
+    )
+)
+
+blizzard_salary['performance_rating'] = blizzard_salary['performance_rating'].replace('Developing', 'Poor')
+
+blizzard_salary = blizzard_salary[blizzard_salary['salary_type'] != 'week']
+blizzard_salary['salary_type'] = blizzard_salary['salary_type'].replace('hour', 'Hourly')
+blizzard_salary['salary_type'] = blizzard_salary['salary_type'].replace('Salaried', 'Salaried')
+
+blizzard_salary = blizzard_salary.dropna(subset=['annual_salary'])
+blizzard_salary = blizzard_salary[['percent_incr', 'salary_type', 'annual_salary', 'performance_rating']]
+```
 
 In 2020, employees of Blizzard Entertainment circulated a spreadsheet to anonymously share salaries and recent pay increases amidst rising tension in the video game industry over wage disparities and executive compensation.
 (Source: [Blizzard Workers Share Salaries in Revolt Over Pay](https://www.bloomberg.com/news/articles/2020-08-03/blizzard-workers-share-salaries-in-revolt-over-wage-disparities))
@@ -54,11 +66,11 @@ The name of the data frame used for this analysis is `blizzard_salary` and the v
 -   `performance_rating`: Most recent review performance rating, with levels `Poor`, `Successful`, `High`, and `Top`.
     The `Poor` level is the lowest rating and the `Top` level is the highest rating.
 
-The top ten rows of `blizzard_salary` are shown below:
+The top ten rows and `.info` of `blizzard_salary` are shown below:
 
-```{r}
-blizzard_salary |>
-  select(percent_incr, salary_type, annual_salary, performance_rating)
+```{python}
+print(blizzard_salary.head(10))
+print(blizzard_salary.info())
 ```
 
 ## Question 1
@@ -92,36 +104,28 @@ Which of the two figures is better for comparing the median annual salaries of h
 Explain your reasoning.
 
 ::: {#fig-blizzard-hist}
-```{r}
+```{python}
 #| label: fig-blizzard-hist-1
 #| fig-cap: Option 1
 #| fig-width: 8
 #| fig-asp: 0.5
 
-ggplot(blizzard_salary, aes(x = annual_salary)) +
-  geom_histogram(binwidth = 10000, color = "white") +
-  facet_wrap(~salary_type, ncol = 1) +
-  scale_x_continuous(labels = label_dollar(scale = 1/1000, suffix = "K"), breaks = seq(0, 250000, 25000)) +
-  labs(
-    x = "Annual salary (in USD)",
-    y = "Count"
-  )
+sns.histplot(data=blizzard_salary, x='annual_salary', hue='salary_type', multiple='dodge', binwidth=10000, kde=False)
+plt.xlabel('Annual salary (in USD)')
+plt.ylabel('Count')
+plt.show()
 ```
 
-```{r}
+```{python}
 #| label: fig-blizzard-hist-2
 #| fig-cap: Option 2
 #| fig-width: 8
 #| fig-asp: 0.3
 
-ggplot(blizzard_salary, aes(x = annual_salary)) +
-  geom_histogram(binwidth = 10000, color = "white") +
-  facet_wrap(~salary_type, nrow = 1) +
-  scale_x_continuous(labels = label_dollar(scale = 1/1000, suffix = "K"), breaks = seq(0, 250000, 25000)) +
-  labs(
-    x = "Annual salary (in USD)",
-    y = "Count"
-  )
+sns.histplot(data=blizzard_salary, x='annual_salary', hue='salary_type', multiple='stack', binwidth=10000, kde=False)
+plt.xlabel('Annual salary (in USD)')
+plt.ylabel('Count')
+plt.show()
 ```
 
 Distribution of annual salaries of Blizzard employees
@@ -133,16 +137,16 @@ Distribution of annual salaries of Blizzard employees
 
 Suppose your teammate wrote the following code as part of their analysis of the data.
 
-```{r}
+```{python}
 #| label: blizzard-summarize
 #| results: false
 
-blizzard_salary |>
-  group_by(salary_type) |>
-  summarize(
-    mean_annual_salary = mean(annual_salary),
-    median_annual_salary = median(annual_salary)
-  )
+blizzard_summary = blizzard_salary.groupby('salary_type').agg(
+    mean_annual_salary=('annual_salary', 'mean'),
+    median_annual_salary=('annual_salary', 'median')
+).reset_index()
+
+print(blizzard_summary)
 ```
 
 They then printed out the results shown below.
@@ -150,11 +154,10 @@ Unfortunately one of the numbers got erased from the printout.
 It's indicated with `_____` below.
 
 ```         
-# A tibble: 2 × 3
-  salary_type mean_annual_salary median_annual_salary
-  <chr>                    <dbl>                <dbl>
-1 Hourly                  63003.               54246.
-2 Salaried                90183.               _____
+  salary_type    mean_annual_salary    median_annual_salary
+  Hourly         63003.                54246.
+  Salaried       90183.                _____
+
 ```
 
 Which of the following is the best estimate for that erased value?
@@ -208,7 +211,7 @@ Scatterplots
 
 Suppose you made the bar plot shown in @fig-performance-rating-1 to visualize the distribution of `performance_rating` and your teammate made the bar plot shown in @fig-performance-rating-2.
 
-```{r}
+```{python}
 #| label: fig-performance-rating
 #| layout-ncol: 2
 #| fig-cap: Distribution of performance rating
@@ -218,42 +221,40 @@ Suppose you made the bar plot shown in @fig-performance-rating-1 to visualize th
 #|   - Option 1
 #|   - Option 2
 
-ggplot(blizzard_salary, aes(x = performance_rating)) +
-  geom_bar() +
-  labs(
-    x = "Performance rating", y = "Count",
-    title = "Performance rating of Blizzard employees"
-  )
+# Your plot
+sns.countplot(data=blizzard_salary, x='performance_rating')
+plt.title('Performance rating of Blizzard employees')
+plt.xlabel('Performance rating')
+plt.ylabel('Count')
+plt.show()
 
-blizzard_salary |>
-  mutate(performance_rating = fct_relevel(performance_rating, "Poor", "Successful", "High", "Top")) |>
-  ggplot(aes(x = performance_rating)) +
-  geom_bar() +
-  labs(
-    x = "Performance rating", y = "Count",
-    title = "Performance rating of Blizzard employees"
-  )
+# Teammate's plot
+blizzard_salary['performance_rating'] = pd.Categorical(blizzard_salary['performance_rating'], categories=["Poor", "Successful", "High", "Top"], ordered=True)
+sns.countplot(data=blizzard_salary, x='performance_rating')
+plt.title('Performance rating of Blizzard employees')
+plt.xlabel('Performance rating')
+plt.ylabel('Count')
+plt.show()
 ```
 
 You made your bar plot without transforming the data in any way, while your friend did first transform the data with code like the following:
 
-```{r}
+```{python}
 #| eval: false
 #| echo: true
 
-blizzard_salary <- blizzard_salary |>
-  _(1)_(performance_rating = fct_relevel(performance_rating, _(2)_))
+blizzard_salary['performance_rating'] = pd._(1)_(blizzard_salary['performance_rating'], categories=[_(2)_], ordered=True)
 ```
 
 **Question 6:** What goes in the blank (1)?
 
-a.  `arrange()`
+a.  `.sort_values()`
 
-b.  `filter()`
+b.  `.Categorical()`
 
-c.  `mutate()`
+c.  `.groupby()`
 
-d.  `summarize()`
+d.  `.fillna()`
 
 **Question 7:** What goes in the blank (2)?
 
@@ -271,7 +272,7 @@ d.  `Poor, Successful, High, Top`
 
 Finally, another teammate creates the following two plots.
 
-```{r}
+```{python}
 #| label: fig-salary-performance-rating
 #| layout-ncol: 2
 #| fig-cap: Distribution of salary type by performance rating
@@ -281,27 +282,19 @@ Finally, another teammate creates the following two plots.
 #|   - Option 1
 #|   - Option 2
 
-blizzard_salary |>
-  drop_na(salary_type, performance_rating) |>
-  ggplot(aes(x = salary_type, fill = fct_rev(performance_rating))) +
-  geom_bar() +
-  scale_fill_viridis_d() +
-  labs(
-    x = "Salary type",
-    y = "Count",
-    fill = "Performance\nrating"
-  )
+# Option 1
+sns.countplot(data=blizzard_salary.dropna(subset=['salary_type', 'performance_rating']), x='salary_type', hue='performance_rating')
+plt.xlabel('Salary type')
+plt.ylabel('Count')
+plt.legend(title='Performance rating')
+plt.show()
 
-blizzard_salary |>
-  drop_na(salary_type, performance_rating) |>
-  ggplot(aes(x = salary_type, fill = fct_rev(performance_rating))) +
-  geom_bar(position = "fill") +
-  scale_fill_viridis_d() +
-  labs(
-    x = "Salary type",
-    y = "Proportion",
-    fill = "Performance\nrating"
-  )
+# Option 2
+sns.histplot(data=blizzard_salary.dropna(subset=['salary_type', 'performance_rating']), x='salary_type', hue='performance_rating', multiple='fill')
+plt.xlabel('Salary type')
+plt.ylabel('Proportion')
+plt.legend(title='Performance rating')
+plt.show()
 ```
 
 **Question 8:** Your teammate asks you for help deciding which one to use in the final report for visualizing the relationship between performance rating and salary type.
@@ -324,14 +317,13 @@ $\vspace{2cm}$
 **Question 10:** Below are the proportions of performance ratings for hourly and salaried workers.
 Place these values in the corresponding segments in @fig-salary-performance-rating-2.
 
-```{r}
+```{python}
 #| label: salary-type-perfecormance-table
 
-blizzard_salary |>
-  drop_na(salary_type, performance_rating) |>
-  count(salary_type, performance_rating) |>
-  pivot_wider(names_from = salary_type, values_from = n, values_fill = 0) |>
-  mutate(across(-performance_rating, ~ .x / sum(.x)))
+# Calculate proportions
+proportions = blizzard_salary.dropna(subset=['salary_type', 'performance_rating']).groupby(['salary_type', 'performance_rating']).size().unstack().apply(lambda x: x / x.sum())
+print(proportions)
+
 ```
 
 ::: {.content-visible when-format="pdf"}
@@ -342,30 +334,30 @@ blizzard_salary |>
 
 The table below shows the distribution of `salary_type` and `performance_rating`.
 
-```{r}
-blizzard_salary |>
-  count(salary_type, performance_rating) |>
-  pivot_wider(names_from = performance_rating, values_from = n) |>
-  select(salary_type, Poor, Successful, High, Top, `NA`)
+```{python}
+filtered_df = blizzard_salary[(blizzard_salary['salary_type'] != "Hourly") & (blizzard_salary['performance_rating'] == "Poor")]
+filtered_df = filtered_df.sort_values(by='annual_salary')
+print(filtered_df)
 ```
 
 The pipeline below produces a data frame with a fewer number of rows than `blizzard_salary`.
 
-```{r}
+```{python}
 #| eval: false
 #| echo: true
+filtered_df = blizzard_salary[(blizzard_salary['salary_type'] _(1)_ "Hourly") _(2)_ (blizzard_salary['performance_rating'] == "Poor")]
+filtered_df = filtered_df._(3)_(by='annual_salary')
+print(filtered_df)
 
-blizzard_salary |>
-  filter(salary_type _(1)_ "Hourly" _(2)_ performance_rating == "Poor") |>
-  _(3)_(annual_salary)
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-blizzard_salary |>
-  filter(salary_type != "Hourly" & performance_rating == "Poor") |>
-  arrange(annual_salary)
+filtered_df = blizzard_salary[(blizzard_salary['salary_type'] != "Hourly") & (blizzard_salary['performance_rating'] == "Poor")]
+filtered_df = filtered_df.sort_values(by='annual_salary')
+print(filtered_df)
+
 ```
 
 **Question 11:** Which of the following goes in blanks (1) and (2)?
@@ -383,13 +375,13 @@ $\vspace{1cm}$
 
 **Question 12:** Which function or functions go into blank (3)?
 
-a.  `arrange()`
+a.  `.sort_values()`
 
-b.  `mutate()`
+b.  `.assign()`
 
-c.  `order()`
+c.  `.groupby()`
 
-d.  `sort()`
+d.  `.aggregate()`
 
 ::: {.content-visible when-format="pdf"}
 $\vspace{1cm}$
@@ -399,14 +391,15 @@ $\vspace{1cm}$
 
 You're reviewing another team's work and they made the following visualization:
 
-```{r}
+```{python}
 #| warning: false
 #| fig-width: 10
 #| fig-asp: 0.5
 
-ggplot(blizzard_salary, aes(x = annual_salary, percent_incr)) +
-  geom_point() +
-  facet_wrap(~performance_rating)
+sns.scatterplot(data=blizzard_salary, x='annual_salary', y='percent_incr', hue='performance_rating')
+plt.xlabel('Annual Salary')
+plt.ylabel('Percent Increase')
+plt.show()
 ```
 
 And they wrote the following interpretation for the relationship between annual salary and percent increase for Top performers:
@@ -441,29 +434,34 @@ $\vspace{2cm}$
 
 Below is some code and its output.
 
-```{{r}}
+```{{python}}
 # label=plot blizzard
 
-ggplot(blizzard_salary,aes(x=performance_rating,y=percent_incr))+geom_boxplot()
-labs(x="Performance rating", y = "Percent increase")
+sns.boxplot(data=blizzard_salary, x='performance_rating', y='percent_incr')
+plt.xlabel('Performance rating')
+plt.ylabel('Percent increase')
+plt.show()
+
 ```
 
-```{r}
+```{python}
 #| echo: false
+#| warning: true
 #| fig-width: 8
 #| fig-asp: 0.4
+sns.boxplot(data=blizzard_salary,x='performance_rating',y='percent_incr')
+plt.xlabel('Performance rating') 
+plt.ylabel('Percent increase') 
 
-ggplot(blizzard_salary,aes(x=performance_rating,y=percent_incr))+geom_boxplot()
-labs(x="Performance rating", y = "Percent increase")
 ```
 
-Part 1: List at least 5 things that should be fixed or improved in the code.
+Part 1: List at least 3 things that should be fixed or improved in the code.
 
 ::: {.content-visible when-format="pdf"}
 $\vspace{5cm}$
 :::
 
-Part 2: What is the cause of the warning and what does it mean?
+Part 2: How could we show missing values in this plot?
 
 {{< pagebreak >}}
 

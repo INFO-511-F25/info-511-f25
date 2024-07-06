@@ -5,6 +5,7 @@ website:
   page-navigation: true
   title: "INFO 511"
   description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Fall 2024."
+  favicon: /img/logo.png
   site-url: "https://info-511-f24.github.io/"
 
   repo-url: https://github.com/INFO-511-F24/info-511-f24.github.io
@@ -59,14 +60,29 @@ website:
             text: Useful links
           - href: course-faq.qmd
             text: FAQ
+          - section: Textbooks
+            contents: 
+              - text: "Data Science from Scratch"
+                href: https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=43729147450003843&institutionId=3843&customerId=3840
+              - text: "Python for Data Analysis"
+                href: https://wesmckinney.com/book/
+              - text: "Practical Stats for DS"
+                href: textbooks/brucePracStatsForDS.pdf
+              - text: "Intro to Statistical Learning"
+                href: textbooks/jamesISL.pdf
+              - text: "Essential Math for Data Science"
+                href: https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=43729147410003843&institutionId=3843&customerId=3840
+              - text: "Python Companion to Statistical Thinking in the 21st Century"
+                href: https://statsthinking21.github.io/statsthinking21-python/index.html
+            
       - section: "Computing"
         contents:
-          - href: computing-access.qmd
-            text: Access
-          - href: computing-troubleshooting.qmd
+          - href: computing/computing-troubleshooting.qmd
             text: Troubleshooting
-          - href: computing-cheatsheets.qmd
+          - href: computing/computing-cheatsheets.qmd
             text: Cheatsheets
+          - href: computing/computing-git.qmd
+            text: Setting up Git
       - section: "Project"
         contents:
           - href: project/description.qmd

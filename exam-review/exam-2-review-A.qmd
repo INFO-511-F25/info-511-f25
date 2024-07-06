@@ -8,20 +8,28 @@ editor_options:
 ---
 
 1.  Take a random sample of size 25, with replacement, from the original sample. Calculate the proportion of students in this simulated sample who work 5 or more hours. Repeat this process 1000 times to build the bootstrap distribution. Take the middle 95% of this distribution to construct a 95% confidence interval for the true proportion of statistics majors who work 5 or more hours.
+
 2.  The exact 95% CI is (40%, 80%). Answers reasonably close to the upper and lower bounds would be accepted.
+
 3.  \(e\) None of the above. The correct interpretation is “We are 95% confident that 40% to 80% of statistics majors work at least 5 hours per week.”
-4.  \(c\) For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 0.0155%.
-5.  \$R\^2\$ of `raise_2_fit` is higher than \$R\^2\$ of `raise_1_fit` since `raise_2_fit` has one more predictor and \$R\^2\$ always
+
+4.  \(c\) For every additional \$1,000 of annual salary, the model predicts the raise to be higher, on average, by 0.016%.
+
+5.  $R^2$ of `raise_2_fit` is higher than $R^2$ of `raise_1_fit` since `raise_2_fit` has one more predictor and $R^2$ always
+
 6.  The reference level of `performance_rating` is High, since it’s the first level alphabetically. Therefore, the coefficient -2.40% is the predicted difference in raise comparing High to Successful. In this context a negative coefficient makes sense since we would expect those with High performance rating to get higher raises than those with Successful performance.
+
 7.  \(a\) “Poor”, “Successful”, “High”, “Top”.
+
 8.  Option 3. It's a linear model with no interaction effect, so parallel lines. And since the slope for `salary_typeSalaried` is positive, its intercept is higher. The equations of the lines are as follows:
+
     -   Hourly:
 
         $$
         \begin{align*}
-        \widehat{percent\_incr} &= 1.24 + 0.0000137 \times annual\_salary + 0.913 salary\_typeSalaried \\
-        &= 1.24 + 0.0000137 \times annual\_salary + 0.913 \times 0 \\
-        &= 1.24 + 0.0000137 \times annual\_salary
+        \widehat{percent\_incr} &= 1.24 + 0.000014 \times annual\_salary + 0.913 salary\_typeSalaried \\
+        &= 1.24 + 0.000014 \times annual\_salary + 0.913 \times 0 \\
+        &= 1.24 + 0.000014 \times annual\_salary
         \end{align*}
         $$
 
@@ -34,7 +42,104 @@ editor_options:
         &= 2.153 + 0.0000137 \times annual\_salary
         \end{align*}
         $$
+
 9.  A parsimonious model is the simplest model with the best predictive performance.
-10. \(c\) The model predicts that the percentage increase employees with Successful performance get, on average, is higher by a factor of 1025 compared to the employees with Poor performance rating.\\/(a) and (d).
+
+10. \(c\) The exponentiated coefficient (`6.502427`) represents the factor by which the percentage increase is higher for `Successful` ratings compared to `Poor` ratings.\\/(a) and (d).
+
 11. \(a\) and (d).
-12. \(c\) We are 95% confident that the mean number of texts per month of all American teens is between 1450 and 1550.
+
+12. Let $u(x) = \sin(x^2) + \cos(ax)$. Then, $g(x) = [u(x)]^k$.
+
+    Using the chain rule, we get:
+
+    $g'(x) = k [u(x)]^{k-1} \cdot u'(x)$
+
+    Now, we need to compute $u'(x)$:
+
+    $u(x) = \sin(x^2) + \cos(ax)$
+
+    Using the chain rule for each term:
+
+    $\frac{d}{dx} \sin(x^2) = \cos(x^2) \cdot 2x ] [ \frac{d}{dx} \cos(ax) = -\sin(ax) \cdot a$
+
+    Thus,
+
+    $u'(x) = 2x \cos(x^2) - a \sin(ax)$
+
+    Combining these results:
+
+    $g'(x) = k \left( \sin(x^2) + \cos(ax) \right)^{k-1} \left( 2x \cos(x^2) - a \sin(ax) \right)$
+
+13. We can split the integral into two separate integrals:
+
+    $\int{a}^{b} e^{cx} , dx + \int{a}^{b} \frac{1}{x^n} , dx$
+
+    1.  Integral of $e^{cx}$:
+
+    $\int e^{cx} , dx = \frac{1}{c} e^{cx}$
+
+    Thus,
+
+    $\int{a}^{b} e^{cx} , dx = \frac{1}{c} \left[ e^{cx} \right]{a}^{b} = \frac{1}{c} \left( e^{cb} - e^{ca} \right)$
+
+    2.  Integral of $\frac{1}{x^n}$:
+
+    For $n \neq 1$,
+
+    $\int \frac{1}{x^n} , dx = \int x^{-n} , dx = \frac{x^{-n+1}}{-n+1} = \frac{1}{1-n} x^{1-n}$
+
+    Thus,
+
+    $\int{a}^{b} \frac{1}{x^n} , dx = \frac{1}{1-n} \left[ x^{1-n} \right]{a}^{b} = \frac{1}{1-n} \left( b^{1-n} - a^{1-n} \right)$
+
+    Combining these results:
+
+    $\int_{a}^{b} \left( e^{cx} + \frac{1}{x^n} \right) dx = \frac{1}{c} \left( e^{cb} - e^{ca} \right) + \frac{1}{1-n} \left( b^{1-n} - a^{1-n} \right)$
+
+14. The transpose of the vector $y$ is:
+
+    $y^\top = \begin{bmatrix} y_1 & y_2 & y_3 \end{bmatrix}$
+
+15. The transpose of the matrix $N$ is:
+    $N^\top = \begin{bmatrix}
+    n_{11} & n_{21} & n_{31} \\
+    n_{12} & n_{22} & n_{32}
+    \end{bmatrix}$
+
+16. Solution parts:
+
+    1.  The dimensions of $C$ are $3 \times 2$.
+    2.  The dimensions of $D$ are $2 \times 3$.
+    3.  For the matrix product $CD$:
+        1.  The product is valid because the number of columns in $C$ (which is 2) is equal to the number of rows in $D$ (which is 2).
+        2.  The dimensions of the resulting matrix $CD$ will be $3 \times 3$ (the number of rows of $C$ by the number of columns of $D$).
+
+17. Solutions:
+
+    1.  The dimensions of $E$ are $3 \times 2$.
+
+    2.  The dimensions of $F$ are $2 \times 1$.
+
+    3.  For the matrix product $EF$:
+
+        1.  The product is valid because the number of columns in $E$ (which is 2) is equal to the number of rows in $F$ (which is 2).
+        2.  The resulting matrix $EF$ is computed as follows:
+
+        $$
+        EF =\begin{bmatrix}
+         e_{11} & e_{12} \\
+         e_{21} & e_{22} \\
+         e_{31} & e_{32}
+         \end{bmatrix}
+         \begin{bmatrix}
+         f_{11} \\
+         f_{21}
+         \end{bmatrix}=\begin{bmatrix}
+         e_{11}f_{11} + e_{12}f_{21} \\
+         e_{21}f_{11} + e_{22}f_{21} \\
+         e_{31}f_{11} + e_{32}f_{21}
+         \end{bmatrix}
+        $$
+
+    The resulting matrix $EF$ has dimensions $3 \times 1$.
