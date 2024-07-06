@@ -132,7 +132,7 @@ format:
     theme:
       light: [cosmo, style/info511.scss]
       dark: [cosmo, style/info511.scss, style/dark.scss]
-    linkcolor: "#0C234B" # Arizona Blue - Fall 2024
+    linkcolor: "#1E5288" # Arizona Blue - Fall 2024
     toc: true
     code-copy: true
     code-overflow: wrap
