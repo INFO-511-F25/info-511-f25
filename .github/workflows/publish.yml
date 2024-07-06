@@ -1,47 +1,56 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Publish Quarto page to GitHub Pages
+
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches: main
-  pull_request:
-    branches: main
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-name: Build Site
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  build-website:
+  # Single deploy job since we're just deploying
+  publish-site:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    container:
+      image: ghcr.io/gchism94/r_python_gh_actions:latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install Quarto CLI
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
-          version: 1.4.549
-
-      - name: Install libcurl
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install Missing Packages
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libudunits2-dev libproj-dev libgdal-dev libgeos-dev
+         missing = checklist::install_missing_pkgs(dir = "./", glob = "*.qmd")
+        shell: Rscript {0}
 
-      - name: Set up R
-        uses: r-lib/actions/setup-r@v2
+      - name: Build site 🔧
+        run: |
+          quarto render
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          use-public-rspm: true
-
-      - name: Set up renv
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 2
-
-      - name: Publish to GitHub Pages (and render)
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
-
-    permissions:
-      contents: write
+          # Upload entire repository
+          path: '_site/'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
