@@ -1,4 +1,4 @@
 - source: project
-  quarto-pub:
-    - id: fd19f288-029b-46cf-8de6-2ffc711e918a
-      url: 'https://mine.quarto.pub/sta-199'
+  netlify:
+    - id: d2feef77-982d-471d-9ed8-7ff1eaea6c4f
+      url: 'https://rad-tapioca-42e25e.netlify.app'
