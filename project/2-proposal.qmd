@@ -12,7 +12,7 @@ The goals of this milestone are as follows:
 
 -   Identify 3 data sets you're interested in potentially using for the project.
 
--   Get these datasets into R.
+-   Get these datasets into Python.
 
 -   Write up reasons and justifications for why you want to work with these datasets.
 
@@ -124,7 +124,7 @@ For each data set, include the following:
 For each data set:
 
 -   Place the file containing your data in the `data` folder of the project repo.
--   Use the `glimpse()` function to provide a glimpse of the data set.
+-   Use the `.head()` and `.info()` functions to provide a glimpse of the data set.
 
 # Grading
 

@@ -13,20 +13,20 @@ The dataset may already exist, or you may collect your own data using a survey o
 You can choose the data based on your teams' interests or based on work in other courses or research projects.
 The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like) and apply them to a novel dataset in a meaningful way.
 
-The goal is not to do an exhaustive data analysis i.e., do not calculate every statistic and procedure you have learned for every variable, but rather let me know that you are proficient at asking meaningful questions and answering them with results of data analysis, that you are proficient in using R, and that you are proficient at interpreting and presenting the results.
+The goal is not to do an exhaustive data analysis i.e., do not calculate every statistic and procedure you have learned for every variable, but rather let me know that you are proficient at asking meaningful questions and answering them with results of data analysis, that you are proficient in using Python, and that you are proficient at interpreting and presenting the results.
 Focus on methods that help you begin to answer your research questions.
 You do not have to apply every statistical procedure we learned.
 Also, critique your own methods and provide suggestions for improving your analysis.
 Issues pertaining to the reliability and validity of your data, and appropriateness of the statistical analysis should be discussed here.
 
 The project is very open ended.
-You should create some kind of compelling visualization(s) of this data in R.
+You should create some kind of compelling visualization(s) of this data in Python.
 There is no limit on what tools or packages you may use but sticking to packages we learned in class is required.
 You do not need to visualize all of the data at once.
 A single high-quality visualization will receive a much higher grade than a large number of poor-quality visualizations.
 Also pay attention to your presentation.
 Neatness, coherency, and clarity will count.
-All analyses must be done in RStudio, using R, and all components of the project **must be reproducible** (with the exception of the presentation).
+All analyses must be done in VSCode (or other IDE), using Python, and all components of the project **must be reproducible** (with the exception of the presentation).
 
 You will work on the project with your lab teams.
 
@@ -59,7 +59,7 @@ Instructions and grading criteria for this milestone are outlined in [Milestone 
 
 # Milestone 3 - Peer review {#peer-review}
 
-Critically reviewing others' work is a crucial part of the scientific process, and STA 199 is no exception.
+Critically reviewing others' work is a crucial part of the scientific process, and INFO 511 is no exception.
 You will be assigned two teams to review.
 This feedback is intended to help you create a high quality final project, as well as give you experience reading and constructively critiquing the work of others.
 

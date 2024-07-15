@@ -17,12 +17,12 @@ So, starting tomorrow in class, you'll learn to use a computer program (called R
 But today, we need to set you up for success!
 Let's first briefly review the components of the computational toolkit for the course:
 
-1.  R: The programming language you'll learn in this course.
+1.  Python: The programming language you'll learn in this course.
 
-2.  RStudio: The piece of software (a.k.a. the integrated development environment, IDE) you'll use to write R code in.
+2.  VSCode: The piece of software (a.k.a. the integrated development environment, IDE) you'll use to write Python code in.
 
 ::: callout-note
-R is the name of the programming language itself and RStudio is a convenient interface.
+Python is the name of the programming language itself and VSCode is a convenient interface.
 :::
 
 3.  Quarto: The tool you'll use to create reproducible computational documents that contain both your narrative (i.e., words in English) and your code (i.e., code in R). Every piece of assignment you hand in will be a Quarto document.
@@ -41,7 +41,7 @@ Everything in one place, beautifully formatted!
 Git is a version control system (like "Track Changes" features from Microsoft Word but more powerful) and GitHub is the home for your Git-based projects on the internet (like DropBox but much better).
 :::
 
-## Access R and RStudio
+## Access Python and VSCode
 
 -   Go to <https://cmgr.oit.duke.edu/containers> and login with your Duke NetID and Password.
 -   Click `STA198-199` to log into the Docker container. You should now see the RStudio environment.

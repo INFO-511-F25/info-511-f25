@@ -3,7 +3,7 @@ title: "Project tips + resources"
 ---
 
 The project is very open ended.
-For instance, in creating a compelling visualization(s) of your data in R, there is no limit on what tools or packages you may use.
+For instance, in creating a compelling visualization(s) of your data in Python, there is no limit on what tools or packages you may use.
 You do not need to visualize all of the data at once.
 A single high quality visualization will receive a much higher grade than a large number of poor quality visualizations.
 
@@ -22,9 +22,8 @@ Neatness, coherency, and clarity will count.
 
     -   **Exception:** If you want to highlight something specific about a piece of code, you're welcome to show that portion.
 
-```{=html}
 <!-- -->
-```
+
 -   Merge conflicts will happen, issues will arise, and that's fine!
     Commit and push often, and ask questions when stuck.
 
@@ -36,7 +35,7 @@ Neatness, coherency, and clarity will count.
 
 ## Suppress code and warnings
 
--   Include the following in the YAML of your `report.qmd` to suppress all code, warnings, and other messages.
+-   Include the following in the YAML of your `index.qmd` to suppress all code, warnings, and other messages.
 
 ``` yaml
 execute:
@@ -94,6 +93,6 @@ Replace the height and width values with values appropriate for your write up.
 Arrange plots in a grid, instead of one after the other.
 This is especially useful when displaying plots for exploratory data analysis and to check assumptions.
 
-If you’re using ggplot2 functions, the [patchwork package](https://patchwork.data-imaginist.com/) makes it easy to arrange plots in a grid.
+If you’re using {matplotlib} or {seaborn} functions, the [`subplot_mosaic()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot_mosaic.html) function makes it straightforward to arrange plots in a grid.
 
 *More to be added soon...*

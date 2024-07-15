@@ -23,7 +23,7 @@ The goals of this milestone are as follows:
 
 During the first \~30 minutes, make progress on your own project.
 
--   Review the feedback from your TA.
+-   Review the feedback from your Instructor.
 
 -   Choose the dataset you want to work with.
 
@@ -36,7 +36,7 @@ During the first \~30 minutes, make progress on your own project.
 -   Render the project, commit and push all your changes.
 
 ::: callout-important
-Make sure you always render before you commit and push. 
+Make sure you always render before you commit and push.
 If you don't render first, you're going to end up with merge conflicts that are difficult to resolve in auxiliary files created during the render process.
 :::
 
@@ -90,8 +90,11 @@ As a team you should spend \~30 minutes on each team's project.
 
 # Review pairings
 
+TBD
+
 ```{r}
 #| message: false
+#| eval: false
 library(tidyverse)
 library(gt)
 library(googlesheets4)
@@ -119,56 +122,6 @@ make_pairing_table <- function(df, section_no) {
     )
 }
 ```
-
-::: panel-tabset
-## L1 - 8:30 am
-
-```{r}
-make_pairing_table(teams, 1)
-```
-
-## L2 - 10:05 am
-
-```{r}
-make_pairing_table(teams, 2)
-```
-
-## L3 - 11:45 am
-
-```{r}
-make_pairing_table(teams, 3)
-```
-
-## L4 - 1:25 pm
-
-```{r}
-make_pairing_table(teams, 4)
-```
-
-## L11 - 1:25 pm
-
-```{r}
-make_pairing_table(teams, 11)
-```
-
-## L5 - 3:05 pm
-
-```{r}
-make_pairing_table(teams, 5)
-```
-
-## L6 - 4:40 pm
-
-```{r}
-make_pairing_table(teams, 6)
-```
-
-## L7 - 4:40 pm
-
-```{r}
-make_pairing_table(teams, 7)
-```
-:::
 
 # Grading
 

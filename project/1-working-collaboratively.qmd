@@ -55,11 +55,11 @@ Git will put conflict markers in your code that look like:
 ```         
 <<<<<<< HEAD 
 
-See also: [dplyr documentation](https://dplyr.tidyverse.org/)   
+See also: [pandas documentation](https://pandas.pydata.org/docs/)   
 
 ======= 
 
-See also [ggplot2 documentation](https://ggplot2.tidyverse.org/)  
+See also [seaborn documentation](https://seaborn.pydata.org/)  
 
 >>>>>>> some1alpha2numeric3string4
 ```
