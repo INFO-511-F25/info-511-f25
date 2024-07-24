@@ -1,15 +1,15 @@
 /*-- scss:defaults --*/
 
 // fonts
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap';
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 
-$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
-$presentation-heading-color: #3A5883;
+$font-family-sans-serif: "Lexend", sans-serif;
+$presentation-heading-color: #1E5288;
 $presentation-title-slide-text-align: "left";
-$link-color: #3A5883;
-$code-color: #3A5883;
+$link-color: #1E5288;
+$code-color: #1E5288;
 $code-block-font-size: 0.6em;
 $presentation-font-size-root: 45px;
 $presentation-h2-font-size: 1.2em;
@@ -21,7 +21,7 @@ details>summary {
 }
 
 .reveal #title-slide .subtitle {
-  color: #3A5883;
+  color: #1E5288;
   font-weight: bold;
   text-align: left;
 }
@@ -47,7 +47,7 @@ details>summary {
 }
 
 .reveal .slide .question {
-  border-left: 3px solid #3A5883;
+  border-left: 3px solid #1E5288;
   padding-left: 0.5em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
@@ -63,7 +63,7 @@ details>summary {
 }
 
 .reveal .slide .appex {
-  border-left: 3px solid #3A5883;
+  border-left: 3px solid #1E5288;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   padding: 0.5em;

@@ -1,4 +1,4 @@
 - source: project
   netlify:
     - id: d2feef77-982d-471d-9ed8-7ff1eaea6c4f
-      url: 'https://rad-tapioca-42e25e.netlify.app'
+      url: 'https://datasciaz.netlify.app'

@@ -1,38 +1,40 @@
 ---
 title: "AE 01: Meet the penguins"
+jupyter: python3
 ---
 
-For this application exercise, we'll use the **tidyverse** and **palmerpenguins** packages.
+For this application exercise, we'll use the **pandas** and **seaborn** packages.
 
-```{r}
+```{python}
 #| label: load-packages
 
-library(tidyverse)
-library(palmerpenguins)
+import pandas as pd
+import seaborn as sns
 ```
 
 The dataset we will visualize is called `penguins`.
-Let's `glimpse()` at it.
+Let's `.info()` it.
 
--   **Your turn:** Replace `#add code here` with the code for "glimpse"ing at the data `penguins` data frame – `glimpse(penguins)`. Render the document and view the output.
+-   **Your turn:** Replace `#add code here` with the code for "info"ing at the data `penguins` data frame – `penguins.info()`. Render the document and view the output.
 
-```{r}
+```{python}
 #| label: glimpse-penguins
-
+penguins = sns.load_dataset("data/penguins")
 # add code here
 ```
 
 -   **Demo:** First, replace the blank below with the number of rows in the `penguins` data frame based on the output of the chunk below. Then, replace it with "inline code" and render again.
 
-```{r}
+```{python}
 #| label: nrow-penguins
 
-nrow(penguins)
+num_rows = len(penguins)
+num_rows
 ```
 
 There are \_\_\_ penguins in the `penguins` data frame.
 
-```{r}
-x <- 2
+```{python}
+x = 2
 x * 3
 ```

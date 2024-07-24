@@ -1,0 +1,15 @@
+{
+  "hash": "69cedef9a9212c6cc0f9e7e5ea91780f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Central tendency + dispersion\"\nsubtitle: \"Lecture 10\"\nformat: revealjs\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n# Warm up\n\n\n\n::: {.cell}\n\n:::\n\n\n\n## While you wait for class to begin...\n\nQuestions from prepare materials?\n\n\n\n```{=html}\n<iframe allowfullscreen frameborder=\"0\" height=\"100%\" mozallowfullscreen style=\"min-width: 500px; min-height: 355px\" src=\"https://app.wooclap.com/STA199S24?from=status-bar?\" width=\"100%\"></iframe>\n```\n\n\n## Announcements\n\n-   If you missed lab yesterday, get in touch with your team ASAP!\n    Read over the team contract they developed and sign it.\n\n-   Start thinking about the datasets you'll include in your proposal.\n\n## Project workflow preview\n\n::: columns\n::: {.column width=\"50%\"}\n![](images/project-repo.png)\n:::\n\n::: {.column width=\"50%\"}\n![](images/project-website.png)\n:::\n:::\n\nand a brief demo!\n\n## Project grading\n\n-   Outlined at <https://sta199-s24.github.io/project/description.html#grading>.\n\n-   Each milestone has points associated with it.\n\n-   Additionally there are points allocated to reproducibility and organization as well as teamwork (to be measured by within team peer evaluations three times throughout the semester).\n\n-   Most important thing you can do today for your project: Block off agreed times in your calendar!\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

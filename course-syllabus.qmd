@@ -1,121 +1,158 @@
 ---
-title: "STA 199 - Introduction to Data Science and Statistical Thinking"
-subtitle: "Spring 2024"
+title: "INFO 511 - Fundamentals of Data Science"
+subtitle: "Fall 2024"
 format:
   html: default
   pdf: default
 ---
 
+## Course Description
+
+This course presents fundamental aspects of data science, including Python programming (e.g., data collection, cleaning, visualization), statistics, and mathematics (e.g., linear algebra and calculus).
+The course establishes the foundation for advanced data-intensive classes, providing both theoretical understanding and practical knowledge essential for comprehending Data Science and its applications.
+
+## Course offering
+
+642-2244-1 INFO 511 101 201 – Fundamentals of Data Science
+
+## Instructor Information
+
+### Instructor
+
+Dr. Greg Chism,
+
+Assistant Professor of Practice,
+
+School of Information
+
+[gchism\@arizona.edu](mailto:gchism@arizona.edu)
+
+**Office**: Harvill 420
+
+**Office Hours**: By Appointment, via Zoom
+
+## Prerequisites
+
+Students should be comfortable with mathematical functions of one and two variables, should have at least some familiarity with basic concepts of probability and experience with a programming language.
+
+## Course Format
+
+Asynchronous online lectures.
+Videos of each lecture will be available no later than the Monday of each week by 9am AZ time.
+
+## Course Objective
+
+This course will (1) discuss effective approaches for acquiring, manipulating, and analyzing data, (2) outline fundamental concepts in programming such as variables, data types, and control structures, (3) discuss the use of Python libraries that are central for data science (e.g., NumPy, Matplotlib), (4) present a solidfoundation in descriptive statistics, probability and (5) discuss the mathematical foundations that are essential for data science.
+
+## Learning Outcomes
+
+-   Recognize the skills required to perform data science tasks from data acquisition to storytelling with data.
+
+-   Review fundamental topics in linear algebra and calculus for data science.
+
+-   Use Python programming techniques to prepare, visualize, and transform data.
+
+-   Demonstrate an understanding of how data science projects are approached.
+
+-   Communicate and present data science projects and results.
+
 ## Textbooks
 
-All books are **freely available online**.
+The following are **freely available through the UA’s library system**.
 
--   [R for Data Science, 2e](https://r4ds.hadley.nz/), Wickham, Çetinkaya-Rundel, Grolemund.
-    O'Reilly, 2nd edition, 2023.
-    Hard copy available [on Amazon](https://www.amazon.com/dp/1492097403?&tag=hadlwick-20).
+-   [Data Science from Scratch first principles with Python](https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=43729147450003843&institutionId=3843&customerId=3840).
+    Joel Grus.
+    O'Reilly, 2nd edition, 2019.
+    (Main textbook)
 
--   [Introduction to Modern Statistics](https://openintro-ims.netlify.app/), Çetinkaya-Rundel, Hardin.
-    OpenIntro Inc., 2nd Edition, 2023.
-    Hard copy of 1st edition available [on Amazon](https://www.amazon.com/Introduction-Modern-Statistics-Mine-%C3%87etinkaya-Rundel/dp/1943450145/), 2nd edition currently only available online.
-    (Either edition will work for this course.)
+-   [Essential Math for Data Science](https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=43729147410003843&institutionId=3843&customerId=3840).
 
-## Course learning objectives
+All remaining books are **freely available online**.
 
-By the end of the semester, you will...
+-   [Python for Data Analysis](https://wesmckinney.com/book/).
+    Wes McKinneyz.
+    Python for Data Analysis.
+    O’Reilly, 3rd edition 2023.
 
--   learn to explore, visualize, and analyze data in a reproducible and shareable manner using R and RStudio
--   gain experience in data wrangling and munging, exploratory data analysis, predictive modeling, and data visualization
--   work on problems and case studies inspired by and based on real-world questions and data
--   learn to effectively communicate results through written assignments and project presentation
+-   [Practical Statistics for Data Science](textbooks/brucePracStatsForDS.pdf).
+    Peter Bruce, Andrew Bruce, Peter Gedeck.
+    O’Rielly, 2016.
 
-## Course community
+-   [Introduction to Statistical Learning with Applications in Python](textbooks/jamesISL.pdf).
+    James Garth, Witten Daniela, Hastie Trevor, Tibshirani Robert.
+    Springer, 2021/2023.
 
-### Duke Community Standard
+-   [Python Companion to Statistical Thinking in the 21st Century](https://statsthinking21.github.io/statsthinking21-python/index.html).
+    Russell A. Poldrack.
 
-As a student in this course, you have agreed to uphold the [Duke Community Standard](https://studentaffairs.duke.edu/conduct/about-us/duke-community-standard) as well as the practices specific to this course.
+    2023. 
 
-```{=html}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_KN97j30ST4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-```
+## Course Schedule
+
+An up-to-date schedule, assignments, and due dates can be found on the course website: [datasciaz.netlify.app](https://datasciaz.netlify.app/).
+
+## Course Community
+
+### UArizona Community Standard
+
+All students must adhere to the [UArizona Student Rights & Responsibilities](https://deanofstudents.arizona.edu/student-rights-responsibilities#:~:text=The%20Code%20of%20Academic%20Integrity%20and%20Student%20Code,conduct%20expected%20within%20the%20University%20of%20Arizona%20community.): The University of Arizona is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, and accountability.
+Citizens of this community commit to reflect upon these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.
+
 ### Inclusive community
 
 It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit.
-It is my intent to present materials and activities that are respectful of diversity and in alignment with [Duke's Commitment to Diversity and Inclusion](https://provost.duke.edu/initiatives/commitment-to-diversity-and-inclusion).
+It is my intent to present materials and activities that are respectful of diversity and in alignment with [UArizona's Commitment to Diversity and Inclusion](https://provost.arizona.edu/content/diversity-inclusion).
 Your suggestions are encouraged and appreciated.
 Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
 
 Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities.
 To help accomplish this:
 
+-   If you have a name that differs from those that appear in your official UArizona records, please let me know! You'll be able to note this in the Getting to know you survey.
 -   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.
 -   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please let me or a member of the teaching team know.
 
-### Pronouns
-
-Pronouns are meaningful tools to communicate identities and experiences, and using pronouns supports a campus environment where all community members can thrive.
-Please update your gender pronouns in Duke Hub.
-You can learn more at the [Center for Sexual and Gender Diversity's website](https://students.duke.edu/belonging/icr/csgd/pronouns/).
-
-### Accessibility
-
-If there is any portion of the course that is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.
-
-The [Student Disability Access Office (SDAO)](https://access.duke.edu/students) is available to ensure that students are able to engage with their courses and related assignments.
-Students should be in touch with the Student Disability Access Office to [request or update accommodations](https://access.duke.edu/requests) under these circumstances.
-
 ### Communication
 
-All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website: [sta199-s24.github.io](https://sta199-s24.github.io/ "STA 199 - Spring 2024 course website").
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website: [datasciaz.netlify.app](https://datasciaz.netlify.app/).
 
-Announcements will be emailed through Canvas Announcements periodically.
-Please check your email regularly to ensure you have the latest announcements for the course.
+I will regularly send course announcements via email and Slack, make sure to check one or the other of these regularly.
+If an announcement is sent Monday through Thursday, I will assume that you have read the announcement by the next day.
+If an announcement is sent on a Friday or over the weekend, I will assume that you have read it by Monday.
 
 ### Where to get help
 
--   If you have a question during lecture or lab, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
+-   If you have a question during lecture, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
 -   The teaching team is here to help you be successful in the course. You are encouraged to attend office hours to ask questions about the course content and assignments. Many questions are most effectively answered as you discuss them with others, so office hours are a valuable resource. Please use them!
--   Outside of class and office hours, any general questions about course content or assignments should be posted on [ed, the course discussion forum](https://edstem.org/us/courses/50730/discussion/). There is a chance another student has already asked a similar question, so please check the other posts on the forum before adding a new question. If you know the answer to a question, I encourage you to respond!
+-   Outside of class and office hours, any general questions about course content or assignments should be posted on the course [Slack](https://datavizaz.slack.com)(EDIT LINK). There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question posted on Slack, I encourage you to respond!
 
-Check out the [Help](/help/) tab for more resources.
+Check out the [Support](/course-support) page for more resources.
 
-### Email
+I want to make sure that you learn everything you were hoping to learn from this class.
+If this requires flexibility, please don't hesitate to ask.
 
-If there is a question that's not appropriate for the public forum, you are welcome to email me directly.
-**If you email me, please include "STA 199" in the subject line.** Barring extenuating circumstances, I will respond to STA 199 emails within 48 hours Monday - Friday.
-Response time may be slower for emails sent Friday evening - Sunday.
+-   You *never* owe me personal information about your health (mental or physical) but you're always welcome to talk to me.
+    If I can't help, I likely know someone who can.
 
-## Lectures and labs
+-   I want you to learn lots of things from this class, but I primarily want you to stay healthy, balanced, and grounded during this crisis.
 
-Lectures and labs are designed to be interactive, so you gain experience applying new concepts and learning from each other.
-My role as instructor is to introduce you to new methods, tools, and techniques, but it is up to you to take them and make use of them.
+## Lectures
+
+The goal of the lectures is for them to be as interactive as possible.
+My role as instructor is to introduce you new tools and techniques, but it is up to you to take them and make use of them.
 A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing.
 Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab.
-You are expected to prepare for class by completing assigned readings, attend all lecture and lab sessions, and meaningfully contribute to in-class exercises and discussion.
-Additionally, some lectures will feature application exercises that will be graded based on completing what we do in class.
+You are expected to meaningfully contribute to in-class exercises and discussion.
 
-You are expected to bring a laptop, tablet, or Chromebook to each class so that you can participate in the in-class exercises.
-Please make sure your device is fully charged before you come to class, as the number of outlets in the classroom will not be sufficient to accommodate everyone.
+You are expected to bring a laptop to each class so that you can take part in the in-class exercises.
+Please make sure your laptop is fully charged before you come to class as the number of outlets in the classroom will not be sufficient to accommodate everyone.
+See the [UArizona Libraries loaner technology](https://lib.arizona.edu/borrow/tech/laptops) if you need a loaner laptop.
 
-Lectures will be recorded and posted on Panopto (link to be shared when available) however lecture attendance is mandatory.
-The recordings are for catching up with classes you miss due to illness, etc.
-You will *not* get the most out of this class if you're not present and actively participating in it -- this is true for lectures and labs.
-
-## Teams
-
-You will be assigned to a team early on in the semester.
-You are encouraged to sit with your teammates in lecture and you will also work with them in some of the lab sessions.
-All team members are expected to contribute equally to the completion of the project, and you will be asked to evaluate your team members throughout the semester.
-Failure to adequately contribute to any component of the project will result in a penalty to your mark relative to the team’s overall mark.
-
-You are expected to make use of the provided GitHub repository as the central collaborative platform.
-Commits to this repository will be used as a metric (one of several) of each team member’s relative contribution for each project.
-
-## Activities & Assessment
+## **Activities & Assessment**
 
 You will be assessed based on five components: application exercises, labs, exams, project, and teamwork.
 
-### Application exercises
+### **Application exercises**
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs).
 These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment.
@@ -125,37 +162,37 @@ To submit the AEs all you need to do is to push your work to your GitHub repo.
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
 Successful on-time completion of at least 80% of AEs will result in full credit for AEs in the final course grade.
 
-### Labs
+### **Labs**
 
-In labs, you will apply what you've learned in the videos and during lectures to complete data analysis tasks.
+In labs, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
 You may discuss lab assignments with other students; however, lab should be completed and submitted individually.
 Lab assignments must be typed up using Quarto, all work must be pushed to your GitHub repository for the lab, and the PDF output of the lab must be submitted on Gradescope by the deadline.
 
-Labs are due at 8 am ET on the indicated due date (generally the Monday after the lab).
+Labs are due at 5pm AZ time on the indicated due date.
 
 *The lowest lab grade will be dropped at the end of the semester.*
 
-### Exams
+### **Exams**
 
 There will be two exams in this course.
-Each exam will include an in-class component (with a cheat sheet) and an open-note take-home component.
+Each exam will be open-note take-home.
 Through these exams you have the opportunity to demonstrate what you’ve learned in the course thus far.
 The exams will focus on both conceptual understanding of the content and application through analysis and computational tasks.
 The content of the exam will be related to the content in videos and reading assignments, lectures, application exercises, and labs.
 
 More detail about the exams will be given during the semester.
 
-### Project
+### **Project**
 
-The purpose of the project is to apply what you've learned throughout the semester to analyze an interesting data-driven research question.
-The project will be completed with in teams, and each team will present their work in the last lab session of the semester.
+The purpose of the project is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.
+The project will be completed with in teams, and each team will present their work in the final exam session of the semester.
 The write-up will be due on the same day.
 
 *You cannot pass this course if you have not completed the project.*
 
 More information about the project will be provided during the semester.
 
-## Grading
+## **Grading**
 
 The final course grade will be calculated as follows:
 
@@ -167,37 +204,33 @@ The final course grade will be calculated as follows:
 | Exam 2                | 20%        |
 | Application Exercises | 5%         |
 
-While there are no specific points allocated to attendance, we will be recording your attendance in periodically throughout the semester, and this information will be used as "extra credit" if you're in between two grades and a minor bump would help.
+While there are no specific points allocated to participation, we will be recording your participation (mainly via slack) in periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 
 The final letter grade will be determined based on the following thresholds:
 
 | Letter Grade | Final Course Grade |
 |--------------|--------------------|
-| A            | \>= 93             |
-| A-           | 90 - 92.99         |
-| B+           | 87 - 89.99         |
-| B            | 83 - 86.99         |
-| B-           | 80 - 82.99         |
-| C+           | 77 - 79.99         |
-| C            | 73 - 76.99         |
-| C-           | 70 - 72.99         |
-| D+           | 67 - 69.99         |
-| D            | 63 - 66.99         |
-| D-           | 60 - 62.99         |
-| F            | \< 60              |
+| A            | \>= 90             |
+| B            | 80 - 89.99         |
+| C            | 70 - 79.99         |
+| D            | 60 - 69.99         |
+| E            | 50-59.99           |
+| F            | \< 50              |
 
-## Five tips for success
+These are upper bounds for grade cutoffs, depending on the class performance the cutoffs may be lowered but they won’t be increased.
+
+## **Five tips for success**
 
 Your success on this course depends very much on you and the effort you put into it.
 The course has been organized so that the burden of learning is on you.
-Your TAs and I will help you be providing you with materials and answering questions and setting a pace, but for this to work you must do the following:
+I will help you be providing you with materials and answering questions and setting a pace, but for this to work you must do the following:
 
 1.  Complete all the preparation work before class.
 
 2.  Ask questions.
     As often as you can.
     In class, out of class.
-    Ask me, ask the TAs, ask your friends, ask the person sitting next to you.
+    Ask me, ask your friends, ask the person sitting next to you.
     This will help you more than anything else.
     If you get a question wrong on an assessment, ask us why.
     If you’re not sure about the lab, ask.
@@ -216,11 +249,11 @@ Your TAs and I will help you be providing you with materials and answering quest
     Don’t let the week end with unanswered questions.
     But if you find yourself falling behind and not knowing where to begin asking, come to office hours and work with a member of the teaching team to help you identify a good (re)starting point.
 
-## Course policies
+## **Course policies**
 
-### Academic honesty
+### **Academic honesty**
 
-**TL;DR: Don't cheat!**
+**TL;DR: Don’t cheat!**
 
 Please abide by the following as you work on assignments in this course:
 
@@ -245,10 +278,13 @@ Please abide by the following as you work on assignments in this course:
     Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
 
 -   **Use of generative artificial intelligence (AI)**: You should treat generative AI, such as ChatGPT, the same as other online resources.
-    There are two guiding principles that govern how you can use AI in this course:^[1](https://sta101-f23.github.io/course-syllabus.html#fn1)^ (1) *Cognitive dimension:* Working with AI should not reduce your ability to think clearly.
-    We will practice using AI to facilitate—rather than hinder—learning.
+    There are two guiding principles that govern how you can use AI in this course[^1]:
 
-    (2) *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
+    1.  *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.
+
+    <!-- -->
+
+    2.  *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
 
     -   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.
         Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.
@@ -259,41 +295,73 @@ Please abide by the following as you work on assignments in this course:
 
     You are ultimately responsible for the work you turn in; it should reflect *your* understanding of the course content.
 
+[^1]: These guiding principles are based on [*Course Policies related to ChatGPT and other AI Tools*](https://docs.google.com/document/d/1WpCeTyiWCPQ9MNCsFeKMDQLSTsg1oKfNIH6MzoSFXqQ/preview) developed by Joel Gladd, Ph.D.
+
 If you are unsure if the use of a particular resource complies with the academic honesty policy, please ask a member of the teaching team.
 
-Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including academic integrity (e.g., completing one’s own work, following proper citation of sources, adhering to guidance around group work projects, and more).
-Ignoring these requirements is a violation of the Duke Community Standard.
-Any questions and/or concerns regarding academic integrity can be directed to the Office of Student Conduct and Community Standards at [conduct\@duke.edu](mailto:conduct@duke.edu).
+## **iSchool Academic Integrity Policy**
 
-Any violations in academic honesty standards as outlined in the [Duke Community Standard](https://studentaffairs.duke.edu/conduct/about-us/duke-community-standard) and those specific to this course will
+This policy agreed upon by faculty in the UArizona iSchool applies in addition to the Dean of Students' [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity).
 
--   automatically result in a 0 for the assignment,
+Students in courses at the UArizona iSchool are expected to maintain rigor in their academic performance with intent to learn, practice, and overcome challenges toward personal growth and enrichment.
+As future professionals in digital environments, iSchool students are also expected to exercise transparency and integrity in collaborations and in the use of tools and resources that may aid completion in assignments for our courses.
 
--   can further impact your overall course grade, and
+**Consider the following PROHIBITED** practices in this course, unless the instructor has specifically written instructions or permission to do otherwise:
 
--   will be reported to the [Office of Student Conduct](https://studentaffairs.duke.edu/conduct) for further action.
+-   Posting a question on an online site such as Chegg.com, and copying and pasting some or all of the response into an assessment
 
-### Late work & extensions
+-   Posting an assessment from the course on online sharing sites such as Course Hero.
+    Aiding other students in violation of academic integrity is also a violation, and is potential copyright infringement.
+
+-   Generating and submitting, in whole or in part, text or code through Artificial Intelligence such as ChatGPT, QuillBot, and text summarizers
+
+-   Using, in whole or in part, computer code not written by the student (for example, from another student, a book, or the internet) in an assignment or project.
+    This includes using such code in modified or unmodified form.
+
+-   Searching for solutions to projects or assignments on the internet or through other tools, when your instructor intended for you to learn the solution through exercises (e.g. Googling for the solution to a question on an assignment).
+
+-   Simultaneously submitting the same assignment as another student enrolled into the course without prior permission from the instructor
+
+***Exceptions: Clear Instructions will be Provided***
+
+In any cases in which this course requires or permits students to use practices in the list above, clear written instructions will specify the tools allowed or required, so students can be certain they are working as instructed.
+See the [UArizona iSchool Academic Integrity Policy](https://ischool.arizona.edu/node/519), the [UArizona Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and [Syllabus policy](https://catalog.arizona.edu/syllabus-policies) for more information.
+
+### **LLMs and ChatGPT**
+
+Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for R labs and short answer questions.
+You are encouraged to use ChatGPT to debug code and experiment.
+However, abuse of ChatGPT can be traced (e.g., failing to give credit or cite ChatGPT when it is used) which could result in your suspension or termination from the course and even your program of study.
+Keep in mind, too, that while the code may appear legitimate, early studies have shown ChatGPT is not all that accurate with sophisticated coding.
+Exercise your scholarly discretion and maintain a sense of integrity in your statistical learning journey.
+
+*See my additional policies on this subject above.*
+
+### **Late work & extensions**
 
 The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner.
 We understand that things come up periodically that could make it difficult to submit an assignment by the deadline.
 Note that the lowest lab assignment will be dropped to accommodate such circumstances.
 
--   Labs may be submitted up to 3 days late. There will be a 5% deduction for each 24-hour period the assignment is late.
+-   Labs may be submitted up to 3 days late.
+    There will be a 5% deduction for each 24-hour period the assignment is late.
+
 -   There is no late work accepted for application exercises, since these are designed to help you prepare for other assessments in the course.
+
 -   There is no late work accepted for exams.
+
 -   The late work policy for the project will be provided with the project instructions.
 
 ### Waiver for extenuating circumstances
 
-If there are circumstances that prevent you from completing a lab by the stated due date, you may email the course coordinator, [Dr. Mary Knox](mailto:mary.knox@duke.edu), before the deadline to waive the late penalty.
+If there are circumstances that prevent you from completing a reading quiz or homework assignment by the stated due date, you may email me ([gchism\@arizona.edu](mailto:gchism@arizona.edu)) before the deadline to waive the late penalty.
 In your email, you only need to request the waiver; you do not need to provide explanation.
-This waiver may only be used **once** in the semester, so only use it for a truly extenuating circumstance.
+This waiver may only be used for once in the semester, so only use it for a truly extenuating circumstance.
 
 If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource.
-Please let Dr. Çetinkaya-Rundel know if you need help contacting your academic dean.
+Please let me know if you need help contacting your academic dean.
 
-### Regrade requests
+### **Regrade requests**
 
 Regrade requests must be submitted on Gradescope within a week of when an assignment is returned.
 Regrade requests will be considered if there was an error in the grade calculation or if you feel a correct answer was mistakenly marked as incorrect.
@@ -302,48 +370,69 @@ Note that by submitting a regrade request, the entire question will be graded wh
 
 *No grades will be changed after the project presentations.*
 
+### "Incomplete" grade
+
+The grade of "I" may be awarded only at the end of a term, when all but a minor portion of the course work has been satisfactorily completed.
+The grade of I is not to be awarded in place of a failing grade or when the student is expected to repeat the course; in such a case, a grade other than I must be assigned.
+Students should make arrangements with the instructor to receive an incomplete grade before the end of the term.
+If the incomplete is not removed by the instructor within one year the I grade will revert to a failing grade.
+
+### **Tutoring**
+
+Tutoring can be found through the UArizona [Think Tank](#0 "https://thinktank.arizona.edu/").
+
 ### Attendance policy
 
--   **COVID Symptoms, Exposure, or Infection:** Student health, safety, and well-being are the university's top priorities. To help ensure your well-being and the well-being of those around you, **please do not come to class** **if you have tested positive for COVID-19 or have possible symptoms and have not yet been tested.** If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols. If you are experiencing any COVID-19 symptoms, [contact student health](https://coronavirus.duke.edu/testing/#symptomatic-testing) ([dshcheckin\@duke.edu](mailto:dshcheckin@duke.edu), 919-681-9355). Learn more about current university policy related to COVID-19 at [https://coronavirus.duke.edu](https://coronavirus.duke.edu/). To keep the university community's safe and healthy as possible, you will be expected to follow these guidelines. Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
--   **Inclement weather:** In the event of inclement weather or other connectivity-related events that prohibit class attendance, I will notify you how we will make up missed course content and work.  Asynchronous catch-up methods may apply.
--   **Religious accommodations:** Students are permitted by university policy to be absent from class to observe a religious holiday. Accordingly, Trinity College of Arts & Sciences and the Pratt School of Engineering have established procedures to be followed by students for notifying their instructors of an absence necessitated by the observance of a religious holiday. Please submit requests for religious accommodations at the beginning of the semester so that we can work to make suitable arrangements well ahead of time. You can find the policy and relevant notification form here: <https://trinity.duke.edu/undergraduate/academic-policies/religious-holidays>.
+Responsibility for class attendance rests with individual students.
+Since regular and punctual class attendance is expected, students must accept the consequences of failure to attend.
 
-::: {.callout-note collapse="true"}
-## Click here for syllabus bounty!
+However, there may be many reasons why you cannot be in class on a given day, particularly with possible extra personal and academic stress and health concerns this semester.
+I am always available to personally catch you up from missed lectures.
+Please contact me directly about these additional "office hours".
 
-If you've read this far in the syllabus, post a picture of your pet if you have one or your favorite meme on ed in [this thread](https://edstem.org/us/courses/50730/discussion/4105253)!
-If you're willing, share the name of your pet too!
-:::
+Note that attendance and participation is part of your grade as well.
+
+### Attendance policy related to COVID symptoms, exposure, or infection
+
+Student health, safety, and well-being are the university's top priorities.
+To help ensure your well-being and the well-being of those around you, please do not come to class if you have symptoms related to COVID-19, have had a known exposure to COVID-19, or have tested positive for COVID-19.
+If any of these situations apply to you, you must follow university guidance related to the ongoing COVID-19 pandemic and current health and safety protocols.
+If you are experiencing any COVID-19 symptoms, contact student health at (520) 621-9202.
+To keep the university community as safe and healthy as possible, you will be expected to follow these and the [university guidelines on COVID-19 mitigation](http://www.covid19.arizona.edu/).
+Please reach out to me and your academic dean as soon as possible if you need to quarantine or isolate so that we can discuss arrangements for your continued participation in class.
+
+Notify your instructor(s) if you will be missing up to one week of course meetings and/or assignment deadlines
+
+If you must miss the equivalent of more than one week of class and have an emergency, the Dean of Students is the proper office to contact ([DOS-deanofstudents\@email.arizona.edu](mailto:DOS-deanofstudents@email.arizona.edu)).
+The Dean of Students considers the following as qualified emergencies: the birth of a child, mental health hospitalization, domestic violence matter, house fire, hospitalization for physical health (concussion/emergency surgery/coma/COVID-19 complications/ICU), death of immediate family, Title IX matters, etc.
+
+Please understand that there is no guarantee of an extension when you are absent from class and/or miss a deadline.
+
+*Note: If you've read this far in the syllabus, email me a picture of your pet if you have one or your favorite meme!*
+
+## Additional university policies
+
+Additional policies can be found at this link (please read through them): <https://catalog.arizona.edu/syllabus-policies>
+
+## Safety on Campus and in the Classroom
+
+For a list of emergency procedures for all types of incidents, please visit the website of the Critical Incident Response Team (CIRT): <https://cirt.arizona.edu/case-emergency/overview>
+
+Also watch the video available at <https://arizona.sabacloud.com/Saba/Web_spf/NA7P1PRD161/common/learningeventdetail/crtfy000000000003560>
 
 ## Important dates
 
--   **Jan 10:** Classes begin
+-   **Monday, August 26:** Classes begin, Monday schedule
+-   **Monday,** **September 02:** Labor Day, no class; Drop/add ends
+-   **Wednesday, January 17**: Drop/add ends
+-   **Sunday, September 22**: Last day to drop without a W (withdraw)
+-   **Sunday, November 03**: Last day to withdraw from a class online through UAccess
+-   **Monday, November 11**: Veteran's Day, no class
+-   **Wednesday, December 11**: Last day of class, no registration changes can be made
+-   **TBD**: Project presentations, time TBD
 
--   **Jan 24:** Drop/add ends
+For more important dates, see the full [UArizona Academic Calendar](https://catalog.arizona.edu/2023-2024-academic-calendar).
 
--   **Feb 15:** Exam 1 in-class + take-home released
+## Graduate Student Resources
 
--   **Feb 19:** Exam 1 take-home due
-
--   **Feb 26:** Project milestone 1 – working collaboratively due
-
--   **Mar 11-15**: Spring break
-
--   **Mar 25:** Project milestone 2 – proposals due
-
--   **Mar 27**: Last day to withdraw with W
-
--   **Apr 11:** Exam 2 in-class + take-home released
-
--   **Apr 15:** Exam 2 take-home due
-
--   **Apr 15:** Project milestone 3 – peer review due
-
--   **Apr 22**: Project milestone 4 – presentations and write-up due (in lab)
-
--   **Apr 24**: Classes end
-
-HW deadlines are listed on the course schedule.
-Class ends on April 24, there is no final exam.
-
-For more important dates, see the full [Duke Academic Calendar](https://registrar.duke.edu/fall-2022-academic-calendar).
+University of Arizona's Basic Needs Resources page for graduate students: <http://basicneeds.arizona.edu/index.html>
