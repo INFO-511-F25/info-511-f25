@@ -6,6 +6,10 @@ categories:
   - Answers
 fig-width: 7
 fig-asp: 0.618
+jupyter: python3
+execute:
+  warning: false
+  error: false
 ---
 
 ::: callout-important

@@ -1,0 +1,215 @@
+---
+title: "AE 11: Modelling loan interest rates"
+categories: 
+  - Application exercise
+---
+
+In this application exercise we will be studying loan interest rates.
+The dataset is one you've come across before in your reading -- the dataset about loans from the peer-to-peer lender, Lending Club, from the **openintro** R package.
+We will use **pandas** and **scikit-learn** for data exploration and modeling, respectively.
+
+```{python}
+#| label: load-packages
+#| message: false
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import statsmodels.api as sm
+
+loans = pd.read_csv('data/loans_full_schema.csv')
+```
+
+Before we use the dataset, we'll make a few transformations to it.
+
+-   **Your turn:** Review the code below and write a summary of the data transformation pipeline.
+
+*Add response here.*
+
+```{python}
+#| label: data-prep
+
+loans['credit_util'] = loans['total_credit_utilized'] / loans['total_credit_limit']
+loans['bankruptcy'] = loans['public_record_bankrupt'].apply(lambda x: 0 if x == 0 else 1).astype('category')
+loans['verified_income'] = loans['verified_income'].astype('category')
+loans['homeownership'] = loans['homeownership'].str.title().astype('category')
+loans['homeownership'] = pd.Categorical(loans['homeownership'], categories=["Rent", "Mortgage", "Own"], ordered=True)
+loans = loans.rename(columns={'inquiries_last_12m': 'credit_checks'})
+loans = loans[['interest_rate', 'loan_amount', 'verified_income', 'debt_to_income', 'credit_util', 'bankruptcy', 'term', 'credit_checks', 'issue_month', 'homeownership']]
+
+```
+
+Here is a glimpse at the data:
+
+```{python}
+#| label: glimpse-loans
+
+print(loans.info())
+print(loans.describe())
+```
+
+# Get to know the data
+
+-   **Your turn:** What is a typical interest rate in this dataset? What are some attributes of a typical loan and a typical borrower. Give yourself no more than 5 minutes for this exploration and share 1-2 findings.
+
+```{python}
+#| label: explore-loans
+#| warning: false
+
+# add code to explore loans here
+```
+
+```{python}
+#| label: explore-borrowers
+#| warning: false
+
+# add code to explore borrowers here
+```
+
+# Interest rate vs. credit utilization ratio
+
+Python does not encode categories or handle missing values for you.
+Linear regression models are incapable of handling either, so we will need to use one-hot encoding to encode categories and drop missing values.
+
+**Hint**: Python also does not convert the one-hot encoded values to numerics...
+so we must do this as well.
+
+```{python}
+X = loans[['credit_util', 'homeownership']]
+
+X = pd.get_dummies(X, drop_first=True)
+
+X = X.dropna()
+X = X.replace([np.inf, -np.inf], np.nan).dropna()
+X = X.astype(float)
+
+y = loans.loc[X.index, 'interest_rate']
+y = y.dropna()
+```
+
+The regression model for interest rate vs. credit utilization is as follows.
+
+```{python}
+#| label: rate-util-fit
+
+X = sm.add_constant(X)
+model = sm.OLS(y, X).fit()
+print(model.summary2())
+```
+
+And here is the model visualized:
+
+```{python}
+#| label: rate-util-plot
+#| warning: false
+
+sns.scatterplot(x='credit_util', y='interest_rate', data=loans, alpha=0.5)
+sns.lineplot(x=loans['credit_util'], y=model.predict(X), color='red')
+plt.xlabel('Credit Utilization')
+plt.ylabel('Interest Rate')
+plt.title('Interest Rate vs. Credit Utilization')
+plt.show()
+```
+
+-   **Your turn:** Interpret the intercept and the slope.
+
+Intercept: Borrowers with 0 credit utilization are predicted, on average, to get an interest rate of 10.5%.
+
+Slope: For each additional point credit utilization is higher, interest rate is predicted to be higher, on average, by 4.73%.
+
+# Interest rate vs. homeownership
+
+Next we predict interest rates from homeownership, which is a categorical predictor with three levels:
+
+```{python}
+homeownership_levels = loans['homeownership'].cat.categories
+print(homeownership_levels)
+```
+
+-   **Demo:** Fit the linear regression model to predict interest rate from homeownership and display a summary of the model. Write the estimated model output below.
+
+```{python}
+#| label: rate-home-fit
+
+# add code here
+```
+
+-   **Your turn:** Interpret each coefficient in context of the problem.
+
+*Add response here.*
+
+# Interest rate vs. credit utilization and homeownership
+
+## Main effects model
+
+-   **Demo:** Fit a model to predict interest rate from credit utilization and homeownership, **without** an interaction effect between the two predictors. Display the summary output and write out the estimated regression equation.
+
+```{python}
+#| label: rate-util-home-fit
+
+# add code here
+```
+
+*Add response here.*
+
+-   **Demo:** Write the estimated regression equation for loan applications from each of the homeownership groups separately.
+    -   Rent: *Add response here.*
+    -   Mortgage: *Add response here.*
+    -   Own: *Add response here.*
+-   **Question:** How does the model predict the interest rate to vary as credit utilization varies for loan applicants with different homeownership status. Are the rates the same or different?
+
+*Add response here.*
+
+## Interaction effects model
+
+-   **Demo:** Fit a model to predict interest rate from credit utilization and homeownership, **with** an interaction effect between the two predictors. Display the summary output and write out the estimated regression equation.
+
+```{python}
+#| label: rate-util-home-int-fit
+
+# add code here
+```
+
+*Add response here.*
+
+-   **Demo:** Write the estimated regression equation for loan applications from each of the homeownership groups separately.
+    -   Rent: *Add response here.*
+    -   Mortgage: *Add response here.*
+    -   Own: *Add response here.*
+-   **Question:** How does the model predict the interest rate to vary as credit utilization varies for loan applicants with different homeownership status. Are the rates the same or different?
+
+*Add response here.*
+
+## Choosing a model
+
+Rule of thumb: **Occam's Razor** - Don't overcomplicate the situation!
+We prefer the *simplest* best model.
+
+```{python}
+#| label: glance
+
+# add code here
+```
+
+-   **Review:** What is R-squared? What is adjusted R-squared?
+
+*Add response here.*
+
+-   **Question:** Based on the adjusted $R^2$s of these two models, which one do we prefer?
+
+*Add response here.*
+
+# Another model to consider
+
+-   **Your turn:** Let's add one more model to the variable -- issue month. Should we add this variable to the interaction effects model from earlier?
+
+```{python}
+#| label: new-fit
+
+# add code here
+```
+
+*Add response here.*
