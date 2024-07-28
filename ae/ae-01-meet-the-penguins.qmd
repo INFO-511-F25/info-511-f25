@@ -1,6 +1,11 @@
 ---
 title: "AE 01: Meet the penguins"
+categories: 
+  - Application exercise
 jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 For this application exercise, we'll use the **pandas** and **seaborn** packages.

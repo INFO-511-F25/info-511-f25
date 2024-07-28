@@ -1,6 +1,11 @@
 ---
 title: "UN Votes"
+categories: 
+  - Application exercise
 jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 ## Introduction

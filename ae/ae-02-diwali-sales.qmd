@@ -1,5 +1,11 @@
 ---
 title: "AE 02: Diwali sales + EDA"
+categories: 
+  - Application exercise
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 ## Exercise 1
@@ -43,7 +49,7 @@ Make sure that you commit and push all changed documents and your Git pane is co
 1.  **Exploring Unique Levels:**
 
     -   Identify and display the unique values in each categorical column.
-    
+
 ```{python}
 #| label: unique-levels
 
@@ -55,7 +61,7 @@ Make sure that you commit and push all changed documents and your Git pane is co
     -   Create a box plot to visualize outliers in the 'Amount' column.
 
     -   Identify outliers using the IQR method and count the number of outliers for each numerical column.
-    
+
 ```{python}
 #| label: outliers
 
@@ -65,7 +71,7 @@ Make sure that you commit and push all changed documents and your Git pane is co
 2.  **Handling Missing Values:**
 
     -   Check for missing values in the dataset.
-    
+
 ```{python}
 #| label: NaNs
 
