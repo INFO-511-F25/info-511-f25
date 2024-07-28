@@ -1,7 +1,13 @@
 ---
 title: "AE 02: Diwali sales + EDA"
+subtitle: "Suggested answers"
+categories: 
+  - Application exercise
+  - Answers
+jupyter: python3
 execute: 
   warning: false
+  error: false
 ---
 
 ## Exercise 1

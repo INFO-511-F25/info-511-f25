@@ -1,18 +1,28 @@
 ---
-title: "Modelling fish"
+title: "AE 10: Modelling fish"
+categories: 
+  - Application exercise
+editor: visual
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 For this application exercise, we will work with data on fish.
 The dataset we will use, called `fish`, is on two common fish species in fish market sales.
 
-```{r}
+```{python}
 #| label: load-packages-data
 #| message: false
 
-library(tidyverse)
-library(tidymodels)
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
-fish <- read_csv("data/fish.csv")
+fish = pd.read_csv("data/fish.csv")
 ```
 
 The data dictionary is below:
@@ -33,7 +43,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 -   **Demo:** Create an appropriate plot to investigate this relationship. Add appropriate labels to the plot.
 
-```{r}
+```{python}
 #| label: plot-hw
 
 # add code here
@@ -46,11 +56,11 @@ We're going to investigate the relationship between the weights and heights of f
 
         *Add response here.*
 
-    -   Now, let R draw the line for you.
-        Refer to the documentation at <https://ggplot2.tidyverse.org/reference/geom_smooth.html>.
+    -   Now, let Python draw the line for you.
+        Refer to the documentation at <https://seaborn.pydata.org/generated/seaborn.lmplot.html>.
         Specifically, refer to the `method` section.
 
-    ```{r}
+    ```{python}
     #| label: plot-hw-lm
 
     # add code here
@@ -74,7 +84,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 -   **Demo:** Fit a model to predict fish weights from their heights.
 
-```{r}
+```{python}
 #| label: fit-model
 
 # add code here
@@ -82,7 +92,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 -   **Your turn (3 minutes):** Predict what the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm using this model.
 
-```{r}
+```{python}
 #| label: predict-by-hand
 
 # add code here
@@ -90,7 +100,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 -   **Demo:** Calculate predicted weights for all fish in the data and visualize the residuals under this model.
 
-```{r}
+```{python}
 #| label: residuals
 
 # add code here
@@ -100,7 +110,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 -   **Demo:** Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
 
-```{r}
+```{python}
 #| label: model-summary
 
 # add code here
@@ -124,7 +134,7 @@ We can also assess correlation between two quantitative variables.
 
 -   **Demo:** What is the correlation between heights and weights of fish?
 
-```{r}
+```{python}
 #| label: correlation
 
 # add code here
@@ -134,7 +144,7 @@ We can also assess correlation between two quantitative variables.
 
 -   **Demo:** Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
 
-```{r}
+```{python}
 #| label: plot-hws-lm
 
 # add code here
@@ -142,9 +152,9 @@ We can also assess correlation between two quantitative variables.
 
 # Fitting other models
 
--   **Demo:** We can fit more models than just a straight line. Change the following code below to read `method = "loess"`. What is different from the plot created before?
+-   **Demo:** We can fit more models than just a straight line. Change the following code below to read `lowess=False`. What is different from the plot created before?
 
-```{r}
+```{python}
 #| label: plot-hw-loess
 
 # add code here

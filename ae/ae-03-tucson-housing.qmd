@@ -1,6 +1,11 @@
 ---
-title: "AE 03: Duke Forest + data visualization"
+title: "AE 03: Tucson Housing + data visualization"
+categories: 
+  - Application exercise
 jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 ```{python}

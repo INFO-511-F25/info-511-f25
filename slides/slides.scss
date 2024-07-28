@@ -8,7 +8,7 @@
 $font-family-sans-serif: "Lexend", sans-serif;
 $presentation-heading-color: #1E5288;
 $presentation-title-slide-text-align: "left";
-$link-color: #1E5288;
+$link-color: #AB0520;
 $code-color: #1E5288;
 $code-block-font-size: 0.6em;
 $presentation-font-size-root: 45px;
@@ -34,6 +34,10 @@ details>summary {
   text-align: left;
 }
 
+.large {
+  font-size: 1.75em;
+}
+
 .small {
   font-size: 0.75em;
 }
@@ -46,12 +50,24 @@ details>summary {
   font-size: 0.5em;
 }
 
+b, strong {
+color: #378DBD;
+}
+
 .reveal .slide .question {
   border-left: 3px solid #1E5288;
   padding-left: 0.5em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   background: #a4b9da;
+}
+
+.reveal .slide .instruction {
+  border-left: 3px solid #1E5288;
+  padding-left: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  background: #E2E9EB;
 }
 
 .reveal .slide .poll {

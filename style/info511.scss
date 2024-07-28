@@ -6,6 +6,10 @@ $font-family: "Lexend", sans-serif;
 
 /*-- scss:rules --*/
 
+b, strong {
+color: #378DBD;
+}
+
 .render-commit-push {
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
