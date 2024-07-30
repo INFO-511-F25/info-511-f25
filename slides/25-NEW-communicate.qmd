@@ -1,10 +1,7 @@
 ---
 title: "Communicating data science results effectively"
-subtitle: "Lecture 23"
-date: "April 17, 2024"
-format: 
-  revealjs:
-    footer: "[🔗 sta199-s24.github.io](https://sta199-s24.github.io/) &nbsp;·&nbsp; [❓ Ask on Ed](https://edstem.org/us/courses/50730)"
+subtitle: "Lecture 25"
+format: revealjs
 editor_options: 
   chunk_output_type: console
 ---
