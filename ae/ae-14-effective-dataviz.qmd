@@ -12,12 +12,13 @@ What trends are apparent in this visualization?
 
 ## Packages
 
-```{r}
+```{python}
 #| label: packages
 #| message: false
-library(tidyverse)
-library(scales)
-library(ggthemes)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
 ## Data
@@ -25,10 +26,11 @@ library(ggthemes)
 Each row in this dataset represents a faculty type, and the columns are the years for which we have data.
 The values are percentage of hires of that type of faculty for each year.
 
-```{r}
+```{python}
 #| label: load-data-staff
 #| message: false
-staff <- read_csv("https://sta199-s24.github.io/data/instructional-staff.csv")
+
+staff = pd.read_csv("data/instructional-staff.csv")
 staff
 ```
 
@@ -36,12 +38,12 @@ staff
 
 -   **Your turn (10 minutes):** Recreate the visualization above. Try to match as many of the elements as possible. Hint: You might need to reshape your data first.
 
-```{r}
+```{python}
 #| label: reshape-data
 # add code here
 ```
 
-```{r}
+```{python}
 #| label: recreate-plot
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -52,7 +54,7 @@ staff
 
 -   **Demo:** Recreate the previous visualization where the percentages are represented as parts of a whole.
 
-```{r}
+```{python}
 #| label: percentages
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -63,7 +65,7 @@ staff
 
 -   **Demo:** Convert the visualization to a line plot with time on the x-axis.
 
-```{r}
+```{python}
 #| label: time-on-x
 #| fig-asp: 0.5
 #| fig-with: 12.0
@@ -78,7 +80,7 @@ staff
 
 -   **Your turn:** Implement the fix for the x-axis of the plot.
 
-```{r}
+```{python}
 #| label: var-type
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -95,7 +97,7 @@ staff
 
 -   **Demo:** Remake the plot with an accessible color scale.
 
-```{r}
+```{python}
 #| label: accessible color scale
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -106,7 +108,7 @@ staff
 
 -   **Demo:** Remove the legend and add labels for each line at the end of the line (where `x` is the `max(x)` recorded).
 
-```{r}
+```{python}
 #| label: direct-labelling
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -117,12 +119,12 @@ staff
 
 -   **Demo:** Redo the line plot where Part-time Faculty is red and the rest are gray.
 
-```{r}
+```{python}
 # label: recode
 # add code here
 ```
 
-```{r}
+```{python}
 #| label: color-attention
 #| fig-asp: 0.5
 #| fig-width: 12.0
@@ -130,19 +132,10 @@ staff
 # add code here
 ```
 
-## Pick a purpose
+## Pick a purpose + use labels to communicate the message 
 
-```{r}
+```{python}
 #| label: purpose
-#| fig-asp: 0.5
-#| fig-width: 12.0
-# add code here
-```
-
-## Use labels to communicate the message
-
-```{r}
-#| label: communicate-message
 #| fig-asp: 0.5
 #| fig-width: 12.0
 # add code here
@@ -150,7 +143,7 @@ staff
 
 ## Simplify
 
-```{r}
+```{python}
 #| label: simplify
 #| fig-asp: 0.5
 #| fig-width: 12.0
