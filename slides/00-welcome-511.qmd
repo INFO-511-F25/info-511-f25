@@ -145,15 +145,15 @@ All linked from the course website:
 -   GitHub org: [github.com/INFO-511-F24](https://github.com/INFO-511-F24)
 -   Posit Cloud: [posit.cloud](https://posit.cloud/)
 -   Communication: [Slack](https://info511fall2024.slack.com)
--   Assignment submission and feedback: Gradescope
+-   Assignment submission and feedback: Github
 
 ## Activities {.smaller}
 
 -   Introduce new content and prepare for lectures by watching the videos and completing the readings
--   Attend and actively participate in lectures and labs, office hours, team meetings
+-   Actively participate office hours, team meetings
 -   Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
 -   Put together what you've learned to analyze real-world data
-    -   Lab assignments x 7
+    -   Lab assignments x 6
     -   Exams x 2
     -   Term project presented in the last lab session
 
@@ -202,11 +202,11 @@ You must complete the project to pass this class.
 
 | Category              | Percentage |
 |-----------------------|------------|
-| Labs                  | 35%        |
+| Labs                  | 30%        |
 | Project               | 20%        |
 | Exam 1                | 20%        |
 | Exam 2                | 20%        |
-| Application Exercises | 5%         |
+| Application Exercises | 10%        |
 
 No specific points allocated to participation, but participation via Slack, particularly Discussions, will be recorded periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 

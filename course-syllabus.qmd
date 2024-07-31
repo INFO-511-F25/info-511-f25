@@ -124,7 +124,7 @@ If an announcement is sent on a Friday or over the weekend, I will assume that y
 
 -   If you have a question during lecture, feel free to ask it! There are likely other students with the same question, so by asking you will create a learning opportunity for everyone.
 -   The teaching team is here to help you be successful in the course. You are encouraged to attend office hours to ask questions about the course content and assignments. Many questions are most effectively answered as you discuss them with others, so office hours are a valuable resource. Please use them!
--   Outside of class and office hours, any general questions about course content or assignments should be posted on the course [Slack](https://datavizaz.slack.com)(EDIT LINK). There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question posted on Slack, I encourage you to respond!
+-   Outside of class and office hours, any general questions about course content or assignments should be posted on the course [Slack](https://info511fall2024.slack.com). There is a chance another student has already asked a similar question, so please check the other posts on Slack before adding a new question. If you know the answer to a question posted on Slack, I encourage you to respond!
 
 Check out the [Support](/course-support) page for more resources.
 
@@ -160,13 +160,13 @@ These AEs are due by the end of the week of the corresponding lecture period (Su
 To submit the AEs all you need to do is to push your work to your GitHub repo.
 
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
-Successful on-time completion of at least 80% of AEs will result in full credit for AEs in the final course grade.
+Successful on-time completion of at least 10 of the AEs (will result in full credit for AEs in the final course grade.
 
 ### **Labs**
 
 In labs, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
 You may discuss lab assignments with other students; however, lab should be completed and submitted individually.
-Lab assignments must be typed up using Quarto, all work must be pushed to your GitHub repository for the lab, and the PDF output of the lab must be submitted on Gradescope by the deadline.
+Lab assignments must be typed up using Quarto or Jupyter, all work must be pushed to your GitHub repository for the lab by the deadline.
 
 Labs are due at 5pm AZ time on the indicated due date.
 
@@ -198,11 +198,11 @@ The final course grade will be calculated as follows:
 
 | Category              | Percentage |
 |-----------------------|------------|
-| Labs                  | 35%        |
-| Project               | 20%        |
+| Labs                  | 30%        |
+| Project               | 2%         |
 | Exam 1                | 20%        |
 | Exam 2                | 20%        |
-| Application Exercises | 5%         |
+| Application Exercises | 10%        |
 
 While there are no specific points allocated to participation, we will be recording your participation (mainly via slack) in periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 
@@ -363,7 +363,7 @@ Please let me know if you need help contacting your academic dean.
 
 ### **Regrade requests**
 
-Regrade requests must be submitted on Gradescope within a week of when an assignment is returned.
+Regrade requests must be submitted on GitHub within a week of when an assignment is returned.
 Regrade requests will be considered if there was an error in the grade calculation or if you feel a correct answer was mistakenly marked as incorrect.
 Requests to dispute the number of points deducted for an incorrect response will not be considered.
 Note that by submitting a regrade request, the entire question will be graded which could potentially result in losing points.

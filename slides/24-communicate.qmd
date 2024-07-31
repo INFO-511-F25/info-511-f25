@@ -1,0 +1,55 @@
+---
+title: "Communicating data science results effectively"
+subtitle: "Lecture 24"
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+# Communicating data science results effectively
+
+## Project {.smaller}
+
+-   Review peer evaluations left by your peers, implement updates as you see fit, close the issue once you review them.
+
+-   Have a clear plan for who is doing what, open issues on your repo, and assign them to individuals who can then close the issues as they finish a task.
+
+-   Schedule at least one team meting between today and your presentation to practice your presentation together.
+
+::: task
+Any project questions?
+:::
+
+# Effective communication
+
+## Take A Sad Plot & Make It Better
+
+![](images/sad-plot-to-better.gif)
+
+::: aside
+Source: [https://alison.netlify.app/rlm-sad-plot-better](alison.netlify.app/rlm-sad-plot-better)
+:::
+
+# Application exercise
+
+## Application exercise: `ae-14-effective-dataviz` {.smaller}
+
+::: appex
+-   Go to your project called `ae`.
+-   If there are any uncommitted files, commit them, and push. Then pull.
+-   Work on `ae-14-effective-dataviz.qmd`.
+:::
+
+## Recap {.smaller}
+
+::: incremental
+-   Represent percentages as parts of a whole
+-   Place variables representing time on the x-axis when possible
+-   Pay attention to data types, e.g., represent time as time on a continuous scale, not years as levels of a categorical variable
+-   Prefer direct labeling over legends
+-   Use accessible colors
+-   Use color to draw attention
+-   Pick a purpose and label, color, annotate for that purpose
+-   Communicate your main message directly in the plot labels
+-   Simplify before you call it done (a.k.a. "Before you leave the house, look in the mirror and take one thing off")
+:::

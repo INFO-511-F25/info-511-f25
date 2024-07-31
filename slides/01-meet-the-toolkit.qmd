@@ -86,7 +86,7 @@ Ask if you're not sure if something violates a policy!
 **Course operation**
 
 -   Materials: [datasciaz.netlify.app](https://datasciaz.netlify.app/)
--   Submission: Gradescope
+-   Submission: GitHub
 -   Discussion: Slack
 -   Gradebook: D2L
 :::
@@ -165,9 +165,8 @@ What does it mean for a data analysis to be "reproducible"?
 
 -   Jupyter is a convenient interface for Python called an **IDE** (integrated development environment), e.g. *"I write Python code in the Jupyter IDE"*
 
-```{=html}
 <!-- -->
-```
+
 -   Jupyter is not a requirement for programming with Python, but it's very commonly used by Python programmers and data scientists
 :::
 :::

@@ -1,0 +1,46 @@
+---
+title: "Exam 2 review"
+subtitle: "Lecture 25"
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+## Exam 2
+
+Same as Exam 1!
+
+-   Exam format / flow
+
+-   Asking questions during office hours
+
+# Exam Review
+
+## Review: `exam-2-review` {.smaller}
+
+::: appex
+-   Go back to your project called `exam`.
+-   If there are any uncommitted files, commit them, and push.
+-   Then pull and work on `exam-2-review.qmd`.
+:::
+
+## Recap of Exam Review {.smaller}
+
+::: incremental
+-   A hypothesis test is a statistical technique used to evaluate competing claims (null and alternative hypotheses) using data.
+-   We simulate a null distribution using our original data.
+-   We use our sample statistic and direction of the alternative hypothesis to calculate the p-value.
+-   We use the p-value to determine conclusions about the alternative hypotheses.
+-   Derivative Calculation: Computing the derivative of a given function.
+-   Integral Calculation: Solving an integral involving exponential and power functions.
+-   Vector and Matrix Transpose: Writing down the transpose of vectors and matrices.
+-   Matrix Dimensions: Determining the dimensions of matrices and the validity of matrix products.
+-   Matrix Multiplication: Performing matrix multiplication and understanding the resulting matrix dimensions.
+:::
+
+# Questions
+
+## Questions {.smaller}
+
+::: incremental
+:::
