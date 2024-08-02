@@ -153,7 +153,7 @@ All linked from the course website:
 -   Actively participate office hours, team meetings
 -   Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
 -   Put together what you've learned to analyze real-world data
-    -   Lab assignments x 6
+    -   Lab assignments x 7
     -   Exams x 2
     -   Term project presented in the last lab session
 
@@ -202,11 +202,11 @@ You must complete the project to pass this class.
 
 | Category              | Percentage |
 |-----------------------|------------|
-| Labs                  | 30%        |
+| Labs                  | 35%        |
 | Project               | 20%        |
 | Exam 1                | 20%        |
 | Exam 2                | 20%        |
-| Application Exercises | 10%        |
+| Application Exercises | 5%         |
 
 No specific points allocated to participation, but participation via Slack, particularly Discussions, will be recorded periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 

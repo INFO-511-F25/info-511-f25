@@ -569,12 +569,12 @@ print(partial_y)  # Output: 3*x + 3*y**2
 
 ```
 
-## Gradient descent
+## Gradient descent {.smaller}
 
-We will discuss Partial Derivatives more later!
+You'll learn more about this in [INFO 521: Introduction to Machine Learning](https://infosci.arizona.edu/course/info-521-introduction-machine-learning)
 
 ![](images/gradient_descent_line_graph.gif){fig-align="center"}
 
 ## `ae-14`
 
-Practice derivations (**you will be tested on this in Exam 2**)
+Derivations (**you will be tested on this in Exam 2**)

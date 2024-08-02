@@ -1,6 +1,10 @@
 ---
 title: "Lab 6 - Modeling I"
 categories: "Lab"
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 # Introduction
@@ -8,26 +12,36 @@ categories: "Lab"
 In this lab you'll start your practice of statistical modeling.
 You'll fit models, interpret model output, and make decisions about your data and research question based on the model results.
 
+## Packages
+
+In this lab we will work with the **seaborn** and **statsmodels** modules.
+
+```{python}
+#| eval: true
+#| message: false
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
+from statsmodels.tools.eval_measures import mse
+```
+
+
 ## Guidelines
 
-Your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
+As we've discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
 
-In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF.
-Make sure that is the case, and add line breaks where the code is running off the page.
-
-::: callout-important
-Render your document.
-If your code is running off the page for a given question such that we can’t see your entire code, we will not evaluate any of the code for that question.
-The question will automatically receive a 0.
-This is something you can and should verify before you turn in your work.
-:::
-
+::: callout-note
+Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
+There will be periodic reminders in this assignment to remind you to **Run all, commit, and sync** your changes to GitHub.
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
+:::
 
 Additionally, if you’re using functions that are not introduced in the course materials, you must cite your sources.
 
 ::: callout-important
-Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the Duke Community Standard and will be treated as such.
+Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the University of Arizona [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and will be treated as such.
 :::
 
 # Part 1 - Smoking during pregnancy
@@ -37,7 +51,7 @@ Failure to cite outside resources used, including Large Language Models like Cha
 We are interested in the impact of smoking during pregnancy.
 Since it is not possible to run a randomized controlled experiment to investigate this impact, we will instead use a data set has been of interest to medical researchers who are studying the relation between habits and practices of expectant mothers and the birth of their children.
 This is a random sample of 1,000 cases from a data set released in 2014 by the state of North Carolina.
-The data set is called `births14`, and it is included in the **openintro** package you loaded at the beginning of the assignment.
+The data set is called `births14` and it is available in your `data` folder.
 
 a.  Create a version of the `births14` data set dropping observations where there are `NA`s for `habit`.
     You can call this version `births14_habitgiven`.
@@ -62,7 +76,7 @@ a.  Another researcher is interested in assessing the relationship between babie
     Fit another linear model to investigate this relationship.
     Provide the summary output below.
 
-b.  In 2-3 sentences, explain how the regression line to model these data is fit, i.e., based on what criteria R determines the regression line.
+b.  In 2-3 sentences, explain how the regression line to model these data is fit, i.e., based on what criteria Python determines the regression line.
 
 c.  Interpret the intercept in the context of the data and the research question.
     Is the intercept meaningful in this context?
@@ -79,7 +93,7 @@ More specifically, it is thought that closely related hosts will live in similar
 
 In this part of the lab, we will see how much evolutionary history predicts parasite similarity.
 
-The dataset comes from an Ecology Letters paper by Cooper at al. (2012) entitled “Phylogenetic host specificity and understanding parasite sharing in primates” located [here](https://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2012.01858.x).
+The dataset comes from an Ecology Letters paper by Cooper at al. (2012) entitled “Phylogenetic host specificity and understanding parasite sharing in primates” located [here](https://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2012.01858.x).
 The goal of the paper was to identify the ability of evolutionary history and ecological traits to characterize parasite host specificity.
 
 Each row of the data contains two species, `species1` and `species2`.
@@ -128,11 +142,11 @@ d.  What do you notice about the prediction (regression) line that may be strang
 Since `parsim` takes values between 0 and 1, we want to transform this variable so that it can range between (−∞,+∞).
 This will be better suited for fitting a regression model (and interpreting predicted values!)
 
-a.  Using mutate, create a new variable `transformed_parsim` that is calculated as `log(parsim/(1-parsim))`.
+a.  Using mutate, create a new variable `transformed_parsim` that is calculated as `math.log(parsim/(1-parsim))`.
     Add this variable to your data frame.
 
     ::: callout-note
-    `log()` in R represents the **nautral log**.
+    `math.log()` in Python represents the **nautral log**.
     :::
 
 b.  Then, visualize the relationship between divergence_time and `transformed_parsim`.
@@ -145,7 +159,7 @@ c.  Write a 1-2 sentence description of what you observe in the visualization.
 *Which variable is the strongest individual predictor of parasite similarity between species?*
 
 To answer this question, begin by fitting a linear regression model to each pair of variables.
-Do not report the model outputs in a tidy format but save each one as `dt_model`, `dist_model`, `BM_model`, and `prec_model`, respectively.
+Save each model output as `dt_model`, `dist_model`, `BM_model`, and `prec_model`, respectively.
 
 -   `divergence_time` and `transformed_parsim`
 
@@ -168,12 +182,12 @@ To compare the explanatory power of each individual predictor, we will look at $
 $R^2$ is a measure of how much of the variability in the response variable is explained by the model.
 
 As you may have guessed from the name $R^2$ can be calculated by squaring the correlation when we have a simple linear regression model.
-The correlation r takes values -1 to 1, therefore, $R^2$ takes values 0 to 1.
-Intuitively, if r=1 or −1, then $R^2$=1, indicating the model is a perfect fit for the data.
-If r≈0 then $R^2$≈0, indicating the model is a very bad fit for the data.
+The correlation $r$ takes values $-1$ to $1$, therefore, $R^2$ takes values 0 to 1.
+Intuitively, if $r=1$ or $−1$, then $R^2=1$, indicating the model is a perfect fit for the data.
+If $r\approx0$ then $R^2\approx0$, indicating the model is a very bad fit for the data.
 
-You can calculate $R^2$ using the glance function.
-For example, you can calculate $R^2$ for `dt_model` using the code `glance(dt_model)$r.squared`.
+You can calculate $R^2$ using the `.rsquared` function.
+For example, you can calculate $R^2$ for `dt_model` using the code `dt_model.rsquared`.
 
 a.  Calculate and report $R^2$ for each model fit in the previous exercise.
 
@@ -184,7 +198,7 @@ b.  To answer our question of interest, would it be useful to compare the $R^2$ 
 
 Gapminder is a “fact tank” that uses publicly available world data to produce data visualizations and teaching resources on global development.
 We will use an excerpt of their data to explore relationships among world health metrics across countries and regions between the years 1952 and 2007.
-The data set is called `gapminder`, from the **gapminder** package.
+The data set is called `gapminder`, and it is available in your `data` folder.
 A table of variables can be found below.
 
 -   `country`: The country name
@@ -221,7 +235,7 @@ c.  **Model fitting:**
 
 d.  **Model evaluation:**
 
-    -   Calculate the R-squared of the model using two methods and confirm that the values match: first method is using `glance()` and the other method is based on the value of the correlation coefficient between the two variables.
+    -   Calculate the R-squared of the model using `.rsquared` from a model.
 
     -   Interpret R-squared in the context of the data and the research question.
 
@@ -268,22 +282,12 @@ Then, write a paragraph (4-5 sentences) addressing the following:
 
 ## Submission
 
-Once you are finished with the lab, you will submit your final PDF document to Gradescope.
-
 ::: callout-warning
 Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo.
 We will be checking these to make sure you have been practicing how to commit and push changes.
 
-You must turn in a PDF file to the Gradescope page by the submission deadline to be considered "on time".
+You must turn in the .ipynb file by the submission deadline to be considered "on time".
 :::
-
-To submit your assignment:
-
--   Go to <http://www.gradescope.com> and click *Log in* in the top right corner.
--   Click *School Credentials* $\rightarrow$ *Duke NetID* and log in using your NetID credentials.
--   Click on your *STA 199* course.
--   Click on the assignment, and you'll be prompted to submit it.
--   Mark all the pages associated with question. All the pages of your lab should be associated with at least one question (i.e., should be "checked").
 
 ::: callout-important
 ## Checklist
@@ -291,17 +295,15 @@ To submit your assignment:
 Make sure you have:
 
 -   attempted all questions
--   rendered your Quarto document
--   committed and pushed everything to your GitHub repository such that the Git pane in RStudio is empty
--   uploaded your PDF to Gradescope
--   selected pages associated with each question on Gradescope
+-   run all code in your Jupyter notebook
+-   committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty
 :::
 
 ## Grading
 
 The lab is graded out of a total of 50 points.
 
-You can earn up to 5 points on each question:
+On Questions 1 through 10, you can earn up to 5 points on each question:
 
 -   5: Response shows excellent understanding and addresses all or almost all of the rubric items.
 

@@ -1,12 +1,14 @@
 ---
-title: "Lab 2 - Data wrangling"
-editor_options: 
-  chunk_output_type: console
+title: "Lab 2 - Data visualization"
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 # Introduction
 
-In this lab you'll continue to hone your data science workflow as well as bring together what you learned so far in the course (data visualization) with what's coming up (data wrangling).
+This lab will begin your journey honing your data science workflow.
 
 ::: callout-note
 This lab assumes you've completed [Lab 0](/labs/lab-0.html) and [Lab 1](/labs/lab-1.html) and doesn't repeat setup and overview content from those labs.
@@ -15,79 +17,59 @@ If you have not yet done those, you should go back and review them before starti
 
 ## Learning objectives
 
-By the end of the lab, you will...
+By the end of the lab, you will…
 
--   Be able to create transform data using `dplyr`
--   Build on your mastery of data visualizations using `ggplot2`
--   Get more experience with data science workflow using R, RStudio, Git, and GitHub
--   Further your reproducible authoring skills with Quarto
--   Improve your familiarity with version control using Git and GitHub
+-   Gain practice writing a reproducible report using Quarto
+
+-   Continue practice with version control using Git and GitHub
+
+-   Be able to create data visualizations using `seaborn`
 
 ## Getting started
 
-### Log in to RStudio
+### Clone the repo & start new VS Code window
 
--   Go to <https://cmgr.oit.duke.edu/containers> and log in with your Duke NetID and Password.
--   Click `STA198-199` under My reservations to log into your container. You should now see the RStudio environment.
-
-### Clone the repo & start new RStudio project
-
--   Go to the course organization at [github.com/sta199-s24](https://github.com/sta199-s24) organization on GitHub.
+-   Go to the course organization at [github.com/INFO-511-F24](https://github.com/INFO-511-F24) organization on GitHub.
     Click on the repo with the prefix **lab-2**.
     It contains the starter documents you need to complete the lab.
 
--   Click on the green **CODE** button, select **Use SSH** (this might already be selected by default, and if it is, you'll see the text **Clone with SSH**).
+-   Click on the green **CODE** button, select **Use HTTPS** (this might already be selected by default).
     Click on the clipboard icon to copy the repo URL.
 
--   In RStudio, go to *File* ➛ *New Project* ➛*Version Control* ➛ *Git*.
+-   In VS Code, go to *File* ➛ *New Window* ➛*Clone Git Repository (under **Start**)*.
 
--   Copy and paste the URL of your assignment repo into the dialog box *Repository URL*. Again, please make sure to have *SSH* highlighted under *Clone* when you copy the address.
+-   Copy and paste the URL of your assignment repo into the dialog box *Provide repository URL or pick a repository source*.
 
--   Click *Create Project*, and the files from your GitHub repo will be displayed in the *Files* pane in RStudio.
-
--   Click *lab-2.qmd* to open the template Quarto file.
+-   Click *lab-2.ipynb* to open the template Jupyter notebook file.
     This is where you will write up your code and narrative for the lab.
 
-### First steps
-
-In `lab-2.qmd`, update the `author` field to your name, render your document and examine the changes.
-Then, in the Git pane, click on **Diff** to view your changes, add a commit message (e.g., "Added author name"), and click **Commit**.
-Then, push the changes to your GitHub repository, and in your browser confirm that these changes have indeed propagated to your repository.
-
-::: callout-important
-If you run into any issues with the first steps outlined above, flag a TA for help before proceeding.
-:::
+-   Also see similar steps within the [Setting up Python](https://datasciaz.netlify.app/computing/computing-python.html#prepare-vs-code-for-python) page on the course website.
 
 ## Packages
 
-In this lab we will work with the **tidyverse** package, which is a collection of packages for doing data analysis in a "tidy" way.
+In this lab, we will work with the **seaborn** library, which is a powerful Python library for creating data visualizations.
 
-```{r}
+```{python}
 #| eval: true
 #| message: false
 
-library(tidyverse)
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
 ```
 
-**Render** the document which loads this package with the `library()` function.
+**Run All** in the document which loads these packages with the `import` function.
 
-::: callout-note
-Remember: The rendered document will include a message about which packages the tidyverse package is loading along with it.
-It's just R being informative, a **message** does not indicate anything is wrong (it's not a **warning** or an **error**).
-:::
+The `seaborn` library is built on top of `matplotlib` and closely integrated with `pandas`.
+It provides a high-level interface for drawing attractive and informative statistical graphics.
 
 ## Guidelines
 
 As we've discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
 
-In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF.
-Make sure that is the case, and add line breaks where the code is running off the page.[^1]
-
-[^1]: Remember, haikus not novellas when writing code!
-
 ::: callout-note
-Continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
-There will be periodic reminders in this assignment to remind you to **render, commit, and push** your changes to GitHub.
+Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
+There will be periodic reminders in this assignment to remind you to **Run all, commit, and sync** your changes to GitHub.
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
 :::
 
@@ -95,401 +77,241 @@ You should have at least 3 commits with meaningful commit messages by the end of
 
 ## Part 1
 
-**Back to the Midwest!**
+**Let's take a trip to the Midwest!**
 
-In this part you will revisit and build on some of your findings from Lab 1, where you explored the `midwest` data frame.
-Remember that this data frame is bundled with the **ggplot2** package and is automatically loaded when you load the tidyverse package.
-As a refresher, the data contains demographic characteristics of counties in the Midwest region of the United States.
-You can read documentation for the data set, including variable definitions by typing `?midwest` in the Console or searching for `midwest` in the Help pane.
+We will use the `midwest` data frame for this lab.
+
+```{python}
+midwest = pd.read_csv('data/midwest.csv')
+```
+
+The data contains demographic characteristics of counties in the Midwest region of the United States.
+
+::: callout-note
+In the future, you will be expected to load the data.
+:::
 
 ### Question 1
 
-Calculate the number of counties in each state and display your results in descending order of number of counties.
-Which state has the highest number of counties, and how many?
-Which state has the lowest number, and how many?
+Visualize the distribution of population density of counties using a histogram with `sns.histplot()` with four separate binwidths: a binwidth of 100, a binwidth of 1,000, a binwidth of 10,000, and a binwidth of 100,000.
 
-::: callout-note
-The number of counties in a state can change over time, so the values you see in this output may not be true today.
-:::
+For example, you can create the first plot with:
+
+```{python}
+# Create the histogram with binwidth = 100
+sns.histplot(midwest['popdensity'], binwidth=100)
+plt.xlabel('Population Density')
+plt.ylabel('Count')
+plt.title('Population Density of Midwestern Counties\nBinwidth = 100')
+plt.show()
+```
+
+You will need to make four different histograms.
+Make sure to set informative titles and axis labels for each of your plots .Then, comment on which binwidth is most appropriate for these data and why.
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 1".
+Run all, commit, and sync your changes to GitHub with the commit message "Added answer for Question 1".
 
 Make sure to commit and push all changed files so that your Git pane is empty afterward.
 :::
 
 ### Question 2
 
-While in a given state two counties can't have the same name, across states some county names might be shared.
-A classmate says "Look at that, there is a county called \_\_\_ in each state in this dataset!" In a single pipeline, discover all counties that could fill in the blank.
-Your response should be a data frame with only the county names that could fill in the blank and how many times they appear in the data.
-
-::: callout-tip
-You will want to use the `filter()` function in your answer, which requires a logical condition to describe what you want to filter for.
-For example `filter(x > 2)` means filter for values of `x` greater than 2, `filter(y <= 3)` means filter for values of y less than or equal to 3.
-
-The table below is a summary of logical operators and how to articulate them in R.
-
-| operator      | definition                |
-|---------------|---------------------------|
-| `<`           | less than                 |
-| `<=`          | less than or equal to     |
-| `>`           | greater than              |
-| `>=`          | greater than or equal to  |
-| `==`          | exactly equal to          |
-| `!=`          | not equal to              |
-| `x & y`       | `x` AND `y`               |
-| `x` \| `y`    | `x` OR `y`                |
-| `is.na(x)`    | test if `x` is `NA`       |
-| `!is.na(x)`   | test if `x` is not `NA`   |
-| `x %in% y`    | test if `x` is in `y`     |
-| `!(x %in% y)` | test if `x` is not in `y` |
-| `!x`          | not `x`                   |
-:::
+Visualize the distribution of population density of counties again, this time using a boxplot with `sns.boxplot()`.
+Make sure to set informative titles and axis labels for your plot.
+Then, using information as needed from the box plot as well as the histogram from Question 1, describe the distribution of population density of counties and comment on any potential outliers, making sure to identify at least one county that is a clear outlier by name in your narrative and commenting on whether it makes sense to you that this county is an outlier.
+You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them.
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 2".
+Run all, commit, and sync your changes to GitHub with the commit message "Added answer for Question 2".
 
 Make sure to commit and push all changed files so that your Git pane is empty afterward.
 :::
 
 ### Question 3
 
-Return to the following box plot of population densities where you were asked to identify at least one outlier.
-
-```{r}
-#| label: popdensity-boxplot
-#| fig-width: 5
-#| fig-height: 3
-#| echo: false
-#| eval: true
-
-ggplot(midwest, aes(x = popdensity)) +
-  geom_boxplot() +
-  labs(
-    title = "Population densities of midwest counties",
-    x = "Population density"
-  )
-```
-
-In this question part, we want you to revisit this box plot and identify the counties described in each part.
-
-a\.
-The counties with a population density higher than 25,000.
-Your code must use the `filter()` function.
-
-b\.
-The county with the highest population density.
-Your code must use the `max()` function.
-
-Answer using a single data wrangling pipeline for each part.
-Your response should be a data frame five columns: county name, state name, population density, total population, and area, in this order.
-If your response has multiple rows, the data frame should be arranged in descending order of population density.
+Create a scatterplot of the percentage below poverty (`percbelowpoverty` on the y-axis) versus percentage of people with a college degree (`percollege` on the x-axis), where the color and shape of points are determined by `state`.
+Make sure to set informative titles, axis, and legend labels for your plot.
+First, describe the overall relationship between percentage of people with a college degree and percentage below poverty in Midwestern states, making sure to identify at least one county that is a clear outlier by name in your narrative.
+You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them.
+Then, comment on whether you can identify how this relationship varies across states.
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 3".
+Run all, commit, and sync your changes to GitHub with the commit message "Added answer for Question 3".
 
 Make sure to commit and push all changed files so that your Git pane is empty afterward.
 :::
 
 ### Question 4
 
-In Lab 1 you were also asked to describe the distribution of population densities.
-The following is one acceptable description that touches on shape, center, and spread of this distribution.
-Calculate the values that should go into the blanks.
+Now, let's examine the relationship between the same two variables, once again using different colors and shapes to represent each state, and using a separate plot for each state, i.e., with faceting using `sns.FacetGrid`.
+In addition to points (`sns.scatterplot()`), represent the data with a smooth curve fit to the data with `sns.lineplot()`, with the argument `ci=None` to remove the confidence bands.
+Make sure to set informative titles, axis, and legend labels for your plot.
+Which plot do you prefer - this plot or the plot in Question 3?
+Briefly explain your choice.
 
-> The distribution of population density of counties is unimodal and extremely right-skewed.
-> A typical Midwestern county has population density of \_\_\_\_ people per unit area.
-> The middle 50% of the counties have population densities between \_\_\_ to \_\_\_ people per unit area.
-
-::: callout-tip
-Think about which measures of center and spread are appropriate for skewed distributions.
+::: callout-note
+`ci=None` removes the confidence bands around the line.
+These bands show the uncertainty around the smooth curve.
+We'll discuss uncertainty around estimates later in the course and bring these bands back then.
 :::
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 4".
+Run all, commit, and sync your changes to GitHub with the commit message "Added answer for Question 4".
 
 Make sure to commit and push all changed files so that your Git pane is empty afterward.
 :::
 
 ### Question 5
 
-Another visualization from Lab 1 was the following that showed the proportion of urban counties in each state.
+*Do some states have counties that tend to be geographically larger than others?*
 
-```{r}
-#| label: metro-barplot
-#| fig-width: 7
-#| fig-height: 3
-#| echo: false
-#| eval: true
-
-midwest <- midwest |>
-  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
-
-ggplot(midwest, aes(x = state, fill = metro)) +
-  geom_bar(position = "fill") +
-  labs(
-    title = "Do some states have more urban counties than others?",
-    x = "State",
-    y = "Proportion in metro area",
-    fill = "In metro area?"
-  )
-```
-
-Calculate these proportions in a single data pipeline.
-
-::: callout-tip
-Remember, you'll first need to create a new variable called `metro` which takes on the value `Yes` if the value of `inmetro` is 1, and `No` otherwise.
-You can refer to [Lab 1](/labs/lab-1.html#question-6) if you need a refresher on how to do this.
-:::
+To explore this question, create side-by-side boxplots of area (`area`) of a county based on state (`state`).
+How do typical county area sizes compare across states?
+How do variabilities of county sizes compare across states?
+Which state has the single largest county?
+Identify the name of this county.
+You can use the data viewer to identify it interactively, you do not have to write code.
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 5".
+Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.
 
-Make sure to commit and push all changed files so that your Git pane is empty afterward.
+Once again, make sure to commit and push all changed files so that your Git pane is empty afterwards.
 :::
 
 ### Question 6
 
-Return to the following scatter plot of percentage below poverty vs. percentage of people with a college degree, where the color and shape of points are determined by `state` where you were asked to identify at least one county that is a clear outlier by name.
+*Do some states have a higher percentage of their counties located in a metropolitan area?*
 
-```{r}
-#| label: percollege-percbelowpoverty-scatterplot
-#| fig-width: 5
-#| fig-height: 3
-#| echo: false
-#| eval: true
+Create a segmented bar chart with one bar per state and the bar filled with colors according to the value of `metro` – one color indicating `Yes` and the other color indicating `No` for whether a county is considered to be a metro area.
+The y-axis of the segmented barplot should range from 0 to 1, indicating proportions.
+Compare the percentage of counties in metro areas across the states based on this plot.
+Make sure to supplement your narrative with rough estimates of these percentages.
 
-ggplot(
-  midwest,
-  aes(
-    x = percollege, y = percbelowpoverty,
-    color = state, shape = state
-  )
-) +
-  geom_point() +
-  labs(
-    title = "Percentage with a college degree versus poverty rate",
-    subtitle = "by State in the Midwest",
-    x = "% college educated",
-    y = "% below poverty",
-    color = "State", shape = "State"
-  ) +
-  annotate(
-    geom = "point",
-    x = 7.35, y = 48.5, color = "orange", shape = "square open", 
-    size = 4.5, stroke = 2
-  ) +
-  annotate(
-    geom = "point",
-    x = 45, y = 10.2, color = "red", shape = "square open", 
-    size = 25, stroke = 2
-  ) +
-  theme_minimal()
+::: callout-tip
+## Hint
+
+For this question, you should begin with the data wrangling pipeline below.
+We will learn more about data wrangling in the coming weeks, so this is a mini-preview.
+This pipeline creates a new variable called `metro` based on the value of the existing variable called `inmetro`.
+If the value of `inmetro` is equal to 1 (`'Yes' if x == 1`), it sets the value of `metro` to "Yes", and if not, it sets the value of `metro` to "No".
+The resulting data frame is assigned back to `midwest`, overwriting the existing `midwest` data frame with a version that includes the new `metro` variable.
+
+```{python}
+#| label: hint
+#| eval: false
+
+midwest['metro'] = midwest['inmetro'].apply(lambda x: 'Yes' if x == 1 else 'No')
 ```
-
-a\.
-In a single pipeline, identify the observations marked in the orange square on the upper left corner.
-Your answer should be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.
-
-b\.
-In a single pipeline, identify the observations marked in the red square in the plot above.
-Your answer should again be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.
-
-c\.
-Bring your answers from part (a) and part (b) together!
-In a single pipeline, and a single `filter()` statement, identify the observations marked in the red and orange square in the plot above.
-Your answer should again be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.
-
-d\.
-Create a new variable in `midwest` called `potential_outlier`.
-This variable should take on the value:
-
--   `Yes` if the point is one the ones you identified in part (c), i.e., one of the points marked in the squares in the plot above.
-
--   `No` otherwise.
-
-Then, display the updated `midwest` data frame, with county, state, percentage below poverty, percentage college educated, `potential_outlier` as the selected variables, arranged in ascending order of `potential_outlier`.
-
-c\.
-Recreate the visualization above, i.e. a scatterplot of percentage below poverty vs. percentage of people with a college degree, however color the points by the newly created `potential_outlier` variable instead of state.
+:::
 
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 6".
+Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.
 
-Make sure to commit and push all changed files so that your Git pane is empty afterward.
+And once again, make sure to commit and push all changed files so that your Git pane is empty afterward.
+We keep repeating this because it's important and because we see students forget to do this.
+So take a moment to make sure you're following along with the version control instructions.
 :::
 
 ### Question 7
 
-a\.
-In a single pipeline, calculate the total population for each state and save the resulting data frame as `state_population` and display it in descending order of total population.
+Recreate the plot below, and then give it a title.
+Then, identify at least one county that is a clear outlier in Wisconsin (WI) by name.
+You can use the data viewer to identify them interactively, you do not have to write code.
+Comment on the population composition of this county by investigating the percentage of other races living there.
 
-b\.
-Then, in a separate pipeline, calculate the proportion of the total population in each state and, once again, display the results in descending order of proportion of population.
+```{python}
+#| eval: true
+#| echo: false
+midwest = pd.read_csv('data/midwest.csv')
+g = sns.FacetGrid(midwest, col="state", col_wrap=4, height=4, aspect=1)
+g.map_dataframe(sns.scatterplot, x="percollege", y="percbelowpoverty", hue="percwhite", alpha=0.5, s=50)
+g.add_legend()
+
+g.set_axis_labels("% college educated", "% below poverty line")
+g.set_titles("{col_name}")
+g.fig.suptitle("ADD TITLE", y=1.02)
+
+plt.show()
+```
 
 ::: callout-tip
-In answering parts (a) and (b), you'll create two new variables, one for total population and other for proportion of total proportion.
-Make sure to give them "reasonable" names – short but evocative.
+## Hint
+
+-   [The `seaborn` reference for themes in the Python Graph Gallery](https://python-graph-gallery.com/104-seaborn-themes/) will be helpful in determining the theme.
+-   The `s`ize of the points is 50.
+-   The transparency (`alpha`) of the points is 0.5.
+-   You can put line breaks in labels with `\n`.
 :::
 
-c\.
-Which Midwestern state is most populous and what percent of the Midwest population lives there?
-Which is the least populous and what percent lives there?
-
 ::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 7".
+Run all, commit, and sync your final changes to GitHub with a meaningful commit message.
 
-Make sure to commit and push all changed files so that your Git pane is empty afterward.
-:::
+<br>
 
-### Question 8
-
-Calculate the average percentage below poverty for each state and save the resulting data frame as `state_poverty` with the columns `state` and `mean_percbelowpoverty`.
-
-Then, in a new pipeline, display the `state_poverty` data frame in ascending order of `mean_percbelowpoverty`.
-Which state has the lowest average percentage below poverty across its counties?
-Which state has the highest average percentage below poverty across its counties?
-
-::: render-commit-push
-Render, commit, and push your changes to GitHub with the commit message "Added answer for Question 8".
-
-Make sure to commit and push all changed files so that your Git pane is empty afterward.
+Make sure to commit and push all changed files so that your Git pane is empty afterwards.
 :::
 
 ## Part 2
 
-**All about `group_by()`!**
+**Enough about the Midwest!**
+
+In this part we will use a new, more recent, and potentially more relevant dataset on counties in Arizona.
+
+This dataset is stored in a file called `az-county.csv` in the `data` folder of your project/repository.
+
+You can read this file into Python with the following code:
+
+```{python}
+#| eval: false
+az_county = pd.read_csv('data/az_county.csv')
+```
+
+This will read the CSV (comma separated values) file from the `data` folder and store the dataset as a data frame called `az_county` in Python.
+
+The variables in the dataset and their descriptions are as follows:
+
+-   `county`: Name of county.
+-   `state_abb`: State abbreviation (AZ).
+-   `state_name`: State name (Arizona).
+-   `land_area_m2`: Land area of county in meters-squared, based on the 2020 census.
+-   `land_area_mi2`: Land area of county in miles-squared, based on the 2020 census.
+-   `population`: Population of county, based on the 2020 census.
+-   `density`: Population density calculated as population divided by land area in miles-squared.
+
+In addition to being more recent and more relevant, this dataset is also more complete in the sense that we know the units of population density: people per mile-squared!
+
+### Question 8
+
+First, guess what the relationship between population density and land area might be – positive?
+negative?
+no relationship?
+
+Then, make a scatter plot of population density (`density` on the y-axis) vs. land area in miles-squared (`land_area_mi2` on the x-axis).
+Make sure to set an informative title and axis labels for your plot.Describe the relationship.
+Was your guess correct?
 
 ### Question 9
 
-Suppose we have the following data frame:
-
-```{r}
-#| eval: true
-
-df <- tibble(
-  var_1 = c(10, 20, 30, 40, 50),
-  var_2 = c("Pizza", "Burger", "Pizza", "Pizza", "Burger"),
-  var_3 = c("Apple", "Apple", "Pear", "Pear", "Banana")
-)
-
-df
-```
-
-a\.
-What does the following code chunk do?
-Run it and analyze the result and articulate in words what `arrange()` does.
-
-```{r}
-#| eval: false
-
-df |>
-  arrange(var_2)
-```
-
-b\.
-What does the following code chunk do?
-Run it and analyze the result and articulate in words what `group_by()` does.
-Also comment on how it's different from the `arrange()` in part (a)?
-
-```{r}
-#| eval: false
-
-df |>
-  group_by(var_2)
-```
-
-c\.
-What does the following code chunk do?
-Run it and analyze the result and articulate in words what the pipeline does.
-
-```{r}
-#| eval: false
-
-df |>
-  group_by(var_2) |>
-  summarize(mean_var_1 = mean(var_1))
-```
-
-d\.
-What does the following code chunk do?
-Run it and analyze the result and articulate in words what the pipeline does.
-Then, comment on what the message says.
-
-```{r}
-#| eval: false
-
-df |>
-  group_by(var_2, var_3) |>
-  summarize(mean_var_1 = mean(var_1))
-```
-
-e\.
-What does the following code chunk do?
-Run it and analyze the result and articulate in words what the pipeline does, especially mentioning what the `.groups` argument does.
-How is the output different from the one in part (d).
-
-```{r}
-#| eval: false
-
-df |>
-  group_by(var_2, var_3) |>
-  summarize(mean_var_1 = mean(var_1), .groups = "drop")
-```
-
-f\.
-What do the following pipelines do?
-Run both and analyze their results and articulate in words what each pipeline does.
-How are the outputs of the two pipelines different?
-
-```{r}
-#| eval: false
-
-df |>
-  group_by(var_2, var_3) |>
-  summarize(mean_var_1 = mean(var_1), .groups = "drop")
-
-df |>
-  group_by(var_2, var_3) |>
-  mutate(mean_var_1 = mean(var_1))
-```
-
-::: render-commit-push
-Render, commit, and push your changes to GitHub with an appropriate commit message.
-
-Make sure to commit and push all changed files so that your Git pane is empty afterward.
-:::
+Now make a scatter plot of population density (`density` on the y-axis) vs. land area in meters-squared (`land_area_m2` on the x-axis).
+Make sure to set an informative title and axis labels for your plot.
+Comment on how this scatterplot compares to the one in Exercise 8 — is the relationship displayed same or different.
+Explain why.
 
 ### Question 10
 
-Did you select your pages on Gradescope?
-You don't need to write an answer for this question, if you select your pages when you upload your lab to Gradescope, you'll get full points on this question.
-Otherwise, you'll get a 0 on this question.[^2]
-
-[^2]: We're assigning points to this seemingly trivial task because not selecting your pages and questions will greatly slow down the grading.
-    So we want to make sure you're properly motivated to complete this task!
+What are some insights that you found from the `az_county` data from Questions 8-9?
 
 # Wrap-up
 
 ## Submission
 
-Once you are finished with the lab, you will submit your final PDF document to Gradescope.
-
 ::: callout-warning
 Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo.
 We will be checking these to make sure you have been practicing how to commit and push changes.
 
-You must turn in a PDF file to the Gradescope page by the submission deadline to be considered "on time".
+You must turn in the .ipynb file by the submission deadline to be considered "on time".
 :::
-
-To submit your assignment:
-
--   Go to <http://www.gradescope.com> and click *Log in* in the top right corner.
--   Click *School Credentials* $\rightarrow$ *Duke NetID* and log in using your NetID credentials.
--   Click on your *STA 199* course.
--   Click on the assignment, and you'll be prompted to submit it.
--   Mark all the pages associated with question. All the pages of your lab should be associated with at least one question (i.e., should be "checked").
 
 ::: callout-important
 ## Checklist
@@ -497,17 +319,15 @@ To submit your assignment:
 Make sure you have:
 
 -   attempted all questions
--   rendered your Quarto document
--   committed and pushed everything to your GitHub repository such that the Git pane in RStudio is empty
--   uploaded your PDF to Gradescope
--   selected pages associated with each question on Gradescope
+-   run all code in your Jupyter notebook
+-   committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty
 :::
 
 ## Grading
 
 The lab is graded out of a total of 50 points.
 
-On Questions 1 through 9, you can earn up to 5 points on each question:
+On Questions 1 through 10, you can earn up to 5 points on each question:
 
 -   5: Response shows excellent understanding and addresses all or almost all of the rubric items.
 
@@ -520,8 +340,3 @@ On Questions 1 through 9, you can earn up to 5 points on each question:
 -   1: Response does not show sufficient effort or understanding and/or is largely incomplete.
 
 -   0: No attempt.
-
-On Question 10, you can earn either 0 or 5 points for selecting questions and pages on Gradescope:
-
--   5: Selected questions and pages on Gradescope.
--   0: Did not select some or all questions and pages on Gradescope.

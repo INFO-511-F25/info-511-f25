@@ -319,9 +319,9 @@ $$
 $$
 :::
 
-## Regularization
+## Regularization {.smaller}
 
-We will discuss Integration more later!
+You'll learn more about this in [INFO 521: Introduction to Machine Learning](https://infosci.arizona.edu/course/info-521-introduction-machine-learning) and/or [INFO 523: Data Mining and Discovery](https://infosci.arizona.edu/course/info-523-data-mining-and-discovery)
 
 ::: columns
 ::: {.column width="35%"}

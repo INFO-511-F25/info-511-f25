@@ -160,7 +160,7 @@ These AEs are due by the end of the week of the corresponding lecture period (Su
 To submit the AEs all you need to do is to push your work to your GitHub repo.
 
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
-Successful on-time completion of at least 10 of the AEs (will result in full credit for AEs in the final course grade.
+Successful on-time completion of at least 80% of AEs (will result in full credit for AEs in the final course grade.
 
 ### **Labs**
 
@@ -198,11 +198,11 @@ The final course grade will be calculated as follows:
 
 | Category              | Percentage |
 |-----------------------|------------|
-| Labs                  | 30%        |
+| Labs                  | 35%        |
 | Project               | 2%         |
 | Exam 1                | 20%        |
 | Exam 2                | 20%        |
-| Application Exercises | 10%        |
+| Application Exercises | 5%         |
 
 While there are no specific points allocated to participation, we will be recording your participation (mainly via slack) in periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 

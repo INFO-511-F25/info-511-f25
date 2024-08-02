@@ -1,6 +1,10 @@
 ---
 title: "Lab 3 - Data tidying and joining"
 categories: "Lab"
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 # Introduction
@@ -16,79 +20,55 @@ If you have not yet done those, you should go back and review the previous labs 
 
 By the end of the lab, you will...
 
--   Be able to pivot/reshape data using `tidyr`
--   Continue developing your data wrangling skills using `dplyr`
--   Build on your mastery of data visualizations using `ggplot2`
--   Get more experience with data science workflow using R, RStudio, Git, and GitHub
--   Further your reproducible authoring skills with Quarto
+-   Be able to pivot/reshape data using `pandas`
+-   Continue developing your data wrangling skills using `pandas`
+-   Build on your mastery of data visualizations using `matplotlib` and `seaborn`
+-   Get more experience with data science workflow using Python, Jupyter, Git, and GitHub
+-   Further your reproducible authoring skills with Jupyter Notebooks
 -   Improve your familiarity with version control using Git and GitHub
 
 ## Getting started
 
-Log in to RStudio, clone your `lab-3` repo from GitHub, open your `lab-3.qmd` document, and get started!
+### Clone the repo & start new VS Code window
 
-::: {.callout-tip collapse="true"}
-## Click here if you prefer to see step-by-step instructions
-
-### Log in to RStudio
-
--   Go to <https://cmgr.oit.duke.edu/containers> and log in with your Duke NetID and Password.
--   Click `STA198-199` under My reservations to log into your container. You should now see the RStudio environment.
-
-### Clone the repo & start new RStudio project
-
--   Go to the course organization at [github.com/sta199-s24](https://github.com/sta199-s24) organization on GitHub.
+-   Go to the course organization at [github.com/INFO-511-F24](https://github.com/INFO-511-F24) organization on GitHub.
     Click on the repo with the prefix **lab-3**.
     It contains the starter documents you need to complete the lab.
 
--   Click on the green **CODE** button, select **Use SSH** (this might already be selected by default, and if it is, you'll see the text **Clone with SSH**).
+-   Click on the green **CODE** button, select **Use HTTPS** (this might already be selected by default).
     Click on the clipboard icon to copy the repo URL.
 
--   In RStudio, go to *File* ➛ *New Project* ➛*Version Control* ➛ *Git*.
+-   In VS Code, go to *File* ➛ *New Window* ➛*Clone Git Repository (under **Start**)*.
 
--   Copy and paste the URL of your assignment repo into the dialog box *Repository URL*. Again, please make sure to have *SSH* highlighted under *Clone* when you copy the address.
+-   Copy and paste the URL of your assignment repo into the dialog box *Provide repository URL or pick a repository source*.
 
--   Click *Create Project*, and the files from your GitHub repo will be displayed in the *Files* pane in RStudio.
-
--   Click *lab-3.qmd* to open the template Quarto file.
+-   Click *lab-3.ipynb* to open the template Jupyter notebook file.
     This is where you will write up your code and narrative for the lab.
 
-### First steps
-
-In `lab-3.qmd`, update the `author` field to your name, render your document and examine the changes.
-Then, in the Git pane, click on **Diff** to view your changes, add a commit message (e.g., "Added author name"), and click **Commit**.
-Then, push the changes to your GitHub repository, and in your browser confirm that these changes have indeed propagated to your repository.
-:::
-
-::: callout-important
-If you run into any issues with the first steps outlined above, flag a TA for help before proceeding.
-:::
+-   Also see similar steps within the [Setting up Python](https://datasciaz.netlify.app/computing/computing-python.html#prepare-vs-code-for-python) page on the course website.
 
 ## Packages
 
-In this lab we will work with the **tidyverse** package, which is a collection of packages for doing data analysis in a "tidy" way.
+In this lab we will work with the **pandas**, **matplotlib**, and **seaborn** packages for data analysis and visualization.
 
-```{r}
+```{python}
 #| eval: true
 #| message: false
 
-library(tidyverse)
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
-**Render** the document which loads this package with the `library()` function.
+**Run All** in the document which loads these packages with the `import` function.
 
 ## Guidelines
 
 As we've discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
 
-In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF.
-Make sure that is the case, and add line breaks where the code is running off the page.[^1]
-
-[^1]: Remember, haikus not novellas when writing code!
-
 ::: callout-note
-Continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
-There will be periodic reminders in this assignment to remind you to **render, commit, and push** your changes to GitHub.
+Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
+There will be periodic reminders in this assignment to remind you to **Run all, commit, and sync** your changes to GitHub.
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
 :::
 
@@ -100,25 +80,25 @@ You should have at least 3 commits with meaningful commit messages by the end of
 
 For this part of the analysis you will work with inflation data from various countries in the world over the last 30 years.
 
-```{r}
+```{python}
 #| label: load-country-data
 #| message: false
 
-country_inflation <- read_csv("data/country-inflation.csv")
+country_inflation = pd.read_csv("data/country-inflation.csv")
 ```
 
 ### Question 1
 
 Get to know the data.
 
-a.  `glimpse()` at the `country_inflation` data frame and answer the following questions based on the output.
+a.  `info()` at the `country_inflation` data frame and answer the following questions based on the output.
     How many rows does `country_inflation` have and what does each row represent?
     How many columns does `country_inflation` have and what does each column represent?
 
 b.  Display a list of the countries included in the dataset.
 
 ::: callout-tip
-A function that can be useful for part (b) is `pull()`.
+A function that can be useful for part (b) is `unique()`.
 Check out its documentation for examples of usage.
 :::
 
@@ -127,10 +107,6 @@ Check out its documentation for examples of usage.
 Which countries had the top three highest inflation rates in 2021?
 Your output should be a data frame with two columns, `country` and `2021`, with inflation rates in descending order, and three rows for the top three countries.
 Briefly comment on how the inflation rates for these countries compare to the inflation rate for United States in that year.
-
-::: callout-tip
-Column names that are numbers are not considered "proper" in R, therefore to select them you'll need to surround them with backticks, e.g. `select(` `` ` `` `1993` `` ` `` `)`.
-:::
 
 ### Question 3
 
@@ -145,11 +121,6 @@ Do not save this new variable in `inf_ratio`, only calculate and display it so y
 Which country's inflation change is the largest over this time period?
 Did inflation increase of decrease between 1993 and 2021 in this country?
 
-::: callout-tip
-For this question you'll once again need to use variables whose names are numbers (years) in your pipeline.
-Make sure to surround the names of such variables with backticks (`` ` ``).
-:::
-
 ### Question 4
 
 Reshape (pivot) `country_inflation` such that each row represents a country/year combination, with columns `country`, `year`, and `annual_inflation`.
@@ -157,9 +128,8 @@ Then, display the resulting data frame and state how many rows and columns it ha
 
 Requirements:
 
--   Your code must use one of `pivot_longer()` or `pivot_wider()`. There are other ways you can do this reshaping move in R, but this question requires solving this problem by pivoting.
--   In your `pivot_*()` function, you must use `names_transform = as.numeric` as an argument to transform the variable type to numeric as you pivot the data so that in the resulting data frame the year variable is numeric.
--   The resulting data frame must be saved as something other than `country_inflation` so you (1) can refer to this data frame later in your analysis and (2) do not overwrite `country_inflation`. Use a short but informative name.
+-   Your code must use one of `melt()` or `pivot_table()`. There are other ways you can do this reshaping move in R, but this question requires solving this problem by pivoting.
+-   The resulting DataFrame must be saved as something other than `country_inflation` so you (1) can refer to this DataFrame later in your analysis and (2) do not overwrite country_inflation. Use a short but informative name.
 
 ::: callout-important
 The remaining questions in Part 1 require the use of the pivoted data frame from Question 4.
@@ -169,7 +139,7 @@ The remaining questions in Part 1 require the use of the pivoted data frame from
 
 Use a separate, single pipeline to answer each of the following questions.
 
-Requirement: Your code must use the `filter()` function for each part, not `arrange()`.
+Requirement: Your code must use the `query()` function for each part, not `sort_values()`.
 
 a.  What is the highest inflation rate observed between 1993 and 2021?
     The output of the pipeline should be a data frame with one row and three columns.
@@ -186,18 +156,16 @@ c.  Putting (a) and (b) together: What are the highest and the lowest inflation 
 
 a\.
 Create a vector called `countries_of_interest` which contains the names of up tp five countries you want to visualize the inflation rates for over the years.
-For example, if these countries are Türkiye and United States, you can express this as follows:
+For example, if these countries are India and United States, you can express this as follows:
 
-```{r}
-countries_of_interest <- c("Türkiye", "United States")
+```{python}
+countries_of_interest = ["India", "United States"]
 ```
 
-If they are Türkiye, United States, and China, you can express this as follows:
+If they are India, United States, and China, you can express this as follows:
 
-```{r}
-countries_of_interest <- c(
-  "Türkiye", "United States", "China (People's Republic of)"
-)
+```{python}
+countries_of_interest = ["India", "United States", "China (People's Republic of)"]
 ```
 
 So on and so forth...
@@ -211,7 +179,7 @@ Make sure that the spelling of your countries matches how they appear in the dat
 b\.
 In a single pipeline, filter your reshaped dataset to include only the `countries_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
 Use a short but informative name.
-Then, in a new pipeline, find the `distinct()` countries in the data frame you created.
+Then, in a new pipeline, find the `unique()` countries in the data frame you created.
 
 ::: callout-tip
 The number of distinct countries in the filtered data frame you created in part (b) should equal the number of countries you chose in part (a).
@@ -233,7 +201,10 @@ Requirements for the plot:
 -   Plot should be customized in at least one way – you could use a different than default color scale, or different than default theme, or some other customization.
 
 ::: render-commit-push
-If you haven't yet done so, now is a good time to render, commit, and push.
+If you haven't yet done so, now is a good time to run all, commit, and sync.
+
+<br>
+
 Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
 :::
 
@@ -259,12 +230,12 @@ The data you will need to create this visualization is spread across two files:
 
 Let's load both of these files.
 
-```{r}
+```{python}
 #| label: load-us-data
 #| message: false
 
-us_inflation <- read_csv("data/us-inflation.csv")
-cpi_divisions <- read_csv("data/cpi-divisions.csv")
+us_inflation = pd.read_csv("data/us-inflation.csv")
+cpi_divisions = pd.read_csv("data/cpi-divisions.csv")
 ```
 
 ### Question 8
@@ -285,7 +256,7 @@ Create a new dataset by joining the `us_inflation` dataset with the `cpi_divisio
 -   Determine which type of join is the most appropriate one and use that.
 
 -   Note that the two datasets don't have a common variable.
-    Review the help for the join functions to determine how to use the `by` argument when the names of the variables that the datasets should be joined by are different.
+    Review the help for the join functions to determine how to use the `on` argument when the names of the variables that the datasets should be joined by are different.
 
 -   Use a short but informative name for the joined dataset, and do not overwrite either of the datasets that go into creating it.
 
@@ -307,7 +278,7 @@ Refer back to the guidance provided in [Question 6] if you're not sure how to cr
 b\.
 In a single pipeline, filter your reshaped dataset to include only the `divisions_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
 Use a short but informative name.
-Then, in a new pipeline, find the `distinct()` divisions in the data frame you created.
+Then, in a new pipeline, find the `unique()` divisions in the data frame you created.
 
 ### Question 10
 
@@ -319,19 +290,24 @@ Then, in a few sentences, describe the patterns you observe in the plot, particu
 -   Axes and legend should be properly labeled.
 -   The plot should have an appropriate title (and optionally a subtitle).
 -   Plot should be customized in at least one way – you could use a different than default color scale, or different than default theme, or some other customization.
--   If your legend has labels that are too long, you can try moving the legend to the bottom and stack the labels vertically. *Hint:* The `legend.position` and `legend.direction` arguments of the `theme()` functions will be useful.
+-   If your legend has labels that are too long, you can try moving the legend to the bottom and stack the labels vertically. *Hint:* The legend argument of the ax.legend() method will be useful.
 
-```{r}
-ggplot(...) +
-  ... +
-  theme(
-    legend.position = "bottom", 
-    legend.direction = "vertical"
-  )
+```{python}
+plt.figure(figsize=(10, 6))
+sns.___(...)
+plt.___(...)
+plt.___("Year")
+plt.ylabel(...)
+plt.___(...)
+plt.show()
+
 ```
 
 ::: render-commit-push
-If you haven't yet done so since Part 1, now is a good time to render, commit, and push.
+If you haven't yet done so since Part 1, now is a good time to run all, commit, and sync.
+
+<br>
+
 Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
 :::
 
@@ -339,22 +315,12 @@ Make sure that you commit and push all changed documents and your Git pane is co
 
 ## Submission
 
-Once you are finished with the lab, you will submit your final PDF document to Gradescope.
-
 ::: callout-warning
 Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo.
 We will be checking these to make sure you have been practicing how to commit and push changes.
 
-You must turn in a PDF file to the Gradescope page by the submission deadline to be considered "on time".
+You must turn in the .ipynb file by the submission deadline to be considered "on time".
 :::
-
-To submit your assignment:
-
--   Go to <http://www.gradescope.com> and click *Log in* in the top right corner.
--   Click *School Credentials* $\rightarrow$ *Duke NetID* and log in using your NetID credentials.
--   Click on your *STA 199* course.
--   Click on the assignment, and you'll be prompted to submit it.
--   Mark all the pages associated with question. All the pages of your lab should be associated with at least one question (i.e., should be "checked").
 
 ::: callout-important
 ## Checklist
@@ -362,17 +328,15 @@ To submit your assignment:
 Make sure you have:
 
 -   attempted all questions
--   rendered your Quarto document
--   committed and pushed everything to your GitHub repository such that the Git pane in RStudio is empty
--   uploaded your PDF to Gradescope
--   selected pages associated with each question on Gradescope
+-   run all code in your Jupyter notebook
+-   committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty
 :::
 
 ## Grading
 
 The lab is graded out of a total of 50 points.
 
-You can earn up to 5 points on each question:
+On Questions 1 through 10, you can earn up to 5 points on each question:
 
 -   5: Response shows excellent understanding and addresses all or almost all of the rubric items.
 

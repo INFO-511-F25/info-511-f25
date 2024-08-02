@@ -1,51 +1,54 @@
 ---
 title: "Lab 7 - Modeling II"
 categories: "Lab"
+jupyter: python3
+execute: 
+  warning: false
+  error: false
 ---
 
 # Introduction
 
-In this lab you'll continue your practice of statistical modeling and then venture on to quantifying uncertainty.
+In this lab you'll practice machine learning modeling and then venture on to quantifying uncertainty.
 
 ## Packages
 
-In this lab we will work with the **tidyverse** and **tidymodels** packages.
+In this lab we will work with the **pandas** and **sklearn** modules.
 
-```{r}
+```{python}
 #| eval: true
 #| message: false
 
-library(tidyverse)
-library(tidymodels)
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score, KFold
+from sklearn.metrics import confusion_matrix, accuracy_score
+import seaborn as sns
+import matplotlib.pyplot as plt
 ```
 
 ## Guidelines
 
-Your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
+As we've discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.
 
-In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF.
-Make sure that is the case, and add line breaks where the code is running off the page.
-
-::: callout-important
-Render your document.
-If your code is running off the page for a given question such that we can’t see your entire code, we will not evaluate any of the code for that question.
-The question will automatically receive a 0.
-This is something you can and should verify before you turn in your work.
-:::
-
+::: callout-note
+Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course.
+There will be periodic reminders in this assignment to remind you to **Run all, commit, and sync** your changes to GitHub.
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
+:::
 
 Additionally, if you’re using functions that are not introduced in the course materials, you must cite your sources.
 
 ::: callout-important
-Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the Duke Community Standard and will be treated as such.
+Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the University of Arizona [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and will be treated as such.
 :::
 
 # Part 1 - Building a spam filter
 
 The data come from incoming emails in David Diez's (one of the authors of OpenIntro textbooks) Gmail account for the first three months of 2012.
 All personally identifiable information has been removed.
-The dataset is called `email` and it's in the **openintro** package.
+The dataset is called `email` and it's in your `data` folder.
 
 The outcome variable is `spam`, which takes the value `1` if the email is spam, `0` otherwise.
 
@@ -56,31 +59,29 @@ Fit a logistic regression model predicting `spam` from `exclaim_mess` (the numbe
 Then, display the tidy output of the model.
 
 b\.
-Using this model and an R function like `predict()` or `augment()`, predict the probability the email is spam if it contains 10 exclamation points.
+Using this model and the Python function `.predict_proba()`, predict the probability the email is spam if it contains 10 exclamation points.
 
 ## Question 2
 
 a\.
 Fit another logistic regression model predicting `spam` from `exclaim_mess`, `winner` (indicating whether “winner” appeared in the email), and `urgent_subj` (whether the word "urgent" is in the subject of the email).
-Then, display the tidy output of the model.
+Then, display the output of the model intercept and coefficients.
 
 b\.
-Using this model, predict spam / not spam for all emails in the `email` dataset with `augment()`.
-Store the resulting data frame with an appropriate name.
+Using this model, predict spam / not spam for all emails in the email dataset.
 
 c\.
-Using your data frame from the previous part, determine, in a single pipeline, and using `count()`, the numbers of emails:
+Using your data frame from the previous part, determine, in a single pipeline, the numbers of emails:
 
 -   that are labelled as spam that are actually spam
 -   that are not labelled as spam that are actually spam
 -   that are labelled as spam that are actually not spam
 -   that are not labelled as spam that are actually not spam
 
-Store the resulting data frame with an appropriate name.
-
 d\.
-In a single pipeline, and using `mutate()`, calculate the false positive and false negative rates.
-In addition to these numbers showing in your R output, you must write a sentence that explicitly states and identified the two rates.
+In a single pipeline, calculate the false positive and false negative rates.
+
+In addition to these numbers showing in your Python output, you must write a sentence that explicitly states and identifies the two rates.
 
 ## Question 3
 
@@ -90,27 +91,55 @@ Provide a 1-sentence justification for why you chose this variable.
 Display the tidy output of the model.
 
 b\.
-Using this model, predict spam / not spam for all emails in the `email` dataset with `augment()`.
-Store the resulting data frame with an appropriate name.
+Using this model, predict spam / not spam for all emails in the email dataset.
+
 
 c\.
-Using your data frame from the previous part, determine, in a single pipeline, and using `count()`, the numbers of emails:
+Using your data frame from the previous part, determine, in a single pipeline, the numbers of emails:
 
 -   that are labelled as spam that are actually spam
 -   that are not labelled as spam that are actually spam
 -   that are labelled as spam that are actually not spam
 -   that are not labelled as spam that are actually not spam
 
-Store the resulting data frame with an appropriate name.
-
 d\.
-In a single pipeline, and using `mutate()`, calculate the false positive and false negative rates.
-In addition to these numbers showing in your R output, you must write a sentence that explicitly states and identified the two rates.
+In a single pipeline, calculate the false positive and false negative rates.
+
+In addition to these numbers showing in your Python output, you must write a sentence that explicitly states and identifies the two rates.
 
 e\.
 Based on the false positive and false negatives rates of this model, comment, in 1-2 sentences, on which model is preferable and why.
 
-# Part 2 - Hotel cancellations
+# Part 2 - Model validation
+
+In this section, we will explore how to evaluate the performance of your models using k-fold cross validation. This technique helps in assessing how the results of a statistical analysis will generalize to an independent dataset.
+
+
+## Question 4
+
+a. Explain in your own words what k-fold cross validation is and why it is useful.
+
+b. Implement 5-fold cross validation on the logistic regression model from Question 1a predicting `spam` from `exclaim_mess.`
+Use the `cross_val_score` from `sklearn` to assist with this.
+
+c. Summarize the results of your cross validation. What is the average accuracy and standard deviation across the folds?
+
+
+## Question 5
+
+a. Implement 10-fold cross validation on the logistic regression model from Question 2a predicting `spam` from `exclaim_mess`, `winner`, and `urgent_subj.`
+
+b. Summarize the results of your cross validation. Compare the average accuracy and standard deviation across the folds to the results from Question 4. What do you observe?
+
+c. Based on the cross-validation results, which model do you think performs better in terms of generalizability? Justify your answer.
+
+## Question 6
+
+a. Plot the accuracy scores of each fold for both the 5-fold and 10-fold cross-validation. 
+
+b. Describe any patterns you observe in the plot.
+
+# Part 3 - Hotel cancellations
 
 For this exercise, we will work with hotel cancellations.
 The data describe the demand of two different types of hotels.
@@ -120,7 +149,7 @@ You can view the code book for all variables [here](https://github.com/rfordatas
 
 The data can be found in the `data` folder: `hotels.csv`.
 
-## Question 4
+## Question 7
 
 Read the data and then explore attributes of bookings and summarize your findings in 5 bullet points.
 You must provide a visualization or summary supporting each finding.
@@ -130,7 +159,7 @@ This is not meant to be an exhaustive exploration.
 We anticipate a wide variety of answers to this question.
 :::
 
-## Question 5
+## Question 8
 
 Using these data, we will try to answer the following question:
 
@@ -150,43 +179,9 @@ Using these data, we will try to answer the following question:
     Based on this probability, would you predict this booking would be cancelled or not cancelled.
     Explain your reasoning for your classification.
 
-# Part 3 - Statistics experience
-
-## Question 6
-
-You have two options for this exercise.
-Clearly indicate which option you choose.
-Then, summarize your experience in no more than 10 bullet points.
-
-Include the following on your summary:
-
--   Name and brief description of what you did.
--   Something you found new, interesting, or unexpected
--   How the talk/podcast/interview/etc. connects to something we’ve done in class.
--   Citation or link to web page for what you watched or who you interviewed.
-
-**Option 1:** Listen to a podcast or watch a video about statistics and data science.
-The podcast or video must be *at least 30 minutes* to count towards the statistics experience.
-A few suggestions are below:
-
--   [posit::conf 2023 talks](https://youtube.com/playlist?list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&si=95wk_4q3-mex9hhT)
--   [rstudio::conf 2022 talks](https://www.youtube.com/watch?v=u1Gzxg8Pd08&list=PL9HYL-VRX0oTOwqzVtL_q5T8MNrzn0mdH)
--   [rstudio::global 2021 talks](https://www.rstudio.com/resources/rstudioglobal-2021/)
--   [rstudio::conf 2020 talks](https://www.rstudio.com/resources/rstudioconf-2020/)
--   [Stats + Stories Podcast](https://statsandstories.net/)
--   [Casual Inference Podcast](https://casualinfer.libsyn.com/)
--   [Not So Standard Deviations](https://nssdeviations.com/)
-
-This list is not exhaustive.
-You may listen to other podcasts or watch other statistics/data science videos not included on this list.
-Ask your professor if you are unsure whether a particular podcast or video will count towards the statistics experience.
-
-**Option 2:** Talk with someone who uses statistics in their daily work.
-This could include a professor, professional in industry, graduate student, etc.
-
 # Part 4 - Get creative
 
-## Question 7
+## Question 9
 
 Your task is to make the following plot as ugly and as ineffective as possible.
 Change colors, axes, fonts, theme, or anything else you can think of in the code chunk below.
@@ -195,12 +190,12 @@ Try to make it as ugly as possible, the sky is the limit!
 
 In 2-3 sentences, explain why the plot you created is *ugly* (to you, at least) and ineffective.
 
-```{r}
-ggplot(
-  penguins, 
-  aes(x = flipper_length_mm, y = bill_length_mm, color = species)
-  ) + 
-  geom_point()
+```{python}
+pd.read_csv("data/penguins.csv")
+
+sns.set(style="darkgrid")
+sns.scatterplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+plt.show()
 ```
 
 # Part 5 - Harassment at work
@@ -211,9 +206,9 @@ In addition, since the GSS adopted questions from earlier surveys, trends can be
 The GSS contains a standard core of demographic, behavioral, and attitudinal questions, plus topics of special interest.
 Among the topics covered are civil liberties, crime and violence, inter-group tolerance, morality, national spending priorities, psychological well-being, social mobility, and stress and traumatic events.
 
-The data for this part comes from the `gss16` data frame (containing data from the 2016 GSS) from the **dsbox** package.
+The data for this part comes from the `gss16` data frame (containing data from the 2016 GSS) found in your `data` folder.
 
-## Question 8
+## Question 10
 
 In 2016, the GSS added a new question on harassment at work.
 The question is phrased as the following.
@@ -231,17 +226,42 @@ c.  Calculate a 95% bootstrap confidence interval for the proportion of American
     Use 1000 iterations when creating your bootstrap distribution.
     Interpret this interval in context of the data.
 
-# Part 6 - Data science assessment
+# Wrap-up
 
-## Question 9
+## Submission
 
-::: callout-important
-This question is graded out of 10 points.
+::: callout-warning
+Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo.
+We will be checking these to make sure you have been practicing how to commit and push changes.
+
+You must turn in the .ipynb file by the submission deadline to be considered "on time".
 :::
 
-Take a data science assessment at <https://duke.qualtrics.com/jfe/form/SV_bPZS3LIKoYA0fL8>.
-Your assessment will be graded out of 10 points, and those points will be added to your score for the remaining points on this lab.
-There are no additional penalties for wrong answers, so please answer all questions.
+::: callout-important
+## Checklist
 
-Optionally, you can participate in the research study this assessment is a part of.
-I will not find out whether you participate in the study or not, your scores will be passed on to me by the research administrator regardless of your study participation.
+Make sure you have:
+
+-   attempted all questions
+-   run all code in your Jupyter notebook
+-   committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty
+:::
+
+## Grading
+
+The lab is graded out of a total of 50 points.
+
+On Questions 1 through 10, you can earn up to 5 points on each question:
+
+-   5: Response shows excellent understanding and addresses all or almost all of the rubric items.
+
+-   4: Response shows good understanding and addresses most of the rubric items.
+
+-   3: Response shows understanding and addresses a majority of the rubric items.
+
+-   2: Response shows effort and misses many of the rubric items.
+
+-   1: Response does not show sufficient effort or understanding and/or is largely incomplete.
+
+-   0: No attempt.
+

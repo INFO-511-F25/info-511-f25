@@ -523,7 +523,7 @@ $$
 
 ## Question 14
 
-Given a vector $y = \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix}$, write down its transpose $y^\top$.
+Given a vector $x = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix}$, write down its transpose $x^\top$.
 
 ## Question 15
 
@@ -533,7 +533,8 @@ $$
 N = \begin{bmatrix}
 n_{11} & n_{12} \\
 n_{21} & n_{22} \\
-n_{31} & n_{32}
+n_{31} & n_{32} \\
+n_{41} & n_{42}
 \end{bmatrix}
 $$
 
