@@ -1,7 +1,9 @@
 ---
 title: "Data preprocessing"
 subtitle: "Lecture 6"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -389,7 +391,7 @@ Here is the equivalent recap of logical operators in Python:
 ## Recap: logical operators
 
 | operator        | definition                                               |
-|:-----------------|:-----------------------------------------------------|
+|:------------------|:----------------------------------------------------|
 | `x and y`       | is x AND y?                                              |
 | `x or y`        | is x OR y?                                               |
 | `x is None`     | is x None?                                               |

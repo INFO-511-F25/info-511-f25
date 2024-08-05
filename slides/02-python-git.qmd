@@ -1,7 +1,9 @@
 ---
 title: "Intro to Python"
 subtitle: "Lecture 2"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

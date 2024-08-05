@@ -1,7 +1,9 @@
 ---
 title: "Web scraping"
 subtitle: "Lecture 8"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -399,7 +401,7 @@ print(div_text)
 
 ::: small
 | Selector            | Example         | Description                                        |
-|:-----------------|:-----------------|:------------------------------------|
+|:-----------------|:-----------------|:-----------------------------------|
 | .class              | `.title`        | Select all elements with class="title"             |
 | #id                 | `#name`         | Select all elements with id="name"                 |
 | element             | `p`             | Select all \<p\> elements                          |

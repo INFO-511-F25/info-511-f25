@@ -1,7 +1,9 @@
 ---
 title: "Linear algebra I"
 subtitle: "Lecture 22"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

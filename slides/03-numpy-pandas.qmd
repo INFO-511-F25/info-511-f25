@@ -1,7 +1,9 @@
 ---
 title: "Intro to Numpy + Pandas"
 subtitle: "Lecture 3"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

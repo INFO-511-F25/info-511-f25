@@ -1,7 +1,9 @@
 ---
 title: "Sampling distributions + inference"
 subtitle: "Lecture 14"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -261,10 +263,9 @@ samp_3_mean = samp_3['x'].mean()
 samp_3_mean
 ```
 
-:::fragment
+::: fragment
 keep repeating...
 :::
-
 
 ## Sampling distribution {.small}
 
@@ -275,9 +276,7 @@ sampling_means = [rs_pop.sample(n=50, replace=True)['x'].mean() for _ in range(5
 sampling_df = pd.DataFrame({'xbar': sampling_means})
 ```
 
-
-:::columns
-
+::: columns
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -289,11 +288,9 @@ plt.ylabel('')
 plt.yticks([])
 plt.show()
 ```
-
 :::
 
 ::: {.column width="50%"}
-
 **The sample statistics**
 
 ```{python echo = FALSE}
@@ -302,19 +299,16 @@ sampling_mean = sampling_df['xbar'].mean()
 sampling_se = sampling_df['xbar'].std()
 sampling_mean, sampling_se
 ```
-
 :::
 :::
 
+##  {.smaller}
 
-## {.smaller}
-
-:::question
+::: question
 How do the shapes, centers, and spreads of these distributions compare?
 :::
 
-:::columns
-
+::: columns
 ::: {.column width="50%"}
 ```{python}
 #| echo: false
@@ -363,23 +357,21 @@ population_stats
 sampling_stats = {'mean': sampling_mean, 'se': sampling_se}
 sampling_stats
 ```
-
 :::
 :::
 
 ## Recap {.smaller}
 
-:::incremental
+::: incremental
 -   If certain assumptions are satisfied, regardless of the shape of the population distribution, the sampling distribution of the mean follows an approximately normal distribution.
 
 -   The center of the sampling distribution is at the center of the population distribution.
 
 -   The sampling distribution is less variable than the population distribution (and we can quantify by how much).
-
 :::
 
-:::fragment
-:::question
+::: fragment
+::: question
 What is the standard error, and how are the standard error and sample size related?
 What does that say about how the spread of the sampling distribution changes as $n$ increases?
 :::
@@ -389,64 +381,56 @@ What does that say about how the spread of the sampling distribution changes as 
 
 Knowing the distribution of the sample statistic $\bar{X}$ can help us
 
-:::incremental
-- Estimate a population parameter as **point estimate** $\boldsymbol{\pm}$ **margin of error**
+::: incremental
+-   Estimate a population parameter as **point estimate** $\boldsymbol{\pm}$ **margin of error**
 
-  - The **margin of error** is comprised of a measure of how confident we want to be and how variable the sample statistic is
+    -   The **margin of error** is comprised of a measure of how confident we want to be and how variable the sample statistic is
 
-<br> 
+<br>
 
-- Test for a population parameter by evaluating how likely it is to obtain to observed sample statistic when assuming that the null hypothesis is true
-  - This probability will depend on how variable the sampling distribution is
-
+-   Test for a population parameter by evaluating how likely it is to obtain to observed sample statistic when assuming that the null hypothesis is true
+    -   This probability will depend on how variable the sampling distribution is
 :::
 
 # Inference based on the CLT
 
 ## Inference based on the CLT {.smaller}
 
-If necessary conditions are met, we can also use inference methods based on the CLT. Suppose we know the true population standard deviation, $\sigma$. 
+If necessary conditions are met, we can also use inference methods based on the CLT.
+Suppose we know the true population standard deviation, $\sigma$.
 
-:::fragment
-Then the CLT tells us that $\bar{X}$ approximately has the distribution $N\left(\mu, \sigma/\sqrt{n}\right)$. 
+::: fragment
+Then the CLT tells us that $\bar{X}$ approximately has the distribution $N\left(\mu, \sigma/\sqrt{n}\right)$.
 
 That is,
 
 $$Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0, 1)$$
-
 :::
 
-
 # What if $\sigma$ isn't known?
-
 
 ## T distribution
 
 In practice, we never know the true value of $\sigma$, and so we estimate it from our data with $s$.
 
-We can make the following test statistic for testing
-a single sample's population mean, which has a **t-distribution with n-1 degrees of freedom**:
+We can make the following test statistic for testing a single sample's population mean, which has a **t-distribution with n-1 degrees of freedom**:
 
-:::fragment
-:::question
+::: fragment
+::: question
 $$ T = \frac{\bar{X} - \mu}{s/\sqrt{n}} \sim t_{n-1}$$
 :::
 :::
 
-
-
 ## T distribution {.smaller}
 
-:::incremental
-- The t-distribution is also unimodal and symmetric, and is centered at 0
+::: incremental
+-   The t-distribution is also unimodal and symmetric, and is centered at 0
 
+-   It has thicker tails than the normal distribution
 
-- It has thicker tails than the normal distribution
-  - This is to make up for additional variability introduced by using $s$ instead of $\sigma$ in calculation of the 
-SE
+    -   This is to make up for additional variability introduced by using $s$ instead of $\sigma$ in calculation of the SE
 
-
-- It is defined by the degrees of freedom 
+-   It is defined by the degrees of freedom
 :::
 
 ## T vs Z distributions
@@ -484,11 +468,9 @@ plt.show()
 
 ```
 
-
 ## T distribution {.smaller}
 
-:::columns
-
+::: columns
 ::: {.column width="50%"}
 **Finding probabilities under the t curve:**
 
@@ -505,13 +487,10 @@ p_less
 p_greater = stats.t.sf(-1.96, df=9)
 p_greater
 ```
-
 :::
-
 
 ::: {.column width="50%"}
 **Finding cutoff values under the t curve:**
-
 
 ```{python}
 # Find Q1 (25th percentile) for df = 9
@@ -526,22 +505,20 @@ q1
 q3 = stats.t.ppf(0.75, df=9)
 q3
 ```
-
 :::
 :::
 
 ## Confidence interval for a mean {.smaller}
 
-:::{.callout-warning}
-**General form of the confidence interval** 
+::: callout-warning
+**General form of the confidence interval**
 
 $$point~estimate \pm critical~value \times SE$$
 :::
 
-:::fragment
-
-:::{.callout-warning}
-**Confidence interval for the mean** 
+::: fragment
+::: callout-warning
+**Confidence interval for the mean**
 
 $$\bar{x} \pm t^*_{n-1} \times \frac{s}{\sqrt{n}}$$
 :::
@@ -549,19 +526,19 @@ $$\bar{x} \pm t^*_{n-1} \times \frac{s}{\sqrt{n}}$$
 
 ## Durham NC Resident Satisfaction {.smaller}
 
-`durham_survey` contains resident responses to a survey given by the City of Durham in 2018. These are a randomly selected, representative sample of Durham residents.
+`durham_survey` contains resident responses to a survey given by the City of Durham in 2018.
+These are a randomly selected, representative sample of Durham residents.
 
 Questions were rated 1 - 5, with 1 being "highly dissatisfied" and 5 being "highly satisfied."
 
 ## Exploratory Data Analysis
 
-:::columns
+::: columns
 ::: {.column width="50%"}
 ```{python}
 durham = pd.read_csv("data/durham_survey.csv")
 durham_filtered = durham[durham['quality_library'] != 9]
 ```
-
 
 ```{python}
 summary_stats = durham_filtered['quality_library'].agg(['mean', 'median', 'std', 'count']).rename({
@@ -591,7 +568,7 @@ plt.show()
 
 $$\bar{x} \pm t^*_{n-1} \times \frac{s}{\sqrt{n}}$$
 
-:::fragment
+::: fragment
 ```{python}
 point_est = summary_stats['x_bar'] # Point estimate
 se = summary_stats['sd'] / (summary_stats['n'] ** 0.5) # SE
@@ -599,13 +576,13 @@ df = summary_stats['n'] - 1 # Degrees of freedom
 ```
 :::
 
-:::fragment
+::: fragment
 ```{python}
 t_star = stats.t.ppf(0.975, df) # Critical value 
 ```
 :::
 
-:::fragment
+::: fragment
 ```{python}
 # Confidence interval
 CI = point_est + np.array([-1, 1]) * t_star * se
@@ -616,16 +593,14 @@ CI_rounded
 
 ## Interpret 95% confidence interval {.smaller}
 
-The 95% confidence interval is `3.89` to `4.05`. 
+The 95% confidence interval is `3.89` to `4.05`.
 
-:::fragment
-:::question
+::: fragment
+::: question
 Interpret this interval in context of the data.
 :::
 :::
 
-
-:::fragment
+::: fragment
 **We are 95% confident that the true mean rating for Durham residents' satisfaction with the library system is between 3.89 and 4.05.**
 :::
-

@@ -1,7 +1,9 @@
 ---
 title: "Visualizing various types of data"
 subtitle: "Lecture 5"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 jupyter: python3
 execute: 
   warning: false

@@ -1,7 +1,9 @@
 ---
 title: "Calculus I"
 subtitle: "Lecture 20"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

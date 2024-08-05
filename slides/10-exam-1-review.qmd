@@ -1,7 +1,9 @@
 ---
 title: "Exam 1 review"
 subtitle: "Lecture 10"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -279,9 +281,8 @@ plt.show()
 
 -   Categorical variables — variables that have a fixed and known set of possible values — are used in the **pandas** library.
 
-```{=html}
 <!-- -->
-```
+
 -   They are also useful when you want to display character vectors in a non-alphabetical order.
 
 ::: aside

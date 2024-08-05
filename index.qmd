@@ -23,6 +23,7 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1TgmUaNO4_xPSvGViYwyzPcJ
 #| echo: false
 
 d |>
+  select(-powerpoints) |>
   mutate(date = as.Date(date)) |>
   relocate(due, .after = materials) |>
   gt() |>

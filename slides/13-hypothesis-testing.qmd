@@ -1,7 +1,9 @@
 ---
 title: "Hypothesis testing"
 subtitle: "Lecture 13"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -449,7 +451,6 @@ print(f"Mean price per guest per night: {mean_ppg:.2f}")
 
 ```
 
-
 ## 3. Assessing the evidence observed
 
 ```{python}
@@ -545,9 +546,7 @@ print(f"Mean of bootstrap means: {np.mean(bootstrap_means):.2f}")
 
 ## Shifting the distribution {.smaller}
 
-We've captured the variability in the sample mean among samples of size 50 from
-Tucson area Airbnbs, but remember that in the hypothesis testing paradigm,
-we must assess our observed evidence *under the assumption that* $H_0$ *is true*.
+We've captured the variability in the sample mean among samples of size 50 from Tucson area Airbnbs, but remember that in the hypothesis testing paradigm, we must assess our observed evidence *under the assumption that* $H_0$ *is true*.
 
 ```{python}
 mean_price = bootstrap_means_df['boot_means'].mean()
@@ -556,8 +555,8 @@ print(f"Sample mean price: {mean_price:.2f}")
 
 <br>
 
-:::fragment
-:::question
+::: fragment
+::: question
 Where should the bootstrap distribution of means be centered under $H_0$?
 :::
 :::
@@ -591,7 +590,6 @@ plt.show()
 print(f"Mean of bootstrap means: {np.mean(bootstrap_means):.2f}")
 
 ```
-
 
 ## Shifting the distribution
 
@@ -631,7 +629,6 @@ plt.show()
 
 ```
 
-
 ## 3. Assessing the evidence observed
 
 ```{python}
@@ -651,87 +648,72 @@ plt.show()
 
 ## 3. Assessing the evidence observed {.smaller}
 
-Supposing that the true mean price per guest were $100 a night, about 0.16% of
-bootstrap sample means were as extreme or even more so than our originally
-observed sample mean price per guest of $116.24.
+Supposing that the true mean price per guest were \$100 a night, about 0.16% of bootstrap sample means were as extreme or even more so than our originally observed sample mean price per guest of \$116.24.
 
-:::fragment
+::: fragment
 That is, **p = 0.0016**.
 :::
 
-
 ## 4. Making a conclusion {.smaller}
 
-If it is very unlikely to observe our data (or more extreme) if $H_0$ were 
-actually true, then that might give us enough evidence to suggest that it is
-actually false (and that $H_1$ is true).
+If it is very unlikely to observe our data (or more extreme) if $H_0$ were actually true, then that might give us enough evidence to suggest that it is actually false (and that $H_1$ is true).
 
-:::question
-There is sufficient evidence at $\alpha = 0.05$ to suggest that the mean price 
-per guest per night of Airbnb rentals in Tucson is not $100.
+::: question
+There is sufficient evidence at $\alpha = 0.05$ to suggest that the mean price per guest per night of Airbnb rentals in Tucson is not \$100.
 :::
-
-
 
 ## Ok, so what **isn't** a p-value? {.smaller}
 
-> *"A p-value of 0.05 means the null hypothesis has a probability of only 5% of* 
-> *being true"* 
+> *"A p-value of 0.05 means the null hypothesis has a probability of only 5% of* *being true"*
 
-> *"A p-value of 0.05 means there is a 95% chance or greater that the null*
-> *hypothesis is incorrect"* 
+> *"A p-value of 0.05 means there is a 95% chance or greater that the null* *hypothesis is incorrect"*
 
-:::fragment
-<center><span style="color:red;font-size:5rem;">NO</span></center>
+::: fragment
+<center>[NO]{style="color:red;font-size:5rem;"}</center>
 :::
 
-:::fragment
-p-values do **not** provide information on the probability that the null 
-hypothesis is true given our observed data.
-:::
-
-
-## What can go wrong? {.smaller}
-
-Remember, a p-value is calculated *assuming* that $H_0$ is true. It cannot be 
-used to tell us how likely that assumption is correct. When we fail to reject 
-the null hypothesis, we are stating that there is **insufficient evidence** to 
-assert that it is false. This could be because...
-
-:::incremental
-- ... $H_0$ actually *is* true!
-
-- ... $H_0$ is false, but we got unlucky and happened to get a sample that 
-didn't give us enough reason to say that $H_0$ was false.
-:::
-
-:::fragment
-Even more bad news, hypothesis testing does NOT give us the tools to 
-determine which one of the two scenarios occurred.
+::: fragment
+p-values do **not** provide information on the probability that the null hypothesis is true given our observed data.
 :::
 
 ## What can go wrong? {.smaller}
 
-Suppose we test a certain null hypothesis, which can be either true or false 
-(we never know for sure!). We make one of two decisions given our data: either 
-reject or fail to reject $H_0$. 
+Remember, a p-value is calculated *assuming* that $H_0$ is true.
+It cannot be used to tell us how likely that assumption is correct.
+When we fail to reject the null hypothesis, we are stating that there is **insufficient evidence** to assert that it is false.
+This could be because...
 
-:::fragment
+::: incremental
+-   ...
+    $H_0$ actually *is* true!
+
+-   ...
+    $H_0$ is false, but we got unlucky and happened to get a sample that didn't give us enough reason to say that $H_0$ was false.
+:::
+
+::: fragment
+Even more bad news, hypothesis testing does NOT give us the tools to determine which one of the two scenarios occurred.
+:::
+
+## What can go wrong? {.smaller}
+
+Suppose we test a certain null hypothesis, which can be either true or false (we never know for sure!).
+We make one of two decisions given our data: either reject or fail to reject $H_0$.
+
+::: fragment
 We have the following four scenarios:
 
+| Decision             | $H_0$ is true    | $H_0$ is false   |
+|----------------------|------------------|------------------|
+| Fail to reject $H_0$ | Correct decision | *Type II Error*  |
+| Reject $H_0$         | *Type I Error*   | Correct decision |
 
-| Decision             | $H_0$ is true | $H_0$ is false |
-|----------------------|---------------|----------------|
-| Fail to reject $H_0$ | Correct decision    | *Type II Error*  |
-| Reject $H_0$         | *Type I Error*  | Correct decision     |
+::: incremental
+-   $\alpha$ is the probability of making a Type I error.
 
-:::incremental
-- $\alpha$ is the probability of making a Type I error. 
+-   $\beta$ is the probability of making a Type II error.
 
-- $\beta$ is the probability of making a Type II error.
-
-- The **power** of a test is 1 - $\beta$: the probability that, if the null
-hypothesis is actually false, we correctly reject it.
+-   The **power** of a test is 1 - $\beta$: the probability that, if the null hypothesis is actually false, we correctly reject it.
 :::
 :::
 

@@ -1,7 +1,9 @@
 ---
 title: "Linear algebra II"
 subtitle: "Lecture 23"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -63,9 +65,8 @@ print(B)
 ## Special Types of Matrices {.smaller}
 
 ::: columns
-
 ::: {.column width="33.3%"}
-:::fragment
+::: fragment
 **Identity Matrix**: Diagonal of 1s, other elements are 0s.
 
 $$
@@ -79,8 +80,7 @@ $$
 :::
 
 ::: {.column width="33.3%"}
-
-:::fragment
+::: fragment
 **Diagonal Matrix**: Non-zero elements only on the diagonal.
 
 $$
@@ -90,13 +90,11 @@ $$
 0 & 0 & 6
 \end{bmatrix}
 $$
-
 :::
 :::
 
 ::: {.column width="33.3%"}
-
-:::fragment
+::: fragment
 **Triangular Matrix**: Triangular shape of non-zero elements (upper $\mathbf{U}$, lower $\mathbf{L}$).
 
 $$
@@ -109,7 +107,6 @@ $$
 :::
 :::
 :::
-
 
 ## `ae-17` {.smaller}
 

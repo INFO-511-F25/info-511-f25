@@ -1,7 +1,9 @@
 ---
 title: "Linear regression with multiple predictors"
 subtitle: "Lecture 16"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 ---
 
 # Warm up

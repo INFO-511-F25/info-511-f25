@@ -8,16 +8,9 @@ categories:
 In this exercise, we will:
 
 -   Transpose a Vector: Learn how to transpose a given vector.
-
-```{=html}
-<!-- -->
-```
 -   Transpose a Matrix: Understand the concept of matrix transposition by working with a given matrix.
-
 -   Determine Matrix Dimensions: Identify and write down the dimensions of given matrices.
-
 -   Matrix Multiplication Validity: Check the validity of matrix multiplication for given matrices and determine the dimensions of the resulting matrix if valid.
-
 -   Compute Matrix Product: Perform the actual computation of a matrix product for given matrices when the multiplication is valid.
 
 # Linear algebra

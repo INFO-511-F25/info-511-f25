@@ -1,7 +1,8 @@
 ---
 title: "Communicating data science results effectively"
-subtitle: "Lecture 24"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 ---

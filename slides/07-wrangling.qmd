@@ -1,7 +1,9 @@
 ---
 title: "Data wrangling"
 subtitle: "Lecture 7"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -68,7 +70,7 @@ print(relocated_columns)
 ```
 :::
 
-# Data wrangling 
+# Data wrangling
 
 # Data wrangling <br> AKA Munging 🤮
 
@@ -206,7 +208,7 @@ print(anti_merged)
 :::
 :::
 
-:::fragment
+::: fragment
 🤮
 :::
 
@@ -222,4 +224,4 @@ print(anti_merged)
     However, you should always be critical of defaults (however pretty they might be) and see if you can improve the plot to better portray your data/results/what you want to communicate.
 :::
 
-## `ae-05-majors-wrangling
+## \`ae-05-majors-wrangling

@@ -1,7 +1,9 @@
 ---
 title: "Intro to Probability"
 subtitle: "Lecture 11"
-format: revealjs
+format:
+  revealjs: default
+  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -298,5 +300,3 @@ Calculate the following for a randomly selected person in the cohort:
 :::
 :::
 :::
-
-

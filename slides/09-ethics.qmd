@@ -1,7 +1,9 @@
 ---
 title: "Data science ethics"
 subtitle: "Lecture 9"
-format: revealjs
+format:
+  revealjs: default
+prefer-html: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -49,12 +51,6 @@ What does the visualization, published by [Reuters](http://static5.businessinsid
 #| echo: false
 
 countdown(minutes = 3, left = 0, bottom = 0.1)
-```
-
-## Submit
-
-```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/STA199S24?from=status-bar?" width="100%"></iframe>
 ```
 :::
 
@@ -270,10 +266,6 @@ countdown(minutes = 5)
 ::: question
 What is meant by “stochastic parrots” in the paper title?
 :::
-
-```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/STA199S24?from=status-bar?" width="100%"></iframe>
-```
 :::
 
 ## Machine Bias {.smaller}
