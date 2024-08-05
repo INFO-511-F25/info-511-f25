@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>INFO 511 - Lab 2 - Data wrangling</title>
+<title>INFO 511 - Lab 2 - Data visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <link href="../labs/lab-3.html" rel="next">
 <link href="../labs/lab-1.html" rel="prev">
+<link href="..//img/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,37 +107,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="INFO 511 - Lab 2 - Data wrangling">
+<meta property="og:title" content="INFO 511 - Lab 2 - Data visualization">
 <meta property="og:description" content="Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Fall 2024.">
 <meta property="og:site_name" content="INFO 511">
 </head>
@@ -163,7 +135,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -248,46 +220,99 @@ window.Quarto = {
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Computing</span></a>
+ <span class="menu-text">Textbooks</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computing-access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Access</span></a>
+  <a href="https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&amp;package_service_id=43729147450003843&amp;institutionId=3843&amp;customerId=3840" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science from Scratch</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computing-troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
+  <a href="https://wesmckinney.com/book/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python for Data Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../computing-cheatsheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cheatsheets</span></a>
+  <a href="../textbooks/brucePracStatsForDS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical Stats for DS</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../textbooks/jamesISL.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to Statistical Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&amp;package_service_id=43729147410003843&amp;institutionId=3843&amp;customerId=3840" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Essential Math for Data Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://statsthinking21.github.io/statsthinking21-python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Companion to Statistical Thinking in the 21st Century</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Project</span></a>
+ <span class="menu-text">Computing</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-cheatsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheatsheets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting up Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting up Git</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/description.html" class="sidebar-item-text sidebar-link">
@@ -328,13 +353,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-0.html" class="sidebar-item-text sidebar-link">
@@ -383,17 +408,23 @@ window.Quarto = {
  <span class="menu-text">Lab 7</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/ds-experience.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science Experience</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Exam review</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exam-review/exam-1-review.html" class="sidebar-item-text sidebar-link">
@@ -423,9 +454,7 @@ window.Quarto = {
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
-  <li><a href="#log-in-to-rstudio" id="toc-log-in-to-rstudio" class="nav-link" data-scroll-target="#log-in-to-rstudio">Log in to RStudio</a></li>
-  <li><a href="#clone-the-repo-start-new-rstudio-project" id="toc-clone-the-repo-start-new-rstudio-project" class="nav-link" data-scroll-target="#clone-the-repo-start-new-rstudio-project">Clone the repo &amp; start new RStudio project</a></li>
-  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps">First steps</a></li>
+  <li><a href="#clone-the-repo-start-new-vs-code-window" id="toc-clone-the-repo-start-new-vs-code-window" class="nav-link" data-scroll-target="#clone-the-repo-start-new-vs-code-window">Clone the repo &amp; start new VS Code window</a></li>
   </ul></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#guidelines" id="toc-guidelines" class="nav-link" data-scroll-target="#guidelines">Guidelines</a></li>
@@ -441,10 +470,10 @@ window.Quarto = {
   <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
   <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
   <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a></li>
-  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a></li>
   </ul></li>
   <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a>
   <ul class="collapse">
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a></li>
   <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a></li>
   <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a></li>
   </ul></li>
@@ -462,7 +491,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-0.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-2.html">Lab 2</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 2 - Data wrangling</h1>
+<h1 class="title">Lab 2 - Data visualization</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Lab</div>
   </div>
@@ -484,7 +513,7 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this lab you’ll continue to hone your data science workflow as well as bring together what you learned so far in the course (data visualization) with what’s coming up (data wrangling).</p>
+<p>This lab will begin your journey honing your data science workflow.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -502,76 +531,39 @@ Note
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
 <p>By the end of the lab, you will…</p>
 <ul>
-<li>Be able to create transform data using <code>dplyr</code></li>
-<li>Build on your mastery of data visualizations using <code>ggplot2</code></li>
-<li>Get more experience with data science workflow using R, RStudio, Git, and GitHub</li>
-<li>Further your reproducible authoring skills with Quarto</li>
-<li>Improve your familiarity with version control using Git and GitHub</li>
+<li><p>Gain practice writing a reproducible report using Quarto</p></li>
+<li><p>Continue practice with version control using Git and GitHub</p></li>
+<li><p>Be able to create data visualizations using <code>seaborn</code></p></li>
 </ul>
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<section id="log-in-to-rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="log-in-to-rstudio">Log in to RStudio</h3>
+<section id="clone-the-repo-start-new-vs-code-window" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-repo-start-new-vs-code-window">Clone the repo &amp; start new VS Code window</h3>
 <ul>
-<li>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a> and log in with your Duke NetID and Password.</li>
-<li>Click <code>STA198-199</code> under My reservations to log into your container. You should now see the RStudio environment.</li>
+<li><p>Go to the course organization at <a href="https://github.com/INFO-511-F24">github.com/INFO-511-F24</a> organization on GitHub. Click on the repo with the prefix <strong>lab-2</strong>. It contains the starter documents you need to complete the lab.</p></li>
+<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use HTTPS</strong> (this might already be selected by default). Click on the clipboard icon to copy the repo URL.</p></li>
+<li><p>In VS Code, go to <em>File</em> ➛ <em>New Window</em> ➛<em>Clone Git Repository (under <strong>Start</strong>)</em>.</p></li>
+<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Provide repository URL or pick a repository source</em>.</p></li>
+<li><p>Click <em>lab-2.ipynb</em> to open the template Jupyter notebook file. This is where you will write up your code and narrative for the lab.</p></li>
+<li><p>Also see similar steps within the <a href="https://datasciaz.netlify.app/computing/computing-python.html#prepare-vs-code-for-python">Setting up Python</a> page on the course website.</p></li>
 </ul>
-</section>
-<section id="clone-the-repo-start-new-rstudio-project" class="level3">
-<h3 class="anchored" data-anchor-id="clone-the-repo-start-new-rstudio-project">Clone the repo &amp; start new RStudio project</h3>
-<ul>
-<li><p>Go to the course organization at <a href="https://github.com/sta199-s24">github.com/sta199-s24</a> organization on GitHub. Click on the repo with the prefix <strong>lab-2</strong>. It contains the starter documents you need to complete the lab.</p></li>
-<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use SSH</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with SSH</strong>). Click on the clipboard icon to copy the repo URL.</p></li>
-<li><p>In RStudio, go to <em>File</em> ➛ <em>New Project</em> ➛<em>Version Control</em> ➛ <em>Git</em>.</p></li>
-<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</p></li>
-<li><p>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</p></li>
-<li><p>Click <em>lab-2.qmd</em> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</p></li>
-</ul>
-</section>
-<section id="first-steps" class="level3">
-<h3 class="anchored" data-anchor-id="first-steps">First steps</h3>
-<p>In <code>lab-2.qmd</code>, update the <code>author</code> field to your name, render your document and examine the changes. Then, in the Git pane, click on <strong>Diff</strong> to view your changes, add a commit message (e.g., “Added author name”), and click <strong>Commit</strong>. Then, push the changes to your GitHub repository, and in your browser confirm that these changes have indeed propagated to your repository.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you run into any issues with the first steps outlined above, flag a TA for help before proceeding.</p>
-</div>
-</div>
 </section>
 </section>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>In this lab we will work with the <strong>tidyverse</strong> package, which is a collection of packages for doing data analysis in a “tidy” way.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this lab, we will work with the <strong>seaborn</strong> library, which is a powerful Python library for creating data visualizations.</p>
+<div id="6bc6fcd4" class="cell" data-message="false" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Render</strong> the document which loads this package with the <code>library()</code> function.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remember: The rendered document will include a message about which packages the tidyverse package is loading along with it. It’s just R being informative, a <strong>message</strong> does not indicate anything is wrong (it’s not a <strong>warning</strong> or an <strong>error</strong>).</p>
-</div>
-</div>
+<p><strong>Run All</strong> in the document which loads these packages with the <code>import</code> function.</p>
+<p>The <code>seaborn</code> library is built on top of <code>matplotlib</code> and closely integrated with <code>pandas</code>. It provides a high-level interface for drawing attractive and informative statistical graphics.</p>
 </section>
 <section id="guidelines" class="level2">
 <h2 class="anchored" data-anchor-id="guidelines">Guidelines</h2>
 <p>As we’ve discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.</p>
-<p>In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF. Make sure that is the case, and add line breaks where the code is running off the page.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -582,7 +574,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course. There will be periodic reminders in this assignment to remind you to <strong>render, commit, and push</strong> your changes to GitHub. You should have at least 3 commits with meaningful commit messages by the end of the assignment.</p>
+<p>Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course. There will be periodic reminders in this assignment to remind you to <strong>Run all, commit, and sync</strong> your changes to GitHub. You should have at least 3 commits with meaningful commit messages by the end of the assignment.</p>
 </div>
 </div>
 </section>
@@ -591,11 +583,12 @@ Note
 <h1>Questions</h1>
 <section id="part-1" class="level2">
 <h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
-<p><strong>Back to the Midwest!</strong></p>
-<p>In this part you will revisit and build on some of your findings from Lab 1, where you explored the <code>midwest</code> data frame. Remember that this data frame is bundled with the <strong>ggplot2</strong> package and is automatically loaded when you load the tidyverse package. As a refresher, the data contains demographic characteristics of counties in the Midwest region of the United States. You can read documentation for the data set, including variable definitions by typing <code>?midwest</code> in the Console or searching for <code>midwest</code> in the Help pane.</p>
-<section id="question-1" class="level3">
-<h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
-<p>Calculate the number of counties in each state and display your results in descending order of number of counties. Which state has the highest number of counties, and how many? Which state has the lowest number, and how many?</p>
+<p><strong>Let’s take a trip to the Midwest!</strong></p>
+<p>We will use the <code>midwest</code> data frame for this lab.</p>
+<div id="65f5dc2d" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>midwest <span class="op">=</span> pd.read_csv(<span class="st">'data/midwest.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data contains demographic characteristics of counties in the Midwest region of the United States.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -606,305 +599,168 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The number of counties in a state can change over time, so the values you see in this output may not be true today.</p>
+<p>In the future, you will be expected to load the data.</p>
 </div>
 </div>
+<section id="question-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
+<p>Visualize the distribution of population density of counties using a histogram with <code>sns.histplot()</code> with four separate binwidths: a binwidth of 100, a binwidth of 1,000, a binwidth of 10,000, and a binwidth of 100,000.</p>
+<p>For example, you can create the first plot with:</p>
+<div id="b1969b3c" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the histogram with binwidth = 100</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(midwest[<span class="st">'popdensity'</span>], binwidth<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Population Density'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Population Density of Midwestern Counties</span><span class="ch">\n</span><span class="st">Binwidth = 100'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will need to make four different histograms. Make sure to set informative titles and axis labels for each of your plots .Then, comment on which binwidth is most appropriate for these data and why.</p>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 1”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 1”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
 </section>
 <section id="question-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
-<p>While in a given state two counties can’t have the same name, across states some county names might be shared. A classmate says “Look at that, there is a county called ___ in each state in this dataset!” In a single pipeline, discover all counties that could fill in the blank. Your response should be a data frame with only the county names that could fill in the blank and how many times they appear in the data.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You will want to use the <code>filter()</code> function in your answer, which requires a logical condition to describe what you want to filter for. For example <code>filter(x &gt; 2)</code> means filter for values of <code>x</code> greater than 2, <code>filter(y &lt;= 3)</code> means filter for values of y less than or equal to 3.</p>
-<p>The table below is a summary of logical operators and how to articulate them in R.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>operator</th>
-<th>definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>&lt;</code></td>
-<td>less than</td>
-</tr>
-<tr class="even">
-<td><code>&lt;=</code></td>
-<td>less than or equal to</td>
-</tr>
-<tr class="odd">
-<td><code>&gt;</code></td>
-<td>greater than</td>
-</tr>
-<tr class="even">
-<td><code>&gt;=</code></td>
-<td>greater than or equal to</td>
-</tr>
-<tr class="odd">
-<td><code>==</code></td>
-<td>exactly equal to</td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td>not equal to</td>
-</tr>
-<tr class="odd">
-<td><code>x &amp; y</code></td>
-<td><code>x</code> AND <code>y</code></td>
-</tr>
-<tr class="even">
-<td><code>x</code>&nbsp;|&nbsp;<code>y</code></td>
-<td><code>x</code> OR <code>y</code></td>
-</tr>
-<tr class="odd">
-<td><code>is.na(x)</code></td>
-<td>test if <code>x</code> is <code>NA</code></td>
-</tr>
-<tr class="even">
-<td><code>!is.na(x)</code></td>
-<td>test if <code>x</code> is not <code>NA</code></td>
-</tr>
-<tr class="odd">
-<td><code>x %in% y</code></td>
-<td>test if <code>x</code> is in <code>y</code></td>
-</tr>
-<tr class="even">
-<td><code>!(x %in% y)</code></td>
-<td>test if <code>x</code> is not in <code>y</code></td>
-</tr>
-<tr class="odd">
-<td><code>!x</code></td>
-<td>not <code>x</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p>Visualize the distribution of population density of counties again, this time using a boxplot with <code>sns.boxplot()</code>. Make sure to set informative titles and axis labels for your plot. Then, using information as needed from the box plot as well as the histogram from Question 1, describe the distribution of population density of counties and comment on any potential outliers, making sure to identify at least one county that is a clear outlier by name in your narrative and commenting on whether it makes sense to you that this county is an outlier. You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them.</p>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 2”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 2”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
 </section>
 <section id="question-3" class="level3">
 <h3 class="anchored" data-anchor-id="question-3">Question 3</h3>
-<p>Return to the following box plot of population densities where you were asked to identify at least one outlier.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab-2_files/figure-html/popdensity-boxplot-1.png" class="img-fluid figure-img" width="480"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>In this question part, we want you to revisit this box plot and identify the counties described in each part.</p>
-<p>a. The counties with a population density higher than 25,000. Your code must use the <code>filter()</code> function.</p>
-<p>b. The county with the highest population density. Your code must use the <code>max()</code> function.</p>
-<p>Answer using a single data wrangling pipeline for each part. Your response should be a data frame five columns: county name, state name, population density, total population, and area, in this order. If your response has multiple rows, the data frame should be arranged in descending order of population density.</p>
+<p>Create a scatterplot of the percentage below poverty (<code>percbelowpoverty</code> on the y-axis) versus percentage of people with a college degree (<code>percollege</code> on the x-axis), where the color and shape of points are determined by <code>state</code>. Make sure to set informative titles, axis, and legend labels for your plot. First, describe the overall relationship between percentage of people with a college degree and percentage below poverty in Midwestern states, making sure to identify at least one county that is a clear outlier by name in your narrative. You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them. Then, comment on whether you can identify how this relationship varies across states.</p>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 3”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 3”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
 </section>
 <section id="question-4" class="level3">
 <h3 class="anchored" data-anchor-id="question-4">Question 4</h3>
-<p>In Lab 1 you were also asked to describe the distribution of population densities. The following is one acceptable description that touches on shape, center, and spread of this distribution. Calculate the values that should go into the blanks.</p>
-<blockquote class="blockquote">
-<p>The distribution of population density of counties is unimodal and extremely right-skewed. A typical Midwestern county has population density of ____ people per unit area. The middle 50% of the counties have population densities between ___ to ___ people per unit area.</p>
-</blockquote>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>Now, let’s examine the relationship between the same two variables, once again using different colors and shapes to represent each state, and using a separate plot for each state, i.e., with faceting using <code>sns.FacetGrid</code>. In addition to points (<code>sns.scatterplot()</code>), represent the data with a smooth curve fit to the data with <code>sns.lineplot()</code>, with the argument <code>ci=None</code> to remove the confidence bands. Make sure to set informative titles, axis, and legend labels for your plot. Which plot do you prefer - this plot or the plot in Question 3? Briefly explain your choice.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Think about which measures of center and spread are appropriate for skewed distributions.</p>
+<p><code>ci=None</code> removes the confidence bands around the line. These bands show the uncertainty around the smooth curve. We’ll discuss uncertainty around estimates later in the course and bring these bands back then.</p>
 </div>
 </div>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 4”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 4”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
 </section>
 <section id="question-5" class="level3">
 <h3 class="anchored" data-anchor-id="question-5">Question 5</h3>
-<p>Another visualization from Lab 1 was the following that showed the proportion of urban counties in each state.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab-2_files/figure-html/metro-barplot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Calculate these proportions in a single data pipeline.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remember, you’ll first need to create a new variable called <code>metro</code> which takes on the value <code>Yes</code> if the value of <code>inmetro</code> is 1, and <code>No</code> otherwise. You can refer to <a href="../labs/lab-1.html#question-6">Lab 1</a> if you need a refresher on how to do this.</p>
-</div>
-</div>
+<p><em>Do some states have counties that tend to be geographically larger than others?</em></p>
+<p>To explore this question, create side-by-side boxplots of area (<code>area</code>) of a county based on state (<code>state</code>). How do typical county area sizes compare across states? How do variabilities of county sizes compare across states? Which state has the single largest county? Identify the name of this county. You can use the data viewer to identify it interactively, you do not have to write code.</p>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 5”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
+<p>Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.</p>
+<p>Once again, make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
 </div>
 </section>
 <section id="question-6" class="level3">
 <h3 class="anchored" data-anchor-id="question-6">Question 6</h3>
-<p>Return to the following scatter plot of percentage below poverty vs.&nbsp;percentage of people with a college degree, where the color and shape of points are determined by <code>state</code> where you were asked to identify at least one county that is a clear outlier by name.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab-2_files/figure-html/percollege-percbelowpoverty-scatterplot-1.png" class="img-fluid figure-img" width="480"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>a. In a single pipeline, identify the observations marked in the orange square on the upper left corner. Your answer should be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.</p>
-<p>b. In a single pipeline, identify the observations marked in the red square in the plot above. Your answer should again be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.</p>
-<p>c. Bring your answers from part (a) and part (b) together! In a single pipeline, and a single <code>filter()</code> statement, identify the observations marked in the red and orange square in the plot above. Your answer should again be a data frame with four variables: county, state, percentage below poverty, and percentage college educated.</p>
-<p>d. Create a new variable in <code>midwest</code> called <code>potential_outlier</code>. This variable should take on the value:</p>
-<ul>
-<li><p><code>Yes</code> if the point is one the ones you identified in part (c), i.e., one of the points marked in the squares in the plot above.</p></li>
-<li><p><code>No</code> otherwise.</p></li>
-</ul>
-<p>Then, display the updated <code>midwest</code> data frame, with county, state, percentage below poverty, percentage college educated, <code>potential_outlier</code> as the selected variables, arranged in ascending order of <code>potential_outlier</code>.</p>
-<p>c. Recreate the visualization above, i.e.&nbsp;a scatterplot of percentage below poverty vs.&nbsp;percentage of people with a college degree, however color the points by the newly created <code>potential_outlier</code> variable instead of state.</p>
-<div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 6”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
-</div>
-</section>
-<section id="question-7" class="level3">
-<h3 class="anchored" data-anchor-id="question-7">Question 7</h3>
-<p>a. In a single pipeline, calculate the total population for each state and save the resulting data frame as <code>state_population</code> and display it in descending order of total population.</p>
-<p>b. Then, in a separate pipeline, calculate the proportion of the total population in each state and, once again, display the results in descending order of proportion of population.</p>
+<p><em>Do some states have a higher percentage of their counties located in a metropolitan area?</em></p>
+<p>Create a segmented bar chart with one bar per state and the bar filled with colors according to the value of <code>metro</code> – one color indicating <code>Yes</code> and the other color indicating <code>No</code> for whether a county is considered to be a metro area. The y-axis of the segmented barplot should range from 0 to 1, indicating proportions. Compare the percentage of counties in metro areas across the states based on this plot. Make sure to supplement your narrative with rough estimates of these percentages.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Hint
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In answering parts (a) and (b), you’ll create two new variables, one for total population and other for proportion of total proportion. Make sure to give them “reasonable” names – short but evocative.</p>
+<p>For this question, you should begin with the data wrangling pipeline below. We will learn more about data wrangling in the coming weeks, so this is a mini-preview. This pipeline creates a new variable called <code>metro</code> based on the value of the existing variable called <code>inmetro</code>. If the value of <code>inmetro</code> is equal to 1 (<code>'Yes' if x == 1</code>), it sets the value of <code>metro</code> to “Yes”, and if not, it sets the value of <code>metro</code> to “No”. The resulting data frame is assigned back to <code>midwest</code>, overwriting the existing <code>midwest</code> data frame with a version that includes the new <code>metro</code> variable.</p>
+<div id="hint" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>midwest[<span class="st">'metro'</span>] <span class="op">=</span> midwest[<span class="st">'inmetro'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'Yes'</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">'No'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>c. Which Midwestern state is most populous and what percent of the Midwest population lives there? Which is the least populous and what percent lives there?</p>
+</div>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 7”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
+<p>Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.</p>
+<p>And once again, make sure to commit and push all changed files so that your Git pane is empty afterward. We keep repeating this because it’s important and because we see students forget to do this. So take a moment to make sure you’re following along with the version control instructions.</p>
 </div>
 </section>
-<section id="question-8" class="level3">
-<h3 class="anchored" data-anchor-id="question-8">Question 8</h3>
-<p>Calculate the average percentage below poverty for each state and save the resulting data frame as <code>state_poverty</code> with the columns <code>state</code> and <code>mean_percbelowpoverty</code>.</p>
-<p>Then, in a new pipeline, display the <code>state_poverty</code> data frame in ascending order of <code>mean_percbelowpoverty</code>. Which state has the lowest average percentage below poverty across its counties? Which state has the highest average percentage below poverty across its counties?</p>
+<section id="question-7" class="level3">
+<h3 class="anchored" data-anchor-id="question-7">Question 7</h3>
+<p>Recreate the plot below, and then give it a title. Then, identify at least one county that is a clear outlier in Wisconsin (WI) by name. You can use the data viewer to identify them interactively, you do not have to write code. Comment on the population composition of this county by investigating the percentage of other races living there.</p>
+<div id="1737b1be" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-2_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://python-graph-gallery.com/104-seaborn-themes/">The <code>seaborn</code> reference for themes in the Python Graph Gallery</a> will be helpful in determining the theme.</li>
+<li>The <code>s</code>ize of the points is 50.</li>
+<li>The transparency (<code>alpha</code>) of the points is 0.5.</li>
+<li>You can put line breaks in labels with <code>\n</code>.</li>
+</ul>
+</div>
+</div>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 8”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
+<p>Run all, commit, and sync your final changes to GitHub with a meaningful commit message.</p>
+<p><br></p>
+<p>Make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
 </div>
 </section>
 </section>
 <section id="part-2" class="level2">
 <h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
-<p><strong>All about <code>group_by()</code>!</strong></p>
+<p><strong>Enough about the Midwest!</strong></p>
+<p>In this part we will use a new, more recent, and potentially more relevant dataset on counties in Arizona.</p>
+<p>This dataset is stored in a file called <code>az-county.csv</code> in the <code>data</code> folder of your project/repository.</p>
+<p>You can read this file into Python with the following code:</p>
+<div id="06a9ae62" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>az_county <span class="op">=</span> pd.read_csv(<span class="st">'data/az_county.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will read the CSV (comma separated values) file from the <code>data</code> folder and store the dataset as a data frame called <code>az_county</code> in Python.</p>
+<p>The variables in the dataset and their descriptions are as follows:</p>
+<ul>
+<li><code>county</code>: Name of county.</li>
+<li><code>state_abb</code>: State abbreviation (AZ).</li>
+<li><code>state_name</code>: State name (Arizona).</li>
+<li><code>land_area_m2</code>: Land area of county in meters-squared, based on the 2020 census.</li>
+<li><code>land_area_mi2</code>: Land area of county in miles-squared, based on the 2020 census.</li>
+<li><code>population</code>: Population of county, based on the 2020 census.</li>
+<li><code>density</code>: Population density calculated as population divided by land area in miles-squared.</li>
+</ul>
+<p>In addition to being more recent and more relevant, this dataset is also more complete in the sense that we know the units of population density: people per mile-squared!</p>
+<section id="question-8" class="level3">
+<h3 class="anchored" data-anchor-id="question-8">Question 8</h3>
+<p>First, guess what the relationship between population density and land area might be – positive? negative? no relationship?</p>
+<p>Then, make a scatter plot of population density (<code>density</code> on the y-axis) vs.&nbsp;land area in miles-squared (<code>land_area_mi2</code> on the x-axis). Make sure to set an informative title and axis labels for your plot.Describe the relationship. Was your guess correct?</p>
+</section>
 <section id="question-9" class="level3">
 <h3 class="anchored" data-anchor-id="question-9">Question 9</h3>
-<p>Suppose we have the following data frame:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">var_1 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">var_2 =</span> <span class="fu">c</span>(<span class="st">"Pizza"</span>, <span class="st">"Burger"</span>, <span class="st">"Pizza"</span>, <span class="st">"Pizza"</span>, <span class="st">"Burger"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">var_3 =</span> <span class="fu">c</span>(<span class="st">"Apple"</span>, <span class="st">"Apple"</span>, <span class="st">"Pear"</span>, <span class="st">"Pear"</span>, <span class="st">"Banana"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  var_1 var_2  var_3 
-  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
-1    10 Pizza  Apple 
-2    20 Burger Apple 
-3    30 Pizza  Pear  
-4    40 Pizza  Pear  
-5    50 Burger Banana</code></pre>
-</div>
-</div>
-<p>a. What does the following code chunk do? Run it and analyze the result and articulate in words what <code>arrange()</code> does.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(var_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>b. What does the following code chunk do? Run it and analyze the result and articulate in words what <code>group_by()</code> does. Also comment on how it’s different from the <code>arrange()</code> in part (a)?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>c. What does the following code chunk do? Run it and analyze the result and articulate in words what the pipeline does.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_var_1 =</span> <span class="fu">mean</span>(var_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>d. What does the following code chunk do? Run it and analyze the result and articulate in words what the pipeline does. Then, comment on what the message says.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2, var_3) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_var_1 =</span> <span class="fu">mean</span>(var_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>e. What does the following code chunk do? Run it and analyze the result and articulate in words what the pipeline does, especially mentioning what the <code>.groups</code> argument does. How is the output different from the one in part (d).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2, var_3) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_var_1 =</span> <span class="fu">mean</span>(var_1), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>f. What do the following pipelines do? Run both and analyze their results and articulate in words what each pipeline does. How are the outputs of the two pipelines different?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2, var_3) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_var_1 =</span> <span class="fu">mean</span>(var_1), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(var_2, var_3) <span class="sc">|&gt;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_var_1 =</span> <span class="fu">mean</span>(var_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with an appropriate commit message.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
-</div>
+<p>Now make a scatter plot of population density (<code>density</code> on the y-axis) vs.&nbsp;land area in meters-squared (<code>land_area_m2</code> on the x-axis). Make sure to set an informative title and axis labels for your plot. Comment on how this scatterplot compares to the one in Exercise 8 — is the relationship displayed same or different. Explain why.</p>
 </section>
 <section id="question-10" class="level3">
 <h3 class="anchored" data-anchor-id="question-10">Question 10</h3>
-<p>Did you select your pages on Gradescope? You don’t need to write an answer for this question, if you select your pages when you upload your lab to Gradescope, you’ll get full points on this question. Otherwise, you’ll get a 0 on this question.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>What are some insights that you found from the <code>az_county</code> data from Questions 8-9?</p>
 </section>
 </section>
 </section>
@@ -912,7 +768,6 @@ Tip
 <h1>Wrap-up</h1>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Once you are finished with the lab, you will submit your final PDF document to Gradescope.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -924,17 +779,9 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.</p>
-<p>You must turn in a PDF file to the Gradescope page by the submission deadline to be considered “on time”.</p>
+<p>You must turn in the .ipynb file by the submission deadline to be considered “on time”.</p>
 </div>
 </div>
-<p>To submit your assignment:</p>
-<ul>
-<li>Go to <a href="http://www.gradescope.com" class="uri">http://www.gradescope.com</a> and click <em>Log in</em> in the top right corner.</li>
-<li>Click <em>School Credentials</em> <span class="math inline">\(\rightarrow\)</span> <em>Duke NetID</em> and log in using your NetID credentials.</li>
-<li>Click on your <em>STA 199</em> course.</li>
-<li>Click on the assignment, and you’ll be prompted to submit it.</li>
-<li>Mark all the pages associated with question. All the pages of your lab should be associated with at least one question (i.e., should be “checked”).</li>
-</ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -948,10 +795,8 @@ Checklist
 <p>Make sure you have:</p>
 <ul>
 <li>attempted all questions</li>
-<li>rendered your Quarto document</li>
-<li>committed and pushed everything to your GitHub repository such that the Git pane in RStudio is empty</li>
-<li>uploaded your PDF to Gradescope</li>
-<li>selected pages associated with each question on Gradescope</li>
+<li>run all code in your Jupyter notebook</li>
+<li>committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty</li>
 </ul>
 </div>
 </div>
@@ -959,7 +804,7 @@ Checklist
 <section id="grading" class="level2">
 <h2 class="anchored" data-anchor-id="grading">Grading</h2>
 <p>The lab is graded out of a total of 50 points.</p>
-<p>On Questions 1 through 9, you can earn up to 5 points on each question:</p>
+<p>On Questions 1 through 10, you can earn up to 5 points on each question:</p>
 <ul>
 <li><p>5: Response shows excellent understanding and addresses all or almost all of the rubric items.</p></li>
 <li><p>4: Response shows good understanding and addresses most of the rubric items.</p></li>
@@ -968,24 +813,12 @@ Checklist
 <li><p>1: Response does not show sufficient effort or understanding and/or is largely incomplete.</p></li>
 <li><p>0: No attempt.</p></li>
 </ul>
-<p>On Question 10, you can earn either 0 or 5 points for selecting questions and pages on Gradescope:</p>
-<ul>
-<li>5: Selected questions and pages on Gradescope.</li>
-<li>0: Did not select some or all questions and pages on Gradescope.</li>
-</ul>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Remember, haikus not novellas when writing code!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>We’re assigning points to this seemingly trivial task because not selecting your pages and questions will greatly slow down the grading. So we want to make sure you’re properly motivated to complete this task!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1209,6 +1042,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1243,7 +1094,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1519,7 +1374,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../labs/lab-1.html" class="pagination-link  aria-label=" lab="" 1"="">
+      <a href="../labs/lab-1.html" class="pagination-link" aria-label="Lab 1">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 1</span>
       </a>          
   </div>

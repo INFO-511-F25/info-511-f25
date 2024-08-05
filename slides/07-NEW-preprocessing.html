@@ -1,0 +1,3105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Greg Chism">
+
+<title>INFO 511 - Data preprocessing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//img/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="INFO 511 - Data preprocessing">
+<meta property="og:description" content="Lecture 7">
+<meta property="og:site_name" content="INFO 511">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data preprocessing</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
+    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <div class="dropdown">
+      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
+            Gradescope
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
+            Gradebook
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Course information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-team.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teaching team</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-links.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Useful links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Textbooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&amp;package_service_id=43729147450003843&amp;institutionId=3843&amp;customerId=3840" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science from Scratch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://wesmckinney.com/book/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python for Data Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../textbooks/brucePracStatsForDS.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical Stats for DS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../textbooks/jamesISL.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to Statistical Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&amp;package_service_id=43729147410003843&amp;institutionId=3843&amp;customerId=3840" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Essential Math for Data Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://statsthinking21.github.io/statsthinking21-python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Companion to Statistical Thinking in the 21st Century</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Computing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-cheatsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheatsheets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../computing/computing-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting up Git</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/description.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/1-working-collaboratively.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Milestone 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/2-proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Milestone 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/3-peer-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Milestone 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/4-writeup-presentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Milestone 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/tips-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tips + resources</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Labs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 0</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/lab-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Exam review</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam-review/exam-1-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exam 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam-review/exam-2-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exam 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing">Data preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#data-preprocessing-1" id="toc-data-preprocessing-1" class="nav-link" data-scroll-target="#data-preprocessing-1">Data preprocessing</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question</a></li>
+  <li><a href="#dataset-1-human-freedom-index" id="toc-dataset-1-human-freedom-index" class="nav-link" data-scroll-target="#dataset-1-human-freedom-index">Dataset #1: Human Freedom Index</a></li>
+  <li><a href="#understanding-the-data" id="toc-understanding-the-data" class="nav-link" data-scroll-target="#understanding-the-data">Understanding the data</a></li>
+  <li><a href="#identifying-missing-values" id="toc-identifying-missing-values" class="nav-link" data-scroll-target="#identifying-missing-values">Identifying missing values</a></li>
+  </ul></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data cleaning</a>
+  <ul class="collapse">
+  <li><a href="#handling-missing-data" id="toc-handling-missing-data" class="nav-link" data-scroll-target="#handling-missing-data">Handling missing data</a></li>
+  <li><a href="#imputation" id="toc-imputation" class="nav-link" data-scroll-target="#imputation">Imputation</a></li>
+  <li><a href="#mean-imputation" id="toc-mean-imputation" class="nav-link" data-scroll-target="#mean-imputation">Mean imputation</a></li>
+  <li><a href="#median-imputation" id="toc-median-imputation" class="nav-link" data-scroll-target="#median-imputation">Median imputation</a></li>
+  <li><a href="#mode-imputation" id="toc-mode-imputation" class="nav-link" data-scroll-target="#mode-imputation">Mode imputation</a></li>
+  </ul></li>
+  <li><a href="#data-type-conversion" id="toc-data-type-conversion" class="nav-link" data-scroll-target="#data-type-conversion">Data type conversion</a>
+  <ul class="collapse">
+  <li><a href="#recap-logical-operators" id="toc-recap-logical-operators" class="nav-link" data-scroll-target="#recap-logical-operators">Recap: logical operators</a></li>
+  <li><a href="#recap-logical-operators-1" id="toc-recap-logical-operators-1" class="nav-link" data-scroll-target="#recap-logical-operators-1">Recap: logical operators</a></li>
+  <li><a href="#recap-logical-operators-2" id="toc-recap-logical-operators-2" class="nav-link" data-scroll-target="#recap-logical-operators-2">Recap: logical operators</a></li>
+  <li><a href="#recap-logical-operators-3" id="toc-recap-logical-operators-3" class="nav-link" data-scroll-target="#recap-logical-operators-3">Recap: logical operators</a></li>
+  <li><a href="#looking-at-our-data" id="toc-looking-at-our-data" class="nav-link" data-scroll-target="#looking-at-our-data">Looking at our data</a></li>
+  <li><a href="#converting-year-to-datetime" id="toc-converting-year-to-datetime" class="nav-link" data-scroll-target="#converting-year-to-datetime">Converting <code>year</code> to <code>Datetime</code></a></li>
+  <li><a href="#converting-iso_code-countries-and-region-to-categorical" id="toc-converting-iso_code-countries-and-region-to-categorical" class="nav-link" data-scroll-target="#converting-iso_code-countries-and-region-to-categorical">Converting <code>ISO_code</code>, <code>countries</code>, and <code>region</code> to Categorical</a></li>
+  <li><a href="#creating-a-boolean-column-from-hf_score" id="toc-creating-a-boolean-column-from-hf_score" class="nav-link" data-scroll-target="#creating-a-boolean-column-from-hf_score">Creating a <code>boolean</code> column from <code>hf_score</code></a></li>
+  </ul></li>
+  <li><a href="#filtering-subsetting" id="toc-filtering-subsetting" class="nav-link" data-scroll-target="#filtering-subsetting">Filtering + subsetting</a>
+  <ul class="collapse">
+  <li><a href="#filter-out-true-values" id="toc-filter-out-true-values" class="nav-link" data-scroll-target="#filter-out-true-values">Filter out <code>True</code> values</a></li>
+  <li><a href="#filter-out-true-values-for-newest-year" id="toc-filter-out-true-values-for-newest-year" class="nav-link" data-scroll-target="#filter-out-true-values-for-newest-year">Filter out <code>True</code> values for newest <code>year</code></a></li>
+  <li><a href="#filtering-categories" id="toc-filtering-categories" class="nav-link" data-scroll-target="#filtering-categories">Filtering categories</a></li>
+  </ul></li>
+  <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations">Transformations</a>
+  <ul class="collapse">
+  <li><a href="#normalizing" id="toc-normalizing" class="nav-link" data-scroll-target="#normalizing">Normalizing</a></li>
+  <li><a href="#visual-comparison" id="toc-visual-comparison" class="nav-link" data-scroll-target="#visual-comparison">Visual comparison</a></li>
+  <li><a href="#pros-cons-standardscaler" id="toc-pros-cons-standardscaler" class="nav-link" data-scroll-target="#pros-cons-standardscaler">Pros + cons (<code>StandardScaler</code>)</a></li>
+  <li><a href="#pros-cons-maxabsscaler" id="toc-pros-cons-maxabsscaler" class="nav-link" data-scroll-target="#pros-cons-maxabsscaler">Pros + cons (<code>MaxAbsScaler</code>)</a></li>
+  <li><a href="#pros-cons-minmaxscaler" id="toc-pros-cons-minmaxscaler" class="nav-link" data-scroll-target="#pros-cons-minmaxscaler">Pros + cons (<code>MinMaxScaler</code>)</a></li>
+  </ul></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">Normality</a>
+  <ul class="collapse">
+  <li><a href="#normality-test-q-q-plot" id="toc-normality-test-q-q-plot" class="nav-link" data-scroll-target="#normality-test-q-q-plot">Normality test: Q-Q plot</a></li>
+  <li><a href="#correcting-skew" id="toc-correcting-skew" class="nav-link" data-scroll-target="#correcting-skew">Correcting skew</a></li>
+  <li><a href="#comparing-transformations" id="toc-comparing-transformations" class="nav-link" data-scroll-target="#comparing-transformations">Comparing transformations</a></li>
+  <li><a href="#what-did-we-learn" id="toc-what-did-we-learn" class="nav-link" data-scroll-target="#what-did-we-learn">What did we learn?</a></li>
+  </ul></li>
+  <li><a href="#to-be-continued-in-week-9" id="toc-to-be-continued-in-week-9" class="nav-link" data-scroll-target="#to-be-continued-in-week-9">To be continued… <br> …in Week 9 🫠</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/edit/main/slides/07-NEW-preprocessing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="07-NEW-preprocessing.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data preprocessing</h1>
+<p class="subtitle lead">Lecture 7</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Dr.&nbsp;Greg Chism </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Arizona <br> INFO 511 - Fall 2024
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div id="setup" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import all required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, MaxAbsScaler, MinMaxScaler</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase font size of all Seaborn plot elements</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale <span class="op">=</span> <span class="fl">1.25</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seaborn theme</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style <span class="op">=</span> <span class="st">"whitegrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-preprocessing" class="level1">
+<h1>Data preprocessing</h1>
+<section id="data-preprocessing-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-preprocessing-1">Data preprocessing</h2>
+<blockquote class="blockquote">
+<p><strong>Data preprocessing</strong> refers to the manipulation, filtration, or augmentation of data before it is analyzed. It is a crucial step in the data science process.</p>
+</blockquote>
+<div class="fragment">
+<p>It’s essentially data cleaning.</p>
+</div>
+</section>
+<section id="datasets" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="datasets">Datasets</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Human Freedom Index</strong></p>
+<p>The Human Freedom Index is a report that attempts to summarize the idea of “freedom” through variables for many countries around the globe.</p>
+<div id="ac4512f6" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-4-output-1.png" width="692" height="307" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Environmental Sustainability</strong></p>
+<p>Countries are given an overall sustainability score as well as scores in each of several different environmental areas.</p>
+<p><br></p>
+<div id="7c7af7f0" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-5-output-1.png" width="700" height="307" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="question" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="question">Question</h2>
+<p>How does <strong>environmental stability</strong> correlate with <strong>human freedom indices</strong> in different countries, and what trends can be observed?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/environmental-stability.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="919"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/human-freedom.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1214"></p>
+</figure>
+</div>
+</div><blockquote class="blockquote">
+<p>Note that this will take us <strong>two</strong> lectures to answer.</p>
+</blockquote>
+</div>
+</section>
+<section id="dataset-1-human-freedom-index" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-1-human-freedom-index">Dataset #1: Human Freedom Index</h2>
+<div id="3ff1d7a7" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hfi <span class="op">=</span> pd.read_csv(<span class="st">"data/hfi.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>hfi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">ISO_code</th>
+<th data-quarto-table-cell-role="th">countries</th>
+<th data-quarto-table-cell-role="th">region</th>
+<th data-quarto-table-cell-role="th">pf_rol_procedural</th>
+<th data-quarto-table-cell-role="th">pf_rol_civil</th>
+<th data-quarto-table-cell-role="th">pf_rol_criminal</th>
+<th data-quarto-table-cell-role="th">pf_rol</th>
+<th data-quarto-table-cell-role="th">pf_ss_homicide</th>
+<th data-quarto-table-cell-role="th">pf_ss_disappearances_disap</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_bribes</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_licensing</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_compliance</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business</th>
+<th data-quarto-table-cell-role="th">ef_regulation</th>
+<th data-quarto-table-cell-role="th">ef_score</th>
+<th data-quarto-table-cell-role="th">ef_rank</th>
+<th data-quarto-table-cell-role="th">hf_score</th>
+<th data-quarto-table-cell-role="th">hf_rank</th>
+<th data-quarto-table-cell-role="th">hf_quartile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2016</td>
+<td>ALB</td>
+<td>Albania</td>
+<td>Eastern Europe</td>
+<td>6.661503</td>
+<td>4.547244</td>
+<td>4.666508</td>
+<td>5.291752</td>
+<td>8.920429</td>
+<td>10.0</td>
+<td>...</td>
+<td>4.050196</td>
+<td>7.324582</td>
+<td>7.074366</td>
+<td>6.705863</td>
+<td>6.906901</td>
+<td>7.54</td>
+<td>34.0</td>
+<td>7.568140</td>
+<td>48.0</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2016</td>
+<td>DZA</td>
+<td>Algeria</td>
+<td>Middle East &amp; North Africa</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.819566</td>
+<td>9.456254</td>
+<td>10.0</td>
+<td>...</td>
+<td>3.765515</td>
+<td>8.523503</td>
+<td>7.029528</td>
+<td>5.676956</td>
+<td>5.268992</td>
+<td>4.99</td>
+<td>159.0</td>
+<td>5.135886</td>
+<td>155.0</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2016</td>
+<td>AGO</td>
+<td>Angola</td>
+<td>Sub-Saharan Africa</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.451814</td>
+<td>8.060260</td>
+<td>5.0</td>
+<td>...</td>
+<td>1.945540</td>
+<td>8.096776</td>
+<td>6.782923</td>
+<td>4.930271</td>
+<td>5.518500</td>
+<td>5.17</td>
+<td>155.0</td>
+<td>5.640662</td>
+<td>142.0</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2016</td>
+<td>ARG</td>
+<td>Argentina</td>
+<td>Latin America &amp; the Caribbean</td>
+<td>7.098483</td>
+<td>5.791960</td>
+<td>4.343930</td>
+<td>5.744791</td>
+<td>7.622974</td>
+<td>10.0</td>
+<td>...</td>
+<td>3.260044</td>
+<td>5.253411</td>
+<td>6.508295</td>
+<td>5.535831</td>
+<td>5.369019</td>
+<td>4.84</td>
+<td>160.0</td>
+<td>6.469848</td>
+<td>107.0</td>
+<td>3.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2016</td>
+<td>ARM</td>
+<td>Armenia</td>
+<td>Caucasus &amp; Central Asia</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>5.003205</td>
+<td>8.808750</td>
+<td>10.0</td>
+<td>...</td>
+<td>4.575152</td>
+<td>9.319612</td>
+<td>6.491481</td>
+<td>6.797530</td>
+<td>7.378069</td>
+<td>7.57</td>
+<td>29.0</td>
+<td>7.241402</td>
+<td>57.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 123 columns</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-the-data" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="understanding-the-data">Understanding the data</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><code>.info()</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>.describe()</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="ebcc788d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hfi.info(verbose <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1458 entries, 0 to 1457
+Data columns (total 123 columns):
+ #    Column                              Dtype  
+---   ------                              -----  
+ 0    year                                int64  
+ 1    ISO_code                            object 
+ 2    countries                           object 
+ 3    region                              object 
+ 4    pf_rol_procedural                   float64
+ 5    pf_rol_civil                        float64
+ 6    pf_rol_criminal                     float64
+ 7    pf_rol                              float64
+ 8    pf_ss_homicide                      float64
+ 9    pf_ss_disappearances_disap          float64
+ 10   pf_ss_disappearances_violent        float64
+ 11   pf_ss_disappearances_organized      float64
+ 12   pf_ss_disappearances_fatalities     float64
+ 13   pf_ss_disappearances_injuries       float64
+ 14   pf_ss_disappearances                float64
+ 15   pf_ss_women_fgm                     float64
+ 16   pf_ss_women_missing                 float64
+ 17   pf_ss_women_inheritance_widows      float64
+ 18   pf_ss_women_inheritance_daughters   float64
+ 19   pf_ss_women_inheritance             float64
+ 20   pf_ss_women                         float64
+ 21   pf_ss                               float64
+ 22   pf_movement_domestic                float64
+ 23   pf_movement_foreign                 float64
+ 24   pf_movement_women                   float64
+ 25   pf_movement                         float64
+ 26   pf_religion_estop_establish         float64
+ 27   pf_religion_estop_operate           float64
+ 28   pf_religion_estop                   float64
+ 29   pf_religion_harassment              float64
+ 30   pf_religion_restrictions            float64
+ 31   pf_religion                         float64
+ 32   pf_association_association          float64
+ 33   pf_association_assembly             float64
+ 34   pf_association_political_establish  float64
+ 35   pf_association_political_operate    float64
+ 36   pf_association_political            float64
+ 37   pf_association_prof_establish       float64
+ 38   pf_association_prof_operate         float64
+ 39   pf_association_prof                 float64
+ 40   pf_association_sport_establish      float64
+ 41   pf_association_sport_operate        float64
+ 42   pf_association_sport                float64
+ 43   pf_association                      float64
+ 44   pf_expression_killed                float64
+ 45   pf_expression_jailed                float64
+ 46   pf_expression_influence             float64
+ 47   pf_expression_control               float64
+ 48   pf_expression_cable                 float64
+ 49   pf_expression_newspapers            float64
+ 50   pf_expression_internet              float64
+ 51   pf_expression                       float64
+ 52   pf_identity_legal                   float64
+ 53   pf_identity_parental_marriage       float64
+ 54   pf_identity_parental_divorce        float64
+ 55   pf_identity_parental                float64
+ 56   pf_identity_sex_male                float64
+ 57   pf_identity_sex_female              float64
+ 58   pf_identity_sex                     float64
+ 59   pf_identity_divorce                 float64
+ 60   pf_identity                         float64
+ 61   pf_score                            float64
+ 62   pf_rank                             float64
+ 63   ef_government_consumption           float64
+ 64   ef_government_transfers             float64
+ 65   ef_government_enterprises           float64
+ 66   ef_government_tax_income            float64
+ 67   ef_government_tax_payroll           float64
+ 68   ef_government_tax                   float64
+ 69   ef_government                       float64
+ 70   ef_legal_judicial                   float64
+ 71   ef_legal_courts                     float64
+ 72   ef_legal_protection                 float64
+ 73   ef_legal_military                   float64
+ 74   ef_legal_integrity                  float64
+ 75   ef_legal_enforcement                float64
+ 76   ef_legal_restrictions               float64
+ 77   ef_legal_police                     float64
+ 78   ef_legal_crime                      float64
+ 79   ef_legal_gender                     float64
+ 80   ef_legal                            float64
+ 81   ef_money_growth                     float64
+ 82   ef_money_sd                         float64
+ 83   ef_money_inflation                  float64
+ 84   ef_money_currency                   float64
+ 85   ef_money                            float64
+ 86   ef_trade_tariffs_revenue            float64
+ 87   ef_trade_tariffs_mean               float64
+ 88   ef_trade_tariffs_sd                 float64
+ 89   ef_trade_tariffs                    float64
+ 90   ef_trade_regulatory_nontariff       float64
+ 91   ef_trade_regulatory_compliance      float64
+ 92   ef_trade_regulatory                 float64
+ 93   ef_trade_black                      float64
+ 94   ef_trade_movement_foreign           float64
+ 95   ef_trade_movement_capital           float64
+ 96   ef_trade_movement_visit             float64
+ 97   ef_trade_movement                   float64
+ 98   ef_trade                            float64
+ 99   ef_regulation_credit_ownership      float64
+ 100  ef_regulation_credit_private        float64
+ 101  ef_regulation_credit_interest       float64
+ 102  ef_regulation_credit                float64
+ 103  ef_regulation_labor_minwage         float64
+ 104  ef_regulation_labor_firing          float64
+ 105  ef_regulation_labor_bargain         float64
+ 106  ef_regulation_labor_hours           float64
+ 107  ef_regulation_labor_dismissal       float64
+ 108  ef_regulation_labor_conscription    float64
+ 109  ef_regulation_labor                 float64
+ 110  ef_regulation_business_adm          float64
+ 111  ef_regulation_business_bureaucracy  float64
+ 112  ef_regulation_business_start        float64
+ 113  ef_regulation_business_bribes       float64
+ 114  ef_regulation_business_licensing    float64
+ 115  ef_regulation_business_compliance   float64
+ 116  ef_regulation_business              float64
+ 117  ef_regulation                       float64
+ 118  ef_score                            float64
+ 119  ef_rank                             float64
+ 120  hf_score                            float64
+ 121  hf_rank                             float64
+ 122  hf_quartile                         float64
+dtypes: float64(119), int64(1), object(3)
+memory usage: 1.4+ MB</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="c1883aae" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hfi.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">pf_rol_procedural</th>
+<th data-quarto-table-cell-role="th">pf_rol_civil</th>
+<th data-quarto-table-cell-role="th">pf_rol_criminal</th>
+<th data-quarto-table-cell-role="th">pf_rol</th>
+<th data-quarto-table-cell-role="th">pf_ss_homicide</th>
+<th data-quarto-table-cell-role="th">pf_ss_disappearances_disap</th>
+<th data-quarto-table-cell-role="th">pf_ss_disappearances_violent</th>
+<th data-quarto-table-cell-role="th">pf_ss_disappearances_organized</th>
+<th data-quarto-table-cell-role="th">pf_ss_disappearances_fatalities</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_bribes</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_licensing</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business_compliance</th>
+<th data-quarto-table-cell-role="th">ef_regulation_business</th>
+<th data-quarto-table-cell-role="th">ef_regulation</th>
+<th data-quarto-table-cell-role="th">ef_score</th>
+<th data-quarto-table-cell-role="th">ef_rank</th>
+<th data-quarto-table-cell-role="th">hf_score</th>
+<th data-quarto-table-cell-role="th">hf_rank</th>
+<th data-quarto-table-cell-role="th">hf_quartile</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>1458.000000</td>
+<td>880.000000</td>
+<td>880.000000</td>
+<td>880.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+<td>1369.000000</td>
+<td>1378.000000</td>
+<td>1279.000000</td>
+<td>1378.000000</td>
+<td>...</td>
+<td>1283.000000</td>
+<td>1357.000000</td>
+<td>1368.000000</td>
+<td>1374.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2012.000000</td>
+<td>5.589355</td>
+<td>5.474770</td>
+<td>5.044070</td>
+<td>5.309641</td>
+<td>7.412980</td>
+<td>8.341855</td>
+<td>9.519458</td>
+<td>6.772869</td>
+<td>9.584972</td>
+<td>...</td>
+<td>4.886192</td>
+<td>7.698494</td>
+<td>6.981858</td>
+<td>6.317668</td>
+<td>7.019782</td>
+<td>6.785610</td>
+<td>76.973149</td>
+<td>6.993444</td>
+<td>77.007983</td>
+<td>2.490566</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>2.582875</td>
+<td>2.080957</td>
+<td>1.428494</td>
+<td>1.724886</td>
+<td>1.529310</td>
+<td>2.832947</td>
+<td>3.225902</td>
+<td>1.744673</td>
+<td>2.768983</td>
+<td>1.559826</td>
+<td>...</td>
+<td>1.889168</td>
+<td>1.728507</td>
+<td>1.979200</td>
+<td>1.230988</td>
+<td>1.027625</td>
+<td>0.883601</td>
+<td>44.540142</td>
+<td>1.025811</td>
+<td>44.506549</td>
+<td>1.119698</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>2008.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>2.009841</td>
+<td>2.483540</td>
+<td>2.880000</td>
+<td>1.000000</td>
+<td>3.765827</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>2010.000000</td>
+<td>4.133333</td>
+<td>4.549550</td>
+<td>3.789724</td>
+<td>4.131746</td>
+<td>6.386978</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>5.000000</td>
+<td>9.942607</td>
+<td>...</td>
+<td>3.433786</td>
+<td>6.874687</td>
+<td>6.368178</td>
+<td>5.591851</td>
+<td>6.429498</td>
+<td>6.250000</td>
+<td>38.000000</td>
+<td>6.336685</td>
+<td>39.000000</td>
+<td>1.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2012.000000</td>
+<td>5.300000</td>
+<td>5.300000</td>
+<td>4.575189</td>
+<td>4.910797</td>
+<td>8.638278</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>7.500000</td>
+<td>10.000000</td>
+<td>...</td>
+<td>4.418371</td>
+<td>8.074161</td>
+<td>7.466692</td>
+<td>6.265234</td>
+<td>7.082075</td>
+<td>6.900000</td>
+<td>77.000000</td>
+<td>6.923840</td>
+<td>76.000000</td>
+<td>2.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2014.000000</td>
+<td>7.389499</td>
+<td>6.410975</td>
+<td>6.400000</td>
+<td>6.513178</td>
+<td>9.454402</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>...</td>
+<td>6.227978</td>
+<td>8.991882</td>
+<td>8.209310</td>
+<td>7.139718</td>
+<td>7.720955</td>
+<td>7.410000</td>
+<td>115.000000</td>
+<td>7.894660</td>
+<td>115.000000</td>
+<td>3.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2016.000000</td>
+<td>9.700000</td>
+<td>8.773533</td>
+<td>8.719848</td>
+<td>8.723094</td>
+<td>9.926568</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>10.000000</td>
+<td>...</td>
+<td>9.623811</td>
+<td>9.999638</td>
+<td>9.865488</td>
+<td>9.272600</td>
+<td>9.439828</td>
+<td>9.190000</td>
+<td>162.000000</td>
+<td>9.126313</td>
+<td>162.000000</td>
+<td>4.000000</td>
+</tr>
+</tbody>
+</table>
+
+<p>8 rows × 120 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="identifying-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="identifying-missing-values">Identifying missing values</h2>
+<div id="994874d3" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hfi.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>year                   0
+ISO_code               0
+countries              0
+region                 0
+pf_rol_procedural    578
+                    ... 
+ef_score              80
+ef_rank               80
+hf_score              80
+hf_rank               80
+hf_quartile           80
+Length: 123, dtype: int64</code></pre>
+</div>
+</div>
+<div class="fragment">
+<blockquote class="blockquote">
+<p>A lot of missing values 🙃</p>
+</blockquote>
+</div>
+</section>
+</section>
+<section id="data-cleaning" class="level1">
+<h1>Data cleaning</h1>
+<section id="handling-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-data">Handling missing data</h2>
+<p><strong>Options</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Do nothing…</p></li>
+<li><p>Remove them</p></li>
+<li><p><strong>Imputate</strong></p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>We will use the <code>hf_score</code> from <code>hfi</code>: 80 missing values</p>
+</div>
+</section>
+<section id="imputation" class="level2">
+<h2 class="anchored" data-anchor-id="imputation">Imputation</h2>
+<blockquote class="blockquote">
+<p>In statistics, <strong>imputation</strong> is the process of replacing missing data with substituted values.</p>
+</blockquote>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Mean imputation</p></li>
+<li><p>Median imputation</p></li>
+<li><p>Mode imputation</p></li>
+<li><p><a href="https://datamineaz.org/tables/model-cheatsheet.html">Several other methods</a></p></li>
+</ul>
+</div>
+</section>
+<section id="mean-imputation" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="mean-imputation">Mean imputation</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Definition</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><strong>How it Works</strong>: Replace missing values with the arithmetic <strong>mean</strong> of the non-missing values in the same variable.</p>
+<div class="fragment">
+<p><strong>Pros</strong>:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>Easy and fast.</li>
+<li>Works well with small numerical datasets</li>
+</ul>
+</div>
+<p><strong>Cons</strong>:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>It only works on the column level.</li>
+<li>Will give poor results on encoded categorical features.</li>
+<li>Not very accurate.</li>
+<li>Doesn’t account for the uncertainty in the imputations.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="613773d4" class="cell" data-fig.asp="0.625" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-10-output-1.png" width="593" height="438" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="da4b5023" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>mean_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'mean'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>hfi_copy[<span class="st">'mean_hf_score'</span>] <span class="op">=</span> mean_imputer.fit_transform(hfi_copy[[<span class="st">'hf_score'</span>]])</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>mean_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Original"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>mean_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'mean_hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Mean Imputed"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>plt.legend()</span>
+<span id="cb8-10"><a href="#cb8-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="median-imputation" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="median-imputation">Median imputation</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Definition</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p><strong>How it Works</strong>: Replace missing values with the arithmetic <strong>median</strong> of the non-missing values in the same variable.</p>
+<div class="fragment">
+<p><strong>Pros</strong> (same as mean):</p>
+<div class="incremental">
+<ul class="incremental">
+<li>Easy and fast.</li>
+<li>Works well with small numerical datasets</li>
+</ul>
+</div>
+<p><strong>Cons</strong> (same as mean):</p>
+<div class="incremental">
+<ul class="incremental">
+<li>It only works on the column level.</li>
+<li>Will give poor results on encoded categorical features.</li>
+<li>Not very accurate.</li>
+<li>Doesn’t account for the uncertainty in the imputations.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="2ac62be3" class="cell" data-fig.asp="0.625" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-12-output-1.png" width="593" height="435" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="d1e004e2" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>median_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'median'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>hfi_copy[<span class="st">'median_hf_score'</span>] <span class="op">=</span> median_imputer.fit_transform(hfi_copy[[<span class="st">'hf_score'</span>]])</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>median_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Original"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7"></a>median_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'median_hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Median Imputed"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a>plt.legend()</span>
+<span id="cb9-10"><a href="#cb9-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mode-imputation" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="mode-imputation">Mode imputation</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Definition</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p><strong>How it Works</strong>: Replace missing values with the <strong>mode</strong> of the non-missing values in the same variable.</p>
+<div class="fragment">
+<p><strong>Pros</strong> (same as mean):</p>
+<div class="incremental">
+<ul class="incremental">
+<li>Easy and fast.</li>
+<li>Works well with categorical features.</li>
+</ul>
+</div>
+<p><strong>Cons</strong>:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>Doesn’t factor the correlations between features.</li>
+<li>Can introduce bias in the data.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="6fb45b1a" class="cell" data-fig.asp="0.625" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-14-output-1.png" width="601" height="435" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div id="898836fc" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>mode_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'most_frequent'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>hfi_copy[<span class="st">'mode_hf_score'</span>] <span class="op">=</span> mode_imputer.fit_transform(hfi_copy[[<span class="st">'hf_score'</span>]])</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>mode_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Original"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>mode_plot <span class="op">=</span> sns.kdeplot(data <span class="op">=</span> hfi_copy, x <span class="op">=</span> <span class="st">'mode_hf_score'</span>, linewidth <span class="op">=</span> <span class="dv">2</span>, label <span class="op">=</span> <span class="st">"Mode Imputated"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a>plt.legend()</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-type-conversion" class="level1">
+<h1>Data type conversion</h1>
+<section id="recap-logical-operators" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="recap-logical-operators">Recap: logical operators</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">is less than?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">is less than or equal to?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">is greater than?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">is greater than or equal to?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">is exactly equal to?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">is not equal to?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recap-logical-operators-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="recap-logical-operators-1">Recap: logical operators</h2>
+<p>Here is the equivalent recap of logical operators in Python:</p>
+</section>
+<section id="recap-logical-operators-2" class="level2">
+<h2 class="anchored" data-anchor-id="recap-logical-operators-2">Recap: logical operators</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">is less than?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">is less than or equal to?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">is greater than?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">is greater than or equal to?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">is exactly equal to?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">is not equal to?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recap-logical-operators-3" class="level2">
+<h2 class="anchored" data-anchor-id="recap-logical-operators-3">Recap: logical operators</h2>
+<table class="table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>x and y</code></td>
+<td style="text-align: left;">is x AND y?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>x or y</code></td>
+<td style="text-align: left;">is x OR y?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>x is None</code></td>
+<td style="text-align: left;">is x None?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>x is not None</code></td>
+<td style="text-align: left;">is x not None?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>x in y</code></td>
+<td style="text-align: left;">is x in y?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>x not in y</code></td>
+<td style="text-align: left;">is x not in y?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>not x</code></td>
+<td style="text-align: left;">is not x? (only makes sense if <code>x</code> is <code>True</code> or <code>False</code>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="looking-at-our-data" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="looking-at-our-data">Looking at our data</h2>
+<div id="1132d03d" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hfi_copy <span class="op">=</span> hfi</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>hfi_copy.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1458 entries, 0 to 1457
+Data columns (total 126 columns):
+ #    Column                              Dtype  
+---   ------                              -----  
+ 0    year                                int64  
+ 1    ISO_code                            object 
+ 2    countries                           object 
+ 3    region                              object 
+ 4    pf_rol_procedural                   float64
+ 5    pf_rol_civil                        float64
+ 6    pf_rol_criminal                     float64
+ 7    pf_rol                              float64
+ 8    pf_ss_homicide                      float64
+ 9    pf_ss_disappearances_disap          float64
+ 10   pf_ss_disappearances_violent        float64
+ 11   pf_ss_disappearances_organized      float64
+ 12   pf_ss_disappearances_fatalities     float64
+ 13   pf_ss_disappearances_injuries       float64
+ 14   pf_ss_disappearances                float64
+ 15   pf_ss_women_fgm                     float64
+ 16   pf_ss_women_missing                 float64
+ 17   pf_ss_women_inheritance_widows      float64
+ 18   pf_ss_women_inheritance_daughters   float64
+ 19   pf_ss_women_inheritance             float64
+ 20   pf_ss_women                         float64
+ 21   pf_ss                               float64
+ 22   pf_movement_domestic                float64
+ 23   pf_movement_foreign                 float64
+ 24   pf_movement_women                   float64
+ 25   pf_movement                         float64
+ 26   pf_religion_estop_establish         float64
+ 27   pf_religion_estop_operate           float64
+ 28   pf_religion_estop                   float64
+ 29   pf_religion_harassment              float64
+ 30   pf_religion_restrictions            float64
+ 31   pf_religion                         float64
+ 32   pf_association_association          float64
+ 33   pf_association_assembly             float64
+ 34   pf_association_political_establish  float64
+ 35   pf_association_political_operate    float64
+ 36   pf_association_political            float64
+ 37   pf_association_prof_establish       float64
+ 38   pf_association_prof_operate         float64
+ 39   pf_association_prof                 float64
+ 40   pf_association_sport_establish      float64
+ 41   pf_association_sport_operate        float64
+ 42   pf_association_sport                float64
+ 43   pf_association                      float64
+ 44   pf_expression_killed                float64
+ 45   pf_expression_jailed                float64
+ 46   pf_expression_influence             float64
+ 47   pf_expression_control               float64
+ 48   pf_expression_cable                 float64
+ 49   pf_expression_newspapers            float64
+ 50   pf_expression_internet              float64
+ 51   pf_expression                       float64
+ 52   pf_identity_legal                   float64
+ 53   pf_identity_parental_marriage       float64
+ 54   pf_identity_parental_divorce        float64
+ 55   pf_identity_parental                float64
+ 56   pf_identity_sex_male                float64
+ 57   pf_identity_sex_female              float64
+ 58   pf_identity_sex                     float64
+ 59   pf_identity_divorce                 float64
+ 60   pf_identity                         float64
+ 61   pf_score                            float64
+ 62   pf_rank                             float64
+ 63   ef_government_consumption           float64
+ 64   ef_government_transfers             float64
+ 65   ef_government_enterprises           float64
+ 66   ef_government_tax_income            float64
+ 67   ef_government_tax_payroll           float64
+ 68   ef_government_tax                   float64
+ 69   ef_government                       float64
+ 70   ef_legal_judicial                   float64
+ 71   ef_legal_courts                     float64
+ 72   ef_legal_protection                 float64
+ 73   ef_legal_military                   float64
+ 74   ef_legal_integrity                  float64
+ 75   ef_legal_enforcement                float64
+ 76   ef_legal_restrictions               float64
+ 77   ef_legal_police                     float64
+ 78   ef_legal_crime                      float64
+ 79   ef_legal_gender                     float64
+ 80   ef_legal                            float64
+ 81   ef_money_growth                     float64
+ 82   ef_money_sd                         float64
+ 83   ef_money_inflation                  float64
+ 84   ef_money_currency                   float64
+ 85   ef_money                            float64
+ 86   ef_trade_tariffs_revenue            float64
+ 87   ef_trade_tariffs_mean               float64
+ 88   ef_trade_tariffs_sd                 float64
+ 89   ef_trade_tariffs                    float64
+ 90   ef_trade_regulatory_nontariff       float64
+ 91   ef_trade_regulatory_compliance      float64
+ 92   ef_trade_regulatory                 float64
+ 93   ef_trade_black                      float64
+ 94   ef_trade_movement_foreign           float64
+ 95   ef_trade_movement_capital           float64
+ 96   ef_trade_movement_visit             float64
+ 97   ef_trade_movement                   float64
+ 98   ef_trade                            float64
+ 99   ef_regulation_credit_ownership      float64
+ 100  ef_regulation_credit_private        float64
+ 101  ef_regulation_credit_interest       float64
+ 102  ef_regulation_credit                float64
+ 103  ef_regulation_labor_minwage         float64
+ 104  ef_regulation_labor_firing          float64
+ 105  ef_regulation_labor_bargain         float64
+ 106  ef_regulation_labor_hours           float64
+ 107  ef_regulation_labor_dismissal       float64
+ 108  ef_regulation_labor_conscription    float64
+ 109  ef_regulation_labor                 float64
+ 110  ef_regulation_business_adm          float64
+ 111  ef_regulation_business_bureaucracy  float64
+ 112  ef_regulation_business_start        float64
+ 113  ef_regulation_business_bribes       float64
+ 114  ef_regulation_business_licensing    float64
+ 115  ef_regulation_business_compliance   float64
+ 116  ef_regulation_business              float64
+ 117  ef_regulation                       float64
+ 118  ef_score                            float64
+ 119  ef_rank                             float64
+ 120  hf_score                            float64
+ 121  hf_rank                             float64
+ 122  hf_quartile                         float64
+ 123  mean_hf_score                       float64
+ 124  median_hf_score                     float64
+ 125  mode_hf_score                       float64
+dtypes: float64(122), int64(1), object(3)
+memory usage: 1.4+ MB</code></pre>
+</div>
+</div>
+</section>
+<section id="converting-year-to-datetime" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="converting-year-to-datetime">Converting <code>year</code> to <code>Datetime</code></h2>
+<div id="8f5ffe65" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>hfi_copy[<span class="st">'year'</span>] <span class="op">=</span> pd.to_datetime(hfi_copy[<span class="st">'year'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hfi_copy.info(verbose<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1458 entries, 0 to 1457
+Data columns (total 126 columns):
+ #    Column                              Dtype         
+---   ------                              -----         
+ 0    year                                datetime64[ns]
+ 1    ISO_code                            object        
+ 2    countries                           object        
+ 3    region                              object        
+ 4    pf_rol_procedural                   float64       
+ 5    pf_rol_civil                        float64       
+ 6    pf_rol_criminal                     float64       
+ 7    pf_rol                              float64       
+ 8    pf_ss_homicide                      float64       
+ 9    pf_ss_disappearances_disap          float64       
+ 10   pf_ss_disappearances_violent        float64       
+ 11   pf_ss_disappearances_organized      float64       
+ 12   pf_ss_disappearances_fatalities     float64       
+ 13   pf_ss_disappearances_injuries       float64       
+ 14   pf_ss_disappearances                float64       
+ 15   pf_ss_women_fgm                     float64       
+ 16   pf_ss_women_missing                 float64       
+ 17   pf_ss_women_inheritance_widows      float64       
+ 18   pf_ss_women_inheritance_daughters   float64       
+ 19   pf_ss_women_inheritance             float64       
+ 20   pf_ss_women                         float64       
+ 21   pf_ss                               float64       
+ 22   pf_movement_domestic                float64       
+ 23   pf_movement_foreign                 float64       
+ 24   pf_movement_women                   float64       
+ 25   pf_movement                         float64       
+ 26   pf_religion_estop_establish         float64       
+ 27   pf_religion_estop_operate           float64       
+ 28   pf_religion_estop                   float64       
+ 29   pf_religion_harassment              float64       
+ 30   pf_religion_restrictions            float64       
+ 31   pf_religion                         float64       
+ 32   pf_association_association          float64       
+ 33   pf_association_assembly             float64       
+ 34   pf_association_political_establish  float64       
+ 35   pf_association_political_operate    float64       
+ 36   pf_association_political            float64       
+ 37   pf_association_prof_establish       float64       
+ 38   pf_association_prof_operate         float64       
+ 39   pf_association_prof                 float64       
+ 40   pf_association_sport_establish      float64       
+ 41   pf_association_sport_operate        float64       
+ 42   pf_association_sport                float64       
+ 43   pf_association                      float64       
+ 44   pf_expression_killed                float64       
+ 45   pf_expression_jailed                float64       
+ 46   pf_expression_influence             float64       
+ 47   pf_expression_control               float64       
+ 48   pf_expression_cable                 float64       
+ 49   pf_expression_newspapers            float64       
+ 50   pf_expression_internet              float64       
+ 51   pf_expression                       float64       
+ 52   pf_identity_legal                   float64       
+ 53   pf_identity_parental_marriage       float64       
+ 54   pf_identity_parental_divorce        float64       
+ 55   pf_identity_parental                float64       
+ 56   pf_identity_sex_male                float64       
+ 57   pf_identity_sex_female              float64       
+ 58   pf_identity_sex                     float64       
+ 59   pf_identity_divorce                 float64       
+ 60   pf_identity                         float64       
+ 61   pf_score                            float64       
+ 62   pf_rank                             float64       
+ 63   ef_government_consumption           float64       
+ 64   ef_government_transfers             float64       
+ 65   ef_government_enterprises           float64       
+ 66   ef_government_tax_income            float64       
+ 67   ef_government_tax_payroll           float64       
+ 68   ef_government_tax                   float64       
+ 69   ef_government                       float64       
+ 70   ef_legal_judicial                   float64       
+ 71   ef_legal_courts                     float64       
+ 72   ef_legal_protection                 float64       
+ 73   ef_legal_military                   float64       
+ 74   ef_legal_integrity                  float64       
+ 75   ef_legal_enforcement                float64       
+ 76   ef_legal_restrictions               float64       
+ 77   ef_legal_police                     float64       
+ 78   ef_legal_crime                      float64       
+ 79   ef_legal_gender                     float64       
+ 80   ef_legal                            float64       
+ 81   ef_money_growth                     float64       
+ 82   ef_money_sd                         float64       
+ 83   ef_money_inflation                  float64       
+ 84   ef_money_currency                   float64       
+ 85   ef_money                            float64       
+ 86   ef_trade_tariffs_revenue            float64       
+ 87   ef_trade_tariffs_mean               float64       
+ 88   ef_trade_tariffs_sd                 float64       
+ 89   ef_trade_tariffs                    float64       
+ 90   ef_trade_regulatory_nontariff       float64       
+ 91   ef_trade_regulatory_compliance      float64       
+ 92   ef_trade_regulatory                 float64       
+ 93   ef_trade_black                      float64       
+ 94   ef_trade_movement_foreign           float64       
+ 95   ef_trade_movement_capital           float64       
+ 96   ef_trade_movement_visit             float64       
+ 97   ef_trade_movement                   float64       
+ 98   ef_trade                            float64       
+ 99   ef_regulation_credit_ownership      float64       
+ 100  ef_regulation_credit_private        float64       
+ 101  ef_regulation_credit_interest       float64       
+ 102  ef_regulation_credit                float64       
+ 103  ef_regulation_labor_minwage         float64       
+ 104  ef_regulation_labor_firing          float64       
+ 105  ef_regulation_labor_bargain         float64       
+ 106  ef_regulation_labor_hours           float64       
+ 107  ef_regulation_labor_dismissal       float64       
+ 108  ef_regulation_labor_conscription    float64       
+ 109  ef_regulation_labor                 float64       
+ 110  ef_regulation_business_adm          float64       
+ 111  ef_regulation_business_bureaucracy  float64       
+ 112  ef_regulation_business_start        float64       
+ 113  ef_regulation_business_bribes       float64       
+ 114  ef_regulation_business_licensing    float64       
+ 115  ef_regulation_business_compliance   float64       
+ 116  ef_regulation_business              float64       
+ 117  ef_regulation                       float64       
+ 118  ef_score                            float64       
+ 119  ef_rank                             float64       
+ 120  hf_score                            float64       
+ 121  hf_rank                             float64       
+ 122  hf_quartile                         float64       
+ 123  mean_hf_score                       float64       
+ 124  median_hf_score                     float64       
+ 125  mode_hf_score                       float64       
+dtypes: datetime64[ns](1), float64(122), object(3)
+memory usage: 1.4+ MB
+None</code></pre>
+</div>
+</div>
+</section>
+<section id="converting-iso_code-countries-and-region-to-categorical" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="converting-iso_code-countries-and-region-to-categorical">Converting <code>ISO_code</code>, <code>countries</code>, and <code>region</code> to Categorical</h2>
+<div id="723eaeb6" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hfi_copy[<span class="st">'ISO_code'</span>] <span class="op">=</span> hfi_copy[<span class="st">'ISO_code'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>hfi_copy[<span class="st">'countries'</span>] <span class="op">=</span> hfi_copy[<span class="st">'countries'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>hfi_copy[<span class="st">'region'</span>] <span class="op">=</span> hfi_copy[<span class="st">'region'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hfi_copy.info(verbose<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1458 entries, 0 to 1457
+Data columns (total 126 columns):
+ #    Column                              Dtype         
+---   ------                              -----         
+ 0    year                                datetime64[ns]
+ 1    ISO_code                            category      
+ 2    countries                           category      
+ 3    region                              category      
+ 4    pf_rol_procedural                   float64       
+ 5    pf_rol_civil                        float64       
+ 6    pf_rol_criminal                     float64       
+ 7    pf_rol                              float64       
+ 8    pf_ss_homicide                      float64       
+ 9    pf_ss_disappearances_disap          float64       
+ 10   pf_ss_disappearances_violent        float64       
+ 11   pf_ss_disappearances_organized      float64       
+ 12   pf_ss_disappearances_fatalities     float64       
+ 13   pf_ss_disappearances_injuries       float64       
+ 14   pf_ss_disappearances                float64       
+ 15   pf_ss_women_fgm                     float64       
+ 16   pf_ss_women_missing                 float64       
+ 17   pf_ss_women_inheritance_widows      float64       
+ 18   pf_ss_women_inheritance_daughters   float64       
+ 19   pf_ss_women_inheritance             float64       
+ 20   pf_ss_women                         float64       
+ 21   pf_ss                               float64       
+ 22   pf_movement_domestic                float64       
+ 23   pf_movement_foreign                 float64       
+ 24   pf_movement_women                   float64       
+ 25   pf_movement                         float64       
+ 26   pf_religion_estop_establish         float64       
+ 27   pf_religion_estop_operate           float64       
+ 28   pf_religion_estop                   float64       
+ 29   pf_religion_harassment              float64       
+ 30   pf_religion_restrictions            float64       
+ 31   pf_religion                         float64       
+ 32   pf_association_association          float64       
+ 33   pf_association_assembly             float64       
+ 34   pf_association_political_establish  float64       
+ 35   pf_association_political_operate    float64       
+ 36   pf_association_political            float64       
+ 37   pf_association_prof_establish       float64       
+ 38   pf_association_prof_operate         float64       
+ 39   pf_association_prof                 float64       
+ 40   pf_association_sport_establish      float64       
+ 41   pf_association_sport_operate        float64       
+ 42   pf_association_sport                float64       
+ 43   pf_association                      float64       
+ 44   pf_expression_killed                float64       
+ 45   pf_expression_jailed                float64       
+ 46   pf_expression_influence             float64       
+ 47   pf_expression_control               float64       
+ 48   pf_expression_cable                 float64       
+ 49   pf_expression_newspapers            float64       
+ 50   pf_expression_internet              float64       
+ 51   pf_expression                       float64       
+ 52   pf_identity_legal                   float64       
+ 53   pf_identity_parental_marriage       float64       
+ 54   pf_identity_parental_divorce        float64       
+ 55   pf_identity_parental                float64       
+ 56   pf_identity_sex_male                float64       
+ 57   pf_identity_sex_female              float64       
+ 58   pf_identity_sex                     float64       
+ 59   pf_identity_divorce                 float64       
+ 60   pf_identity                         float64       
+ 61   pf_score                            float64       
+ 62   pf_rank                             float64       
+ 63   ef_government_consumption           float64       
+ 64   ef_government_transfers             float64       
+ 65   ef_government_enterprises           float64       
+ 66   ef_government_tax_income            float64       
+ 67   ef_government_tax_payroll           float64       
+ 68   ef_government_tax                   float64       
+ 69   ef_government                       float64       
+ 70   ef_legal_judicial                   float64       
+ 71   ef_legal_courts                     float64       
+ 72   ef_legal_protection                 float64       
+ 73   ef_legal_military                   float64       
+ 74   ef_legal_integrity                  float64       
+ 75   ef_legal_enforcement                float64       
+ 76   ef_legal_restrictions               float64       
+ 77   ef_legal_police                     float64       
+ 78   ef_legal_crime                      float64       
+ 79   ef_legal_gender                     float64       
+ 80   ef_legal                            float64       
+ 81   ef_money_growth                     float64       
+ 82   ef_money_sd                         float64       
+ 83   ef_money_inflation                  float64       
+ 84   ef_money_currency                   float64       
+ 85   ef_money                            float64       
+ 86   ef_trade_tariffs_revenue            float64       
+ 87   ef_trade_tariffs_mean               float64       
+ 88   ef_trade_tariffs_sd                 float64       
+ 89   ef_trade_tariffs                    float64       
+ 90   ef_trade_regulatory_nontariff       float64       
+ 91   ef_trade_regulatory_compliance      float64       
+ 92   ef_trade_regulatory                 float64       
+ 93   ef_trade_black                      float64       
+ 94   ef_trade_movement_foreign           float64       
+ 95   ef_trade_movement_capital           float64       
+ 96   ef_trade_movement_visit             float64       
+ 97   ef_trade_movement                   float64       
+ 98   ef_trade                            float64       
+ 99   ef_regulation_credit_ownership      float64       
+ 100  ef_regulation_credit_private        float64       
+ 101  ef_regulation_credit_interest       float64       
+ 102  ef_regulation_credit                float64       
+ 103  ef_regulation_labor_minwage         float64       
+ 104  ef_regulation_labor_firing          float64       
+ 105  ef_regulation_labor_bargain         float64       
+ 106  ef_regulation_labor_hours           float64       
+ 107  ef_regulation_labor_dismissal       float64       
+ 108  ef_regulation_labor_conscription    float64       
+ 109  ef_regulation_labor                 float64       
+ 110  ef_regulation_business_adm          float64       
+ 111  ef_regulation_business_bureaucracy  float64       
+ 112  ef_regulation_business_start        float64       
+ 113  ef_regulation_business_bribes       float64       
+ 114  ef_regulation_business_licensing    float64       
+ 115  ef_regulation_business_compliance   float64       
+ 116  ef_regulation_business              float64       
+ 117  ef_regulation                       float64       
+ 118  ef_score                            float64       
+ 119  ef_rank                             float64       
+ 120  hf_score                            float64       
+ 121  hf_rank                             float64       
+ 122  hf_quartile                         float64       
+ 123  mean_hf_score                       float64       
+ 124  median_hf_score                     float64       
+ 125  mode_hf_score                       float64       
+dtypes: category(3), datetime64[ns](1), float64(122)
+memory usage: 1.4 MB
+None</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-a-boolean-column-from-hf_score" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="creating-a-boolean-column-from-hf_score">Creating a <code>boolean</code> column from <code>hf_score</code></h2>
+<p>Let’s say we want to know whether countries are “free” or not.</p>
+<div id="484b7c01" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">8.5</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">=</span> hfi_copy[<span class="st">'hf_score'</span>] <span class="op">&gt;</span> threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="filtering-subsetting" class="level1">
+<h1>Filtering + subsetting</h1>
+<section id="filter-out-true-values" class="level2">
+<h2 class="anchored" data-anchor-id="filter-out-true-values">Filter out <code>True</code> values</h2>
+<div id="7e4bad37" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>filtered_hfi_copy <span class="op">=</span> hfi_copy[hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">==</span> <span class="va">True</span>][[<span class="st">'hf_score_above_threshold'</span>, <span class="st">'countries'</span>]]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_hfi_copy[[<span class="st">'hf_score_above_threshold'</span>, <span class="st">'countries'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      hf_score_above_threshold       countries
+5                         True       Australia
+27                        True          Canada
+41                        True         Denmark
+63                        True       Hong Kong
+70                        True         Ireland
+...                        ...             ...
+1359                      True       Hong Kong
+1403                      True     New Zealand
+1407                      True          Norway
+1436                      True     Switzerland
+1450                      True  United Kingdom
+
+[83 rows x 2 columns]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<blockquote class="blockquote">
+<p>That’s a lot of data… 🤔</p>
+</blockquote>
+</div>
+</section>
+<section id="filter-out-true-values-for-newest-year" class="level2">
+<h2 class="anchored" data-anchor-id="filter-out-true-values-for-newest-year">Filter out <code>True</code> values for newest <code>year</code></h2>
+<div id="08b09ae8" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>newest_year <span class="op">=</span> hfi_copy[<span class="st">'year'</span>].<span class="bu">max</span>()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>filtered_hfi_copy <span class="op">=</span> hfi_copy[(hfi_copy[<span class="st">'year'</span>] <span class="op">==</span> newest_year) <span class="op">&amp;</span> (hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">==</span> <span class="va">True</span>)]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> filtered_hfi_copy[[<span class="st">'hf_score_above_threshold'</span>, <span class="st">'countries'</span>]]</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     hf_score_above_threshold    countries
+5                        True    Australia
+27                       True       Canada
+41                       True      Denmark
+63                       True    Hong Kong
+70                       True      Ireland
+106                      True  Netherlands
+107                      True  New Zealand
+140                      True  Switzerland</code></pre>
+</div>
+</div>
+</section>
+<section id="filtering-categories" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-categories">Filtering categories</h2>
+<div id="cdb9a5a4" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>options <span class="op">=</span> [<span class="st">'United States'</span>, <span class="st">'India'</span>, <span class="st">'Canada'</span>, <span class="st">'China'</span>]</span>
+<span id="cb22-2"><a href="#cb22-2"></a>filtered_hfi <span class="op">=</span> hfi[hfi[<span class="st">'countries'</span>].isin(options)]</span>
+<span id="cb22-3"><a href="#cb22-3"></a>filtered_hfi[<span class="st">'countries'</span>] <span class="op">=</span> filtered_hfi[<span class="st">'countries'</span>].cat.remove_unused_categories()</span>
+<span id="cb22-4"><a href="#cb22-4"></a>unique_countries <span class="op">=</span> filtered_hfi[<span class="st">'countries'</span>].unique()</span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="bu">print</span>(unique_countries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Canada', 'China', 'India', 'United States']
+Categories (4, object): ['Canada', 'China', 'India', 'United States']</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="transformations" class="level1">
+<h1>Transformations</h1>
+<section id="normalizing" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="normalizing">Normalizing</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Standard deviation</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Z-score</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Min-max</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">Maximum absolute</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="4618c470" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean: 5
+Standard Deviation: 2</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-23-output-2.png" width="832" height="442" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="aff8a802" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_scale'</span>, <span class="st">'pf_score_scale'</span>]] <span class="op">=</span> scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_scale'</span>, <span class="st">'pf_score_scale'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ef_score_scale</th>
+<th data-quarto-table-cell-role="th">pf_score_scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>1.378000e+03</td>
+<td>1.378000e+03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>4.524683e-16</td>
+<td>2.062533e-17</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>1.000363e+00</td>
+<td>1.000363e+00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>-4.421711e+00</td>
+<td>-3.663087e+00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>-6.063870e-01</td>
+<td>-7.303950e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>1.295064e-01</td>
+<td>-8.926277e-03</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>7.068997e-01</td>
+<td>9.081441e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2.722116e+00</td>
+<td>1.722056e+00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div id="0dbaa7cd" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>min_max_scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_minmax'</span>, <span class="st">'pf_score_minmax'</span>]] <span class="op">=</span> min_max_scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_minmax'</span>, <span class="st">'pf_score_minmax'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ef_score_minmax</th>
+<th data-quarto-table-cell-role="th">pf_score_minmax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>0.618956</td>
+<td>0.680221</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.140032</td>
+<td>0.185764</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>0.534073</td>
+<td>0.544589</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>0.637084</td>
+<td>0.678563</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>0.717908</td>
+<td>0.848860</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<div id="fbdb11f5" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>max_abs_scaler <span class="op">=</span> MaxAbsScaler()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_maxabs'</span>, <span class="st">'pf_score_maxabs'</span>]] <span class="op">=</span> max_abs_scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>hfi_copy[[<span class="st">'ef_score_maxabs'</span>, <span class="st">'pf_score_maxabs'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ef_score_maxabs</th>
+<th data-quarto-table-cell-role="th">pf_score_maxabs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>1378.000000</td>
+<td>1378.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>0.738369</td>
+<td>0.752630</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.096148</td>
+<td>0.143700</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>0.313384</td>
+<td>0.226434</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>0.680087</td>
+<td>0.647710</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>0.750816</td>
+<td>0.751348</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>0.806311</td>
+<td>0.883083</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visual-comparison" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visual-comparison">Visual comparison</h2>
+<div id="9e66cd1a" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-27-output-1.png" width="1321" height="646" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pros-cons-standardscaler" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="pros-cons-standardscaler">Pros + cons (<code>StandardScaler</code>)</h2>
+<p><strong>Pros:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Normalization of Variance</strong>: Centers data around zero with a standard deviation of one, suitable for algorithms assuming normally distributed data (e.g., linear regression, logistic regression, neural networks).</p></li>
+<li><p><strong>Preserves Relationships</strong>: Maintains ratios and differences between data points.</p></li>
+</ul>
+</div>
+<p><strong>Cons:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Sensitive to Outliers</strong>: Outliers can distort scaled values.</p></li>
+<li><p><strong>Assumes Normality</strong>: Assumes data follows a Gaussian distribution.</p></li>
+</ul>
+</div>
+</section>
+<section id="pros-cons-maxabsscaler" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="pros-cons-maxabsscaler">Pros + cons (<code>MaxAbsScaler</code>)</h2>
+<p><strong>Pros:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Outlier Resistant</strong>: Less sensitive to outliers, scales based on the absolute maximum value.</p></li>
+<li><p><strong>Preserves Sparsity</strong>: Does not center data, preserving the sparsity pattern.</p></li>
+</ul>
+</div>
+<p><strong>Cons:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Scale Limitation</strong>: Scales to the range [-1, 1], which may not suit all algorithms.</p></li>
+<li><p><strong>Not Zero-Centered</strong>: May be a limitation for algorithms preferring zero-centered data.</p></li>
+</ul>
+</div>
+</section>
+<section id="pros-cons-minmaxscaler" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="pros-cons-minmaxscaler">Pros + cons (<code>MinMaxScaler</code>)</h2>
+<p><strong>Pros:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Fixed Range</strong>: Scales data to a fixed range (usually [0, 1]), beneficial for algorithms sensitive to feature scales (e.g., neural networks, k-nearest neighbors).</p></li>
+<li><p><strong>Preserves Relationships</strong>: Maintains relationships between data points.</p></li>
+</ul>
+</div>
+<p><strong>Cons:</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Sensitive to Outliers</strong>: Outliers can skew scaled values.</p></li>
+<li><p><strong>Range Dependence</strong>: Scaling depends on the min and max values in the training data, which may not generalize well to new data.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="normality" class="level1">
+<h1>Normality</h1>
+<section id="normality-test-q-q-plot" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="normality-test-q-q-plot">Normality test: Q-Q plot</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Q-Q Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Issues</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="e949ba1d" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hfi_clean <span class="op">=</span> hfi_copy.dropna(subset <span class="op">=</span> [<span class="st">'pf_score'</span>])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"white"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(ncols <span class="op">=</span> <span class="dv">2</span>, nrows <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data <span class="op">=</span> hfi_clean, x <span class="op">=</span> <span class="st">"hf_score"</span>, linewidth <span class="op">=</span> <span class="dv">5</span>, ax <span class="op">=</span> ax1)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Human Freedom Score'</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>sm.qqplot(hfi_clean[<span class="st">'hf_score'</span>], line <span class="op">=</span> <span class="st">'s'</span>, ax <span class="op">=</span> ax2, dist <span class="op">=</span> stats.norm, fit <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Human Freedom Score Q-Q plot'</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-28-output-1.png" width="666" height="454" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p><strong>There were some issues in our plots</strong>:</p>
+<div class="incremental">
+<ul class="incremental">
+<li><p><strong>Left Tail</strong>: Points deviate downwards from the line, indicating more extreme low values than a normal distribution (<strong>negative skewness</strong>).</p></li>
+<li><p><strong>Central Section</strong>: Points align closely with the line, suggesting the central data is <em>similar to a normal distribution</em>.</p></li>
+<li><p><strong>Right Tail</strong>: Points curve upwards, showing potential for <strong>extreme high values (positive skewness)</strong>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="correcting-skew" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="correcting-skew">Correcting skew</h2>
+<div class="fragment">
+<p><a href="https://en.wikipedia.org/wiki/Square_root">Square-root transformation</a>. <span class="math inline">\(\sqrt x\)</span> Used for <strong>moderately</strong> right-skew <strong>(positive skew)</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li>Cannot handle negative values (but can handle zeros)</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><a href="https://en.wikipedia.org/wiki/Logarithm">Log transformation</a>. <span class="math inline">\(log(x + 1)\)</span> Used for <strong>substantial</strong> right-skew <strong>(positive skew)</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li>Cannot handle negative or zero values</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><a href="https://en.wikipedia.org/wiki/Quadratic_function">Squared transformation</a>. <span class="math inline">\(x^2\)</span> Used for <strong>moderately</strong> left-skew <strong>(negative skew)</strong></p>
+<div class="incremental">
+<ul class="incremental">
+<li>Effective when lower values are densely packed together</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="comparing-transformations" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="comparing-transformations">Comparing transformations</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Original</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Square-root</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Log</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">Squared</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="efb818e9" class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-29-output-1.png" width="673" height="454" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Moderate negative skew, no zeros or negative values</strong></p>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div id="072587cf" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>hfi_clean[<span class="st">'hf_score_sqrt'</span>] <span class="op">=</span> np.sqrt(hfi_clean[<span class="st">'hf_score'</span>])</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a>col <span class="op">=</span> hfi_clean[<span class="st">'hf_score_sqrt'</span>]</span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(ncols <span class="op">=</span> <span class="dv">2</span>, nrows <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a></span>
+<span id="cb29-7"><a href="#cb29-7"></a>sns.kdeplot(col, linewidth <span class="op">=</span> <span class="dv">5</span>, ax <span class="op">=</span> ax1)</span>
+<span id="cb29-8"><a href="#cb29-8"></a>ax1.set_title(<span class="st">'Square-root Density plot'</span>)    </span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a>sm.qqplot(col, line <span class="op">=</span> <span class="st">'s'</span>, ax <span class="op">=</span> ax2)</span>
+<span id="cb29-11"><a href="#cb29-11"></a>ax2.set_title(<span class="st">'Square-root Q-Q plot'</span>)    </span>
+<span id="cb29-12"><a href="#cb29-12"></a>plt.tight_layout()</span>
+<span id="cb29-13"><a href="#cb29-13"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-30-output-1.png" width="649" height="454" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div id="3cf4a537" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>hfi_clean[<span class="st">'hf_score_log'</span>] <span class="op">=</span> np.log(hfi_clean[<span class="st">'hf_score'</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a>col <span class="op">=</span> hfi_clean[<span class="st">'hf_score_log'</span>]</span>
+<span id="cb30-4"><a href="#cb30-4"></a></span>
+<span id="cb30-5"><a href="#cb30-5"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(ncols <span class="op">=</span> <span class="dv">2</span>, nrows <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a>sns.kdeplot(col, linewidth <span class="op">=</span> <span class="dv">5</span>, ax <span class="op">=</span> ax1)</span>
+<span id="cb30-8"><a href="#cb30-8"></a>ax1.set_title(<span class="st">'Log Density plot'</span>)    </span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a>sm.qqplot(col, line <span class="op">=</span> <span class="st">'s'</span>, ax <span class="op">=</span> ax2)</span>
+<span id="cb30-11"><a href="#cb30-11"></a>ax2.set_title(<span class="st">'Log Q-Q plot'</span>)    </span>
+<span id="cb30-12"><a href="#cb30-12"></a>plt.tight_layout()</span>
+<span id="cb30-13"><a href="#cb30-13"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-31-output-1.png" width="649" height="454" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<div id="c2235035" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>hfi_clean[<span class="st">'hf_score_square'</span>] <span class="op">=</span> <span class="bu">pow</span>(hfi_clean.hf_score, <span class="dv">2</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a>col <span class="op">=</span> hfi_clean[<span class="st">'hf_score_square'</span>]</span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(ncols <span class="op">=</span> <span class="dv">2</span>, nrows <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a>sns.kdeplot(col, linewidth <span class="op">=</span> <span class="dv">5</span>, ax <span class="op">=</span> ax1)</span>
+<span id="cb31-8"><a href="#cb31-8"></a>ax1.set_title(<span class="st">'Squared Density plot'</span>)    </span>
+<span id="cb31-9"><a href="#cb31-9"></a></span>
+<span id="cb31-10"><a href="#cb31-10"></a>sm.qqplot(col, line <span class="op">=</span> <span class="st">'s'</span>, ax <span class="op">=</span> ax2)</span>
+<span id="cb31-11"><a href="#cb31-11"></a>ax2.set_title(<span class="st">'Squared Q-Q plot'</span>)    </span>
+<span id="cb31-12"><a href="#cb31-12"></a>plt.tight_layout()</span>
+<span id="cb31-13"><a href="#cb31-13"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NEW-preprocessing_files/figure-html/cell-32-output-1.png" width="649" height="454" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-did-we-learn" class="level2">
+<h2 class="anchored" data-anchor-id="what-did-we-learn">What did we learn?</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Negative skew excluded all but <strong>Squared</strong> transformation</p></li>
+<li><p>… thus, <strong>Squared</strong> transformation was the best</p></li>
+<li><p>The data is <strong>bimodal</strong>, so no transformation is perfect</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="to-be-continued-in-week-9" class="level1" style="text-align:center;">
+<h1 style="text-align:center;">To be continued… <br> …in Week 9 🫠</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Greg Chism</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/edit/main/slides/07-NEW-preprocessing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with <span style="color: #FFBE98;"><i class="fa-solid fa-heart" aria-label="heart"></i></span> and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

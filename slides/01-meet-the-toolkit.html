@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<link href="..//img/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -10,10 +11,9 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.554">
 
-  <meta name="author" content="Dr.&nbsp;Mine Çetinkaya-Rundel">
-  <meta name="dcterms.date" content="2024-01-16">
+  <meta name="author" content="Dr.&nbsp;Greg Chism">
   <title>INFO 511 - Meet the toolkit</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -405,29 +405,23 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Mine Çetinkaya-Rundel 
+Dr.&nbsp;Greg Chism 
 </div>
         <p class="quarto-title-affiliation">
-            Duke University <br> STA 199 - Spring 2024
+            University of Arizona <br> INFO 511 - Fall 2024
           </p>
     </div>
 </div>
-
-  <p class="date">2024-01-16</p>
-</section>
-<section>
-<section id="warm-up" class="title-slide slide level1 center">
-<h1>Warm-up</h1>
 
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
 <li><p>If you have not yet completed the Getting to know you survey, please do so asap!</p></li>
-<li><p>If you have not yet accepted the invite to join the course GitHub Organization (I’m looking at 41 of you as of this morning!), please do so asap!</p></li>
-<li><p>Office hours + locations linked at <a href="https://sta199-s24.github.io/course-team.html" class="uri">https://sta199-s24.github.io/course-team.html</a>, come say hi to me or any of the TAs!</p></li>
+<li><p>If you have not yet accepted the invite to join the course GitHub Organization, please do so asap!</p></li>
+<li><p>Office hours linked at <a href="https://datasciaz.netlify.app/course-team.html" class="uri">https://datasciaz.netlify.app/course-team.html</a></p></li>
 </ul>
-</section></section>
+</section>
 <section>
 <section id="from-last-time" class="title-slide slide level1 center">
 <h1>From last time…</h1>
@@ -437,7 +431,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>Course homepage</h2>
 <p>Let’s take a tour!</p>
 </section>
-<section id="collaboration-policy" class="slide level2">
+<section id="collaboration-policy" class="slide level2 smaller">
 <h2>Collaboration policy</h2>
 <ul>
 <li><p>Only work that is clearly assigned as team work should be completed collaboratively.</p></li>
@@ -445,7 +439,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <li><p>Exams must be completed individually. You may <strong>not</strong> discuss any aspect of the exam with peers. If you have questions, post as private questions on the course forum, only the teaching team will see and answer.</p></li>
 </ul>
 </section>
-<section id="sharing-reusing-code-policy" class="slide level2">
+<section id="sharing-reusing-code-policy" class="slide level2 smaller">
 <h2>Sharing / reusing code policy</h2>
 <ul>
 <li><p>We are aware that a huge volume of code is available on the web, and many tasks may have solutions posted</p></li>
@@ -456,26 +450,26 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="use-of-generative-ai" class="slide level2 smaller">
 <h2>Use of generative AI</h2>
 <ul>
-<li><p>Treat generative AI, such as ChatGPT, the same as other online resources.</p></li>
+<li><p>Treat generative AI, such as ChatGPT, as an online resource.</p></li>
 <li><p>Guiding principles:</p>
 <ul>
 <li><p>(1) <em>Cognitive dimension:</em> Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.</p></li>
 <li><p>(2) <em>Ethical dimension</em><strong>:</strong> Students using AI should be transparent about their use and make sure it aligns with academic integrity.</p></li>
 </ul></li>
-<li><p><strong>✅ AI tools for code:</strong> You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code. See the syllabus for guidelines for citing AI-generated content.</p></li>
-<li><p><strong>❌ AI tools for narrative:</strong> Unless instructed otherwise, you may not use generative AI to write narrative on assignments. In general, you may use generative AI as a resource as you complete assignments but not to answer the exercises for you.</p></li>
+<li><p><strong>✅ AI tools for code:</strong> You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.</p></li>
+<li><p><strong>❌ AI tools for narrative:</strong> Unless instructed, you may not use generative AI to write narrative on assignments. You may use generative AI as a resource as you complete assignments but not for answers.</p></li>
 </ul>
 </section>
 <section id="academic-integrity" class="slide level2">
 <h2>Academic integrity</h2>
 <blockquote>
-<p>To uphold the Duke Community Standard:</p>
-<ul>
-<li><p>I will not lie, cheat, or steal in my academic endeavors;</p></li>
-<li><p>I will conduct myself honorably in all my endeavors; and</p></li>
-<li><p>I will act if the Standard is compromised.</p></li>
-</ul>
+<p>To uphold the <a href="https://ischool.arizona.edu/sites/ischool.arizona.edu/files/iSchool%20Policy%20on%20Academic%20Integrity%20in%20Computing%202023%20-%20approved%20by%20faculty%20vote%20April%202023.pdf#:~:text=UArizona%20iSchool%20Instructors%20are%20expected%20to%20help%20students,prohibited%20in%20some%20courses%20are%20allowed%20in%20others.">UArizona iSchool Community Standard</a>:</p>
 </blockquote>
+<ul>
+<li class="fragment">I will not lie, cheat, or steal in my academic endeavors;</li>
+<li class="fragment">I will conduct myself honorably in all my endeavors; and</li>
+<li class="fragment">I will act if the Standard is compromised.</li>
+</ul>
 </section>
 <section id="most-importantly" class="slide level2">
 <h2>Most importantly!</h2>
@@ -502,20 +496,19 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="column" style="width:50%;">
 <p><strong>Course operation</strong></p>
 <ul>
-<li>Materials: <a href="https://sta199-s24.github.io/">sta199-s24.github.io</a></li>
-<li>Submission: Gradescope</li>
-<li>Discussion: Ed Discussion</li>
-<li>Gradebook: Canvas</li>
+<li>Materials: <a href="https://datasciaz.netlify.app/">datasciaz.netlify.app</a></li>
+<li>Submission: GitHub</li>
+<li>Discussion: Slack</li>
+<li>Gradebook: D2L</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Doing data science</strong></p>
 <ul>
 <li>Computing:
 <ul>
-<li>R</li>
-<li>RStudio</li>
-<li>tidyverse</li>
-<li>Quarto</li>
+<li>Python</li>
+<li>VS Code</li>
+<li>Quarto/Jupyter</li>
 </ul></li>
 <li>Version control and collaboration:
 <ul>
@@ -573,66 +566,73 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="toolkit-for-reproducibility" class="slide level2">
 <h2>Toolkit for reproducibility</h2>
 <ul>
-<li>Scriptability <span class="math inline">\(\rightarrow\)</span> R</li>
-<li>Literate programming (code, narrative, output in one place) <span class="math inline">\(\rightarrow\)</span> Quarto</li>
+<li>Scriptability <span class="math inline">\(\rightarrow\)</span> Python</li>
+<li>Literate programming (code, narrative, output in one place) <span class="math inline">\(\rightarrow\)</span> Quarto/Jupyter</li>
 <li>Version control <span class="math inline">\(\rightarrow\)</span> Git / GitHub</li>
 </ul>
 </section></section>
 <section>
-<section id="r-and-rstudio" class="title-slide slide level1 center">
-<h1>R and RStudio</h1>
+<section id="python-and-jupyter" class="title-slide slide level1 center">
+<h1>Python and Jupyter</h1>
 
 </section>
-<section id="r-and-rstudio-1" class="slide level2 smaller">
-<h2>R and RStudio</h2>
+<section id="python-and-jupyter-1" class="slide level2 smaller">
+<h2>Python and Jupyter</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/r-logo.png" class="quarto-figure quarto-figure-center" alt="R logo"></p>
+<p><img data-src="images/python.jpeg" class="quarto-figure quarto-figure-center" alt="R logo" width="100"></p>
 </figure>
 </div>
 <ul>
-<li>R is an open-source statistical <strong>programming language</strong></li>
-<li>R is also an environment for statistical computing and graphics</li>
+<li>Python is an open-source general purpose <strong>programming language</strong></li>
+<li>Python is also an environment for statistical computing and graphics</li>
 <li>It’s easily extensible with <em>packages</em></li>
 </ul>
 </div><div class="column fragment" style="width:50%;">
-<p><img data-src="images/rstudio-logo.png" alt="RStudio logo"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Jupyter_logo.svg" class="quarto-figure quarto-figure-center" alt="RStudio logo" width="100"></p>
+</figure>
+</div>
 <ul>
-<li>RStudio is a convenient interface for R called an <strong>IDE</strong> (integrated development environment), e.g.&nbsp;<em>“I write R code in the RStudio IDE”</em></li>
-<li>RStudio is not a requirement for programming with R, but it’s very commonly used by R programmers and data scientists</li>
+<li>Jupyter is a convenient interface for Python called an <strong>IDE</strong> (integrated development environment), e.g.&nbsp;<em>“I write Python code in the Jupyter IDE”</em></li>
+</ul>
+<!-- -->
+<ul>
+<li>Jupyter is not a requirement for programming with Python, but it’s very commonly used by Python programmers and data scientists</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="r-vs.-rstudio" class="slide level2">
-<h2>R vs.&nbsp;RStudio</h2>
+<section id="python-vs.-jupyter" class="slide level2">
+<h2>Python vs.&nbsp;Jupyter</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://moderndive.com/1-getting-started.html"><img data-src="images/r_vs_rstudio.png" class="quarto-figure quarto-figure-center" alt="On the left: a car engine. On the right: a car dashboard. The engine is labelled R. The dashboard is labelled RStudio." width="1001"></a></p>
+<p><a href="https://moderndive.com/1-getting-started.html"><img data-src="images/python_vs_jupyter.png" class="quarto-figure quarto-figure-center" alt="On the left: a car engine. On the right: a car dashboard. The engine is labelled R. The dashboard is labelled RStudio."></a></p>
 </figure>
 </div>
 
 <aside><div>
-<p>Source: <a href="https://moderndive.com/1-getting-started.html">Modern Dive</a>.</p>
+<p>Source: <a href="https://moderndive.com/1-getting-started.html">Modern Dive</a> (modified).</p>
 </div></aside></section>
-<section id="r-packages" class="slide level2">
-<h2>R packages</h2>
+<section id="python-packages" class="slide level2 smaller">
+<h2>Python packages</h2>
 <div>
 <ul>
-<li class="fragment"><p><strong>Packages</strong>: Fundamental units of reproducible R code, including reusable R functions, the documentation that describes how to use them, and sample data<sup>1</sup></p></li>
-<li class="fragment"><p>As of 15 January 2023, there are 20,252 R packages available on <strong>CRAN</strong> (the Comprehensive R Archive Network)<sup>2</sup></p></li>
+<li class="fragment"><p><strong>Packages</strong>: Fundamental units of reproducible Python code, including reusable Python modules/functions, the documentation that describes how to use them, and sample data<sup>1</sup></p></li>
+<li class="fragment"><p>As of 23 July 2024, there are 557,005 Python packages (projects) available on <strong>PyPI</strong> (the Python Package Index)<sup>2</sup></p></li>
 <li class="fragment"><p>We’re going to work with a small (but important) subset of these!</p></li>
 </ul>
 </div>
 
 <aside><div>
-<p><sup>1</sup> Wickham and Bryan, <a href="https://r-pkgs.org/">R Packages</a>.</p>
-<p><sup>2</sup> <a href="https://cran.r-project.org/web/packages/">CRAN contributed packages</a>.</p>
+<p><sup>1</sup> Beuzen and Timbers, <a href="https://py-pkgs.org/">Python Packages</a>.</p>
+<p><sup>2</sup> <a href="https://pypi.org/">PyPI contributed packages</a>.</p>
 </div></aside></section>
-<section id="tour-r-rstudio" class="slide level2 smaller">
-<h2>Tour: R + RStudio</h2>
+<section id="tour-python-jupyter-via-vs-code" class="slide level2 smaller">
+<h2>Tour: Python + Jupyter (via VS Code)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="demo">
@@ -644,82 +644,79 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p><strong>Option 2:</strong></p>
 <p>Clone the corresponding application exercise repo and follow along.</p>
 <p><i class="fa-solid fa-laptop" aria-label="laptop"></i> <code>ae-01-meet-the-penguins</code></p>
-<p>Go to the <a href="https://github.com/sta199-s24">course GitHub organization</a> and clone <a href="https://github.com/sta199-s24/ae-01-penguins"><code>ae-01-meet-the-penguins</code></a> to <a href="https://cmgr.oit.duke.edu/containers">your container</a>.</p>
+<p>Go to the <a href="https://github.com/INFO-511-F24">course GitHub organization</a> and clone <a href="https://github.com/INFO-511-F24/ae-01-penguins"><code>ae-01-meet-the-penguins</code></a> to your environment.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="tour-recap-r-rstudio" class="slide level2">
-<h2>Tour recap: R + RStudio</h2>
+<section id="tour-recap-python-jupyter-via-vs-code" class="slide level2">
+<h2>Tour recap: Python + Jupyter (via VS Code)</h2>
 
-<img data-src="images/tour-r-rstudio.png" class="r-stretch"></section>
-<section id="a-short-list-for-now-of-r-essentials" class="slide level2">
-<h2>A short list (for now) of R essentials</h2>
+<img data-src="images/tour-vs-code.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="a-short-list-for-now-of-python-essentials" class="slide level2 smaller">
+<h2>A short list (for now) of Python essentials</h2>
 <ul>
 <li>Functions are (most often) verbs, followed by what they will be applied to in parentheses:</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">do_this</span>(to_this)</span>
-<span id="cb1-2"><a></a><span class="fu">do_that</span>(to_this, to_that, with_those)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9b0d3e7e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>to_this.do_this()</span>
+<span id="cb1-2"><a></a>to_that.do_that(to_this, with_those)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <ul>
-<li>Packages are installed with the <code>install.packages()</code> function and loaded with the <code>library</code> function, once per session:</li>
+<li>Packages are installed with the <code>pip install</code> function (via the terminal)…</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>pip install package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>… and loaded with the <code>import</code> function, once per session (usually with a shorthand “nickname”):</li>
+</ul>
+<div id="e4868662" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> package_name <span class="im">as</span> pkg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="r-essentials-continued" class="slide level2">
-<h2>R essentials (continued)</h2>
+<section id="python-essentials-continued" class="slide level2">
+<h2>Python essentials (continued)</h2>
 <ul>
-<li>Columns (variables) in data frames are accessed with <code>$</code>:</li>
+<li>Columns (variables) in data frames are accessed with <code>['']</code>:</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>dataframe<span class="sc">$</span>var_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e6d700d3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>dataframe[<span class="st">'var_name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <ul>
-<li>Object documentation can be accessed with <code>?</code></li>
+<li>Object documentation can be accessed with <code>help()</code></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="01a863e6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">help</span>(pd.Series.mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="tidyverse" class="slide level2">
-<h2>tidyverse</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><a href="https://tidyverse.org"><img data-src="images/tidyverse.png" alt="Hex logos for dplyr, ggplot2, forcats, tibble, readr, stringr, tidyr, and purrr"></a></p>
-</div><div class="column" style="width:50%;">
-<p><a href="https://www.tidyverse.org/">tidyverse.org</a></p>
+<section id="pandas" class="slide level2">
+<h2>pandas</h2>
+<p><a href="https://tidyverse.org"><img data-src="images/pandas.png" alt="Hex logos for dplyr, ggplot2, forcats, tibble, readr, stringr, tidyr, and purrr" width="300"></a></p>
+<p><a href="https://pandas.pydata.org/">pandas.pydata.org</a></p>
 <ul>
-<li>The <strong>tidyverse</strong> is an opinionated collection of R packages designed for data science</li>
-<li>All packages share an underlying philosophy and a common grammar</li>
+<li><strong>Pandas</strong> is a quintessential package designed for data analysis</li>
 </ul>
-</div>
-</div>
 </section></section>
 <section>
-<section id="quarto" class="title-slide slide level1 center">
-<h1>Quarto</h1>
+<section id="jupyter-notebooks" class="title-slide slide level1 center">
+<h1>Jupyter Notebooks</h1>
 
 </section>
-<section id="quarto-1" class="slide level2">
-<h2>Quarto</h2>
+<section id="jupyter-notebooks-1" class="slide level2">
+<h2>Jupyter Notebooks</h2>
 <div>
 <ul>
-<li class="fragment">Fully reproducible reports – each time you render the analysis is ran from the beginning</li>
-<li class="fragment">Code goes in chunks narrative goes outside of chunks</li>
+<li class="fragment">Fully reproducible reports – each time you run the analysis is ran from the beginning</li>
+<li class="fragment">Code goes in <strong>code</strong> chunks narrative goes in <strong>markdown</strong> chunks</li>
 <li class="fragment">A visual editor for a familiar / Google docs-like editing experience</li>
 </ul>
 </div>
 </section>
-<section id="tour-quarto" class="slide level2 smaller">
-<h2>Tour: Quarto</h2>
+<section id="tour-jupyter-notebooks" class="slide level2 smaller">
+<h2>Tour: Jupyter Notebooks</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="demo">
@@ -729,79 +726,32 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 </div><div class="column" style="width:50%;">
 <div class="appex">
 <p><strong>Option 2:</strong></p>
-<p>Clone the corresponding application exercise repo (if you haven’t yet done so) and follow along.</p>
+<p>Clone the corresponding application exercise repo and follow along.</p>
 <p><i class="fa-solid fa-laptop" aria-label="laptop"></i> <code>ae-01-meet-the-penguins</code></p>
-<p>Go to the <a href="https://github.com/sta199-s24">course GitHub organization</a> and clone <a href="https://github.com/sta199-s24/ae-01-penguins"><code>ae-01-meet-the-penguins</code></a> to <a href="https://cmgr.oit.duke.edu/containers">your container</a>.</p>
+<p>Go to the <a href="https://github.com/INFO-511-F24">course GitHub organization</a> and clone <a href="https://github.com/INFO-511-F24/ae-01-penguins"><code>ae-01-meet-the-penguins</code></a> to your environment.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="tour-recap-quarto" class="slide level2">
-<h2>Tour recap: Quarto</h2>
+<section id="tour-recap-jupyter-notebooks" class="slide level2">
+<h2>Tour recap: Jupyter Notebooks</h2>
 
-<img data-src="images/tour-quarto.png" class="quarto-figure quarto-figure-center r-stretch" alt="RStudio IDE with a Quarto document, source code on the left and output on the right. Annotated to show the YAML, a link, a header, and a code chunk."></section>
-<section id="environments" class="slide level2">
-<h2>Environments</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>The environment of your Quarto document is separate from the Console!</p>
-</div>
-</div>
-</div>
-<p>Remember this, and expect it to bite you a few times as you’re learning to work with Quarto!</p>
-</section>
-<section id="environments-1" class="slide level2">
-<h2>Environments</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>First, run the following in the console:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb5-2"><a></a>x <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<div class="question fragment">
-<p>All looks good, eh?</p>
-</div>
-</div><div class="column fragment" style="width:50%;">
-<p>Then, add the following in an R chunk in your Quarto document</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>x <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<div class="question fragment">
-<p>What happens? Why the error?</p>
-</div>
-</div>
-</div>
-</section>
-<section id="how-will-we-use-quarto" class="slide level2">
-<h2>How will we use Quarto?</h2>
+<img data-src="images/tour-jupyter.png" class="quarto-figure quarto-figure-center r-stretch" alt="RStudio IDE with a Quarto document, source code on the left and output on the right. Annotated to show the YAML, a link, a header, and a code chunk."></section>
+<section id="how-will-we-use-jupyter-notebooks" class="slide level2">
+<h2>How will we use Jupyter Notebooks?</h2>
 <ul>
-<li>Every application exercise, lab, project, etc. is an Quarto document</li>
-<li>You’ll always have a template Quarto document to start with</li>
+<li>Every application exercise, lab, project, etc. is a Jupyter notebook
+<ul>
+<li>However, projects will be built with Quarto Websites (more later)</li>
+</ul></li>
+<li>You’ll always have a template Jupyter notebook to start with</li>
 <li>The amount of scaffolding in the template will decrease over the semester</li>
 </ul>
-</section>
-<section id="whats-with-all-the-hexes" class="slide level2">
-<h2>What’s with all the hexes?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hexes.jpeg" class="quarto-figure quarto-figure-center" alt="Hex logos for many packages"></p>
-</figure>
-</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta199-s24.github.io/">🔗 sta199-s24.github.io</a></p>
+<p><a href="https://datasciaz.netlify.app/">🔗 datasciaz.netlify.app</a></p>
 </div>
 </div>
 </section></section>
@@ -1017,44 +967,6 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -1131,6 +1043,24 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1167,7 +1097,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
