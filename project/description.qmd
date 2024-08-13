@@ -92,7 +92,7 @@ If you have concerns with the teamwork and/or contribution from any team members
 
 The grade breakdown is as follows:
 
-| Total                              | 100 pts |
+| Total                              | 110 pts |
 |------------------------------------|---------|
 | **M1: Working collaboratively**    | 5 pts   |
 | **M2: Project proposal**           | 10 pts  |
@@ -100,7 +100,7 @@ The grade breakdown is as follows:
 | **M4: Write-up**                   | 40 pts  |
 | **M4: Slides + presentation**      | 25 pts  |
 | **Reproducibility + organization** | 5 pts   |
-| **Teamwork**                       | 10 pts  |
+| **Teamwork**                       | 20 pts  |
 
 ## Grading summary
 

@@ -220,20 +220,7 @@ Then, identify at least one county that is a clear outlier in Wisconsin (WI) by 
 You can use the data viewer to identify them interactively, you do not have to write code.
 Comment on the population composition of this county by investigating the percentage of other races living there.
 
-```{python}
-#| eval: true
-#| echo: false
-midwest = pd.read_csv('data/midwest.csv')
-g = sns.FacetGrid(midwest, col="state", col_wrap=4, height=4, aspect=1)
-g.map_dataframe(sns.scatterplot, x="percollege", y="percbelowpoverty", hue="percwhite", alpha=0.5, s=50)
-g.add_legend()
-
-g.set_axis_labels("% college educated", "% below poverty line")
-g.set_titles("{col_name}")
-g.fig.suptitle("ADD TITLE", y=1.02)
-
-plt.show()
-```
+![](images/wi-facet.png){fig-align="center"}
 
 ::: callout-tip
 ## Hint
@@ -264,7 +251,7 @@ You can read this file into Python with the following code:
 
 ```{python}
 #| eval: false
-az_county = pd.read_csv('data/az_county.csv')
+az_county = pd.read_csv('data/az-county.csv')
 ```
 
 This will read the CSV (comma separated values) file from the `data` folder and store the dataset as a data frame called `az_county` in Python.

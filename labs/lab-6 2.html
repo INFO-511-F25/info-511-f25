@@ -171,23 +171,9 @@ window.Quarto = {
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
-    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
-    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
-            Gradescope
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
-            Gradebook
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="https://info511fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <a href="https://d2l.arizona.edu/d2l/home/1478216" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -535,13 +521,26 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a <em>Team</em> Lab, meaning you can and should work with your project team on it.</p>
+</div>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>In this lab you’ll start your practice of statistical modeling. You’ll fit models, interpret model output, and make decisions about your data and research question based on the model results.</p>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p>In this lab we will work with the <strong>seaborn</strong> and <strong>statsmodels</strong> modules.</p>
-<div id="73a3acdd" class="cell" data-message="false" data-execution_count="1">
+<div id="63a2c1ac" class="cell" data-message="false" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -565,6 +564,16 @@ Note
 <p>Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course. There will be periodic reminders in this assignment to remind you to <strong>Run all, commit, and sync</strong> your changes to GitHub. You should have at least 3 commits with meaningful commit messages by the end of the assignment.</p>
 </div>
 </div>
+<p>All team members should clone the team GitHub repository for the lab. Then, one team member should edit the document Markdown cell by adding the team name to the <code>Team name</code> field and adding the names of the team members contributing to lab to the <code>Authors</code> field. Hopefully that’s everyone, but if someone doesn’t contribute during the lab session or throughout the week before the deadline, their name should not be added. If you have 4 members in your team, you can delete the line for the 5th team member. Then, this team member should render the document and commit and push the changes. All others should <strong>not</strong> touch the document at this stage.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lab 6 - Modeling I</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### Team name</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Authors: </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>"Team member 1"</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>"Team member 2"</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>"Team member 3"</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>"Team member 4"</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>"Team member 5"</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Date: ADD DATE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Additionally, if you’re using functions that are not introduced in the course materials, you must cite your sources.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -579,6 +588,19 @@ Important
 <p>Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the University of Arizona <a href="https://deanofstudents.arizona.edu/policies/code-academic-integrity">Code of Academic Integrity</a> and will be treated as such.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pick another member of the team write the answer to Part 1. All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub. All others should <strong>not</strong> touch the document.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="part-1---smoking-during-pregnancy" class="level1">
@@ -590,7 +612,8 @@ Important
 <li><p>Create a version of the <code>births14</code> data set dropping observations where there are <code>NA</code>s for <code>habit</code>. You can call this version <code>births14_habitgiven</code>.</p></li>
 <li><p>Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions. Create an appropriate plot displaying the relationship between <code>weight</code> and <code>habit</code>. In 2-3 sentences, discuss the relationships observed.</p></li>
 <li><p>Now, fit a linear model that predicts <code>weight</code> from <code>habit</code>. Provide the tidy summary output below.</p></li>
-<li><p>Write the estimated least squares regression line below using proper notation.</p>
+<li><p>Write the estimated least squares regression line below using proper notation.</p></li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -603,8 +626,7 @@ Tip
 <div class="callout-body-container callout-body">
 <p>If you need to type an equation using proper notation, type your answers in-between <code>$$</code> and <code>$$</code>. You may use <code>\hat{example}</code> to put a hat on a character.</p>
 </div>
-</div></li>
-</ol>
+</div>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
@@ -614,6 +636,19 @@ Tip
 <li><p>Interpret the intercept in the context of the data and the research question. Is the intercept meaningful in this context? Why or why not?</p></li>
 <li><p>Interpret the slope in the context of the data and the research question.</p></li>
 </ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After the team member working on Part 1 renders, commits, and pushes, another team member should pull their changes and render the document. Then, they should write the answer to Part 2 (up to question 5). All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub. All others should <strong>not</strong> touch the document.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="part-2---parasites" class="level1">
@@ -640,6 +675,19 @@ Tip
 <li><p>Visualize the relationship between the two variables.</p></li>
 <li><p>Use the visualization to describe the relationship between the two variables.</p></li>
 </ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After the team member working on Part 2 (up to question 5) renders, commits, and pushes, another team member should pull their changes and render the document. Then, they should write the answer to Part 2 (questions 5-7). All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub. All others should <strong>not</strong> touch the document.</p>
+</div>
+</div>
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
@@ -655,7 +703,8 @@ Tip
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
 <p>Since <code>parsim</code> takes values between 0 and 1, we want to transform this variable so that it can range between (−∞,+∞). This will be better suited for fitting a regression model (and interpreting predicted values!)</p>
 <ol type="a">
-<li><p>Using mutate, create a new variable <code>transformed_parsim</code> that is calculated as <code>math.log(parsim/(1-parsim))</code>. Add this variable to your data frame.</p>
+<li>Create a new variable <code>transformed_parsim</code> that is calculated as <code>math.log(parsim/(1-parsim))</code>. Add this variable to your data frame.</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -668,7 +717,8 @@ Note
 <div class="callout-body-container callout-body">
 <p><code>math.log()</code> in Python represents the <strong>nautral log</strong>.</p>
 </div>
-</div></li>
+</div>
+<ol start="2" type="a">
 <li><p>Then, visualize the relationship between divergence_time and <code>transformed_parsim</code>. Add a regression line to your visualization.</p></li>
 <li><p>Write a 1-2 sentence description of what you observe in the visualization.</p></li>
 </ol>
@@ -697,6 +747,19 @@ Note
 <li><p>Calculate and report <span class="math inline">\(R^2\)</span> for each model fit in the previous exercise.</p></li>
 <li><p>To answer our question of interest, would it be useful to compare the <span class="math inline">\(R^2\)</span> in each model to choose the variable that is the strongest predictor of parasite similarity? Why or why not?</p></li>
 </ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After the team member working on Part 2 (questions 5-7) renders, commits, and pushes, another team member should pull their changes and render the document. Then, they should write the answer to Part 3 (question 8). All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub. All others should <strong>not</strong> touch the document.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="part-3---gdp-and-life-expectancy" class="level1">
@@ -714,35 +777,54 @@ Note
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
 <ol type="a">
 <li><p><strong>Data:</strong> For our analysis, we will only be working with data from 2007. Below, filter the data set so only values from the year 2007 are shown. Save this data set as <code>gapminder_07</code> and use it for the remainder of this exercise and the following.</p></li>
-<li><p><strong>Visualization:</strong> We are interested in learning more about GDP, and we’ll start with exploring the relationship between life expectancy and GDP. Create two visualizations:</p>
+<li><p><strong>Visualization:</strong> We are interested in learning more about GDP, and we’ll start with exploring the relationship between life expectancy and GDP. Create two visualizations:</p></li>
+</ol>
 <ul>
 <li><p>Scatter plot of <code>gdpPercap</code> vs.&nbsp;<code>lifeExp</code>.</p></li>
 <li><p>Scatter plot of <code>gdpPercap_log</code> vs.&nbsp;<code>lifeExp</code>, where <code>gdpPercap_log</code> is a new variable you add to the data set by taking the natural log of <code>gdpPercap</code>.</p></li>
 </ul>
-<p>First describe the relationship between each pair of the variables. Then, comment on which relationship would be better modeled using a linear model, and explain your reasoning.</p></li>
-<li><p><strong>Model fitting:</strong></p>
+<p>First describe the relationship between each pair of the variables. Then, comment on which relationship would be better modeled using a linear model, and explain your reasoning.</p>
+<ol start="3" type="a">
+<li><strong>Model fitting:</strong></li>
+</ol>
 <ul>
 <li>Fit a linear model predicting log gross domestic product from life expectancy. Display the tidy summary.</li>
-</ul></li>
-<li><p><strong>Model evaluation:</strong></p>
+</ul>
+<ol start="4" type="a">
+<li><strong>Model evaluation:</strong></li>
+</ol>
 <ul>
 <li><p>Calculate the R-squared of the model using <code>.rsquared</code> from a model.</p></li>
 <li><p>Interpret R-squared in the context of the data and the research question.</p></li>
-</ul></li>
-</ol>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After the team member working on Part 3 (question 8) renders, commits, and pushes, another team member should pull their changes and render the document. Then, they should write the answer to Part 3 (questions 9-10). All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub. All others should <strong>not</strong> touch the document.</p>
+</div>
+</div>
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
 <p>Next, we want to examine if the relationship between GDP and life expectancy that we observed in the previous exercise holds across all continents in our data. We’ll continue to work with logged GDP (<code>gdpPercap_log</code>) and data from 2007.</p>
 <ol type="a">
 <li><p><strong>Justification:</strong> Create a scatter plot of <code>gdpPercap_log</code> vs.&nbsp;<code>lifeExp</code>, where the points are colored by <code>continent</code>. Do you think the trend between <code>gdpPercap_log</code> and <code>lifeExp</code> is different for different continents? Justify your answer with specific features of the plot.</p></li>
-<li><p><strong>Model fitting and interpretation:</strong></p>
+<li><p><strong>Model fitting and interpretation:</strong></p></li>
+</ol>
 <ul>
 <li><p>Regardless of your answer in part (a), fit an <u>additive model</u> (main effects) that predicts <code>gdpPercap_log</code> from life expectancy and continent (with Africas as the baseline level). Display a tidy summary of the model output.</p></li>
 <li><p>Interpret the <em>intercept</em> of the model, making sure that your interpretation is in the units of the original data (not on log scale).</p></li>
 <li><p>Interpret the <em>slope</em> of the model, making sure that your interpretation is in the units of the original data (not on log scale).</p></li>
-</ul></li>
-<li><p><strong>Prediction:</strong> Predict the GDP of a country in Asia where the average life expectancy is 70 years old.</p></li>
+</ul>
+<ol start="3" type="a">
+<li><strong>Prediction:</strong> Predict the GDP of a country in Asia where the average life expectancy is 70 years old.</li>
 </ol>
 </section>
 <section id="question-10" class="level2">
@@ -1038,7 +1120,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+      var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

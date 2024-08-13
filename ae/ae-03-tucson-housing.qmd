@@ -34,6 +34,7 @@ Luckily, you can help them answer this question with data visualization!
 ```{python}
 #| label: garage
 #| eval: false
+tucson_housing = pd.read_csv("data/tucson_housing.csv")
 
 garage_types = ["Single Family", "Townhouse"]
 
@@ -51,7 +52,7 @@ tucson_housing['garage'] = tucson_housing['type'].apply(lambda x: 'Garage' if x 
 # add code here
 ```
 
-Add narrative here...
+*Add narrative here.*
 
 ::: callout-important
 Now is a good time to render, commit, and push.
@@ -88,7 +89,7 @@ Once again, data visualization skills to the rescue!
 # add code here
 ```
 
-Add narrative here...
+*Add narrative here.*
 
 ::: callout-important
 Now is a good time to render, commit, and push.

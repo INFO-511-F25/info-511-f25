@@ -14,16 +14,16 @@ A cohort study on coffee consumption and mortality from:
 
 ![](images/coffee.PNG){fig-align="center"}
 
-+----------------------------+---------------+----------+
-|                            | **\           | **Died** |
-|                            | Did not die** |          |
-+============================+==============:+=========:+
-| Does not drink coffee      | 5438          | 1039     |
-+----------------------------+---------------+----------+
-| Drinks coffee occasionally | 29712         | 4440     |
-+----------------------------+---------------+----------+
-| Drinks coffee regularly    | 24934         | 3601     |
-+----------------------------+---------------+----------+
++----------------------------+---------------+--------------+
+|                            | **\           | **Died**     |
+|                            | Did not die** |              |
++============================+==============:+=============:+
+| Does not drink coffee      | 5438          | 1039         |
++----------------------------+---------------+--------------+
+| Drinks coffee occasionally | 29712         | 4440         |
++----------------------------+---------------+--------------+
+| Drinks coffee regularly    | 24934         | 3601         |
++----------------------------+---------------+--------------+
 
 Source: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5788283/>
 
@@ -51,37 +51,37 @@ Based on the Kolmogorov axioms:
 
     $Total=5438+1039+29712+4440+24934+3601$
 
-Add response here.
+*Add response here.*
 
 2.  **Calculate** $\small{P(A)}$: Probability that the person died
 
     $\small{P(A)} = \frac{\text{Total number of people who died}}{\text{Total number of people in the cohort}}$
 
-Add response here.
+*Add response here.*
 
 3.  **Calculate** $\small{P(B)}$: Probability that the person is a non-coffee drinker
 
     $\small{P(B)} = \frac{\text{Total number of non-coffee drinkers}}{\text{Total number of people in the cohort}}$
 
-Add response here.
+*Add response here.*
 
 4.  **Calculate** $\small{P(A \text{ and } B)}$: Probability that the person died and is a non-coffee drinker
 
     $\small{P(A \cap B)}=\frac{\text{Number of people who died and are non-coffee drinks}}{\text{Total number of people in the cohort}}$
 
-Add response here.
+*Add response here.*
 
 5.  **Calculate** $\small{P(A \text{ or } B)}$ using the formula for the union of two events:
 
     $\small{P(A \cup B)}=\small{P(A)}+\small{P(B)}-\small{P(A \cap B)}$
 
-Add response here.
+*Add response here.*
 
 6.  **Calculate** $\small{P(A \text{ or } B^c)}$: Probability that the person died or is a non-coffee drinker
 
     $\small{P(A \cup B^c)}=\small{P(A)}+\small{P(B^c)}-\small{P(A \cap B^c)}$
 
-Add response here.
+*Add response here.*
 
 Note: $\small{P(B^c)}$ is the complement of event $B$ (i.e., people who drink coffee occasionally or regularly).
 

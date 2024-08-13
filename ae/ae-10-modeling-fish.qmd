@@ -37,7 +37,7 @@ The data dictionary is below:
 | `height`          | Height, in cm          |
 | `width`           | Diagonal width, in cm  |
 
-# Visualizing the model
+## Visualizing the model
 
 We're going to investigate the relationship between the weights and heights of fish.
 
@@ -80,7 +80,7 @@ We're going to investigate the relationship between the weights and heights of f
 
     *Add response here.*
 
-# Model fitting
+## Model fitting
 
 -   **Demo:** Fit a model to predict fish weights from their heights.
 
@@ -106,7 +106,7 @@ We're going to investigate the relationship between the weights and heights of f
 # add code here
 ```
 
-# Model summary
+## Model summary
 
 -   **Demo:** Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
 
@@ -120,7 +120,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 *Add response here.*
 
-# Correlation
+## Correlation
 
 We can also assess correlation between two quantitative variables.
 
@@ -140,7 +140,7 @@ We can also assess correlation between two quantitative variables.
 # add code here
 ```
 
-# Adding a third variable
+## Adding a third variable
 
 -   **Demo:** Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
 
@@ -150,7 +150,7 @@ We can also assess correlation between two quantitative variables.
 # add code here
 ```
 
-# Fitting other models
+## Fitting other models
 
 -   **Demo:** We can fit more models than just a straight line. Change the following code below to read `lowess=False`. What is different from the plot created before?
 

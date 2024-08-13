@@ -2,7 +2,6 @@
 title: "AE 15: Integration"
 categories: 
   - Application exercise
-  - Answers
 ---
 
 In this exercise, we will:

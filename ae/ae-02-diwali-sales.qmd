@@ -35,7 +35,7 @@ import pandas as pd
 # add code here
 ```
 
-Add narrative here...
+*Add narrative here.*
 
 ::: callout-important
 Now is a good time to render, commit, and push.
@@ -53,19 +53,19 @@ Make sure that you commit and push all changed documents and your Git pane is co
 ```{python}
 #| label: unique-levels
 
-#add code here
+# add code here
 ```
 
 2.  **Identifying and Visualizing Outliers:**
 
-    -   Create a box plot to visualize outliers in the 'Amount' column.
+    -   Create a box plot to visualize outliers in the `Amount` column.
 
     -   Identify outliers using the IQR method and count the number of outliers for each numerical column.
 
 ```{python}
 #| label: outliers
 
-#add code here
+# add code here
 ```
 
 2.  **Handling Missing Values:**
@@ -75,10 +75,10 @@ Make sure that you commit and push all changed documents and your Git pane is co
 ```{python}
 #| label: NaNs
 
-#add code here
+# add code here
 ```
 
-Add narrative here...
+*Add narrative here.*
 
 ::: callout-important
 Now is a good time to render, commit, and push.

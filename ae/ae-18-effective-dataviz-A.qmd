@@ -1,5 +1,6 @@
 ---
 title: "AE 18: Trends instructional staff employees in universities"
+subtitle: "Suggested answers"
 categories: 
   - Application exercise
   - Answers
@@ -185,7 +186,6 @@ plt.show()
 ```
 
 ## Pick a purpose + use labels to communicate the message
-
 
 ```{python}
 #| fig-asp: 0.5

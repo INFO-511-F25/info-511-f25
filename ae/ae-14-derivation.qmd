@@ -2,7 +2,6 @@
 title: "AE 14: Derivation"
 categories: 
   - Application exercise
-  - Answers
 ---
 
 In this exercise, we will:

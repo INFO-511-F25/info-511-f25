@@ -51,7 +51,7 @@ print(loans.info())
 print(loans.describe())
 ```
 
-# Get to know the data
+## Get to know the data
 
 -   **Your turn:** What is a typical interest rate in this dataset? What are some attributes of a typical loan and a typical borrower. Give yourself no more than 5 minutes for this exploration and share 1-2 findings.
 
@@ -69,7 +69,7 @@ print(loans.describe())
 # add code to explore borrowers here
 ```
 
-# Interest rate vs. credit utilization ratio
+## Interest rate vs. credit utilization ratio
 
 Python does not encode categories or handle missing values for you.
 Linear regression models are incapable of handling either, so we will need to use one-hot encoding to encode categories and drop missing values.
@@ -120,7 +120,7 @@ Intercept: Borrowers with 0 credit utilization are predicted, on average, to get
 
 Slope: For each additional point credit utilization is higher, interest rate is predicted to be higher, on average, by 4.73%.
 
-# Interest rate vs. homeownership
+## Interest rate vs. homeownership
 
 Next we predict interest rates from homeownership, which is a categorical predictor with three levels:
 
@@ -141,9 +141,9 @@ print(homeownership_levels)
 
 *Add response here.*
 
-# Interest rate vs. credit utilization and homeownership
+## Interest rate vs. credit utilization and homeownership
 
-## Main effects model
+### Main effects model
 
 -   **Demo:** Fit a model to predict interest rate from credit utilization and homeownership, **without** an interaction effect between the two predictors. Display the summary output and write out the estimated regression equation.
 
@@ -163,7 +163,7 @@ print(homeownership_levels)
 
 *Add response here.*
 
-## Interaction effects model
+### Interaction effects model
 
 -   **Demo:** Fit a model to predict interest rate from credit utilization and homeownership, **with** an interaction effect between the two predictors. Display the summary output and write out the estimated regression equation.
 
@@ -183,7 +183,7 @@ print(homeownership_levels)
 
 *Add response here.*
 
-## Choosing a model
+### Choosing a model
 
 Rule of thumb: **Occam's Razor** - Don't overcomplicate the situation!
 We prefer the *simplest* best model.
@@ -202,7 +202,7 @@ We prefer the *simplest* best model.
 
 *Add response here.*
 
-# Another model to consider
+## Another model to consider
 
 -   **Your turn:** Let's add one more model to the variable -- issue month. Should we add this variable to the interaction effects model from earlier?
 

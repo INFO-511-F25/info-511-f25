@@ -2,7 +2,6 @@
 title: "AE 13: Ultimate candy ranking"
 categories: 
   - Application exercise
-  - Answers
 editor: visual
 editor_options: 
   chunk_output_type: console

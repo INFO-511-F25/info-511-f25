@@ -142,23 +142,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
-    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
-    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
-            Gradescope
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
-            Gradebook
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="https://info511fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <a href="https://d2l.arizona.edu/d2l/home/1478216" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -603,7 +589,7 @@ Note
 </div>
 </div>
 <p>Here is a peek at the top 10 rows of the dataset:</p>
-<div id="3e1dffaa" class="cell" data-execution_count="2">
+<div id="74dae8a0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>datasaurus <span class="op">=</span> pd.read_csv(<span class="st">"data/datasaurus_dozen.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(datasaurus.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -676,18 +662,18 @@ Tip
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
 <ol type="a">
-<li><p>Fill in the code below to create a two-way table that summarizes these data.</p>
-<div id="bedf3cfb" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>survey_counts <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: [<span class="st">'18-49'</span>, <span class="st">'18-49'</span>, <span class="st">'18-49'</span>, <span class="st">'50+'</span>, <span class="st">'50+'</span>, <span class="st">'50+'</span>],</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'vote'</span>: [<span class="st">'Donald Trump'</span>, <span class="st">'Joe Biden'</span>, <span class="st">'Undecided'</span>, <span class="st">'Donald Trump'</span>, <span class="st">'Joe Biden'</span>, <span class="st">'Undecided'</span>],</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n'</span>: [<span class="dv">238</span>, <span class="dv">237</span>, <span class="dv">507</span><span class="op">-</span><span class="dv">238</span><span class="op">-</span><span class="dv">237</span>, <span class="dv">271</span>, <span class="dv">228</span>, <span class="dv">271</span><span class="op">+</span><span class="dv">228</span><span class="op">-</span><span class="dv">271</span><span class="op">-</span><span class="dv">228</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>survey_pivot <span class="op">=</span> survey_counts.pivot(index<span class="op">=</span><span class="st">'age'</span>, columns<span class="op">=</span><span class="st">'vote'</span>, values<span class="op">=</span><span class="st">'n'</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>survey_pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<li>Fill in the code below to create a two-way table that summarizes these data.</li>
 </ol>
+<div id="259d5c00" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>survey_counts <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'age'</span>: [],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'vote'</span>: [],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'n'</span>: []</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>survey_pivot <span class="op">=</span> survey_counts.pivot(index<span class="op">=</span><span class="st">'___'</span>, columns<span class="op">=</span><span class="st">'___'</span>, values<span class="op">=</span><span class="st">'___'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>survey_pivot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>For parts b-d below, use a your response single pipeline starting with <code>survey_counts</code>, calculate the desired proportions, and make sure the result is an <strong>ungrouped</strong> data frame with a column for relevant counts, a column for relevant proportions, and a column for the groups you’re interested in.</p>
 <ol start="2" type="a">
 <li><p>Calculate the proportions of 18-49 year olds and 50+ year olds in this sample.</p></li>
@@ -698,7 +684,8 @@ Tip
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
 <ol type="a">
-<li><p>Re-create the following visualization that displays relationship between <code>age</code> and <code>vote</code>.</p>
+<li>Re-create the following visualization that displays relationship between <code>age</code> and <code>vote</code>.</li>
+</ol>
 <p><img src="images/surveyusa-trump-biden.png" class="img-fluid" width="500"></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -712,8 +699,9 @@ Tip
 <div class="callout-body-container callout-body">
 <p>The colors used in the plot are <code>"#E81B23"</code>, <code>"#0015BC"</code>, and <code>"#808080"</code>. The theme is <code>sns.set_theme(style="whitegrid")</code></p>
 </div>
-</div></li>
-<li><p>Based on your calculations so far, as well as your visualization, write 1-3 sentences that describe the relationship, in this sample, between age and plans for presidential vote.</p></li>
+</div>
+<ol start="2" type="a">
+<li>Based on your calculations so far, as well as your visualization, write 1-3 sentences that describe the relationship, in this sample, between age and plans for presidential vote.</li>
 </ol>
 <div class="render-commit-push">
 <p>Run all, commit, and sync.</p>
@@ -1088,7 +1076,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+      var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

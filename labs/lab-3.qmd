@@ -128,7 +128,7 @@ Then, display the resulting data frame and state how many rows and columns it ha
 
 Requirements:
 
--   Your code must use one of `melt()` or `pivot_table()`. There are other ways you can do this reshaping move in R, but this question requires solving this problem by pivoting.
+-   Your code must use one of `melt()` or `pivot_table()`. There are other ways you can do this reshaping move in Python, but this question requires solving this problem by pivoting.
 -   The resulting DataFrame must be saved as something other than `country_inflation` so you (1) can refer to this DataFrame later in your analysis and (2) do not overwrite country_inflation. Use a short but informative name.
 
 ::: callout-important
@@ -293,6 +293,7 @@ Then, in a few sentences, describe the patterns you observe in the plot, particu
 -   If your legend has labels that are too long, you can try moving the legend to the bottom and stack the labels vertically. *Hint:* The legend argument of the ax.legend() method will be useful.
 
 ```{python}
+#| eval: false
 plt.figure(figsize=(10, 6))
 sns.___(...)
 plt.___(...)

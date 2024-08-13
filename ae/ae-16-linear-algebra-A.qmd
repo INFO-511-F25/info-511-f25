@@ -1,5 +1,6 @@
 ---
 title: "AE 16: Linear algebra"
+subtitle: "Suggested answers"
 categories: 
   - Application exercise
   - Answers

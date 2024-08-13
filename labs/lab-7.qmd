@@ -7,9 +7,13 @@ execute:
   error: false
 ---
 
+::: callout-important
+This is a *Team* Lab, meaning you can and should work with your project team on it.
+:::
+
 # Introduction
 
-In this lab you'll practice machine learning modeling and then venture on to quantifying uncertainty.
+In this lab you'll practice machine learning modeling and then venture on to model validation and quantifying uncertainty.
 
 ## Packages
 
@@ -38,6 +42,26 @@ There will be periodic reminders in this assignment to remind you to **Run all, 
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
 :::
 
+All team members should clone the team GitHub repository for the lab.
+Then, one team member should edit the document Markdown cell by adding the team name to the `Team name` field and adding the names of the team members contributing to lab to the `Authors` field.
+Hopefully that's everyone, but if someone doesn't contribute during the lab session or throughout the week before the deadline, their name should not be added.
+If you have 4 members in your team, you can delete the line for the 5th team member.
+Then, this team member should render the document and commit and push the changes.
+All others should **not** touch the document at this stage.
+
+
+``` markdown
+# Lab 7 - Modeling II
+### Team name
+### Authors: 
+  - "Team member 1"
+  - "Team member 2"
+  - "Team member 3"
+  - "Team member 4"
+  - "Team member 5"
+### Date: ADD DATE HERE
+```
+
 Additionally, if you’re using functions that are not introduced in the course materials, you must cite your sources.
 
 ::: callout-important
@@ -51,6 +75,12 @@ All personally identifiable information has been removed.
 The dataset is called `email` and it's in your `data` folder.
 
 The outcome variable is `spam`, which takes the value `1` if the email is spam, `0` otherwise.
+
+::: callout-important
+Pick another member of the team write the answer to Part 1.
+All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
+All others should **not** touch the document.
+:::
 
 ## Question 1
 
@@ -93,7 +123,6 @@ Display the tidy output of the model.
 b\.
 Using this model, predict spam / not spam for all emails in the email dataset.
 
-
 c\.
 Using your data frame from the previous part, determine, in a single pipeline, the numbers of emails:
 
@@ -110,34 +139,50 @@ In addition to these numbers showing in your Python output, you must write a sen
 e\.
 Based on the false positive and false negatives rates of this model, comment, in 1-2 sentences, on which model is preferable and why.
 
+::: callout-important
+After the team member working on Part 1 renders, commits, and pushes, another team member should pull their changes and render the document.
+Then, they should write the answer to Part 2.
+All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
+All others should **not** touch the document.
+:::
+
 # Part 2 - Model validation
 
-In this section, we will explore how to evaluate the performance of your models using k-fold cross validation. This technique helps in assessing how the results of a statistical analysis will generalize to an independent dataset.
-
+In this section, we will explore how to evaluate the performance of your models using k-fold cross validation.
+This technique helps in assessing how the results of a statistical analysis will generalize to an independent dataset.
 
 ## Question 4
 
-a. Explain in your own words what k-fold cross validation is and why it is useful.
+a.  Explain in your own words what k-fold cross validation is and why it is useful.
 
-b. Implement 5-fold cross validation on the logistic regression model from Question 1a predicting `spam` from `exclaim_mess.`
-Use the `cross_val_score` from `sklearn` to assist with this.
+b.  Implement 5-fold cross validation on the logistic regression model from Question 1a predicting `spam` from `exclaim_mess.` Use the `cross_val_score` from `sklearn` to assist with this.
 
-c. Summarize the results of your cross validation. What is the average accuracy and standard deviation across the folds?
-
+c.  Summarize the results of your cross validation.
+    What is the average accuracy and standard deviation across the folds?
 
 ## Question 5
 
-a. Implement 10-fold cross validation on the logistic regression model from Question 2a predicting `spam` from `exclaim_mess`, `winner`, and `urgent_subj.`
+a.  Implement 10-fold cross validation on the logistic regression model from Question 2a predicting `spam` from `exclaim_mess`, `winner`, and `urgent_subj.`
 
-b. Summarize the results of your cross validation. Compare the average accuracy and standard deviation across the folds to the results from Question 4. What do you observe?
+b.  Summarize the results of your cross validation.
+    Compare the average accuracy and standard deviation across the folds to the results from Question 4.
+    What do you observe?
 
-c. Based on the cross-validation results, which model do you think performs better in terms of generalizability? Justify your answer.
+c.  Based on the cross-validation results, which model do you think performs better in terms of generalizability?
+    Justify your answer.
 
 ## Question 6
 
-a. Plot the accuracy scores of each fold for both the 5-fold and 10-fold cross-validation. 
+a.  Plot the accuracy scores of each fold for both the 5-fold and 10-fold cross-validation.
 
-b. Describe any patterns you observe in the plot.
+b.  Describe any patterns you observe in the plot.
+
+::: callout-important
+After the team member working on Part 2 renders, commits, and pushes, another team member should pull their changes and render the document.
+Then, they should write the answer to Part 3.
+All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
+All others should **not** touch the document.
+:::
 
 # Part 3 - Hotel cancellations
 
@@ -179,6 +224,13 @@ Using these data, we will try to answer the following question:
     Based on this probability, would you predict this booking would be cancelled or not cancelled.
     Explain your reasoning for your classification.
 
+::: callout-important
+After the team member working on Part 3 renders, commits, and pushes, another team member should pull their changes and render the document.
+Then, they should write the answer to Parts 4 and 5.
+All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
+All others should **not** touch the document.
+:::
+
 # Part 4 - Get creative
 
 ## Question 9
@@ -191,7 +243,7 @@ Try to make it as ugly as possible, the sky is the limit!
 In 2-3 sentences, explain why the plot you created is *ugly* (to you, at least) and ineffective.
 
 ```{python}
-pd.read_csv("data/penguins.csv")
+penguins = pd.read_csv("data/penguins.csv")
 
 sns.set(style="darkgrid")
 sns.scatterplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
@@ -264,4 +316,3 @@ On Questions 1 through 10, you can earn up to 5 points on each question:
 -   1: Response does not show sufficient effort or understanding and/or is largely incomplete.
 
 -   0: No attempt.
-

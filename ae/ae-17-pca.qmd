@@ -1,5 +1,5 @@
 ---
-title: "Principal component analysis"
+title: "AE 17: Principal component analysis"
 categories: 
   - Application exercise
 ---
@@ -26,8 +26,7 @@ Watch this video on Principal Component Analysis:
 
 </iframe>
 
--   What were three takeaways from this video?
-    Include how you think linear algebra contributes to PCA:
+-   What were three takeaways from this video? Include how you think linear algebra contributes to PCA:
 
 *Add response here.*
 

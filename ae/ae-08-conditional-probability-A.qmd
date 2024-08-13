@@ -1,7 +1,9 @@
 ---
 title: "AE 08: Understanding Probabilities with COVID-19 Rapid Self-Administered Tests"
+subtitle: "Suggested answers"
 categories: 
   - Application exercise
+  - Answers
 ---
 
 ## Goal
@@ -86,18 +88,15 @@ $$
 
 1.  **Is this calculation surprising?**
 
-    -   Considering the given sensitivity, specificity, and prevalence, is the high probability of having the disease given a positive test result unexpected?
-        Why or why not?
+    -   Considering the given sensitivity, specificity, and prevalence, is the high probability of having the disease given a positive test result unexpected? Why or why not?
 
 2.  **What is the explanation?**
 
-    -   Explain why the probability of having the disease given a positive test result is so high.
-        Consider the impact of sensitivity, specificity, and prevalence.
+    -   Explain why the probability of having the disease given a positive test result is so high. Consider the impact of sensitivity, specificity, and prevalence.
 
 3.  **Was this calculation actually reasonable to perform?**
 
-    -   Discuss whether it is reasonable to calculate the probability of having the disease based on the given data.
-        Are there any limitations or assumptions in this calculation?
+    -   Discuss whether it is reasonable to calculate the probability of having the disease based on the given data. Are there any limitations or assumptions in this calculation?
 
 4.  **What if we tested in a different population, such as high-risk individuals?**
 
@@ -105,5 +104,4 @@ $$
 
 5.  **What if we were to test a random individual in a county where the prevalence of COVID-19 is approximately 25%?**
 
-    -   Recalculate the probability of having the disease given a positive test result for a population with a 25% prevalence of COVID-19.
-        How does this compare to the original calculation?
+    -   Recalculate the probability of having the disease given a positive test result for a population with a 25% prevalence of COVID-19. How does this compare to the original calculation?

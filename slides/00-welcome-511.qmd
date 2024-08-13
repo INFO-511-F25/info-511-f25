@@ -153,7 +153,7 @@ All linked from the course website:
 
 -   Introduce new content and prepare for lectures by watching the videos and completing the readings
 -   Actively participate office hours, team meetings
--   Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
+-   Practice applying data science concepts and computing with application exercises during lecture, graded for completion
 -   Put together what you've learned to analyze real-world data
     -   Lab assignments x 7
     -   Exams x 2
@@ -163,9 +163,7 @@ All linked from the course website:
 
 -   Two exams, each 20%
 
--   Each exam comprised of two parts:
-
-    -   Take home: Focus on the analysis of a dataset introduced in the take home exam, or solve mathematical prompts
+-   Take home: Focus on the analysis of a dataset introduced in the take home exam, or solve mathematical prompts
 
 ::: callout-caution
 Exam dates cannot be changed and no make-up exams will be given.
@@ -204,8 +202,8 @@ You must complete the project to pass this class.
 
 | Category              | Percentage |
 |-----------------------|------------|
-| Labs                  | 35%        |
-| Project               | 20%        |
+| Labs                  | 30%        |
+| Project               | 25%        |
 | Exam 1                | 20%        |
 | Exam 2                | 20%        |
 | Application Exercises | 5%         |
@@ -252,7 +250,7 @@ My goal is to ensure that students from all diverse backgrounds are well-served 
 
 ## Academic integrity
 
-> To uphold the [UArizona iSchool Community Standard](https://ischool.arizona.edu/sites/ischool.arizona.edu/files/iSchool%20Policy%20on%20Academic%20Integrity%20in%20Computing%202023%20-%20approved%20by%20faculty%20vote%20April%202023.pdf#:~:text=UArizona%20iSchool%20Instructors%20are%20expected%20to%20help%20students,prohibited%20in%20some%20courses%20are%20allowed%20in%20others.):
+> To uphold the [UArizona InfoSci Community Standard](https://infosci.arizona.edu/students-and-career/academic-integrity):
 
 > -   I will not lie, cheat, or steal in my academic endeavors;
 > -   I will conduct myself honorably in all my endeavors; and

@@ -1,5 +1,6 @@
 ---
 title: "AE 15: Integration"
+subtitle: "Suggested answers"
 categories: 
   - Application exercise
   - Answers
@@ -60,7 +61,6 @@ $$
 $$
 \int a^x \, dx = \frac{a^x}{\ln(a)} + C
 $$
-
 
 3.  **Natural Logarithm**
 

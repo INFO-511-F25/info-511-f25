@@ -1,5 +1,5 @@
 ---
-title: "Quantifying uncertainty"
+title: "AE 09: Hypothesis testing"
 categories: 
   - Application exercise
 editor: visual
@@ -37,13 +37,13 @@ And then the data.
 # add code here
 ```
 
-# Hypotheses
+## Hypotheses
 
 -   **Your turn:** Write out the correct null and alternative hypothesis. Do this in both words *and* in proper notation.
 
 *Add response here.*
 
-# Observed data
+## Observed data
 
 Our goal is to use calculate the probability of a sample statistic at least as extreme as the one observed in our data if in fact the null hypothesis is true.
 
@@ -57,11 +57,11 @@ Our goal is to use calculate the probability of a sample statistic at least as e
 
 $$\bar{x} = 116.24$$
 
-# The null distribution
+## The null distribution
 
 Let's use simulation-based methods to conduct the hypothesis test specified above.
 
-## Generate
+### Generate
 
 We'll start by generating the null distribution.
 
@@ -113,7 +113,7 @@ np.random.seed(4321)
 
 *Add response here.*
 
-# p-value
+## p-value
 
 Above, we eyeballed how likely/unlikely our observed mean is.
 Now, let's actually quantify it using a p-value.
@@ -130,11 +130,7 @@ Now, let's actually quantify it using a p-value.
 # add code here
 ```
 
--   **Your turn:** What is the p-value?
-
-*Add response here.*
-
-# Conclusion
+## Conclusion
 
 -   **Your turn:** What is the conclusion of the hypothesis test based on the p-value you calculated? Make sure to frame it in context of the data and the research question. Use a significance level of 5% to make your conclusion.
 

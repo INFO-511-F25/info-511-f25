@@ -9,6 +9,6 @@ You can find the course syllabus [here](/course-syllabus.html) and the course sc
 
 ## Class meetings
 
-| Meeting | Location | Time                             |
-|---------|----------|----------------------------------|
-| Lecture | TBD      | Tues & Thurs 11:00 am - 12:15 pm |
+| Meeting | Location | Time         |
+|---------|----------|--------------|
+| Lecture | Online   | Asynchronous |

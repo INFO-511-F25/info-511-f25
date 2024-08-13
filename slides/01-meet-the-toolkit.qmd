@@ -216,7 +216,7 @@ Clone the corresponding application exercise repo and follow along.
 
 {{< fa laptop >}} `ae-01-meet-the-penguins`
 
-Go to the [course GitHub organization](https://github.com/INFO-511-F24) and clone [`ae-01-meet-the-penguins`](https://github.com/INFO-511-F24/ae-01-penguins) to your environment.
+Go to the [course GitHub organization](https://github.com/INFO-511-F24) and clone [`ae-01-meet-the-penguins`](https://github.com/INFO-511-F24/ae-01-meet-the-penguins) to your environment.
 :::
 :::
 :::

@@ -250,8 +250,7 @@ So take a moment to make sure you're following along with the version control in
 
 ::: render-commit-push
 Run all, commit, and sync your final changes to GitHub with a meaningful commit message.
-<br>
-Make sure to commit and push all changed files so that your Git pane is empty afterwards.
+<br> Make sure to commit and push all changed files so that your Git pane is empty afterwards.
 :::
 
 ## Pandas Introduction

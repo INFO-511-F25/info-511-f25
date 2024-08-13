@@ -1,5 +1,6 @@
 ---
 title: "Quantifying uncertainty"
+subtitle: "Suggested answers"
 categories: 
   - Application exercise
   - Answers
