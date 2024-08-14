@@ -232,6 +232,8 @@ column = multi_arr[:, 2]
 
 print("multi_arr:", multi_arr, "\n")
 
+print("element:", multi_arr, "\n")
+
 print("row:", row, "\n")
 
 print("column:", column, "\n")
@@ -258,7 +260,7 @@ print("broadcasted_addition:", broadcasted_addition, "\n")
 
 **Dot product**: take two equal-length sequences and return a single number
 
-`2 • (1, 2, 3) = 2x1 = 2; 2x2 = 0; 2x3 = 6`
+`2 • (1, 2, 3) = 2x1 = 2; 2x2 = 4; 2x3 = 6`
 
 **Matrix multiplication**:
 
