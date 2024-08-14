@@ -36,7 +36,7 @@ Complete an activity in one of the categories below.
 Under each category are suggested activities.
 You do not have to do one these suggested activities.
 You are welcome to find other activities as long as they are related to data science and they fit in one of the six categories.
-You can email Professor Chism if there is an activity you’d like to do but you’re not sure if it qualifies for the statistics experience.
+You can email Professor Chism if there is an activity you’d like to do but you’re not sure if it qualifies for the data science experience.
 
 ### Category 1: Attend a talk, conference, or workshop
 
