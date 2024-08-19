@@ -455,7 +455,7 @@ Dr.&nbsp;Greg Chism
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Head</a></li><li><a href="#tabset-1-2">Info</a></li><li><a href="#tabset-1-3">Describe</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="99dc1157" class="cell" data-execution_count="2">
+<div id="e0815198" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>births14.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -583,7 +583,7 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="c8af88ea" class="cell" data-execution_count="3">
+<div id="5322ea35" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>births14.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -610,7 +610,7 @@ memory usage: 101.7+ KB</code></pre>
 </div>
 </div>
 <div id="tabset-1-3">
-<div id="3b5f5aff" class="cell" data-execution_count="4">
+<div id="bffb8053" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>births14.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -727,7 +727,7 @@ memory usage: 101.7+ KB</code></pre>
 </section>
 <section id="visualizing-data-relationships" class="slide level2 smaller">
 <h2>Visualizing data relationships</h2>
-<div id="f1b37366" class="cell" data-execution_count="5">
+<div id="75a560ea" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>sns.pairplot(births14[[<span class="st">'fage'</span>, <span class="st">'mage'</span>, <span class="st">'weeks'</span>, <span class="st">'mature'</span>]], hue<span class="op">=</span><span class="st">'mature'</span>, height<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb6-2"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -741,7 +741,7 @@ memory usage: 101.7+ KB</code></pre>
 </section>
 <section id="group-descriptive-statistics" class="slide level2 smaller">
 <h2>Group descriptive statistics</h2>
-<div id="92f837ba" class="cell" data-execution_count="6">
+<div id="e1a89df0" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Example with the premie column</span></span>
 <span id="cb7-2"><a></a>births14.groupby(<span class="st">'premie'</span>).describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -894,7 +894,7 @@ memory usage: 101.7+ KB</code></pre>
 </section>
 <section id="assess-outliers-visually" class="slide level2 smaller">
 <h2>Assess outliers visually</h2>
-<div id="c13dda89" class="cell" data-execution_count="7">
+<div id="a9d26163" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>sns.boxplot(data <span class="op">=</span> births14, x <span class="op">=</span> <span class="st">'weight'</span>, width <span class="op">=</span> <span class="fl">0.20</span>)</span>
 <span id="cb8-2"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -912,7 +912,7 @@ memory usage: 101.7+ KB</code></pre>
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Output</a></li><li><a href="#tabset-2-2">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div id="77862aa6" class="cell" data-execution_count="8">
+<div id="c97998e7" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>fage: 7 outliers
 mage: 1 outliers
@@ -924,7 +924,7 @@ weight: 32 outliers</code></pre>
 </div>
 </div>
 <div id="tabset-2-2">
-<div id="164ae6be" class="cell" data-execution_count="9">
+<div id="1d369e14" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">for</span> column <span class="kw">in</span> births14.select_dtypes(include<span class="op">=</span>np.number).columns:</span>
 <span id="cb10-2"><a></a>    q25 <span class="op">=</span> births14[column].quantile(<span class="fl">0.25</span>)</span>
 <span id="cb10-3"><a></a>    q75 <span class="op">=</span> births14[column].quantile(<span class="fl">0.75</span>)</span>
@@ -951,7 +951,7 @@ weight: 32 outliers</code></pre>
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Cleaning</a></li><li><a href="#tabset-3-2">Plot</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div id="f4447f2b" class="cell" data-execution_count="10">
+<div id="694d8891" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1-14|2|4|6,7,8|10,11|13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Select numerical columns</span></span>
 <span id="cb11-2"><a></a>numerical_cols <span class="op">=</span> births14.select_dtypes(include <span class="op">=</span> [<span class="st">'number'</span>]).columns</span>
 <span id="cb11-3"><a></a></span>
@@ -968,7 +968,7 @@ weight: 32 outliers</code></pre>
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="9a301028" class="cell" data-execution_count="11">
+<div id="c64a41ea" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -987,7 +987,7 @@ weight: 32 outliers</code></pre>
 </section>
 <section id="missing-values-nan" class="slide level2">
 <h2>Missing values (<code>NaN</code>)</h2>
-<div id="2f437d6d" class="cell" data-execution_count="12">
+<div id="1a6792fd" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Count missing values in each column</span></span>
 <span id="cb12-2"><a></a>births14.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1011,7 +1011,7 @@ dtype: int64</code></pre>
 <section id="visualizing-nan" class="slide level2 smaller">
 <h2>Visualizing (<code>NaN</code>)</h2>
 <p>We can use the <code>missingno</code> library to visualize missing data.</p>
-<div id="a4921966" class="cell" data-execution_count="13">
+<div id="7fd7053f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>msno.bar(births14, figsize <span class="op">=</span> (<span class="dv">7</span>, <span class="dv">5</span>), fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb14-2"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1029,7 +1029,7 @@ dtype: int64</code></pre>
 <ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Describe</a></li><li><a href="#tabset-4-2">Unique levels</a></li><li><a href="#tabset-4-3">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<div id="b9bb2f77" class="cell" data-execution_count="14">
+<div id="54d1d9ae" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>births14.describe(exclude <span class="op">=</span> [np.number])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
@@ -1111,7 +1111,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-4-2">
-<div id="90569a5b" class="cell" data-execution_count="15">
+<div id="e79d473b" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>mature: ['younger mom' 'mature mom']
 premie: ['full term' 'premie']
@@ -1124,7 +1124,7 @@ whitemom: ['white' 'not white']</code></pre>
 </div>
 </div>
 <div id="tabset-4-3">
-<div id="e39997f8" class="cell" data-execution_count="16">
+<div id="2d19756e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17" data-code-line-numbers="|1|2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="cf">for</span> column <span class="kw">in</span> births14.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'category'</span>]).columns:</span>
 <span id="cb17-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>births14[column]<span class="sc">.</span>unique()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1141,7 +1141,7 @@ whitemom: ['white' 'not white']</code></pre>
 </section>
 <section id="normality-check-1" class="slide level2 smaller">
 <h2>Normality check</h2>
-<div id="4bc646b4" class="cell" data-execution_count="17">
+<div id="cc6d6b0f" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1163,11 +1163,11 @@ whitemom: ['white' 'not white']</code></pre>
 </section>
 <section id="skewness" class="slide level2 smaller">
 <h2>Skewness</h2>
-<div id="be10711b" class="cell" data-execution_count="18">
+<div id="22c611a0" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="04-eda_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="968" height="391"></p>
+<p><img data-src="04-eda_files/figure-revealjs/cell-19-output-1.png" class="quarto-figure quarto-figure-center" width="963" height="391"></p>
 </figure>
 </div>
 </div>
@@ -1184,7 +1184,7 @@ whitemom: ['white' 'not white']</code></pre>
 </section>
 <section id="kurtosis" class="slide level2 smaller">
 <h2>Kurtosis</h2>
-<div id="1872d97a" class="cell" data-execution_count="19">
+<div id="f6a113b1" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1208,7 +1208,7 @@ whitemom: ['white' 'not white']</code></pre>
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Normal</a></li><li><a href="#tabset-5-2">Negative skew</a></li><li><a href="#tabset-5-3">Positive skew</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="03bebee7" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="21">
+<div id="a75fa782" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1219,7 +1219,7 @@ whitemom: ['white' 'not white']</code></pre>
 </div>
 </div>
 <div id="tabset-5-2">
-<div id="c4bf58c5" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="22">
+<div id="59eaed70" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1230,7 +1230,7 @@ whitemom: ['white' 'not white']</code></pre>
 </div>
 </div>
 <div id="tabset-5-3">
-<div id="35bed5de" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="23">
+<div id="19c6a66f" class="cell" data-fig.asp="0.618" data-fig.width="10" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1245,7 +1245,7 @@ whitemom: ['white' 'not white']</code></pre>
 </section>
 <section id="testing-normality-data-shape" class="slide level2 smaller">
 <h2>Testing normality: data shape</h2>
-<div id="02d1b8fa" class="cell" data-execution_count="24">
+<div id="1ecee8c3" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1-24|2,5|8|11|14|17,18|21-24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co"># Make a copy of the data </span></span>
@@ -1268,7 +1268,7 @@ whitemom: ['white' 'not white']</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Positive-skew (left-tailed)</strong></p>
+<p><strong>Negative-skew (left-tailed)</strong></p>
 </div>
 </section>
 <section id="conclusions" class="slide level2">
@@ -1582,7 +1582,7 @@ whitemom: ['white' 'not white']</code></pre>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

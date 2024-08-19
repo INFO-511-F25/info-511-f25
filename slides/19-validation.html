@@ -414,7 +414,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="setup" class="slide level2 smaller">
 <h2>Setup</h2>
-<div id="3c587a13" class="cell" data-message="false" data-execution_count="1">
+<div id="c65663bd" class="cell" data-message="false" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -429,7 +429,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="data-candy-rankings" class="slide level2 smaller">
 <h2>Data: Candy Rankings</h2>
-<div id="6dfe77f6" class="cell" data-execution_count="2">
+<div id="7ab569c1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>candy_rankings <span class="op">=</span> pd.read_csv(<span class="st">"data/candy_rankings.csv"</span>)</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a>candy_rankings.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -496,7 +496,7 @@ memory usage: 3.5+ KB</code></pre>
 <section id="random-sampling-and-reproducibility" class="slide level2 smaller">
 <h2>Random sampling and reproducibility</h2>
 <p>Gotta set a seed!</p>
-<div id="d0604c69" class="cell" data-execution_count="3">
+<div id="df15f717" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>np.random.seed(<span class="dv">1234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
@@ -525,7 +525,7 @@ memory usage: 3.5+ KB</code></pre>
 </section>
 <section id="prepping-your-data-for-5-fold-cv" class="slide level2 smaller">
 <h2>Prepping your data for 5-fold CV</h2>
-<div id="b895187a" class="cell" data-execution_count="4">
+<div id="e5aaad1d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>candy_rankings[<span class="st">'id'</span>] <span class="op">=</span> np.arange(<span class="bu">len</span>(candy_rankings))</span>
 <span id="cb5-2"><a></a>candy_rankings <span class="op">=</span> candy_rankings.sample(frac<span class="op">=</span><span class="dv">1</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-3"><a></a>candy_rankings[<span class="st">'fold'</span>] <span class="op">=</span> (np.arange(<span class="bu">len</span>(candy_rankings)) <span class="op">%</span> <span class="dv">5</span>) <span class="op">+</span> <span class="dv">1</span></span>
@@ -544,7 +544,7 @@ memory usage: 3.5+ KB</code></pre>
 </section>
 <section id="cv-1" class="slide level2 smaller">
 <h2>CV 1</h2>
-<div id="bae6e4ea" class="cell" data-execution_count="5">
+<div id="f61847f6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>test_fold <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb7-2"><a></a>test <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">==</span> test_fold]</span>
 <span id="cb7-3"><a></a>train <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">!=</span> test_fold]</span>
@@ -553,7 +553,7 @@ memory usage: 3.5+ KB</code></pre>
 <span id="cb7-6"><a></a>rmse_test1 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb7-7"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 1: </span><span class="sc">{</span>rmse_test1<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Test 1: 10.150090060666074</code></pre>
+<pre><code>RMSE Test 1: 10.150090060666056</code></pre>
 </div>
 </div>
 </section>
@@ -566,88 +566,88 @@ memory usage: 3.5+ KB</code></pre>
 <section id="rmse-on-training-vs.-testing-1" class="slide level2 smaller">
 <h2>RMSE on training vs.&nbsp;testing</h2>
 <p>RMSE for testing:</p>
-<div id="bce3fc95" class="cell" data-execution_count="6">
+<div id="7db108db" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>rmse_test1 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb9-2"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 1: </span><span class="sc">{</span>rmse_test1<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Test 1: 10.150090060666074</code></pre>
+<pre><code>RMSE Test 1: 10.150090060666056</code></pre>
 </div>
 </div>
 <p>RMSE for training:</p>
-<div id="9fc52df2" class="cell" data-execution_count="7">
+<div id="752ba52a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>rmse_train1 <span class="op">=</span> np.sqrt(mean_squared_error(train[<span class="st">'winpercent'</span>], model.predict(train)))</span>
 <span id="cb11-2"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Train 1: </span><span class="sc">{</span>rmse_train1<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Train 1: 10.117840760774035</code></pre>
+<pre><code>RMSE Train 1: 10.117840760774037</code></pre>
 </div>
 </div>
 </section>
 <section id="cv-2" class="slide level2 smaller">
 <h2>CV 2</h2>
-<div id="b321dc03" class="cell" data-execution_count="8">
+<div id="32b82fb1" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>test_fold <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb13-2"><a></a>test <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">==</span> test_fold]</span>
 <span id="cb13-3"><a></a>train <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">!=</span> test_fold]</span>
 <span id="cb13-4"><a></a>model <span class="op">=</span> smf.ols(<span class="st">'winpercent ~ chocolate + fruity + peanutyalmondy + crispedricewafer + hard + sugarpercent'</span>, data<span class="op">=</span>train).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ca3983ab" class="cell" data-execution_count="9">
+<div id="bb7bd02c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>rmse_test2 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb14-2"><a></a>rmse_train2 <span class="op">=</span> np.sqrt(mean_squared_error(train[<span class="st">'winpercent'</span>], model.predict(train)))</span>
 <span id="cb14-3"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 2: </span><span class="sc">{</span>rmse_test2<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb14-4"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Train 2: </span><span class="sc">{</span>rmse_train2<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Test 2: 10.432240639004073
+<pre><code>RMSE Test 2: 10.432240639004071
 RMSE Train 2: 10.027804484574574</code></pre>
 </div>
 </div>
 </section>
 <section id="cv-3" class="slide level2 smaller">
 <h2>CV 3</h2>
-<div id="e6a531b8" class="cell" data-execution_count="10">
+<div id="4136caac" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>test_fold <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb16-2"><a></a>test <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">==</span> test_fold]</span>
 <span id="cb16-3"><a></a>train <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">!=</span> test_fold]</span>
 <span id="cb16-4"><a></a>model <span class="op">=</span> smf.ols(<span class="st">'winpercent ~ chocolate + fruity + peanutyalmondy + crispedricewafer + hard + sugarpercent'</span>, data<span class="op">=</span>train).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1f2aff68" class="cell" data-execution_count="11">
+<div id="de185612" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>rmse_test3 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb17-2"><a></a>rmse_train3 <span class="op">=</span> np.sqrt(mean_squared_error(train[<span class="st">'winpercent'</span>], model.predict(train)))</span>
 <span id="cb17-3"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 3: </span><span class="sc">{</span>rmse_test3<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb17-4"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Train 3: </span><span class="sc">{</span>rmse_train3<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Test 3: 11.958503120070846
-RMSE Train 3: 9.801042089669556</code></pre>
+<pre><code>RMSE Test 3: 11.95850312007085
+RMSE Train 3: 9.801042089669558</code></pre>
 </div>
 </div>
 </section>
 <section id="cv-4" class="slide level2 smaller">
 <h2>CV 4</h2>
-<div id="7dc5da34" class="cell" data-execution_count="12">
+<div id="707e2a37" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>test_fold <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb19-2"><a></a>test <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">==</span> test_fold]</span>
 <span id="cb19-3"><a></a>train <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">!=</span> test_fold]</span>
 <span id="cb19-4"><a></a>model <span class="op">=</span> smf.ols(<span class="st">'winpercent ~ chocolate + fruity + peanutyalmondy + crispedricewafer + hard + sugarpercent'</span>, data<span class="op">=</span>train).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a435a59c" class="cell" data-execution_count="13">
+<div id="7fc47e05" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>rmse_test4 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb20-2"><a></a>rmse_train4 <span class="op">=</span> np.sqrt(mean_squared_error(train[<span class="st">'winpercent'</span>], model.predict(train)))</span>
 <span id="cb20-3"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 4: </span><span class="sc">{</span>rmse_test4<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb20-4"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Train 4: </span><span class="sc">{</span>rmse_train4<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE Test 4: 12.399658584874498
-RMSE Train 4: 9.60646325325732</code></pre>
+<pre><code>RMSE Test 4: 12.399658584874489
+RMSE Train 4: 9.606463253257319</code></pre>
 </div>
 </div>
 </section>
 <section id="cv-5" class="slide level2 smaller">
 <h2>CV 5</h2>
-<div id="5136e50c" class="cell" data-execution_count="14">
+<div id="18df8909" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>test_fold <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb22-2"><a></a>test <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">==</span> test_fold]</span>
 <span id="cb22-3"><a></a>train <span class="op">=</span> candy_rankings[candy_rankings[<span class="st">'fold'</span>] <span class="op">!=</span> test_fold]</span>
 <span id="cb22-4"><a></a>model <span class="op">=</span> smf.ols(<span class="st">'winpercent ~ chocolate + fruity + peanutyalmondy + crispedricewafer + hard + sugarpercent'</span>, data<span class="op">=</span>train).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="43d32eab" class="cell" data-execution_count="15">
+<div id="5a36ceea" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>rmse_test5 <span class="op">=</span> np.sqrt(mean_squared_error(test[<span class="st">'winpercent'</span>], model.predict(test)))</span>
 <span id="cb23-2"><a></a>rmse_train5 <span class="op">=</span> np.sqrt(mean_squared_error(train[<span class="st">'winpercent'</span>], model.predict(train)))</span>
 <span id="cb23-3"><a></a><span class="bu">print</span>(<span class="ss">f'RMSE Test 5: </span><span class="sc">{</span>rmse_test5<span class="sc">}</span><span class="ss">'</span>)</span>
@@ -660,7 +660,7 @@ RMSE Train 5: 10.13805597882432</code></pre>
 </section>
 <section id="putting-it-altogether" class="slide level2 smaller">
 <h2>Putting it altogether</h2>
-<div id="1fc99f76" class="cell" data-execution_count="16">
+<div id="21376a8d" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Dataframe</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>rmse_candy <span class="op">=</span> pd.DataFrame({</span>
@@ -670,7 +670,7 @@ RMSE Train 5: 10.13805597882432</code></pre>
 <span id="cb25-5"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="327e0456" class="cell" data-execution_count="17">
+<div id="e8c7d35f" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Visual</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
@@ -696,7 +696,7 @@ RMSE Train 5: 10.13805597882432</code></pre>
 <ul>
 <li><code>winpercent</code> summary stats:</li>
 </ul>
-<div id="02dbb34e" class="cell" data-execution_count="18">
+<div id="b5545c1d" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-stdout">
 <pre><code>count    85.000000
 mean     50.316764
@@ -714,7 +714,7 @@ Name: winpercent, dtype: float64</code></pre>
 <ul>
 <li><code>rmse_test</code> summary stats:</li>
 </ul>
-<div id="5109bb49" class="cell" data-execution_count="19">
+<div id="62803c51" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
 <pre><code>count     5.000000
 mean     10.990679
@@ -736,7 +736,7 @@ Name: rmse_test, dtype: float64</code></pre>
 <p><img data-src="images/scikit-learn.png"></p>
 </div><div class="column" style="width:60%;">
 <p>The <strong>scikit-learn</strong> package provides functions that help you create pipelines when modeling.</p>
-<div id="54549b09" class="cell" data-execution_count="20">
+<div id="a8525187" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -755,14 +755,14 @@ Name: rmse_test, dtype: float64</code></pre>
 <section id="partition-data-into-k-folds" class="slide level2 smaller">
 <h2>Partition data into k folds</h2>
 <p>k = 5:</p>
-<div id="00151e79" class="cell" data-execution_count="21">
+<div id="27200a71" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>kf <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">5</span>, shuffle<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">102319</span>)</span>
 <span id="cb30-2"><a></a>folds <span class="op">=</span> <span class="bu">list</span>(kf.split(candy_rankings))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-model-on-each-of-training-set" class="slide level2 smaller">
 <h2>Fit model on each of training set</h2>
-<div id="766038db" class="cell" data-execution_count="22">
+<div id="4363fa6a" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>rmses <span class="op">=</span> []</span>
 <span id="cb31-2"><a></a><span class="cf">for</span> train_index, test_index <span class="kw">in</span> folds:</span>
 <span id="cb31-3"><a></a>    train_data <span class="op">=</span> candy_rankings.iloc[train_index]</span>
@@ -776,7 +776,7 @@ Name: rmse_test, dtype: float64</code></pre>
 <h2>Calculate RMSEs</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="add8fcce" class="cell" data-execution_count="23">
+<div id="04cf9bf8" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>fold_ids <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>))</span>
@@ -798,7 +798,7 @@ Name: rmse_test, dtype: float64</code></pre>
 </div>
 </div><div class="column" style="width:40%;">
 <p><br> <br></p>
-<div id="8cf25893" class="cell" data-execution_count="24">
+<div id="5b40a415" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>rmse_summary <span class="op">=</span> pd.Series(rmses).describe()</span>
 <span id="cb33-2"><a></a><span class="bu">print</span>(rmse_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1113,7 +1113,7 @@ dtype: float64</code></pre>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

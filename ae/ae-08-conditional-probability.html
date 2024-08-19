@@ -135,23 +135,9 @@ window.Quarto = {
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
-    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
-    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
-            Gradescope
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
-            Gradebook
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="https://info511fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <a href="https://d2l.arizona.edu/d2l/home/1478216" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -520,20 +506,20 @@ P(T | D^c) = 1-P(T^c | D^c)
 <ol type="1">
 <li><p><strong>Substitute the Given Values:</strong></p>
 <ul>
-<li><strong>Sensitivity</strong>: <span class="math inline">\(P(T | D)\)</span> = 0.642</li>
-<li><strong>Specificity</strong>: <span class="math inline">\(P(T^c | D^c)\)</span> = 0.998</li>
-<li><strong>Prevalence</strong>: <span class="math inline">\(P(D)\)</span> = 0.087 among persons aged 10 years and older.</li>
+<li><strong>Sensitivity</strong>: <span class="math inline">\(P(T | D)\)</span> = ___</li>
+<li><strong>Specificity</strong>: <span class="math inline">\(P(T^c | D^c)\)</span> = ___</li>
+<li><strong>Prevalence</strong>: <span class="math inline">\(P(D)\)</span> = ___ among persons aged 10 years and older.</li>
 </ul></li>
 <li><p><strong>Calculate the Complementary Probabilities</strong></p>
 <ul>
 <li><p><span class="math inline">\(P(T | D^c)\)</span>: Probability of a positive test given no disease.</p>
-<p><span class="math display">\[P(T | D^c)=1-P(T^c | D^c)=1-0.998=0.002\]</span></p></li>
+<p><span class="math display">\[P(T | D^c)=1-P(T^c | D^c)=\]</span></p></li>
 <li><p><span class="math inline">\(P(D^c)\)</span>: Probability of not having the disease.</p>
-<p><span class="math display">\[P(D^c) = 1-P(D)=1-0.087=0.913\]</span></p></li>
+<p><span class="math display">\[P(D^c) = 1-P(D)\]</span></p></li>
 </ul></li>
 <li><p><strong>Calculate the Probability of a Positive Test</strong> <span class="math inline">\(P(T)\)</span>:</p></li>
 </ol>
-<p><span class="math display">\[P(T)=(0.642⋅0.087)+(0.002⋅0.913)=0.055854+0.001826=0.05768\]</span></p>
+<p><span class="math display">\[P(T)=\]</span></p>
 <ol start="4" type="1">
 <li><strong>Calculate the Posterior Probability</strong> <span class="math inline">\(P(D | T)\)</span></li>
 </ol>
@@ -541,13 +527,7 @@ P(T | D^c) = 1-P(T^c | D^c)
 P(D | T)=\frac{P(T | D) ⋅ P(D)}{P(T | D) ⋅ P(D) + (1-P(T^c | D^c)) ⋅ (1-P(D))}
 \]</span></p>
 <p><span class="math display">\[
-P(D | T)=\frac{0.642⋅ 0.087}{(0.642⋅0.087)+(0.002⋅0.913)}
-\]</span></p>
-<p><span class="math display">\[
-P(D | T)=\frac{0.055854}{(0.055854)+(0.001826)}
-\]</span></p>
-<p><span class="math display">\[
-P(D | T)=\frac{0.055854}{0.05768}\approx0.968
+=
 \]</span></p>
 <section id="discussion-questions" class="level3">
 <h3 class="anchored" data-anchor-id="discussion-questions">Discussion Questions:</h3>
@@ -557,69 +537,35 @@ P(D | T)=\frac{0.055854}{0.05768}\approx0.968
 <li>Considering the given sensitivity, specificity, and prevalence, is the high probability of having the disease given a positive test result unexpected? Why or why not?</li>
 </ul></li>
 </ol>
-<p>The calculation is not particularly surprising given the sensitivity, specificity, and prevalence rates. The high probability (96.8%) of having the disease given a positive test result is consistent with the relatively high prevalence (8.7%) and the high specificity (99.8%). The high specificity means there are very few false positives, which, when combined with a reasonable sensitivity, leads to a high positive predictive value in this context.</p>
+<p><em>Add response here.</em></p>
 <ol start="2" type="1">
 <li><p><strong>What is the explanation?</strong></p>
 <ul>
 <li>Explain why the probability of having the disease given a positive test result is so high. Consider the impact of sensitivity, specificity, and prevalence.</li>
 </ul></li>
 </ol>
-<p>The high probability of having the disease given a positive test result is due to the following factors:</p>
-<ul>
-<li><p><strong>High Specificity (99.8%)</strong>: This means the test accurately identifies those without the disease, resulting in very few false positives.</p></li>
-<li><p><strong>Sensitivity (64.2%)</strong>: This means the test correctly identifies a significant proportion of those with the disease, although not perfect.</p></li>
-<li><p><strong>Prevalence (8.7%)</strong>: With a relatively high prevalence in the population, the number of true positives is substantial compared to false positives. As a result, a positive test result is more likely to be a true positive.</p></li>
-</ul>
+<p><em>Add response here.</em></p>
 <ol start="3" type="1">
 <li><p><strong>Was this calculation actually reasonable to perform?</strong></p>
 <ul>
 <li>Discuss whether it is reasonable to calculate the probability of having the disease based on the given data. Are there any limitations or assumptions in this calculation?</li>
 </ul></li>
 </ol>
-<p>The calculation is reasonable and based on established statistical principles. However, there are limitations and assumptions:</p>
-<ul>
-<li><p><strong>Assumption of Representative Sample</strong>: It assumes the sample used to derive sensitivity, specificity, and prevalence is representative of the broader population.</p></li>
-<li><p><strong>Constant Sensitivity and Specificity</strong>: It assumes sensitivity and specificity are constant across different subgroups and testing conditions.</p></li>
-<li><p><strong>Accuracy of Input Data</strong>: The accuracy of the probability calculation depends on the accuracy of the sensitivity, specificity, and prevalence rates provided.</p></li>
-</ul>
+<p><em>Add response here.</em></p>
 <ol start="4" type="1">
 <li><p><strong>What if we tested in a different population, such as high-risk individuals?</strong></p>
 <ul>
 <li>How might the probability of having the disease given a positive test result change if the test was administered to a population with a higher prevalence of COVID-19?</li>
 </ul></li>
 </ol>
-<p>If the test was administered to a high-risk population with a higher prevalence, the probability of having the disease given a positive test result would increase.</p>
+<p><em>Add response here.</em></p>
 <ol start="5" type="1">
 <li><p><strong>What if we were to test a random individual in a county where the prevalence of COVID-19 is approximately 25%?</strong></p>
 <ul>
 <li>Recalculate the probability of having the disease given a positive test result for a population with a 25% prevalence of COVID-19. How does this compare to the original calculation?</li>
 </ul></li>
 </ol>
-<p>Using the same steps as above, with <span class="math inline">\(P(D)=0.25\)</span>:</p>
-<ol type="1">
-<li><strong>Complementary Probabilities</strong>
-<ul>
-<li><p><span class="math inline">\(P(T | D^c) = 0.002\)</span></p></li>
-<li><p><span class="math inline">\(P(D^c) = 1 - 0.25 = 0.75\)</span></p></li>
-</ul></li>
-<li><strong>Probability of a Positive Test</strong> <span class="math inline">\(P(T)\)</span>:</li>
-</ol>
-<p><span class="math display">\[
-P(T) = (0.642 ⋅ 0.25) + (0.002 ⋅ 0.75) = 0.1605 + 0.0015 = 0.16
-\]</span></p>
-<ol start="3" type="1">
-<li><strong>Posterior Probability</strong> <span class="math inline">\(P(D | T)\)</span>:</li>
-</ol>
-<p><span class="math display">\[
-P(D|T) = \frac{0.642 ⋅ 0.25}{(0.642 ⋅ 0.25) + (0.002 ⋅ 0.75)}
-\]</span></p>
-<p><span class="math display">\[
-P(D|T) = \frac{0.1605}{(0.1605) + (0.0015)}
-\]</span></p>
-<p><span class="math display">\[
-P(D|T) = \frac{0.1605}{0.162}\approx0.991
-\]</span></p>
-<p>The probability is only slightly higher: Scenario 1 = 96.8%; Scenario 2 = 99.1% probability of having COVID-19</p>
+<p><em>Add response here.</em></p>
 
 
 </section>
@@ -851,7 +797,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+      var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -414,7 +414,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="setup" class="slide level2">
 <h2>Setup</h2>
-<div id="ac5ff624" class="cell" data-execution_count="1">
+<div id="3de11a46" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -525,7 +525,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="the-normal-distribution-graphically" class="slide level2">
 <h2>The normal distribution (graphically)</h2>
-<div id="9a95f57a" class="cell" data-execution_count="2">
+<div id="3756427e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -579,12 +579,12 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="underlying-population-not-observed-in-real-life" class="slide level2 small">
 <h2>Underlying population (not observed in real life!)</h2>
-<div id="13ac2ba1" class="cell" data-execution_count="3">
+<div id="e5602bcd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>rs_pop <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: np.random.beta(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">5</span>, size<span class="op">=</span><span class="dv">100000</span>) <span class="op">*</span> <span class="dv">100</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="063e0609" class="cell" data-execution_count="4">
+<div id="58212006" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -595,9 +595,9 @@ Dr.&nbsp;Greg Chism
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>The true population parameters</strong></p>
-<div id="b4fd481e" class="cell" data-execution_count="5">
+<div id="ff40f56f" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>(16.6681176684249, 14.070251294281247)</code></pre>
+<pre><code>(np.float64(16.6681176684249), np.float64(14.070251294281247))</code></pre>
 </div>
 </div>
 </div>
@@ -605,46 +605,46 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="sampling-from-the-population---1" class="slide level2 smaller">
 <h2>Sampling from the population - 1</h2>
-<div id="835dfcf2" class="cell" data-execution_count="6">
+<div id="ce23dc27" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb4-2"><a></a>samp_1 <span class="op">=</span> rs_pop.sample(n<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb4-3"><a></a>samp_1_mean <span class="op">=</span> samp_1[<span class="st">'x'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<div id="9f64176d" class="cell" data-execution_count="7">
+<div id="aea9384c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>samp_1_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>15.459323508748778</code></pre>
+<pre><code>np.float64(15.459323508748778)</code></pre>
 </div>
 </div>
 </section>
 <section id="sampling-from-the-population---2" class="slide level2 smaller">
 <h2>Sampling from the population - 2</h2>
-<div id="6b937620" class="cell" data-execution_count="8">
+<div id="23248857" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>np.random.seed(<span class="dv">2</span>)</span>
 <span id="cb7-2"><a></a>samp_2 <span class="op">=</span> rs_pop.sample(n<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb7-3"><a></a>samp_2_mean <span class="op">=</span> samp_2[<span class="st">'x'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<div id="862d240c" class="cell" data-execution_count="9">
+<div id="b8e146d3" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>samp_2_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>16.54881766128449</code></pre>
+<pre><code>np.float64(16.54881766128449)</code></pre>
 </div>
 </div>
 </section>
 <section id="sampling-from-the-population---3" class="slide level2 smaller">
 <h2>Sampling from the population - 3</h2>
-<div id="392a6cfa" class="cell" data-execution_count="10">
+<div id="79241022" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>np.random.seed(<span class="dv">3</span>)</span>
 <span id="cb10-2"><a></a>samp_3 <span class="op">=</span> rs_pop.sample(n<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb10-3"><a></a>samp_3_mean <span class="op">=</span> samp_3[<span class="st">'x'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<div id="c1acc276" class="cell" data-execution_count="11">
+<div id="bd6266fb" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>samp_3_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>18.232335628488613</code></pre>
+<pre><code>np.float64(18.232335628488613)</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -653,7 +653,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="sampling-distribution" class="slide level2 small">
 <h2>Sampling distribution</h2>
-<div id="22a8d4e1" class="cell" data-execution_count="12">
+<div id="9138975f" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>np.random.seed(<span class="dv">92620</span>)</span>
 <span id="cb13-2"><a></a>sampling_means <span class="op">=</span> [rs_pop.sample(n<span class="op">=</span><span class="dv">50</span>, replace<span class="op">=</span><span class="va">True</span>)[<span class="st">'x'</span>].mean() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5000</span>)]</span>
 <span id="cb13-3"><a></a></span>
@@ -661,7 +661,7 @@ Dr.&nbsp;Greg Chism
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="aba007ef" class="cell" data-execution_count="13">
+<div id="7f0479c2" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -672,9 +672,9 @@ Dr.&nbsp;Greg Chism
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>The sample statistics</strong></p>
-<div id="e99acfd3" class="cell" data-execution_count="14">
+<div id="3666a769" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>(16.71372258467488, 1.9996839510659443)</code></pre>
+<pre><code>(np.float64(16.71372258467488), np.float64(1.9996839510659443))</code></pre>
 </div>
 </div>
 </div>
@@ -687,7 +687,7 @@ Dr.&nbsp;Greg Chism
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="65f75065" class="cell" data-execution_count="15">
+<div id="6be5523e" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -698,16 +698,16 @@ Dr.&nbsp;Greg Chism
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>The true population parameters</strong></p>
-<div id="0f36b9c9" class="cell" data-execution_count="16">
+<div id="c948b168" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>{'mu': 16.6681176684249, 'sigma': 14.070251294281247}</code></pre>
+<pre><code>{'mu': np.float64(16.6681176684249), 'sigma': np.float64(14.070251294281247)}</code></pre>
 </div>
 </div>
 <p><br></p>
 <p><strong>The sample statistics</strong></p>
-<div id="e1352643" class="cell" data-execution_count="17">
+<div id="741e15e6" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>{'mean': 16.71372258467488, 'se': 1.9996839510659443}</code></pre>
+<pre><code>{'mean': np.float64(16.71372258467488), 'se': np.float64(1.9996839510659443)}</code></pre>
 </div>
 </div>
 </div>
@@ -791,7 +791,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="t-vs-z-distributions" class="slide level2">
 <h2>T vs Z distributions</h2>
-<div id="95be8d21" class="cell" data-execution_count="18">
+<div id="6150ef05" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -806,40 +806,40 @@ Dr.&nbsp;Greg Chism
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Finding probabilities under the t curve:</strong></p>
-<div id="68502fa4" class="cell" data-execution_count="19">
+<div id="b99be067" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># P(t &lt; -1.96) for df = 9</span></span>
 <span id="cb17-2"><a></a>p_less <span class="op">=</span> stats.t.cdf(<span class="op">-</span><span class="fl">1.96</span>, df<span class="op">=</span><span class="dv">9</span>)</span>
 <span id="cb17-3"><a></a>p_less</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>0.04082220273020832</code></pre>
+<pre><code>np.float64(0.04082220273020832)</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="182042c4" class="cell" data-execution_count="20">
+<div id="9cbf5b89" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># P(t &gt; -1.96) for df = 9</span></span>
 <span id="cb19-2"><a></a>p_greater <span class="op">=</span> stats.t.sf(<span class="op">-</span><span class="fl">1.96</span>, df<span class="op">=</span><span class="dv">9</span>)</span>
 <span id="cb19-3"><a></a>p_greater</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>0.9591777972697917</code></pre>
+<pre><code>np.float64(0.9591777972697917)</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Finding cutoff values under the t curve:</strong></p>
-<div id="7f723e6f" class="cell" data-execution_count="21">
+<div id="202ff0b4" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Find Q1 (25th percentile) for df = 9</span></span>
 <span id="cb21-2"><a></a>q1 <span class="op">=</span> stats.t.ppf(<span class="fl">0.25</span>, df<span class="op">=</span><span class="dv">9</span>)</span>
 <span id="cb21-3"><a></a>q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>-0.7027221467513188</code></pre>
+<pre><code>np.float64(-0.7027221467513188)</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="4d473053" class="cell" data-execution_count="22">
+<div id="f33dfedc" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># Find Q3 (75th percentile) for df = 9</span></span>
 <span id="cb23-2"><a></a>q3 <span class="op">=</span> stats.t.ppf(<span class="fl">0.75</span>, df<span class="op">=</span><span class="dv">9</span>)</span>
 <span id="cb23-3"><a></a>q3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>0.7027221467513188</code></pre>
+<pre><code>np.float64(0.7027221467513188)</code></pre>
 </div>
 </div>
 </div>
@@ -887,11 +887,11 @@ Dr.&nbsp;Greg Chism
 <h2>Exploratory Data Analysis</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="424034f5" class="cell" data-execution_count="23">
+<div id="1be080d2" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>durham <span class="op">=</span> pd.read_csv(<span class="st">"data/durham_survey.csv"</span>)</span>
 <span id="cb25-2"><a></a>durham_filtered <span class="op">=</span> durham[durham[<span class="st">'quality_library'</span>] <span class="op">!=</span> <span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c9c4cdac" class="cell" data-execution_count="24">
+<div id="eabcd031" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>summary_stats <span class="op">=</span> durham_filtered[<span class="st">'quality_library'</span>].agg([<span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>, <span class="st">'count'</span>]).rename({</span>
 <span id="cb26-2"><a></a>    <span class="st">'mean'</span>: <span class="st">'x_bar'</span>,</span>
 <span id="cb26-3"><a></a>    <span class="st">'median'</span>: <span class="st">'med'</span>,</span>
@@ -908,7 +908,7 @@ Name: quality_library, dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="b48c81f7" class="cell" data-execution_count="25">
+<div id="741f07fb" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -924,19 +924,19 @@ Name: quality_library, dtype: float64</code></pre>
 <h2>Calculate 95% confidence interval</h2>
 <p><span class="math display">\[\bar{x} \pm t^*_{n-1} \times \frac{s}{\sqrt{n}}\]</span></p>
 <div class="fragment">
-<div id="ea4bd1d6" class="cell" data-execution_count="26">
+<div id="8af97a5c" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>point_est <span class="op">=</span> summary_stats[<span class="st">'x_bar'</span>] <span class="co"># Point estimate</span></span>
 <span id="cb28-2"><a></a>se <span class="op">=</span> summary_stats[<span class="st">'sd'</span>] <span class="op">/</span> (summary_stats[<span class="st">'n'</span>] <span class="op">**</span> <span class="fl">0.5</span>) <span class="co"># SE</span></span>
 <span id="cb28-3"><a></a>df <span class="op">=</span> summary_stats[<span class="st">'n'</span>] <span class="op">-</span> <span class="dv">1</span> <span class="co"># Degrees of freedom</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="469d79ae" class="cell" data-execution_count="27">
+<div id="99ad5fe8" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>t_star <span class="op">=</span> stats.t.ppf(<span class="fl">0.975</span>, df) <span class="co"># Critical value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="56edbe2c" class="cell" data-execution_count="28">
+<div id="07b374da" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Confidence interval</span></span>
 <span id="cb30-2"><a></a>CI <span class="op">=</span> point_est <span class="op">+</span> np.array([<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>]) <span class="op">*</span> t_star <span class="op">*</span> se</span>
 <span id="cb30-3"><a></a>CI_rounded <span class="op">=</span> np.<span class="bu">round</span>(CI, <span class="dv">2</span>)</span>
@@ -1256,7 +1256,7 @@ Name: quality_library, dtype: float64</code></pre>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.554">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>INFO 511 - Lab 1 - Data visualization</title>
+
+
+<title>INFO 511 - Lab 1 - Introduction to Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,7 +78,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -100,40 +105,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-<meta property="og:title" content="INFO 511 - Lab 1 - Data visualization">
+}</script>
+
+
+<meta property="og:title" content="INFO 511 - Lab 1 - Introduction to Python">
 <meta property="og:description" content="Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Fall 2024.">
 <meta property="og:site_name" content="INFO 511">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -144,31 +129,22 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
-    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
-    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
-            Gradescope
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
-            Gradebook
-            </a>
-          </li>
-      </ul>
-</div>
+    <a href="https://info511fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <a href="https://d2l.arizona.edu/d2l/home/1478216" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -179,7 +155,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -187,8 +163,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -238,8 +214,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://arizona-ua.userservices.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&amp;package_service_id=43729147450003843&amp;institutionId=3843&amp;customerId=3840" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Science from Scratch</span></a>
@@ -276,9 +252,9 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
@@ -287,8 +263,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../computing/computing-troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
@@ -313,7 +289,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
@@ -322,8 +298,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
@@ -360,7 +336,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
@@ -369,8 +345,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/lab-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 0</span></a>
@@ -418,8 +394,14 @@ window.Quarto = {
  <span class="menu-text">Lab 7</span></a>
   </div>
 </li>
-      </ul>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/ds-experience.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science Experience</span></a>
+  </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
@@ -428,8 +410,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exam-review/exam-1-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam 1</span></a>
@@ -442,71 +424,66 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li>
-<a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
-<li><a href="#log-in-to-rstudio" id="toc-log-in-to-rstudio" class="nav-link" data-scroll-target="#log-in-to-rstudio">Log in to RStudio</a></li>
-  <li><a href="#clone-the-repo-start-new-rstudio-project" id="toc-clone-the-repo-start-new-rstudio-project" class="nav-link" data-scroll-target="#clone-the-repo-start-new-rstudio-project">Clone the repo &amp; start new RStudio project</a></li>
-  <li><a href="#r-and-r-studio" id="toc-r-and-r-studio" class="nav-link" data-scroll-target="#r-and-r-studio">R and R Studio</a></li>
-  <li><a href="#yaml" id="toc-yaml" class="nav-link" data-scroll-target="#yaml">YAML</a></li>
+  <li><a href="#clone-the-repo-start-new-vs-code-window" id="toc-clone-the-repo-start-new-vs-code-window" class="nav-link" data-scroll-target="#clone-the-repo-start-new-vs-code-window">Clone the repo &amp; start new VS Code window</a></li>
+  <li><a href="#python-and-vs-code" id="toc-python-and-vs-code" class="nav-link" data-scroll-target="#python-and-vs-code">Python and VS Code</a></li>
   <li><a href="#committing-changes" id="toc-committing-changes" class="nav-link" data-scroll-target="#committing-changes">Committing changes</a></li>
   <li><a href="#pushing-changes" id="toc-pushing-changes" class="nav-link" data-scroll-target="#pushing-changes">Pushing changes</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#guidelines" id="toc-guidelines" class="nav-link" data-scroll-target="#guidelines">Guidelines</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
   <ul class="collapse">
-<li>
-<a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">Part 1</a>
+  <li><a href="#python-basics" id="toc-python-basics" class="nav-link" data-scroll-target="#python-basics">Python Basics</a>
   <ul class="collapse">
-<li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
-  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
-  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
-  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
-  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
-  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
-  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a>
+  <li><a href="#question-1-variables-and-types" id="toc-question-1-variables-and-types" class="nav-link" data-scroll-target="#question-1-variables-and-types">Question 1: Variables and Types</a></li>
+  <li><a href="#question-2-control-structures" id="toc-question-2-control-structures" class="nav-link" data-scroll-target="#question-2-control-structures">Question 2: Control Structures</a></li>
+  <li><a href="#question-3-data-structures" id="toc-question-3-data-structures" class="nav-link" data-scroll-target="#question-3-data-structures">Question 3: Data Structures</a></li>
+  <li><a href="#question-4-list-comprehension-functions" id="toc-question-4-list-comprehension-functions" class="nav-link" data-scroll-target="#question-4-list-comprehension-functions">Question 4: List Comprehension &amp; Functions</a></li>
+  </ul></li>
+  <li><a href="#numpy-introduction" id="toc-numpy-introduction" class="nav-link" data-scroll-target="#numpy-introduction">NumPy Introduction</a>
   <ul class="collapse">
-<li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a></li>
-  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a></li>
-  <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a></li>
-  </ul>
-</li>
-  </ul>
-</li>
-  <li>
-<a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a>
+  <li><a href="#question-5-numpy-arrays" id="toc-question-5-numpy-arrays" class="nav-link" data-scroll-target="#question-5-numpy-arrays">Question 5: NumPy Arrays</a></li>
+  <li><a href="#question-6-array-operations" id="toc-question-6-array-operations" class="nav-link" data-scroll-target="#question-6-array-operations">Question 6: Array Operations</a></li>
+  <li><a href="#question-7-extract-and-print-elements" id="toc-question-7-extract-and-print-elements" class="nav-link" data-scroll-target="#question-7-extract-and-print-elements">Question 7: Extract and Print Elements</a></li>
+  </ul></li>
+  <li><a href="#pandas-introduction" id="toc-pandas-introduction" class="nav-link" data-scroll-target="#pandas-introduction">Pandas Introduction</a>
   <ul class="collapse">
-<li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#question-8-series-and-dataframe-basics" id="toc-question-8-series-and-dataframe-basics" class="nav-link" data-scroll-target="#question-8-series-and-dataframe-basics">Question 8: Series and DataFrame Basics</a></li>
+  <li><a href="#question-9-data-importing-and-inspection" id="toc-question-9-data-importing-and-inspection" class="nav-link" data-scroll-target="#question-9-data-importing-and-inspection">Question 9: Data Importing and Inspection</a></li>
+  <li><a href="#question-10-data-manipulation-and-cleaning" id="toc-question-10-data-manipulation-and-cleaning" class="nav-link" data-scroll-target="#question-10-data-manipulation-and-cleaning">Question 10: <strong>Data Manipulation and Cleaning</strong></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a>
+  <ul class="collapse">
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/edit/main/labs/lab-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/edit/main/labs/lab-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/INFO-511-F24/info-511-f24.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-0.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-1.html">Lab 1</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Lab 1 - Data visualization</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/lab-0.html">Labs</a></li><li class="breadcrumb-item"><a href="../labs/lab-1.html">Lab 1</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lab 1 - Introduction to Python</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Lab</div>
   </div>
@@ -523,8 +500,12 @@ window.Quarto = {
   
 
 
-</header><section id="introduction" class="level1"><h1>Introduction</h1>
-<p>This lab will introduce you to the course computing workflow. The main goal is to reinforce our demo of R and RStudio, which we will be using throughout the course both to learn the statistical concepts discussed in the course and to analyze real data and come to informed conclusions.</p>
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This lab will introduce you to the course computing workflow. The main goal is to reinforce our demo of Python and VS Code, which we will be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -535,7 +516,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>R is the name of the programming language itself and RStudio is a convenient interface, commonly referred to as an integrated development environment or an IDE, for short.</p>
+<p>Python is the name of the programming language itself and VS Code (via Jupyter Notebooks) is a convenient interface, commonly referred to as an integrated development environment or an IDE, for short.</p>
 </div>
 </div>
 <p>An additional goal is to reinforce Git and GitHub, the version control, web hosting, and collaboration systems that we will be using throughout the course.</p>
@@ -552,7 +533,7 @@ Note
 <p>Git is a version control system (like “Track Changes” features from Microsoft Word but more powerful) and GitHub is the home for your Git-based projects on the internet (like DropBox but much better).</p>
 </div>
 </div>
-<p>As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer. Before we get to that stage, however, you need to build some basic fluency in R. Today we begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.</p>
+<p>As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer. Before we get to that stage, however, you need to build some basic fluency in Python. Today we begin with the fundamental building blocks of Python and VS Code: the interface, reading in data, and basic commands.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -566,34 +547,43 @@ Warning
 <p>This lab assumes that you have already completed <a href="../labs/lab-0.html">Lab 0</a>. If you have not, please go back and do that first before proceeding.</p>
 </div>
 </div>
-<section id="learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
 <p>By the end of the lab, you will…</p>
 <ul>
-<li>Be familiar with the workflow using R, RStudio, Git, and GitHub</li>
-<li>Gain practice writing a reproducible report using Quarto</li>
+<li>Be familiar with the workflow using Python, VS Code, Git, and GitHub</li>
+<li>Gain practice writing a reproducible report using Jupyter</li>
 <li>Practice version control using Git and GitHub</li>
-<li>Be able to create data visualizations using <code>ggplot2</code>
-</li>
-</ul></section><section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<section id="log-in-to-rstudio" class="level3"><h3 class="anchored" data-anchor-id="log-in-to-rstudio">Log in to RStudio</h3>
+<li>Understand fundamental syntax in Python</li>
+</ul>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<section id="clone-the-repo-start-new-vs-code-window" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-repo-start-new-vs-code-window">Clone the repo &amp; start new VS Code window</h3>
 <ul>
-<li>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a> and login with your Duke NetID and Password.</li>
-<li>Click <code>STA198-199</code> under My reservations to log into your container. You should now see the RStudio environment.</li>
-</ul></section><section id="clone-the-repo-start-new-rstudio-project" class="level3"><h3 class="anchored" data-anchor-id="clone-the-repo-start-new-rstudio-project">Clone the repo &amp; start new RStudio project</h3>
-<ul>
-<li><p>Go to the course organization at <a href="https://github.com/sta199-s24">github.com/sta199-s24</a> organization on GitHub. Click on the repo with the prefix <strong>lab-1</strong>. It contains the starter documents you need to complete the lab.</p></li>
-<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use SSH</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with SSH</strong>). Click on the clipboard icon to copy the repo URL.</p></li>
-<li><p>In RStudio, go to <em>File</em> ➛ <em>New Project</em> ➛<em>Version Control</em> ➛ <em>Git</em>.</p></li>
-<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</p></li>
-<li><p>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</p></li>
-<li><p>Click <em>lab-1.qmd</em> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</p></li>
-</ul></section><section id="r-and-r-studio" class="level3"><h3 class="anchored" data-anchor-id="r-and-r-studio">R and R Studio</h3>
-<p>Below are the components of the RStudio IDE.</p>
-<p><img src="images/lab-0/rstudio.png" class="img-fluid" alt="RStudio IDE"></p>
-<p>Below are the components of a Quarto (.qmd) file.</p>
-<p><img src="images/lab-0/quarto.png" class="img-fluid" alt="Quarto document"></p>
-</section><section id="yaml" class="level3"><h3 class="anchored" data-anchor-id="yaml">YAML</h3>
-<p>The top portion of your R Markdown file (between the three dashed lines) is called <strong>YAML</strong>. It stands for “YAML Ain’t Markup Language”. It is a human friendly data representation for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.</p>
+<li><p>Go to the course organization at <a href="https://github.com/INFO-511-F24">github.com/INFO-511-F24</a> organization on GitHub. Click on the repo with the prefix <strong>lab-1</strong>. It contains the starter documents you need to complete the lab.</p></li>
+<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use HTTPS</strong> (this might already be selected by default). Click on the clipboard icon to copy the repo URL.</p></li>
+<li><p>In VS Code, go to <em>File</em> ➛ <em>New Window</em> ➛<em>Clone Git Repository (under <strong>Start</strong>)</em>.</p></li>
+<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Provide repository URL or pick a repository source</em>.</p></li>
+<li><p>Click <em>lab-1.ipynb</em> to open the template Jupyter notebook file. This is where you will write up your code and narrative for the lab.</p></li>
+<li><p>Also see similar steps within the <a href="https://datasciaz.netlify.app/computing/computing-python.html#prepare-vs-code-for-python">Setting up Python</a> page on the course website.</p></li>
+</ul>
+</section>
+<section id="python-and-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="python-and-vs-code">Python and VS Code</h3>
+<p>Below are the components of the VS Code IDE.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tour-vs-code.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="VS Code IDE"></p>
+</figure>
+</div>
+<p>Below are the components of a Jupyter notebook (.ipynb) file.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tour-jupyter.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -604,25 +594,38 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Open the Quarto (<code>.qmd</code>) file in your project, change the author name to your name, and render the document. Examine the rendered document.</p>
+<p>Open the Jupyter notebook (<code>.ipynb</code>) file in your project, change the author name to your name, and render the document. Examine the document.</p>
 </div>
 </div>
-</section><section id="committing-changes" class="level3"><h3 class="anchored" data-anchor-id="committing-changes">Committing changes</h3>
-<p>Now, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.</p>
-<p>If you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on <strong>Diff</strong>. This shows you the <em>diff</em>erence between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.</p>
-<p>If you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, <strong>stage</strong> your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the <strong>Commit message</strong> box. Finally, click <strong>Commit</strong>. Note that every commit needs to have a commit message associated with it.</p>
+</section>
+<section id="committing-changes" class="level3">
+<h3 class="anchored" data-anchor-id="committing-changes">Committing changes</h3>
+<p>Now, go to the Git pane in your VS Code window (third icon on the left - above there is a blue (2) next to it).</p>
+<p>If you have made changes to your Jupyter Notebook (.ipynb) file, you should see it listed here. Click on it to see the differences. This shows you the <em>difference</em> between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.</p>
+<p>If you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, write a meaningful commit message (for instance, “update author name”) in the <strong>Message</strong> box. Finally, click <strong>Commit</strong>. Note that every commit needs to have a commit message associated with it.</p>
 <p>You don’t have to commit after every change, as this would get quite tedious. You should commit states that are <em>meaningful to you</em> for inspection, comparison, or restoration.</p>
 <p>In the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.</p>
 <p>Now let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!</p>
-</section><section id="pushing-changes" class="level3"><h3 class="anchored" data-anchor-id="pushing-changes">Pushing changes</h3>
+</section>
+<section id="pushing-changes" class="level3">
+<h3 class="anchored" data-anchor-id="pushing-changes">Pushing changes</h3>
 <p>Now that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.</p>
-<p>In order to push your changes to GitHub, you must have <strong>staged</strong> your <strong>commit</strong> to be pushed. click on <strong>Push</strong>.</p>
-</section></section><section id="packages" class="level2"><h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>In this lab we will work with the <strong>tidyverse</strong> package, which is a collection of packages for doing data analysis in a “tidy” way.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In order to push your changes to GitHub, you normally must have <strong>staged</strong> your <strong>commit</strong> to be pushed. click on <strong>Push</strong>. On VS Code however, the staging step has been done for you.</p>
+</section>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>In this lab we will work with the <strong>numpy</strong> and <strong>pandas</strong> packages, which is a collection of packages for doing data exploration and analysis in Python.</p>
+<div id="4810f2de" class="cell" data-message="false" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Render</strong> the document which loads this package with the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function.</p>
+<p><strong>Run All</strong> in the document which loads these packages with the <code>import</code> function.</p>
+</section>
+<section id="guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="guidelines">Guidelines</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -633,130 +636,145 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The rendered document will include a message about which packages the tidyverse package is loading along with it. It’s just R being informative, a <strong>message</strong> does not indicate anything is wrong (it’s not a <strong>warning</strong> or an <strong>error</strong>).</p>
+<p>Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course. There will be periodic reminders in this assignment to remind you to <strong>Run all, commit, and sync</strong> your changes to GitHub. You should have at least 3 commits with meaningful commit messages by the end of the assignment.</p>
 </div>
 </div>
-<p>The tidyverse is a meta-package. When you load it you get nine packages loaded for you:</p>
+</section>
+</section>
+<section id="questions" class="level1">
+<h1>Questions</h1>
+<section id="python-basics" class="level2">
+<h2 class="anchored" data-anchor-id="python-basics">Python Basics</h2>
+<section id="question-1-variables-and-types" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-variables-and-types">Question 1: Variables and Types</h3>
 <ul>
-<li>
-<strong>dplyr</strong>: for data wrangling</li>
-<li>
-<strong>forcats</strong>: for dealing with factors</li>
-<li>
-<strong>ggplot2</strong>: for data visualization</li>
-<li>
-<strong>lubridate</strong>: for dealing with dates</li>
-<li>
-<strong>purrr</strong>: for iteration with functional programming</li>
-<li>
-<strong>readr</strong>: for reading and writing data</li>
-<li>
-<strong>stringr</strong>: for string manipulation</li>
-<li>
-<strong>tibble</strong>: for modern, tidy data frames</li>
-<li>
-<strong>tidyr</strong>: for data tidying and rectangling</li>
+<li><p>Define two variables: an integer named <code>age</code> with a value of 25 and a string named <code>course</code> with the value “Data Mining”.</p></li>
+<li><p>Print their values and types using the <code>type()</code> function.</p></li>
 </ul>
-<p>The message that’s printed when you load the package tells you which versions of these packages are loaded as well as any conflicts they may have introduced, e.g., the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function from dplyr has now masked (overwritten) the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function available in base R (and that’s ok, we’ll use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> anyway).</p>
-<p>You can now <strong>Render</strong> your template document and see the results.</p>
-</section><section id="guidelines" class="level2"><h2 class="anchored" data-anchor-id="guidelines">Guidelines</h2>
-<p>As we’ve discussed in lecture, your plots should include an informative title, axes should be labeled, and careful consideration should be given to aesthetic choices.</p>
-<p>In addition, the code should all the code should be be able to be read (not run off the page) when you render to PDF. Make sure that is the case, and add line breaks where the code is running off the page.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>Remember that continuing to develop a sound workflow for reproducible data analysis is important as you complete the lab and other assignments in this course. There will be periodic reminders in this assignment to remind you to <strong>render, commit, and push</strong> your changes to GitHub. You should have at least 3 commits with meaningful commit messages by the end of the assignment.</p>
-</section></section><section id="questions" class="level1"><h1>Questions</h1>
-<section id="part-1" class="level2"><h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
-<p><strong>Let’s take a trip to the Midwest!</strong></p>
-<p>We will use the <code>midwest</code> data frame for this lab. It is part of the <strong>ggplot2</strong> R package, so the <code>midwest</code> data set is automatically loaded when you load the tidyverse package.</p>
-<p>The data contains demographic characteristics of counties in the Midwest region of the United States.</p>
-<p>Because the data set is part of the <strong>ggplot2</strong> package, you can read documentation for the data set, including variable definitions by typing <code><a href="https://ggplot2.tidyverse.org/reference/midwest.html">?midwest</a></code> in the Console or searching for <code>midwest</code> in the Help pane.</p>
-<section id="question-1" class="level3"><h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
-<p>Visualize the distribution of population density of counties using a histogram with <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> with four separate binwidths: a binwidth of 100, a binwidth of 1,000, a binwidth of 10,000, and a binwidth of 100,000. For example, you can create the first plot with:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">midwest</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">popdensity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="st">"Population density"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Count"</span>,</span>
-<span>    title <span class="op">=</span> <span class="st">"Population density of midwesten counties"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"Binwidth = 100"</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4f49963f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You will need to make four different histograms. Make sure to set informative titles and axis labels for each of your plots. Then, comment on which binwidth is most appropriate for these data and why.</p>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 1”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 1”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
-</section><section id="question-2" class="level3"><h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
-<p>Visualize the distribution of population density of counties again, this time using a boxplot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>. Make sure to set informative titles and axis labels for your plot. Then, using information as needed from the box plot as well as the histogram from Question 1, describe the distribution of population density of counties and comment on any potential outliers, making sure to identify at least one county that is a clear outlier by name in your narrative and commenting on whether it makes sense to you that this county is an outlier. You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them.</p>
+</section>
+<section id="question-2-control-structures" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-control-structures">Question 2: Control Structures</h3>
+<ul>
+<li><p>Write a function <code>is_prime(num)</code> that takes an integer and returns <code>True</code> if the number is a prime number, <code>False</code> otherwise.</p></li>
+<li><p>Include a loop and an appropriate control flow statement to check for primality.</p></li>
+</ul>
+<div id="f4793aa1" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 2”.</p>
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 2”.</p>
+<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
+<p><br></p>
+</div>
+</section>
+<section id="question-3-data-structures" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-data-structures">Question 3: Data Structures</h3>
+<ul>
+<li><p>Create a dictionary named <code>student_grades</code> with keys as student names and values as their grades (A, B, C, D, F).</p></li>
+<li><p>Write a loop to print out each student’s name and grade in the format: “Student [Name] has grade [Grade]”.</p></li>
+</ul>
+<div id="5be11276" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="render-commit-push">
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 3”.</p>
+<p>Make sure to commit and push all changed files so that your Git pane is empty afterward. <br></p>
+</div>
+</section>
+<section id="question-4-list-comprehension-functions" class="level3">
+<h3 class="anchored" data-anchor-id="question-4-list-comprehension-functions">Question 4: List Comprehension &amp; Functions</h3>
+<ul>
+<li><p>Using list comprehension, generate a list of tuples where each tuple is <code>(number, square of number)</code> for numbers between 1 and 10.</p></li>
+<li><p>Write a function <code>calculate_stats(numbers)</code> that returns the mean, median, and standard deviation of a list of numbers. Utilize functions from the <strong><code>statistics</code></strong> module.</p></li>
+</ul>
+<div id="9b9a928f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="render-commit-push">
+<p>Run all, commit, and sync your changes to GitHub with the commit message “Added answer for Question 4”.</p>
 <p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
 </div>
-</section><section id="question-3" class="level3"><h3 class="anchored" data-anchor-id="question-3">Question 3</h3>
-<p>Create a scatterplot of the percentage below poverty (<code>percbelowpoverty</code> on the y-axis) versus percentage of people with a college degree (<code>percollege</code> on the x-axis), where the color <u><strong>and</strong></u> shape of points are determined by <code>state</code>. Make sure to set informative titles, axis, and legend labels for your plot. First, describe the overall relationship between percentage of people with a college degree and percentage below poverty in Midwestern states, making sure to identify at least one county that is a clear outlier by name in your narrative. You can use the data viewer to identify the outliers interactively, you do not have to write code to identify them. Then, comment on whether you can identify how this relationship varies across states.</p>
-<div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 3”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
-</div>
-</section><section id="question-4" class="level3"><h3 class="anchored" data-anchor-id="question-4">Question 4</h3>
-<p>Now, let’s examine the relationship between the same two variables, once again using different colors and shapes to represent each state, and using a separate plot for each state, i.e., with faceting with <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>. In addition to points (<code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>), represent the data with a smooth curve fit to the data with <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>, with the argument <code>se = FALSE</code>. Make sure to set informative titles, axis, and legend labels for your plot. Which plot do you prefer - this plot or the plot in Question 3? Briefly explain your choice.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>se = FALSE</code> removes the confidence bands around the line. These bands show the uncertainty around the smooth curve. We’ll discuss uncertainty around estimates later in the course and bring these bands back then.</p>
-</div>
+</section>
+</section>
+<section id="numpy-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="numpy-introduction">NumPy Introduction</h2>
+<section id="question-5-numpy-arrays" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-numpy-arrays">Question 5: NumPy Arrays</h3>
+<ul>
+<li><p>Create a NumPy array <code>A</code> of shape (10,10) with values ranging from 0 to 99.</p></li>
+<li><p>Calculate the determinant of matrix <code>A</code> (use <code>numpy.linalg.det</code>). Print the result.</p></li>
+</ul>
+<div id="5bd74fd3" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="render-commit-push">
-<p>Render, commit, and push your changes to GitHub with the commit message “Added answer for Question 4”.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterward.</p>
-</div>
-</section><section id="question-5" class="level3"><h3 class="anchored" data-anchor-id="question-5">Question 5</h3>
-<p><em>Do some states have counties that tend to be geographically larger than others?</em></p>
-<p>To explore this question, create side-by-side boxplots of area (<code>area</code>) of a county based on state (<code>state</code>). How do typical county area sizes compare across states? How do variabilities of county sizes compare across states? Which state has the single largest county? Identify the name of this county. You can use the data viewer to identify it interactively, you do not have to write code.</p>
-<div class="render-commit-push">
-<p>Now is another good time to render, commit, and push your changes to GitHub with a meaningful commit message.</p>
+<p>Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.</p>
 <p>Once again, make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
 </div>
-</section><section id="question-6" class="level3"><h3 class="anchored" data-anchor-id="question-6">Question 6</h3>
-<p><em>Do some states have a higher percentage of their counties located in a metropolitan area?</em></p>
-<p>Create a segmented bar chart with one bar per state and the bar filled with colors according to the value of <code>metro</code> – one color indicating <code>Yes</code> and the other color indicating <code>No</code> for whether a county is considered to be a metro area. The y-axis of the segmented barplot should range from 0 to 1, indicating proportions. Compare the percentage of counties in metro areas across the states based on this plot. Make sure to supplement your narrative with rough estimates of these percentages.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For this question, you should begin with the data wrangling pipeline below. We will learn more about data wrangling in the coming weeks, so this is a mini-preview. This pipeline creates a new variable called <code>metro</code> based on the value of the existing variable called <code>inmetro</code>. If the value of <code>inmetro</code> is equal to 1 (<code>inmetro == 1</code>), it sets the value of <code>metro</code> to <code>"Yes"</code>, and if not, it sets the value of <code>metro</code> to <code>"No"</code>. The resulting data frame is assigned back to <code>midwest</code>, overwriting the existing <code>midwest</code> data frame with a version that includes the new <code>metro</code> variable.</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">midwest</span> <span class="op">&lt;-</span> <span class="va">midwest</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>metro <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">inmetro</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</section>
+<section id="question-6-array-operations" class="level3">
+<h3 class="anchored" data-anchor-id="question-6-array-operations">Question 6: Array Operations</h3>
+<p>Given a 1D NumPy array of size 10, normalize it (i.e., scale the values to range between 0 and 1).</p>
+<div id="ea2b858f" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="render-commit-push">
-<p>Now is another good time to render, commit, and push your changes to GitHub with a meaningful commit message.</p>
+<p>Now is another good time to Run all, commit, and sync your changes to GitHub with a meaningful commit message.</p>
 <p>And once again, make sure to commit and push all changed files so that your Git pane is empty afterward. We keep repeating this because it’s important and because we see students forget to do this. So take a moment to make sure you’re following along with the version control instructions.</p>
 </div>
-</section><section id="question-7" class="level3"><h3 class="anchored" data-anchor-id="question-7">Question 7</h3>
-<p>Recreate the plot below, and then give it a title. Then, identify at least one county that is a clear outlier in Wisconsin (WI) by name. You can use the data viewer to identify them interactively, you do not have to write code. Comment on the population composition of this county by investigating the percentage of other races living there.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="lab-1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+</section>
+<section id="question-7-extract-and-print-elements" class="level3">
+<h3 class="anchored" data-anchor-id="question-7-extract-and-print-elements">Question 7: Extract and Print Elements</h3>
+<ul>
+<li><p>Extract and print all the elements from the third column of a given 2D NumPy array.</p></li>
+<li><p>Use a for loop to iterate through each element of this column and print their square roots.</p></li>
+</ul>
+<div id="c020e9b0" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="render-commit-push">
+<p>Run all, commit, and sync your final changes to GitHub with a meaningful commit message. <br> Make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
 </div>
+</section>
+</section>
+<section id="pandas-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-introduction">Pandas Introduction</h2>
+<section id="question-8-series-and-dataframe-basics" class="level3">
+<h3 class="anchored" data-anchor-id="question-8-series-and-dataframe-basics">Question 8: Series and DataFrame Basics</h3>
+<ul>
+<li><p>Create a Pandas Series with the labels as the first 10 letters of the alphabet and the values as random integers from 1 to 100.</p></li>
+<li><p>Convert this Series into a DataFrame with the column name <code>Random_Numbers</code>.</p></li>
+</ul>
+<div id="880a7ad5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-9-data-importing-and-inspection" class="level3">
+<h3 class="anchored" data-anchor-id="question-9-data-importing-and-inspection">Question 9: Data Importing and Inspection</h3>
+<ul>
+<li><p>Load a CSV file into a Pandas DataFrame. The CSV has columns <code>id</code>, <code>name</code>, <code>score</code>.</p></li>
+<li><p>Print out the data types of the columns and the first 10 rows of the DataFrame.</p></li>
+</ul>
+<div id="89aefc5e" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-10-data-manipulation-and-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="question-10-data-manipulation-and-cleaning">Question 10: <strong>Data Manipulation and Cleaning</strong></h3>
+<p><strong>Data Manipulation and Cleaning</strong>:</p>
+<ul>
+<li><p>Replace all instances of a missing ‘score’ with the median score.</p></li>
+<li><p>Add a new column ‘score_normalized’ that contains the ‘score’ column normalized to have a mean of 0 and a standard deviation of 1.</p></li>
+</ul>
+<div id="78f04326" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -764,60 +782,20 @@ Hint
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>
-<a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">The <code>ggplot2</code> reference for themes</a> will be helpful in determining the theme.</li>
-<li>The <code>size</code> of the points is 2.</li>
-<li>The transparency (<code>alpha</code>) of the points is 0.5.</li>
-<li>You can put line breaks in labels with <code>\n</code>.</li>
-</ul>
+<p>Its okay if you don’t get this last question 100% correct. We will cover this thoroughly in the following weeks.</p>
 </div>
 </div>
-<div class="render-commit-push">
-<p>Render, commit, and push your final changes to GitHub with a meaningful commit message.</p>
-<p>Make sure to commit and push all changed files so that your Git pane is empty afterwards.</p>
-</div>
-</section></section><section id="part-2" class="level2"><h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
-<p><strong>Enough about the Midwest!</strong></p>
-<p>In this part we will use a new, more recent, and potentially more relevant dataset on counties in North Carolina.</p>
-<p>This dataset is stored in a file called <code>nc-county.csv</code> in the <code>data</code> folder of your project/repository.</p>
-<p>You can read this file into R with the following code:</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nc_county</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/nc-county.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This will read the CSV (comma separated values) file from the <code>data</code> folder and store the dataset as a data frame called <code>nc_county</code> in R.</p>
-<p>The variables in the dataset and their descriptions are as follows:</p>
-<ul>
-<li>
-<code>county</code>: Name of county.</li>
-<li>
-<code>state_abb</code>: State abbreviation (NC).</li>
-<li>
-<code>state_name</code>: State name (North Carolina).</li>
-<li>
-<code>land_area_m2</code>: Land area of county in meters-squared, based on the 2020 census.</li>
-<li>
-<code>land_area_mi2</code>: Land area of county in miles-squared, based on the 2020 census.</li>
-<li>
-<code>population</code>: Population of county, based on the 2020 census.</li>
-<li>
-<code>density</code>: Population density calculated as population divided by land area in miles-squared.</li>
-</ul>
-<p>In addition to being more recent and more relevant, this dataset is also more complete in the sense that we know the units of population density: people per mile-squared!</p>
-<section id="question-8" class="level3"><h3 class="anchored" data-anchor-id="question-8">Question 8</h3>
-<p>First, guess what the relationship between population density and land area might be – positive? negative? no relationship?</p>
-<p>Then, make a scatter plot of population density (<code>density</code> on the y-axis) vs.&nbsp;land area in miles-squared (<code>land_area_mi2</code> on the x-axis). Make sure to set an informative title and axis labels for your plot. Describe the relationship. Was your guess correct?</p>
-</section><section id="question-9" class="level3"><h3 class="anchored" data-anchor-id="question-9">Question 9</h3>
-<p>Now make a scatter plot of population density (<code>density</code> on the y-axis) vs.&nbsp;land area in meters-squared (<code>land_area_m2</code> on the x-axis). Make sure to set an informative title and axis labels for your plot. Comment on how this scatterplot compares to the one in Exercise 8 — is the relationship displayed same or different. Explain why.</p>
-</section><section id="question-10" class="level3"><h3 class="anchored" data-anchor-id="question-10">Question 10</h3>
-<p>Did you select your pages on Gradescope? You don’t need to write an answer for this question, if you select your pages when you upload your lab to Gradescope, you’ll get full points on this question. Otherwise, you’ll get a 0 on this question.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-</section></section></section><section id="wrap-up" class="level1"><h1>Wrap-up</h1>
-<section id="submission" class="level2"><h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Once you are finished with the lab, you will submit your final PDF document to Gradescope.</p>
+</section>
+</section>
+</section>
+<section id="wrap-up" class="level1">
+<h1>Wrap-up</h1>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -829,17 +807,9 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Before you wrap up the assignment, make sure all of your documents are updated on your GitHub repo. We will be checking these to make sure you have been practicing how to commit and push changes.</p>
-<p>You must turn in a PDF file to the Gradescope page by the submission deadline to be considered “on time”.</p>
+<p>You must turn in the .ipynb file by the submission deadline to be considered “on time”.</p>
 </div>
 </div>
-<p>To submit your assignment:</p>
-<ul>
-<li>Go to <a href="http://www.gradescope.com" class="uri">http://www.gradescope.com</a> and click <em>Log in</em> in the top right corner.</li>
-<li>Click <em>School Credentials</em> <span class="math inline">\(\rightarrow\)</span> <em>Duke NetID</em> and log in using your NetID credentials.</li>
-<li>Click on your <em>STA 199</em> course.</li>
-<li>Click on the assignment, and you’ll be prompted to submit it.</li>
-<li>Mark all the pages associated with question. All the pages of your lab should be associated with at least one question (i.e., should be “checked”).</li>
-</ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -853,16 +823,16 @@ Checklist
 <p>Make sure you have:</p>
 <ul>
 <li>attempted all questions</li>
-<li>rendered your Quarto document</li>
-<li>committed and pushed everything to your GitHub repository such that the Git pane in RStudio is empty</li>
-<li>uploaded your PDF to Gradescope</li>
-<li>selected pages associated with each question on Gradescope</li>
+<li>run all code in your Jupyter notebook</li>
+<li>committed and pushed everything to your GitHub repository such that the Git pane in VS Code is empty</li>
 </ul>
 </div>
 </div>
-</section><section id="grading" class="level2"><h2 class="anchored" data-anchor-id="grading">Grading</h2>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
 <p>The lab is graded out of a total of 50 points.</p>
-<p>On Questions 1 through 9, you can earn up to 5 points on each question:</p>
+<p>On Questions 1 through 10, you can earn up to 5 points on each question:</p>
 <ul>
 <li><p>5: Response shows excellent understanding and addresses all or almost all of the rubric items.</p></li>
 <li><p>4: Response shows good understanding and addresses most of the rubric items.</p></li>
@@ -871,18 +841,13 @@ Checklist
 <li><p>1: Response does not show sufficient effort or understanding and/or is largely incomplete.</p></li>
 <li><p>0: No attempt.</p></li>
 </ul>
-<p>On Question 10, you can earn either 0 or 5 points for selecting questions and pages on Gradescope:</p>
-<ul>
-<li>5: Selected questions and pages on Gradescope.</li>
-<li>0: Did not select some or all questions and pages on Gradescope.</li>
-</ul>
 
 
-</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-<ol>
-<li id="fn1"><p>Remember, haikus not novellas when writing code!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>We’re assigning points to this seemingly trivial task because not selecting your pages and questions will greatly slow down the grading. So we want to make sure you’re properly motivated to complete this task!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1434,7 +1399,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="../labs/lab-0.html" class="pagination-link" aria-label="Lab 0">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 0</span>
       </a>          
@@ -1446,7 +1413,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2024, Greg Chism</p>
 </div>   
@@ -1458,6 +1426,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

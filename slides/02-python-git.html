@@ -431,7 +431,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="basic-syntax-and-comments" class="slide level2">
 <h2>Basic syntax and comments</h2>
-<div id="1d364cf5" class="cell" data-execution_count="1">
+<div id="48a2e3b7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># This is a comment</span></span>
 <span id="cb1-2"><a></a><span class="bu">print</span>(<span class="st">"Hello, Python!"</span>)  <span class="co"># This prints a message</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -447,7 +447,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="variables-and-data-types" class="slide level2">
 <h2>Variables and data types</h2>
-<div id="c3b0b7b9" class="cell" data-execution_count="2">
+<div id="7ffa13f8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Integer</span></span>
 <span id="cb3-2"><a></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb3-3"><a></a></span>
@@ -471,7 +471,7 @@ Dr.&nbsp;Greg Chism
 <h2>Factors (categorical data)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="5b71163d" class="cell" data-execution_count="3">
+<div id="d66e2b30" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a></a></span>
 <span id="cb4-3"><a></a>x <span class="op">=</span> pd.Categorical([<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"b"</span>, <span class="st">"a"</span>])</span>
@@ -501,7 +501,7 @@ Index(['a', 'b'], dtype='object')
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Date</strong></p>
-<div id="f275d59c" class="cell" data-execution_count="4">
+<div id="7849b9e2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> datetime</span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a>today <span class="op">=</span> datetime.date.today()</span>
@@ -509,14 +509,14 @@ Index(['a', 'b'], dtype='object')
 <span id="cb6-5"><a></a><span class="bu">print</span>(<span class="bu">type</span>(today))</span>
 <span id="cb6-6"><a></a><span class="bu">print</span>(<span class="bu">dir</span>(today))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2024-07-30
+<pre><code>2024-08-16
 &lt;class 'datetime.date'&gt;
-['__add__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__radd__', '__reduce__', '__reduce_ex__', '__repr__', '__rsub__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 'ctime', 'day', 'fromisocalendar', 'fromisoformat', 'fromordinal', 'fromtimestamp', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'min', 'month', 'replace', 'resolution', 'strftime', 'timetuple', 'today', 'toordinal', 'weekday', 'year']</code></pre>
+['__add__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__radd__', '__reduce__', '__reduce_ex__', '__repr__', '__rsub__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 'ctime', 'day', 'fromisocalendar', 'fromisoformat', 'fromordinal', 'fromtimestamp', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'min', 'month', 'replace', 'resolution', 'strftime', 'timetuple', 'today', 'toordinal', 'weekday', 'year']</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Date-Time</strong></p>
-<div id="327200ff" class="cell" data-execution_count="5">
+<div id="c0a2aa27" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>now <span class="op">=</span> pd.Timestamp(<span class="st">"2024-02-08 11:45:00"</span>, tz<span class="op">=</span><span class="st">"EST"</span>)</span>
 <span id="cb8-2"><a></a><span class="bu">print</span>(now)</span>
 <span id="cb8-3"><a></a><span class="bu">print</span>(<span class="bu">type</span>(now))</span>
@@ -532,7 +532,7 @@ EST</code></pre>
 </section>
 <section id="basic-operations" class="slide level2">
 <h2>Basic operations</h2>
-<div id="0a1ba0f6" class="cell" data-execution_count="6">
+<div id="68be88fb" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Arithmetic Operations</span></span>
 <span id="cb10-2"><a></a>a <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb10-3"><a></a>b <span class="op">=</span> <span class="dv">3</span></span>
@@ -553,7 +553,7 @@ EST</code></pre>
 </section>
 <section id="control-structures-if-else" class="slide level2">
 <h2>Control structures: if-else</h2>
-<div id="5ba1aed6" class="cell" data-execution_count="7">
+<div id="d3e4a454" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>age <span class="op">=</span> <span class="dv">20</span></span>
 <span id="cb11-2"><a></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
 <span id="cb11-3"><a></a>    <span class="bu">print</span>(<span class="st">"Adult"</span>)</span>
@@ -571,7 +571,7 @@ EST</code></pre>
 </section>
 <section id="loops" class="slide level2">
 <h2>Loops</h2>
-<div id="16e1faa6" class="cell" data-execution_count="8">
+<div id="febe8b65" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># For Loop</span></span>
 <span id="cb13-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb13-3"><a></a>    <span class="bu">print</span>(i)</span>
@@ -590,7 +590,7 @@ EST</code></pre>
 </section>
 <section id="lists" class="slide level2">
 <h2>Lists</h2>
-<div id="86252f5f" class="cell" data-execution_count="9">
+<div id="d262d7e8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
 <span id="cb14-2"><a></a><span class="bu">print</span>(fruits[<span class="dv">0</span>])  <span class="co"># Accessing the first item</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -603,7 +603,7 @@ EST</code></pre>
 </section>
 <section id="functions" class="slide level2">
 <h2>Functions</h2>
-<div id="42e3012a" class="cell" data-execution_count="10">
+<div id="97978c29" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> greet(name):</span>
 <span id="cb15-2"><a></a>    <span class="cf">return</span> <span class="st">"Hello "</span> <span class="op">+</span> name</span>
 <span id="cb15-3"><a></a></span>
@@ -1001,7 +1001,7 @@ EST</code></pre>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

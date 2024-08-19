@@ -1,1 +1,1 @@
-Sitemap: https://info-511-f24.github.io/sitemap.xml
+Sitemap: https://datasciaz.netlify.app/sitemap.xml

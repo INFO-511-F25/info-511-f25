@@ -143,23 +143,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/INFO-511-F24" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="../course-support.html#office-hours" title="Office hours" class="quarto-navigation-tool px-1" aria-label="Office hours"><i class="bi bi-life-preserver"></i></a>
-    <a href="https://edstem.org/us/courses/50730/discussion/" title="Ed" class="quarto-navigation-tool px-1" aria-label="Ed"><i class="bi bi-chat-dots-fill"></i></a>
-    <a href="https://duke.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=b5b29027-7084-40bf-9a2f-b0cf0100bb98" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="D2L" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/external_tools/181">
-            Gradescope
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://canvas.duke.edu/courses/26106/gradebook">
-            Gradebook
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="https://info511fall2024.slack.com" title="Slack" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4" title="Class recordings" class="quarto-navigation-tool px-1" aria-label="Class recordings"><i class="bi bi-camera-reels-fill"></i></a>
+    <a href="https://d2l.arizona.edu/d2l/home/1478216" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-check-square-fill"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div>
@@ -409,6 +395,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 7</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/ds-experience.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science Experience</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -478,20 +470,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
 <p>Our ultimate goal in this application exercise is to make the following data visualization.</p>
-<div id="d546477c" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ae-05-majors-wrangling_files/figure-html/cell-2-output-1.png" width="685" height="538" class="figure-img"></p>
+<p><img src="images/degrees_plot_final.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
-</div>
-</div>
 </div>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>For this exercise you will work with data on the proportions of Bachelor’s degrees awarded in the US between 2005 and 2015. The dataset you will use is in your <code>data/</code> folder and it’s called <code>degrees.csv</code>.</p>
-<div id="load-packages-data" class="cell" data-message="false" data-execution_count="2">
+<div id="load-packages-data" class="cell" data-message="false" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FormatStrFormatter</span>
@@ -500,9 +488,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>degrees <span class="op">=</span> pd.read_csv(<span class="st">"data/degrees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And let’s take a look at the data.</p>
-<div id="da347d18" class="cell" data-execution_count="3">
+<div id="98ecec7c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>degrees.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <div>
 
@@ -511,137 +499,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">field</th>
-<th data-quarto-table-cell-role="th">1971</th>
-<th data-quarto-table-cell-role="th">1976</th>
-<th data-quarto-table-cell-role="th">1981</th>
-<th data-quarto-table-cell-role="th">1986</th>
-<th data-quarto-table-cell-role="th">1991</th>
-<th data-quarto-table-cell-role="th">1996</th>
-<th data-quarto-table-cell-role="th">2001</th>
-<th data-quarto-table-cell-role="th">2005</th>
-<th data-quarto-table-cell-role="th">2006</th>
-<th data-quarto-table-cell-role="th">2007</th>
-<th data-quarto-table-cell-role="th">2008</th>
-<th data-quarto-table-cell-role="th">2009</th>
-<th data-quarto-table-cell-role="th">2010</th>
-<th data-quarto-table-cell-role="th">2011</th>
-<th data-quarto-table-cell-role="th">2012</th>
-<th data-quarto-table-cell-role="th">2013</th>
-<th data-quarto-table-cell-role="th">2014</th>
-<th data-quarto-table-cell-role="th">2015</th>
+<th data-quarto-table-cell-role="th">degree</th>
+<th data-quarto-table-cell-role="th">2019</th>
+<th data-quarto-table-cell-role="th">2020</th>
+<th data-quarto-table-cell-role="th">2021</th>
+<th data-quarto-table-cell-role="th">2022</th>
+<th data-quarto-table-cell-role="th">2023</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>Agriculture and natural resources</td>
-<td>12672.0</td>
-<td>19402.0</td>
-<td>21886.0</td>
-<td>16823.0</td>
-<td>13124</td>
-<td>21425</td>
-<td>23370</td>
-<td>23002.0</td>
-<td>23053.0</td>
-<td>23133.0</td>
-<td>24113</td>
-<td>24982.0</td>
-<td>26343.0</td>
-<td>28630.0</td>
-<td>30972.0</td>
-<td>33592.0</td>
-<td>35125.0</td>
-<td>36277.0</td>
+<td>Information Science &amp; eSociety (BA)</td>
+<td>63.0</td>
+<td>61.0</td>
+<td>67.0</td>
+<td>71</td>
+<td>38</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Architecture and related services</td>
-<td>5570.0</td>
-<td>9146.0</td>
-<td>9455.0</td>
-<td>9119.0</td>
-<td>9781</td>
-<td>8352</td>
-<td>8480</td>
-<td>9237.0</td>
-<td>9515.0</td>
-<td>9717.0</td>
-<td>9805</td>
-<td>10119.0</td>
-<td>10051.0</td>
-<td>9831.0</td>
-<td>9727.0</td>
-<td>9757.0</td>
-<td>9149.0</td>
-<td>9090.0</td>
+<td>Information Science (BS)</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>16</td>
+<td>57</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Area, ethnic, cultural, gender, and group studies</td>
-<td>2579.0</td>
-<td>3577.0</td>
-<td>2887.0</td>
-<td>3021.0</td>
-<td>4776</td>
-<td>5633</td>
-<td>6160</td>
-<td>7569.0</td>
-<td>7879.0</td>
-<td>8194.0</td>
-<td>8454</td>
-<td>8772.0</td>
-<td>8620.0</td>
-<td>8955.0</td>
-<td>9228.0</td>
-<td>8850.0</td>
-<td>8275.0</td>
-<td>7782.0</td>
+<td>Information (PhD)</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>1.0</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>Biological and biomedical sciences</td>
-<td>35705.0</td>
-<td>54154.0</td>
-<td>43078.0</td>
-<td>38395.0</td>
-<td>39482</td>
-<td>61014</td>
-<td>60576</td>
-<td>65915.0</td>
-<td>70607.0</td>
-<td>76832.0</td>
-<td>79829</td>
-<td>82828.0</td>
-<td>86391.0</td>
-<td>89984.0</td>
-<td>95850.0</td>
-<td>100397.0</td>
-<td>104657.0</td>
-<td>109896.0</td>
+<td>Library &amp; Information Science (MA)</td>
+<td>47.0</td>
+<td>57.0</td>
+<td>72.0</td>
+<td>42</td>
+<td>58</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>Business</td>
-<td>115396.0</td>
-<td>143171.0</td>
-<td>200521.0</td>
-<td>236700.0</td>
-<td>249165</td>
-<td>226623</td>
-<td>263515</td>
-<td>311574.0</td>
-<td>318042.0</td>
-<td>327531.0</td>
-<td>335254</td>
-<td>348056.0</td>
-<td>358119.0</td>
-<td>365133.0</td>
-<td>367235.0</td>
-<td>360887.0</td>
-<td>358132.0</td>
-<td>363799.0</td>
+<td>Information (MS)</td>
+<td>8.0</td>
+<td>10.0</td>
+<td>13.0</td>
+<td>5</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
@@ -656,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Demo:</strong> Pivot the <code>degrees</code> data frame <em>longer</em> such that each row represents a degree type / year combination and <code>year</code> and <code>n</code>umber of graduates for that year are columns in the data frame.</li>
 </ul>
-<div id="pivot" class="cell" data-execution_count="4">
+<div id="pivot" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -664,9 +574,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><em>Add your response here.</em></p>
 <ul>
-<li><strong>Demo:</strong> Start over with pivoting, and this time also make sure <code>year</code> is a Datetime variable in the resulting data frame.</li>
+<li><strong>Demo:</strong> Start over with pivoting, and this time also make sure <code>year</code> is a numerical variable in the resulting data frame.</li>
 </ul>
-<div id="pivot-with-transform" class="cell" data-execution_count="5">
+<div id="pivot-with-transform" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -676,52 +586,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Demo:</strong> Add on to your pipeline that you started with pivoting and convert <code>NA</code>s in <code>n</code> to <code>0</code>s.</li>
 </ul>
-<pre class="{r}"><code>#| label: convert-na
-
-# add your code here</code></pre>
+<div id="convert-na" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Demo:</strong> In our plot the degree types are Business, Computer and information sciences, Engineering, and Psychology. This information is in our dataset, in the <code>degree</code> column, but this column also has additional characters we don’t need. Filter the dataframe with levels Business, Computer and information sciences, Engineering, and Psychology based on <code>degree</code>. Do this by adding on to your pipeline from earlier.</li>
+<li><strong>Demo:</strong> In our plot the degree types are BA, BS, MA, MS, and PhD. This information is in our dataset, in the <code>degree</code> column, but this column also has additional characters we don’t need. Create a new column called <code>degree_type</code> with levels BA, BS, MA, MS, and PhD (in this order) based on <code>degree</code>. Do this by adding on to your pipeline from earlier.</li>
 </ul>
-<pre class="{r}"><code>#| label: degree-type
-
-# add your code here</code></pre>
+<div id="degree-type" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Your turn:</strong> Now we start making our plot, but let’s not get too fancy right away. Create the following plot, which will serve as the “first draft” on the way to our <a href="#goal">Goal</a>. Do this by adding on to your pipeline from earlier.</li>
+<li><p><strong>Your turn:</strong> Now we start making our plot, but let’s not get too fancy right away. Create the following plot, which will serve as the “first draft” on the way to our <a href="#goal">Goal</a>. Do this by adding on to your pipeline from earlier.</p></li>
+<li><p><strong>Hint</strong>: Make sure to state <code>ci=None</code> when using <code>sns.lineplot()</code></p></li>
 </ul>
-<div id="9fdb7e35" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ae-05-majors-wrangling_files/figure-html/cell-7-output-1.png" width="685" height="501" class="figure-img"></p>
+<p><img src="images/degrees_start.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+<div id="plot-draft" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<pre class="{r}"><code>#| label: plot-draft
-
-# add your code here</code></pre>
 <ul>
 <li><strong>Your turn:</strong> What aspects of the plot need to be updated to go from the draft you created above to the <a href="#goal">Goal</a> plot at the beginning of this application exercise.</li>
 </ul>
 <p><em>Add your response here.</em></p>
 <ul>
-<li><strong>Demo:</strong> Update line colors using the following level / color assignments. Once again, do this by adding on to your pipeline from earlier.
+<li><strong>Demo</strong>: Update x-axis scale such that the years displayed go from 2019 to 2023 in unique years. Do this by adding on to your pipeline from earlier.</li>
+</ul>
+<div id="fa6721d9" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><p>Business: “#53868B”</p></li>
-<li><p>Engineering: “#7AC5CD”</p></li>
-<li><p>Computer and information sciences: “#8B814C”</p></li>
-<li><p>Psychology: “#CDBE70”</p></li>
+<li><p><strong>Demo:</strong> Update line colors using the following level / color assignments. Once again, do this by adding on to your pipeline from earlier.</p>
+<ul>
+<li><p>BA: “#53868B”</p></li>
+<li><p>BS: “#7AC5CD”</p></li>
+<li><p>MA: “#89a285”</p></li>
+<li><p>MS: “#8B814C”</p></li>
+<li><p>PhD: “#CDBE70”</p></li>
 </ul></li>
 </ul>
-<pre class="{r}"><code>#| label: plot-improve-1
-
-# add your code here</code></pre>
+<div id="plot-improve-1" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><strong>Your turn:</strong> Update the plot labels (<code>title</code>, <code>x</code>, and <code>y</code>) and use <code>sns.set_style("white_grid")</code>. Once again, do this by adding on to your pipeline from earlier.</li>
 </ul>
-<pre class="{r}"><code>#| label: plot-improve-2
-
-# add your code here</code></pre>
+<div id="plot-improve-2" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

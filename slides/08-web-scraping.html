@@ -412,10 +412,34 @@ Dr.&nbsp;Greg Chism
 </div>
 
 </section>
-<section>
-<section id="setup" class="title-slide slide level1 center">
-<h1>Setup</h1>
-
+<section id="setup" class="slide level2">
+<h2>Setup</h2>
+<div id="e4dc6f6c" class="cell" data-message="false" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb1-3"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a></a><span class="im">import</span> nltk</span>
+<span id="cb1-5"><a></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb1-6"><a></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb1-7"><a></a><span class="im">from</span> afinn <span class="im">import</span> Afinn</span>
+<span id="cb1-8"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-10"><a></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb1-11"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-12"><a></a><span class="im">import</span> ssl</span>
+<span id="cb1-13"><a></a><span class="cf">try</span>:</span>
+<span id="cb1-14"><a></a>    _create_unverified_https_context <span class="op">=</span> ssl._create_unverified_context</span>
+<span id="cb1-15"><a></a><span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb1-16"><a></a>    <span class="cf">pass</span></span>
+<span id="cb1-17"><a></a><span class="cf">else</span>:</span>
+<span id="cb1-18"><a></a>    ssl._create_default_https_context <span class="op">=</span> _create_unverified_https_context</span>
+<span id="cb1-19"><a></a></span>
+<span id="cb1-20"><a></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb1-21"><a></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb1-22"><a></a>nltk.download(<span class="st">'punkt_tab'</span>)</span>
+<span id="cb1-23"><a></a></span>
+<span id="cb1-24"><a></a>sns.set_style(<span class="st">"whitegrid"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="while-you-wait-for-class-to-begin" class="slide level2">
 <h2>While you wait for class to begin…</h2>
@@ -462,7 +486,7 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="analyzing-the-arizona-daily-wildcat-1" class="slide level2">
 <h2>Analyzing The Arizona Daily Wildcat</h2>
-<div id="91d0e6aa" class="cell" data-execution_count="4">
+<div id="618431a7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -481,54 +505,54 @@ Dr.&nbsp;Greg Chism
 <section id="common-works-in-the-arizona-daily-wildcat-titles" class="slide level2 smaller">
 <h2>Common works in The Arizona Daily Wildcat titles</h2>
 <p>Code for the earlier plot:</p>
-<div id="5395aba5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1|2|4|5|7-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
-<span id="cb1-2"><a></a>wildcat[<span class="st">'tokens'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: [word.lower() <span class="cf">for</span> word <span class="kw">in</span> word_tokenize(x) <span class="cf">if</span> word.isalpha() <span class="kw">and</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>word_counts <span class="op">=</span> Counter(word <span class="cf">for</span> title <span class="kw">in</span> wildcat[<span class="st">'tokens'</span>] <span class="cf">for</span> word <span class="kw">in</span> title)</span>
-<span id="cb1-5"><a></a>common_words <span class="op">=</span> pd.DataFrame(word_counts.most_common(<span class="dv">20</span>), columns<span class="op">=</span>[<span class="st">'word'</span>, <span class="st">'count'</span>])</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
-<span id="cb1-8"><a></a>sns.barplot(x<span class="op">=</span><span class="st">'count'</span>, y<span class="op">=</span><span class="st">'word'</span>, data<span class="op">=</span>common_words, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb1-9"><a></a>plt.xlabel(<span class="st">'Number of mentions'</span>)</span>
-<span id="cb1-10"><a></a>plt.ylabel(<span class="st">'Word'</span>)</span>
-<span id="cb1-11"><a></a>plt.title(<span class="st">'Arizona Daily Wildcat - Opinion pieces</span><span class="ch">\n</span><span class="st">Common words in the most recent opinion pieces'</span>)</span>
-<span id="cb1-12"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="227ea3cc" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1|2|4|5|7-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb2-2"><a></a>wildcat[<span class="st">'tokens'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: [word.lower() <span class="cf">for</span> word <span class="kw">in</span> word_tokenize(x) <span class="cf">if</span> word.isalpha() <span class="kw">and</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>word_counts <span class="op">=</span> Counter(word <span class="cf">for</span> title <span class="kw">in</span> wildcat[<span class="st">'tokens'</span>] <span class="cf">for</span> word <span class="kw">in</span> title)</span>
+<span id="cb2-5"><a></a>common_words <span class="op">=</span> pd.DataFrame(word_counts.most_common(<span class="dv">20</span>), columns<span class="op">=</span>[<span class="st">'word'</span>, <span class="st">'count'</span>])</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb2-8"><a></a>sns.barplot(x<span class="op">=</span><span class="st">'count'</span>, y<span class="op">=</span><span class="st">'word'</span>, data<span class="op">=</span>common_words, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb2-9"><a></a>plt.xlabel(<span class="st">'Number of mentions'</span>)</span>
+<span id="cb2-10"><a></a>plt.ylabel(<span class="st">'Word'</span>)</span>
+<span id="cb2-11"><a></a>plt.title(<span class="st">'Arizona Daily Wildcat - Opinion pieces</span><span class="ch">\n</span><span class="st">Common words in the most recent opinion pieces'</span>)</span>
+<span id="cb2-12"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="avg-sentiment-scores-of-titles" class="slide level2 smaller">
 <h2>Avg sentiment scores of titles</h2>
 <p>Code for the earlier plot:</p>
-<div id="bb29513a" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1,2|4|6|7|9-10|12-14|16-18|20-29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
-<span id="cb2-2"><a></a>wildcat[<span class="st">'tokens'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: [word.lower() <span class="cf">for</span> word <span class="kw">in</span> word_tokenize(x) <span class="cf">if</span> word.isalpha() <span class="kw">and</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a>afinn <span class="op">=</span> Afinn()</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a>wildcat[<span class="st">'sentiment'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: afinn.score(x))</span>
-<span id="cb2-7"><a></a>author_sentiment <span class="op">=</span> wildcat.groupby([<span class="st">'author'</span>, <span class="st">'title'</span>])[<span class="st">'sentiment'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a>author_summary <span class="op">=</span> author_sentiment.groupby(<span class="st">'author'</span>).agg(n_articles<span class="op">=</span>(<span class="st">'title'</span>, <span class="st">'count'</span>), avg_sentiment<span class="op">=</span>(<span class="st">'sentiment'</span>, <span class="st">'mean'</span>)).reset_index()</span>
-<span id="cb2-10"><a></a>author_summary <span class="op">=</span> author_summary[(author_summary[<span class="st">'n_articles'</span>] <span class="op">&gt;</span> <span class="dv">1</span>) <span class="op">&amp;</span> (author_summary[<span class="st">'author'</span>].notna())]</span>
-<span id="cb2-11"><a></a></span>
-<span id="cb2-12"><a></a>top_positive <span class="op">=</span> author_summary.nlargest(<span class="dv">10</span>, <span class="st">'avg_sentiment'</span>)</span>
-<span id="cb2-13"><a></a>top_negative <span class="op">=</span> author_summary.nsmallest(<span class="dv">10</span>, <span class="st">'avg_sentiment'</span>)</span>
-<span id="cb2-14"><a></a>top_authors <span class="op">=</span> pd.concat([top_positive, top_negative])</span>
-<span id="cb2-15"><a></a></span>
-<span id="cb2-16"><a></a>top_authors[<span class="st">'neg_pos'</span>] <span class="op">=</span> np.where(top_authors[<span class="st">'avg_sentiment'</span>] <span class="op">&lt;</span> <span class="dv">0</span>, <span class="st">'neg'</span>, <span class="st">'pos'</span>)</span>
-<span id="cb2-17"><a></a>top_authors[<span class="st">'label_position'</span>] <span class="op">=</span> np.where(top_authors[<span class="st">'neg_pos'</span>] <span class="op">==</span> <span class="st">'neg'</span>, <span class="fl">0.25</span>, <span class="op">-</span><span class="fl">0.25</span>)</span>
-<span id="cb2-18"><a></a>top_authors <span class="op">=</span> top_authors.sort_values(by<span class="op">=</span><span class="st">'avg_sentiment'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-19"><a></a></span>
-<span id="cb2-20"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb2-21"><a></a>sns.barplot(x<span class="op">=</span><span class="st">'avg_sentiment'</span>, y<span class="op">=</span><span class="st">'author'</span>, data<span class="op">=</span>top_authors, hue<span class="op">=</span><span class="st">'neg_pos'</span>, dodge<span class="op">=</span><span class="va">False</span>, palette<span class="op">=</span>{<span class="st">'neg'</span>: <span class="st">'#4d4009'</span>, <span class="st">'pos'</span>: <span class="st">'#FF4B91'</span>})</span>
-<span id="cb2-22"><a></a>plt.xlabel(<span class="st">'negative  ←     Average sentiment score (AFINN)     →  positive'</span>)</span>
-<span id="cb2-23"><a></a>plt.ylabel(<span class="va">None</span>)</span>
-<span id="cb2-24"><a></a>plt.title(<span class="st">'The Arizona Daily Wildcat - Opinion pieces</span><span class="ch">\n</span><span class="st">Average sentiment scores of titles by author'</span>)</span>
-<span id="cb2-25"><a></a>plt.legend([], [], frameon<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-26"><a></a>plt.xlim(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
-<span id="cb2-27"><a></a>plt.grid(<span class="va">False</span>)</span>
-<span id="cb2-28"><a></a>plt.gca().invert_yaxis()</span>
-<span id="cb2-29"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e5949da6" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|1,2|4|6|7|9-10|12-14|16-18|20-29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb3-2"><a></a>wildcat[<span class="st">'tokens'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: [word.lower() <span class="cf">for</span> word <span class="kw">in</span> word_tokenize(x) <span class="cf">if</span> word.isalpha() <span class="kw">and</span> word.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>afinn <span class="op">=</span> Afinn()</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a>wildcat[<span class="st">'sentiment'</span>] <span class="op">=</span> wildcat[<span class="st">'title'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: afinn.score(x))</span>
+<span id="cb3-7"><a></a>author_sentiment <span class="op">=</span> wildcat.groupby([<span class="st">'author'</span>, <span class="st">'title'</span>])[<span class="st">'sentiment'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>author_summary <span class="op">=</span> author_sentiment.groupby(<span class="st">'author'</span>).agg(n_articles<span class="op">=</span>(<span class="st">'title'</span>, <span class="st">'count'</span>), avg_sentiment<span class="op">=</span>(<span class="st">'sentiment'</span>, <span class="st">'mean'</span>)).reset_index()</span>
+<span id="cb3-10"><a></a>author_summary <span class="op">=</span> author_summary[(author_summary[<span class="st">'n_articles'</span>] <span class="op">&gt;</span> <span class="dv">1</span>) <span class="op">&amp;</span> (author_summary[<span class="st">'author'</span>].notna())]</span>
+<span id="cb3-11"><a></a></span>
+<span id="cb3-12"><a></a>top_positive <span class="op">=</span> author_summary.nlargest(<span class="dv">10</span>, <span class="st">'avg_sentiment'</span>)</span>
+<span id="cb3-13"><a></a>top_negative <span class="op">=</span> author_summary.nsmallest(<span class="dv">10</span>, <span class="st">'avg_sentiment'</span>)</span>
+<span id="cb3-14"><a></a>top_authors <span class="op">=</span> pd.concat([top_positive, top_negative])</span>
+<span id="cb3-15"><a></a></span>
+<span id="cb3-16"><a></a>top_authors[<span class="st">'neg_pos'</span>] <span class="op">=</span> np.where(top_authors[<span class="st">'avg_sentiment'</span>] <span class="op">&lt;</span> <span class="dv">0</span>, <span class="st">'neg'</span>, <span class="st">'pos'</span>)</span>
+<span id="cb3-17"><a></a>top_authors[<span class="st">'label_position'</span>] <span class="op">=</span> np.where(top_authors[<span class="st">'neg_pos'</span>] <span class="op">==</span> <span class="st">'neg'</span>, <span class="fl">0.25</span>, <span class="op">-</span><span class="fl">0.25</span>)</span>
+<span id="cb3-18"><a></a>top_authors <span class="op">=</span> top_authors.sort_values(by<span class="op">=</span><span class="st">'avg_sentiment'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-19"><a></a></span>
+<span id="cb3-20"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb3-21"><a></a>sns.barplot(x<span class="op">=</span><span class="st">'avg_sentiment'</span>, y<span class="op">=</span><span class="st">'author'</span>, data<span class="op">=</span>top_authors, hue<span class="op">=</span><span class="st">'neg_pos'</span>, dodge<span class="op">=</span><span class="va">False</span>, palette<span class="op">=</span>{<span class="st">'neg'</span>: <span class="st">'#4d4009'</span>, <span class="st">'pos'</span>: <span class="st">'#FF4B91'</span>})</span>
+<span id="cb3-22"><a></a>plt.xlabel(<span class="st">'negative  ←     Average sentiment score (AFINN)     →  positive'</span>)</span>
+<span id="cb3-23"><a></a>plt.ylabel(<span class="va">None</span>)</span>
+<span id="cb3-24"><a></a>plt.title(<span class="st">'The Arizona Daily Wildcat - Opinion pieces</span><span class="ch">\n</span><span class="st">Average sentiment scores of titles by author'</span>)</span>
+<span id="cb3-25"><a></a>plt.legend([], [], frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-26"><a></a>plt.xlim(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb3-27"><a></a>plt.grid(<span class="va">False</span>)</span>
+<span id="cb3-28"><a></a>plt.gca().invert_yaxis()</span>
+<span id="cb3-29"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="where-is-this-data-coming-from" class="slide level2 smaller">
@@ -550,8 +574,8 @@ Dr.&nbsp;Greg Chism
 </figure>
 </div>
 </div><div class="column" style="width:80%;">
-<div id="af26bf0b" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(wildcat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="55981787" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">print</span>(wildcat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                                 title            author  \
 0    BOOK REVIEW: ‘Fresh Fruit, Broken Bodies’ by D...    Andres F. Diaz   
@@ -610,7 +634,7 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 </div>
-</section></section>
+</section>
 <section>
 <section id="web-scraping" class="title-slide slide level1 center">
 <h1>Web scraping</h1>
@@ -633,23 +657,23 @@ Dr.&nbsp;Greg Chism
 <h2>Hypertext Markup Language</h2>
 <p>Most of the data on the web is still largely available as HTML - while it is structured (hierarchical) it often is not available in a form useful for analysis (flat / tidy).</p>
 <div class="small">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-3"><a></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>This is a title<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb5-4"><a></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-5"><a></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-6"><a></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span>Hello world!<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb5-7"><a></a>    <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
-<span id="cb5-8"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"name"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"first"</span><span class="dt">&gt;</span>John<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-9"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"name"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"last"</span><span class="dt">&gt;</span>Doe<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-10"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"contact"</span><span class="dt">&gt;</span></span>
-<span id="cb5-11"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"home"</span><span class="dt">&gt;</span>555-555-1234<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-12"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"home"</span><span class="dt">&gt;</span>555-555-2345<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-13"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"work"</span><span class="dt">&gt;</span>555-555-9999<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-14"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fax"</span><span class="dt">&gt;</span>555-555-8888<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-15"><a></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb5-16"><a></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-17"><a></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>This is a title<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span>Hello world!<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a></a>    <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
+<span id="cb6-8"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"name"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"first"</span><span class="dt">&gt;</span>John<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-9"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"name"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"last"</span><span class="dt">&gt;</span>Doe<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"contact"</span><span class="dt">&gt;</span></span>
+<span id="cb6-11"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"home"</span><span class="dt">&gt;</span>555-555-1234<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-12"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"home"</span><span class="dt">&gt;</span>555-555-2345<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-13"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"work"</span><span class="dt">&gt;</span>555-555-9999<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-14"><a></a>      <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"fax"</span><span class="dt">&gt;</span>555-555-8888<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-15"><a></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb6-16"><a></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb6-17"><a></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="beautifulsoup" class="slide level2 smaller">
@@ -660,8 +684,8 @@ Dr.&nbsp;Greg Chism
 <li>The <strong>BeautifulSoup</strong> package makes basic processing and manipulation of HTML data straight forward</li>
 <li><a href="https://beautiful-soup-4.readthedocs.io/en/latest/">beautiful-soup-4.readthedocs.io</a></li>
 </ul>
-<div id="4d1bbbfd" class="cell" data-message="false" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e3f76f26" class="cell" data-message="false" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-right">
@@ -685,73 +709,73 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="html-beautifulsoup-requests" class="slide level2 smaller">
 <h2>HTML, BeautifulSoup, &amp; requests</h2>
-<div id="08f29a07" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>html <span class="op">=</span> <span class="st">'''</span></span>
-<span id="cb7-2"><a></a><span class="st">&lt;html&gt;</span></span>
-<span id="cb7-3"><a></a><span class="st">  &lt;head&gt;</span></span>
-<span id="cb7-4"><a></a><span class="st">    &lt;title&gt;This is a title&lt;/title&gt;</span></span>
-<span id="cb7-5"><a></a><span class="st">  &lt;/head&gt;</span></span>
-<span id="cb7-6"><a></a><span class="st">  &lt;body&gt;</span></span>
-<span id="cb7-7"><a></a><span class="st">    &lt;p align="center"&gt;Hello world!&lt;/p&gt;</span></span>
-<span id="cb7-8"><a></a><span class="st">    &lt;br/&gt;</span></span>
-<span id="cb7-9"><a></a><span class="st">    &lt;div class="name" id="first"&gt;John&lt;/div&gt;</span></span>
-<span id="cb7-10"><a></a><span class="st">    &lt;div class="name" id="last"&gt;Doe&lt;/div&gt;</span></span>
-<span id="cb7-11"><a></a><span class="st">    &lt;div class="contact"&gt;</span></span>
-<span id="cb7-12"><a></a><span class="st">      &lt;div class="home"&gt;555-555-1234&lt;/div&gt;</span></span>
-<span id="cb7-13"><a></a><span class="st">      &lt;div class="home"&gt;555-555-2345&lt;/div&gt;</span></span>
-<span id="cb7-14"><a></a><span class="st">      &lt;div class="work"&gt;555-555-9999&lt;/div&gt;</span></span>
-<span id="cb7-15"><a></a><span class="st">      &lt;div class="fax"&gt;555-555-8888&lt;/div&gt;</span></span>
-<span id="cb7-16"><a></a><span class="st">    &lt;/div&gt;</span></span>
-<span id="cb7-17"><a></a><span class="st">  &lt;/body&gt;</span></span>
-<span id="cb7-18"><a></a><span class="st">&lt;/html&gt;</span></span>
-<span id="cb7-19"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a2f46a6a" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>html <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb8-2"><a></a><span class="st">&lt;html&gt;</span></span>
+<span id="cb8-3"><a></a><span class="st">  &lt;head&gt;</span></span>
+<span id="cb8-4"><a></a><span class="st">    &lt;title&gt;This is a title&lt;/title&gt;</span></span>
+<span id="cb8-5"><a></a><span class="st">  &lt;/head&gt;</span></span>
+<span id="cb8-6"><a></a><span class="st">  &lt;body&gt;</span></span>
+<span id="cb8-7"><a></a><span class="st">    &lt;p align="center"&gt;Hello world!&lt;/p&gt;</span></span>
+<span id="cb8-8"><a></a><span class="st">    &lt;br/&gt;</span></span>
+<span id="cb8-9"><a></a><span class="st">    &lt;div class="name" id="first"&gt;John&lt;/div&gt;</span></span>
+<span id="cb8-10"><a></a><span class="st">    &lt;div class="name" id="last"&gt;Doe&lt;/div&gt;</span></span>
+<span id="cb8-11"><a></a><span class="st">    &lt;div class="contact"&gt;</span></span>
+<span id="cb8-12"><a></a><span class="st">      &lt;div class="home"&gt;555-555-1234&lt;/div&gt;</span></span>
+<span id="cb8-13"><a></a><span class="st">      &lt;div class="home"&gt;555-555-2345&lt;/div&gt;</span></span>
+<span id="cb8-14"><a></a><span class="st">      &lt;div class="work"&gt;555-555-9999&lt;/div&gt;</span></span>
+<span id="cb8-15"><a></a><span class="st">      &lt;div class="fax"&gt;555-555-8888&lt;/div&gt;</span></span>
+<span id="cb8-16"><a></a><span class="st">    &lt;/div&gt;</span></span>
+<span id="cb8-17"><a></a><span class="st">  &lt;/body&gt;</span></span>
+<span id="cb8-18"><a></a><span class="st">&lt;/html&gt;</span></span>
+<span id="cb8-19"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div id="26b9270b" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ffa81650" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="selecting-elements" class="slide level2">
 <h2>Selecting elements</h2>
-<div id="d06af750" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>p_elements <span class="op">=</span> soup.select(<span class="st">'p'</span>)</span>
-<span id="cb9-2"><a></a><span class="bu">print</span>(p_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="97233a3e" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>p_elements <span class="op">=</span> soup.select(<span class="st">'p'</span>)</span>
+<span id="cb10-2"><a></a><span class="bu">print</span>(p_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[&lt;p align="center"&gt;Hello world!&lt;/p&gt;]</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="c15c241d" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>p_text <span class="op">=</span> [p.get_text() <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(p_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="06c3229f" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>p_text <span class="op">=</span> [p.get_text() <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
+<span id="cb12-2"><a></a><span class="bu">print</span>(p_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Hello world!']</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div id="46dcfe67" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>p_names <span class="op">=</span> [p.name <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
-<span id="cb13-2"><a></a><span class="bu">print</span>(p_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="52f6f6d4" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>p_names <span class="op">=</span> [p.name <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
+<span id="cb14-2"><a></a><span class="bu">print</span>(p_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['p']</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div id="4736916a" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>p_attrs <span class="op">=</span> [p.attrs <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
-<span id="cb15-2"><a></a><span class="bu">print</span>(p_attrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e874fa74" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>p_attrs <span class="op">=</span> [p.attrs <span class="cf">for</span> p <span class="kw">in</span> p_elements]</span>
+<span id="cb16-2"><a></a><span class="bu">print</span>(p_attrs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[{'align': 'center'}]</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div id="cd229b48" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>p_align <span class="op">=</span> [p[<span class="st">'align'</span>] <span class="cf">for</span> p <span class="kw">in</span> p_elements <span class="cf">if</span> <span class="st">'align'</span> <span class="kw">in</span> p.attrs]</span>
-<span id="cb17-2"><a></a><span class="bu">print</span>(p_align)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1bf477aa" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>p_align <span class="op">=</span> [p[<span class="st">'align'</span>] <span class="cf">for</span> p <span class="kw">in</span> p_elements <span class="cf">if</span> <span class="st">'align'</span> <span class="kw">in</span> p.attrs]</span>
+<span id="cb18-2"><a></a><span class="bu">print</span>(p_align)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['center']</code></pre>
 </div>
@@ -761,9 +785,9 @@ Dr.&nbsp;Greg Chism
 <section id="more-selecting-tags" class="slide level2 smaller">
 <h2>More selecting tags</h2>
 <div class="medium">
-<div id="facd8992" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>div_elements <span class="op">=</span> soup.select(<span class="st">'div'</span>)</span>
-<span id="cb19-2"><a></a><span class="bu">print</span>(div_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="acb950c4" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>div_elements <span class="op">=</span> soup.select(<span class="st">'div'</span>)</span>
+<span id="cb20-2"><a></a><span class="bu">print</span>(div_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[&lt;div class="name" id="first"&gt;John&lt;/div&gt;, &lt;div class="name" id="last"&gt;Doe&lt;/div&gt;, &lt;div class="contact"&gt;
 &lt;div class="home"&gt;555-555-1234&lt;/div&gt;
@@ -776,9 +800,9 @@ Dr.&nbsp;Greg Chism
 </div>
 <div class="fragment">
 <div class="medium">
-<div id="03eb57ca" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>div_text <span class="op">=</span> [div.get_text() <span class="cf">for</span> div <span class="kw">in</span> div_elements]</span>
-<span id="cb21-2"><a></a><span class="bu">print</span>(div_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="afab9899" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>div_text <span class="op">=</span> [div.get_text() <span class="cf">for</span> div <span class="kw">in</span> div_elements]</span>
+<span id="cb22-2"><a></a><span class="bu">print</span>(div_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['John', 'Doe', '\n555-555-1234\n555-555-2345\n555-555-9999\n555-555-8888\n', '555-555-1234', '555-555-2345', '555-555-9999', '555-555-8888']</code></pre>
 </div>
@@ -795,9 +819,9 @@ Dr.&nbsp;Greg Chism
 <div class="small">
 <table>
 <colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 50%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -848,17 +872,17 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="css-classes-and-ids" class="slide level2">
 <h2>CSS classes and ids</h2>
-<div id="09f2c51c" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>name_elements <span class="op">=</span> soup.select(<span class="st">'.name'</span>)</span>
-<span id="cb23-2"><a></a><span class="bu">print</span>(name_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f0cbbb69" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>name_elements <span class="op">=</span> soup.select(<span class="st">'.name'</span>)</span>
+<span id="cb24-2"><a></a><span class="bu">print</span>(name_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[&lt;div class="name" id="first"&gt;John&lt;/div&gt;, &lt;div class="name" id="last"&gt;Doe&lt;/div&gt;]</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="0d39e2ef" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>first_name <span class="op">=</span> soup.select(<span class="st">'#first'</span>)</span>
-<span id="cb25-2"><a></a><span class="bu">print</span>(first_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="429da451" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>first_name <span class="op">=</span> soup.select(<span class="st">'#first'</span>)</span>
+<span id="cb26-2"><a></a><span class="bu">print</span>(first_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[&lt;div class="name" id="first"&gt;John&lt;/div&gt;]</code></pre>
 </div>
@@ -867,19 +891,19 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="text-with-get_text" class="slide level2">
 <h2>Text with <code>get_text()</code></h2>
-<div id="5af1ac7e" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>html <span class="op">=</span> <span class="st">'''</span></span>
-<span id="cb27-2"><a></a><span class="st">&lt;p&gt;  </span></span>
-<span id="cb27-3"><a></a><span class="st">  This is the first sentence in the paragraph.</span></span>
-<span id="cb27-4"><a></a><span class="st">  This is the second sentence that should be on the same line as the first sentence.&lt;br&gt;This third sentence should start on a new line.</span></span>
-<span id="cb27-5"><a></a><span class="st">&lt;/p&gt;</span></span>
-<span id="cb27-6"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="983c0fd8" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>html <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb28-2"><a></a><span class="st">&lt;p&gt;  </span></span>
+<span id="cb28-3"><a></a><span class="st">  This is the first sentence in the paragraph.</span></span>
+<span id="cb28-4"><a></a><span class="st">  This is the second sentence that should be on the same line as the first sentence.&lt;br&gt;This third sentence should start on a new line.</span></span>
+<span id="cb28-5"><a></a><span class="st">&lt;/p&gt;</span></span>
+<span id="cb28-6"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div id="45645d52" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span>
-<span id="cb28-2"><a></a>text <span class="op">=</span> soup.get_text()</span>
-<span id="cb28-3"><a></a><span class="bu">print</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d2861945" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">'html.parser'</span>)</span>
+<span id="cb29-2"><a></a>text <span class="op">=</span> soup.get_text()</span>
+<span id="cb29-3"><a></a><span class="bu">print</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   
@@ -893,28 +917,28 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="html-tables-with-read_html" class="slide level2 smaller">
 <h2>HTML tables with <code>read_html()</code></h2>
-<div id="d8132734" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>html_table <span class="op">=</span> <span class="st">'''</span></span>
-<span id="cb30-2"><a></a><span class="st">&lt;html&gt;</span></span>
-<span id="cb30-3"><a></a><span class="st">  &lt;head&gt;</span></span>
-<span id="cb30-4"><a></a><span class="st">    &lt;title&gt;This is a title&lt;/title&gt;</span></span>
-<span id="cb30-5"><a></a><span class="st">  &lt;/head&gt;</span></span>
-<span id="cb30-6"><a></a><span class="st">  &lt;body&gt;</span></span>
-<span id="cb30-7"><a></a><span class="st">    &lt;table&gt;</span></span>
-<span id="cb30-8"><a></a><span class="st">      &lt;tr&gt; &lt;th&gt;a&lt;/th&gt; &lt;th&gt;b&lt;/th&gt; &lt;th&gt;c&lt;/th&gt; &lt;/tr&gt;</span></span>
-<span id="cb30-9"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;td&gt;3&lt;/td&gt; &lt;/tr&gt;</span></span>
-<span id="cb30-10"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;2&lt;/td&gt; &lt;td&gt;3&lt;/td&gt; &lt;td&gt;4&lt;/td&gt; &lt;/tr&gt;</span></span>
-<span id="cb30-11"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;3&lt;/td&gt; &lt;td&gt;4&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt;</span></span>
-<span id="cb30-12"><a></a><span class="st">    &lt;/table&gt;</span></span>
-<span id="cb30-13"><a></a><span class="st">  &lt;/body&gt;</span></span>
-<span id="cb30-14"><a></a><span class="st">&lt;/html&gt;</span></span>
-<span id="cb30-15"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9cf34379" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>html_table <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb31-2"><a></a><span class="st">&lt;html&gt;</span></span>
+<span id="cb31-3"><a></a><span class="st">  &lt;head&gt;</span></span>
+<span id="cb31-4"><a></a><span class="st">    &lt;title&gt;This is a title&lt;/title&gt;</span></span>
+<span id="cb31-5"><a></a><span class="st">  &lt;/head&gt;</span></span>
+<span id="cb31-6"><a></a><span class="st">  &lt;body&gt;</span></span>
+<span id="cb31-7"><a></a><span class="st">    &lt;table&gt;</span></span>
+<span id="cb31-8"><a></a><span class="st">      &lt;tr&gt; &lt;th&gt;a&lt;/th&gt; &lt;th&gt;b&lt;/th&gt; &lt;th&gt;c&lt;/th&gt; &lt;/tr&gt;</span></span>
+<span id="cb31-9"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;td&gt;3&lt;/td&gt; &lt;/tr&gt;</span></span>
+<span id="cb31-10"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;2&lt;/td&gt; &lt;td&gt;3&lt;/td&gt; &lt;td&gt;4&lt;/td&gt; &lt;/tr&gt;</span></span>
+<span id="cb31-11"><a></a><span class="st">      &lt;tr&gt; &lt;td&gt;3&lt;/td&gt; &lt;td&gt;4&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt;</span></span>
+<span id="cb31-12"><a></a><span class="st">    &lt;/table&gt;</span></span>
+<span id="cb31-13"><a></a><span class="st">  &lt;/body&gt;</span></span>
+<span id="cb31-14"><a></a><span class="st">&lt;/html&gt;</span></span>
+<span id="cb31-15"><a></a><span class="st">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div id="e339a5db" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html_table, <span class="st">'html.parser'</span>)</span>
-<span id="cb31-2"><a></a>table <span class="op">=</span> pd.read_html(<span class="bu">str</span>(soup.select(<span class="st">'table'</span>)[<span class="dv">0</span>]))[<span class="dv">0</span>]</span>
-<span id="cb31-3"><a></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e111f63a" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>soup <span class="op">=</span> BeautifulSoup(html_table, <span class="st">'html.parser'</span>)</span>
+<span id="cb32-2"><a></a>table <span class="op">=</span> pd.read_html(<span class="bu">str</span>(soup.select(<span class="st">'table'</span>)[<span class="dv">0</span>]))[<span class="dv">0</span>]</span>
+<span id="cb32-3"><a></a><span class="bu">print</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   a  b  c
 0  1  2  3
@@ -946,7 +970,7 @@ Dr.&nbsp;Greg Chism
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Scrape data and organize it in a tidy format in R</li>
+<li>Scrape data and organize it in a tabular format in Python</li>
 <li>Perform light text parsing to clean data</li>
 <li>Summarize and visualze the data</li>
 </ul>
@@ -981,11 +1005,8 @@ Dr.&nbsp;Greg Chism
 <h2>A new Python workflow</h2>
 <ul>
 <li>When working in a Jupyter notebook, your analysis is re-run each time you execute the notebook</li>
-</ul>
-<!-- -->
-<ul>
-<li><p>If web scraping in a notebook, you’d be re-scraping the data each time you run the notebook, which is undesirable (and not <em>nice</em>)!</p></li>
-<li><p>An alternative workflow:</p>
+<li>If web scraping in a notebook, you’d be re-scraping the data each time you run the notebook, which is undesirable (and not <em>nice</em>)!</li>
+<li>An alternative workflow:
 <ul>
 <li><p>Use a Python script to save your code</p></li>
 <li><p>Saving interim data scraped using the code in the script as CSV or pickle files</p></li>
@@ -1002,7 +1023,7 @@ Dr.&nbsp;Greg Chism
 <h2>Ethics: “Can you?” vs “Should you?”</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ok-cupid-1.png" class="quarto-figure quarto-figure-center" width="800"></p>
+<p><img data-src="images/ok-cupid-1.png" class="quarto-figure quarto-figure-center" width="579"></p>
 </figure>
 </div>
 
@@ -1333,7 +1354,7 @@ Dr.&nbsp;Greg Chism
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

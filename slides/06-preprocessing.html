@@ -449,13 +449,11 @@ Dr.&nbsp;Greg Chism
 <p>It’s essentially data cleaning.</p>
 </div>
 </section>
-<section id="datasets" class="slide level2 smaller">
-<h2>Datasets</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="dataset" class="slide level2 smaller">
+<h2>Dataset</h2>
 <p><strong>Human Freedom Index</strong></p>
 <p>The Human Freedom Index is a report that attempts to summarize the idea of “freedom” through variables for many countries around the globe.</p>
-<div id="ac48d847" class="cell" data-execution_count="3">
+<div id="8c90884a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -464,49 +462,18 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<p><strong>Environmental Sustainability</strong></p>
-<p>Countries are given an overall sustainability score as well as scores in each of several different environmental areas.</p>
-<p><br></p>
-<div id="5bdba19f" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-5-output-1.png" width="700" height="307"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="question" class="slide level2 smaller">
 <h2>Question</h2>
-<p>How does <strong>environmental stability</strong> correlate with <strong>human freedom indices</strong> in different countries, and what trends can be observed?</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/environmental-stability.jpeg" class="quarto-figure quarto-figure-center" width="919"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/human-freedom.jpg" class="quarto-figure quarto-figure-center" width="1214"></p>
-</figure>
-</div>
-</div><blockquote>
-<p>Note that this will take us <strong>two</strong> lectures to answer.</p>
-</blockquote>
-</div>
-</section>
-<section id="dataset-1-human-freedom-index" class="slide level2">
-<h2>Dataset #1: Human Freedom Index</h2>
-<div id="68280928" class="cell" data-execution_count="5">
+<p>What trends are there within <strong>human freedom indices</strong> in different regions?</p>
+
+<img data-src="images/human-freedom.jpg" class="quarto-figure quarto-figure-center r-stretch" width="1214"></section>
+<section id="dataset-human-freedom-index" class="slide level2">
+<h2>Dataset: Human Freedom Index</h2>
+<div id="36e6a164" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>hfi <span class="op">=</span> pd.read_csv(<span class="st">"data/hfi.csv"</span>)</span>
 <span id="cb2-2"><a></a>hfi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <div>
 <style scoped="">
@@ -686,7 +653,7 @@ Dr.&nbsp;Greg Chism
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>.info()</code></a></li><li><a href="#tabset-1-2"><code>.describe()</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="8d117281" class="cell" data-execution_count="6">
+<div id="ff11c04a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>hfi.info(verbose <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -823,9 +790,9 @@ memory usage: 1.4+ MB</code></pre>
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="02e5b0e1" class="cell" data-execution_count="7">
+<div id="08e713f0" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>hfi.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <div>
 <style scoped="">
@@ -1076,9 +1043,9 @@ memory usage: 1.4+ MB</code></pre>
 </section>
 <section id="identifying-missing-values" class="slide level2">
 <h2>Identifying missing values</h2>
-<div id="7be78014" class="cell" data-execution_count="8">
+<div id="05174cff" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>hfi.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>year                   0
 ISO_code               0
 countries              0
@@ -1159,18 +1126,18 @@ Length: 123, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-2-2">
-<div id="1d2ddfcf" class="cell" data-fig.asp="0.625" data-execution_count="9">
+<div id="5c9e2f86" class="cell" data-fig.asp="0.625" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-10-output-1.png" width="816" height="438"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-9-output-1.png" width="816" height="438"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-2-3">
-<div id="c68f1477" class="cell" data-execution_count="10">
+<div id="84ff7e9f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1|3,4|6,7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a>mean_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'mean'</span>)</span>
@@ -1213,18 +1180,18 @@ Length: 123, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="78a12555" class="cell" data-fig.asp="0.625" data-execution_count="11">
+<div id="2d3affc0" class="cell" data-fig.asp="0.625" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-12-output-1.png" width="816" height="435"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-11-output-1.png" width="816" height="435"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-3-3">
-<div id="dcead982" class="cell" data-execution_count="12">
+<div id="46c3f4b8" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|1|3,4|6,7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a>median_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'median'</span>)</span>
@@ -1248,7 +1215,7 @@ Length: 123, dtype: int64</code></pre>
 <div id="tabset-4-1">
 <p><strong>How it Works</strong>: Replace missing values with the <strong>mode</strong> of the non-missing values in the same variable.</p>
 <div class="fragment">
-<p><strong>Pros</strong> (same as mean):</p>
+<p><strong>Pros</strong></p>
 <div>
 <ul>
 <li class="fragment">Easy and fast.</li>
@@ -1265,18 +1232,18 @@ Length: 123, dtype: int64</code></pre>
 </div>
 </div>
 <div id="tabset-4-2">
-<div id="c911ceea" class="cell" data-fig.asp="0.625" data-execution_count="13">
+<div id="c2261860" class="cell" data-fig.asp="0.625" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-14-output-1.png" width="824" height="435"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-13-output-1.png" width="824" height="435"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-4-3">
-<div id="b039a592" class="cell" data-execution_count="14">
+<div id="bb75b348" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb10" data-code-line-numbers="|1|3,4|6,7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
 <span id="cb10-2"><a></a></span>
 <span id="cb10-3"><a></a>mode_imputer <span class="op">=</span> SimpleImputer(strategy <span class="op">=</span> <span class="st">'most_frequent'</span>)</span>
@@ -1298,8 +1265,8 @@ Length: 123, dtype: int64</code></pre>
 <h1>Data type conversion</h1>
 
 </section>
-<section id="recap-logical-operators" class="slide level2 smaller">
-<h2>Recap: logical operators</h2>
+<section id="logical-operators" class="slide level2 smaller">
+<h2>Logical operators</h2>
 <table>
 <thead>
 <tr class="header">
@@ -1335,53 +1302,12 @@ Length: 123, dtype: int64</code></pre>
 </tbody>
 </table>
 </section>
-<section id="recap-logical-operators-1" class="slide level2 smaller">
-<h2>Recap: logical operators</h2>
-<p>Here is the equivalent recap of logical operators in Python:</p>
-</section>
-<section id="recap-logical-operators-2" class="slide level2">
-<h2>Recap: logical operators</h2>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">operator</th>
-<th style="text-align: left;">definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>&lt;</code></td>
-<td style="text-align: left;">is less than?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>&lt;=</code></td>
-<td style="text-align: left;">is less than or equal to?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>&gt;</code></td>
-<td style="text-align: left;">is greater than?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>&gt;=</code></td>
-<td style="text-align: left;">is greater than or equal to?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>==</code></td>
-<td style="text-align: left;">is exactly equal to?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>!=</code></td>
-<td style="text-align: left;">is not equal to?</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="recap-logical-operators-3" class="slide level2">
-<h2>Recap: logical operators</h2>
+<section id="logical-operators-cont." class="slide level2 smaller">
+<h2>Logical operators cont.</h2>
 <table>
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 30%">
+<col style="width: 69%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1423,7 +1349,7 @@ Length: 123, dtype: int64</code></pre>
 </section>
 <section id="looking-at-our-data" class="slide level2 smaller">
 <h2>Looking at our data</h2>
-<div id="c4d70f82" class="cell" data-execution_count="15">
+<div id="51b84195" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>hfi_copy <span class="op">=</span> hfi</span>
 <span id="cb11-2"><a></a>hfi_copy.info(verbose<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1565,7 +1491,7 @@ memory usage: 1.4+ MB</code></pre>
 </section>
 <section id="converting-year-to-datetime" class="slide level2 smaller">
 <h2>Converting <code>year</code> to <code>Datetime</code></h2>
-<div id="cf294d76" class="cell" data-execution_count="16">
+<div id="0c70b192" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>hfi_copy[<span class="st">'year'</span>] <span class="op">=</span> pd.to_datetime(hfi_copy[<span class="st">'year'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
 <span id="cb13-2"><a></a><span class="bu">print</span>(hfi_copy.info(verbose<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1708,7 +1634,7 @@ None</code></pre>
 </section>
 <section id="converting-iso_code-countries-and-region-to-categorical" class="slide level2 smaller">
 <h2>Converting <code>ISO_code</code>, <code>countries</code>, and <code>region</code> to Categorical</h2>
-<div id="54579898" class="cell" data-execution_count="17">
+<div id="9921b935" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>hfi_copy[<span class="st">'ISO_code'</span>] <span class="op">=</span> hfi_copy[<span class="st">'ISO_code'</span>].astype(<span class="st">'category'</span>)</span>
 <span id="cb15-2"><a></a>hfi_copy[<span class="st">'countries'</span>] <span class="op">=</span> hfi_copy[<span class="st">'countries'</span>].astype(<span class="st">'category'</span>)</span>
 <span id="cb15-3"><a></a>hfi_copy[<span class="st">'region'</span>] <span class="op">=</span> hfi_copy[<span class="st">'region'</span>].astype(<span class="st">'category'</span>)</span>
@@ -1854,7 +1780,7 @@ None</code></pre>
 <section id="creating-a-boolean-column-from-hf_score" class="slide level2 smaller">
 <h2>Creating a <code>boolean</code> column from <code>hf_score</code></h2>
 <p>Let’s say we want to know whether countries are “free” or not.</p>
-<div id="87188f72" class="cell" data-execution_count="18">
+<div id="bea390af" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>threshold <span class="op">=</span> <span class="fl">8.5</span></span>
 <span id="cb17-2"><a></a>hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">=</span> hfi_copy[<span class="st">'hf_score'</span>] <span class="op">&gt;</span> threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1866,7 +1792,7 @@ None</code></pre>
 </section>
 <section id="filter-out-true-values" class="slide level2">
 <h2>Filter out <code>True</code> values</h2>
-<div id="d7a1290d" class="cell" data-execution_count="19">
+<div id="36f2d1ed" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>filtered_hfi_copy <span class="op">=</span> hfi_copy[hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">==</span> <span class="va">True</span>][[<span class="st">'hf_score_above_threshold'</span>, <span class="st">'countries'</span>]]</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a><span class="bu">print</span>(filtered_hfi_copy[[<span class="st">'hf_score_above_threshold'</span>, <span class="st">'countries'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1895,7 +1821,7 @@ None</code></pre>
 </section>
 <section id="filter-out-true-values-for-newest-year" class="slide level2">
 <h2>Filter out <code>True</code> values for newest <code>year</code></h2>
-<div id="f8e5883b" class="cell" data-execution_count="20">
+<div id="d210e4de" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>newest_year <span class="op">=</span> hfi_copy[<span class="st">'year'</span>].<span class="bu">max</span>()</span>
 <span id="cb20-2"><a></a>filtered_hfi_copy <span class="op">=</span> hfi_copy[(hfi_copy[<span class="st">'year'</span>] <span class="op">==</span> newest_year) <span class="op">&amp;</span> (hfi_copy[<span class="st">'hf_score_above_threshold'</span>] <span class="op">==</span> <span class="va">True</span>)]</span>
 <span id="cb20-3"><a></a></span>
@@ -1917,7 +1843,7 @@ None</code></pre>
 </section>
 <section id="filtering-categories" class="slide level2">
 <h2>Filtering categories</h2>
-<div id="b03f4200" class="cell" data-execution_count="21">
+<div id="afc65b56" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|1-3|4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>options <span class="op">=</span> [<span class="st">'United States'</span>, <span class="st">'India'</span>, <span class="st">'Canada'</span>, <span class="st">'China'</span>]</span>
 <span id="cb22-2"><a></a>filtered_hfi <span class="op">=</span> hfi[hfi[<span class="st">'countries'</span>].isin(options)]</span>
 <span id="cb22-3"><a></a>filtered_hfi[<span class="st">'countries'</span>] <span class="op">=</span> filtered_hfi[<span class="st">'countries'</span>].cat.remove_unused_categories()</span>
@@ -1940,7 +1866,7 @@ Categories (4, object): ['Canada', 'China', 'India', 'United States']</code></pr
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Standard deviation</a></li><li><a href="#tabset-5-2">Z-score</a></li><li><a href="#tabset-5-3">Min-max</a></li><li><a href="#tabset-5-4">Maximum absolute</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="ba93e07c" class="cell" data-execution_count="22">
+<div id="edf871ab" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean: 5
 Standard Deviation: 2</code></pre>
@@ -1948,21 +1874,21 @@ Standard Deviation: 2</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-23-output-2.png" width="832" height="442"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-22-output-2.png" width="832" height="442"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-5-2">
-<div id="4cfb20c7" class="cell" data-execution_count="23">
+<div id="8355a63f" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>hfi_copy <span class="op">=</span> hfi.copy()</span>
 <span id="cb25-2"><a></a></span>
 <span id="cb25-3"><a></a>scaler <span class="op">=</span> StandardScaler()</span>
 <span id="cb25-4"><a></a>hfi_copy[[<span class="st">'ef_score_scale'</span>, <span class="st">'pf_score_scale'</span>]] <span class="op">=</span> scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
 <span id="cb25-5"><a></a></span>
 <span id="cb25-6"><a></a>hfi_copy[[<span class="st">'ef_score_scale'</span>, <span class="st">'pf_score_scale'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <div>
 <style scoped="">
@@ -2037,12 +1963,12 @@ Standard Deviation: 2</code></pre>
 </div>
 </div>
 <div id="tabset-5-3">
-<div id="53f64352" class="cell" data-execution_count="24">
+<div id="58554997" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>min_max_scaler <span class="op">=</span> MinMaxScaler()</span>
 <span id="cb26-2"><a></a>hfi_copy[[<span class="st">'ef_score_minmax'</span>, <span class="st">'pf_score_minmax'</span>]] <span class="op">=</span> min_max_scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
 <span id="cb26-3"><a></a></span>
 <span id="cb26-4"><a></a>hfi_copy[[<span class="st">'ef_score_minmax'</span>, <span class="st">'pf_score_minmax'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 <div>
 <style scoped="">
@@ -2117,12 +2043,12 @@ Standard Deviation: 2</code></pre>
 </div>
 </div>
 <div id="tabset-5-4">
-<div id="ce019a86" class="cell" data-execution_count="25">
+<div id="f6ad22e4" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>max_abs_scaler <span class="op">=</span> MaxAbsScaler()</span>
 <span id="cb27-2"><a></a>hfi_copy[[<span class="st">'ef_score_maxabs'</span>, <span class="st">'pf_score_maxabs'</span>]] <span class="op">=</span> max_abs_scaler.fit_transform(hfi_copy[[<span class="st">'ef_score'</span>, <span class="st">'pf_score'</span>]])</span>
 <span id="cb27-3"><a></a></span>
 <span id="cb27-4"><a></a>hfi_copy[[<span class="st">'ef_score_maxabs'</span>, <span class="st">'pf_score_maxabs'</span>]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 <div>
 <style scoped="">
@@ -2201,11 +2127,11 @@ Standard Deviation: 2</code></pre>
 </section>
 <section id="visual-comparison" class="slide level2 smaller">
 <h2>Visual comparison</h2>
-<div id="f4549640" class="cell" data-execution_count="26">
+<div id="f7732d34" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-27-output-1.png" width="1321" height="646"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-26-output-1.png" width="1321" height="646"></p>
 </figure>
 </div>
 </div>
@@ -2273,7 +2199,7 @@ Standard Deviation: 2</code></pre>
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Q-Q Plot</a></li><li><a href="#tabset-6-2">Issues</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<div id="0d5c91e5" class="cell" data-execution_count="27">
+<div id="ee2e86ac" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>hfi_clean <span class="op">=</span> hfi_copy.dropna(subset <span class="op">=</span> [<span class="st">'pf_score'</span>])</span>
@@ -2294,7 +2220,7 @@ Standard Deviation: 2</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-28-output-1.png" width="937" height="454"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-27-output-1.png" width="937" height="454"></p>
 </figure>
 </div>
 </div>
@@ -2346,11 +2272,11 @@ Standard Deviation: 2</code></pre>
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Original</a></li><li><a href="#tabset-7-2">Square-root</a></li><li><a href="#tabset-7-3">Log</a></li><li><a href="#tabset-7-4">Squared</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
-<div id="d59c2cbd" class="cell" data-execution_count="28">
+<div id="56b46b39" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-29-output-1.png" width="937" height="454"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-28-output-1.png" width="937" height="454"></p>
 </figure>
 </div>
 </div>
@@ -2360,7 +2286,7 @@ Standard Deviation: 2</code></pre>
 </div>
 </div>
 <div id="tabset-7-2">
-<div id="17deaadf" class="cell" data-execution_count="29">
+<div id="f03f061c" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29" data-code-line-numbers="1-13|1|2,7,10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>hfi_clean[<span class="st">'hf_score_sqrt'</span>] <span class="op">=</span> np.sqrt(hfi_clean[<span class="st">'hf_score'</span>])</span>
@@ -2380,14 +2306,14 @@ Standard Deviation: 2</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-30-output-1.png" width="937" height="454"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-29-output-1.png" width="937" height="454"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-7-3">
-<div id="8fd18145" class="cell" data-execution_count="30">
+<div id="ec8abcab" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30" data-code-line-numbers="1-13|1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>hfi_clean[<span class="st">'hf_score_log'</span>] <span class="op">=</span> np.log(hfi_clean[<span class="st">'hf_score'</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
@@ -2407,14 +2333,14 @@ Standard Deviation: 2</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-31-output-1.png" width="937" height="454"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-30-output-1.png" width="937" height="454"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-7-4">
-<div id="f115fdc0" class="cell" data-execution_count="31">
+<div id="2ecb9903" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31" data-code-line-numbers="1-13|1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>hfi_clean[<span class="st">'hf_score_square'</span>] <span class="op">=</span> <span class="bu">pow</span>(hfi_clean.hf_score, <span class="dv">2</span>)</span>
@@ -2434,7 +2360,7 @@ Standard Deviation: 2</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="06-preprocessing_files/figure-revealjs/cell-32-output-1.png" width="937" height="454"></p>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-31-output-1.png" width="937" height="454"></p>
 </figure>
 </div>
 </div>
@@ -2452,9 +2378,22 @@ Standard Deviation: 2</code></pre>
 <li class="fragment"><p>The data is <strong>bimodal</strong>, so no transformation is perfect</p></li>
 </ul>
 </div>
-</section></section>
-<section id="to-be-continued-in-week-9" class="title-slide slide level1 center" style="text-align:center;">
-<h1>To be continued… <br> …in Week 9 🫠</h1>
+</section>
+<section id="answering-our-question" class="slide level2 smaller">
+<h2>Answering our question</h2>
+<p>What trends are there within <strong>human freedom indices</strong> in different regions?</p>
+<div id="ed459213" class="cell" data-execution_count="31">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="06-preprocessing_files/figure-revealjs/cell-32-output-1.png" width="841" height="439"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Probably…</p>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
@@ -2462,7 +2401,7 @@ Standard Deviation: 2</code></pre>
 <p><a href="https://datasciaz.netlify.app/">🔗 datasciaz.netlify.app</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -2753,7 +2692,7 @@ Standard Deviation: 2</code></pre>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

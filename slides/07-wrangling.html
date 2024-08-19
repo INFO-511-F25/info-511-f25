@@ -414,13 +414,14 @@ Dr.&nbsp;Greg Chism
 </section>
 <section id="study-tips-for-the-exam" class="slide level2">
 <h2>Study tips for the exam</h2>
+<div>
 <ul>
-<li>Go over lecture materials and application exercises</li>
-<li>Review labs and feedback you’ve received so far</li>
-<li>Do the exercises at the end of readings from both books</li>
-<li>Do the exam review over (to be posted on Friday)</li>
-<li>Go to lab on Monday with questions</li>
+<li class="fragment">Go over lecture materials and application exercises</li>
+<li class="fragment">Review labs and feedback you’ve received so far</li>
+<li class="fragment">Do the exercises at the end of readings from both books</li>
+<li class="fragment">Do the exam review (to be posted on Friday)</li>
 </ul>
+</div>
 </section>
 <section id="frequently-asked-question" class="slide level2 smaller">
 <h2>Frequently asked question</h2>
@@ -439,7 +440,7 @@ Dr.&nbsp;Greg Chism
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Default</a></li><li><a href="#tabset-1-2"><code>print()</code></a></li><li><a href="#tabset-1-3">Subsetting</a></li><li><a href="#tabset-1-4">Relocating</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="725802cf" class="cell" data-message="false" data-execution_count="1">
+<div id="45d47387" class="cell" data-message="false" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/midwest.csv'</span>)</span>
@@ -502,7 +503,7 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="f4829e6e" class="cell" data-execution_count="2">
+<div id="5a1a0089" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(df.head(<span class="dv">13</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    PID     county state   area  poptotal   popdensity  popwhite  popblack  \
@@ -570,7 +571,7 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 <div id="tabset-1-3">
-<div id="3a7aa037" class="cell" data-execution_count="3">
+<div id="858e160c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>selected_columns <span class="op">=</span> df[[<span class="st">'county'</span>, <span class="st">'state'</span>, <span class="st">'percbelowpoverty'</span>, <span class="st">'percollege'</span>]]</span>
 <span id="cb5-2"><a></a><span class="bu">print</span>(selected_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -592,7 +593,7 @@ Dr.&nbsp;Greg Chism
 </div>
 </div>
 <div id="tabset-1-4">
-<div id="8846e803" class="cell" data-execution_count="4">
+<div id="9124c7bc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>relocated_columns <span class="op">=</span> df[[<span class="st">'county'</span>, <span class="st">'state'</span>, <span class="st">'percbelowpoverty'</span>, <span class="st">'percollege'</span>, <span class="op">*</span>df.columns.difference([<span class="st">'county'</span>, <span class="st">'state'</span>, <span class="st">'percbelowpoverty'</span>, <span class="st">'percollege'</span>])]]</span>
 <span id="cb7-2"><a></a><span class="bu">print</span>(relocated_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -675,8 +676,7 @@ Dr.&nbsp;Greg Chism
 <p>Suppose we want to answer questions like:</p>
 <blockquote>
 <p>Is there a relationship between<br>
-- number of QS courses taken<br>
-- having scored a 4 or 5 on the AP stats exam<br>
+- number of DS courses taken<br>
 - motivation for taking course<br>
 - …<br>
 and performance in this course?”</p>
@@ -690,7 +690,7 @@ and performance in this course?”</p>
 <p>For the next few slides…</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="6dacaa7f" class="cell" data-execution_count="5">
+<div id="ce84e812" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb9-2"><a></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb9-3"><a></a>    <span class="st">'value_x'</span>: [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]</span>
@@ -704,7 +704,7 @@ and performance in this course?”</p>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="3dd20cde" class="cell" data-execution_count="6">
+<div id="2b67ee53" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>y <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb11-2"><a></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>],</span>
 <span id="cb11-3"><a></a>    <span class="st">'value_y'</span>: [<span class="st">'y1'</span>, <span class="st">'y2'</span>, <span class="st">'y4'</span>]</span>
@@ -727,7 +727,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/left-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="b6ecbc02" class="cell" data-execution_count="7">
+<div id="5c00c119" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>left_merged <span class="op">=</span> pd.merge(x, y, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb13-2"><a></a><span class="bu">print</span>(left_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -746,7 +746,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/right-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="a141d9ed" class="cell" data-execution_count="8">
+<div id="8623b3e6" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>right_merged <span class="op">=</span> pd.merge(x, y, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'right'</span>)</span>
 <span id="cb15-2"><a></a><span class="bu">print</span>(right_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -765,7 +765,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/full-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="bf28112b" class="cell" data-execution_count="9">
+<div id="ad223b79" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>outer_merged <span class="op">=</span> pd.merge(x, y, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'outer'</span>)</span>
 <span id="cb17-2"><a></a><span class="bu">print</span>(outer_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -785,7 +785,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/inner-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="6e49f90e" class="cell" data-execution_count="10">
+<div id="c6a8f662" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>inner_merged <span class="op">=</span> pd.merge(x, y, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb19-2"><a></a><span class="bu">print</span>(inner_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -803,7 +803,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/semi-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="5566eacb" class="cell" data-execution_count="11">
+<div id="7f3b40a6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>semi_merged <span class="op">=</span> x[x[<span class="st">'id'</span>].isin(y[<span class="st">'id'</span>])]</span>
 <span id="cb21-2"><a></a><span class="bu">print</span>(semi_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -821,7 +821,7 @@ and performance in this course?”</p>
 <div class="column" style="width:50%;">
 <p><img data-src="images/anti-join.gif"></p>
 </div><div class="column" style="width:50%;">
-<div id="953b3634" class="cell" data-execution_count="12">
+<div id="bb71bdce" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>anti_merged <span class="op">=</span> x[<span class="op">~</span>x[<span class="st">'id'</span>].isin(y[<span class="st">'id'</span>])]</span>
 <span id="cb23-2"><a></a><span class="bu">print</span>(anti_merged)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -841,12 +841,11 @@ and performance in this course?”</p>
 <ul>
 <li class="fragment"><p>Data sets can’t be labeled as <em>wide</em> or <em>long</em>, but they can be made <em>wider</em> or <em>longer</em> for a certain analysis that requires a certain format.</p></li>
 <li class="fragment"><p>When pivoting longer, variable names that turn into values are characters by default. If you need them to be in another format, you need to explicitly make that transformation, which you can do within the <code>melt()</code> function.</p></li>
-<li class="fragment"><p>You can tweak a plot forever, but at some point, the tweaks are likely not very productive. However, you should always be critical of defaults (however pretty they might be) and see if you can improve the plot to better portray your data/results/what you want to communicate.</p></li>
 </ul>
 </div>
 </section>
 <section id="ae-05-majors-wrangling" class="slide level2">
-<h2>`ae-05-majors-wrangling</h2>
+<h2><code>ae-05-majors-wrangling</code></h2>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/logo.png" class="slide-logo"></p>
@@ -1145,7 +1144,7 @@ and performance in this course?”</p>
       });
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/info-511-f24\.github\.io\/");
+          var filterRegex = new RegExp("https:\/\/datasciaz\.netlify\.app");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
