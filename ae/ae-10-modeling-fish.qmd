@@ -41,7 +41,7 @@ The data dictionary is below:
 
 We're going to investigate the relationship between the weights and heights of fish.
 
--   **Demo:** Create an appropriate plot to investigate this relationship. Add appropriate labels to the plot.
+-   Create an appropriate plot to investigate this relationship. Add appropriate labels to the plot.
 
 ```{python}
 #| label: plot-hw
@@ -49,12 +49,10 @@ We're going to investigate the relationship between the weights and heights of f
 # add code here
 ```
 
--   **Your turn (5 minutes):**
+-   If you were to draw a a straight line to best represent the relationship between the heights and weights of fish, where would it go?
+    Why?
 
-    -   If you were to draw a a straight line to best represent the relationship between the heights and weights of fish, where would it go?
-        Why?
-
-        *Add response here.*
+    *Add response here.*
 
     -   Now, let Python draw the line for you.
         Refer to the documentation at <https://seaborn.pydata.org/generated/seaborn.lmplot.html>.
@@ -70,9 +68,9 @@ We're going to investigate the relationship between the weights and heights of f
 
     *Add response here.*
 
--   **Your turn (3 minutes):**
-
-    -   We can use this line to make predictions. Predict what you think the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm. Which prediction is considered extrapolation?
+-   We can use this line to make predictions.
+    Predict what you think the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm.
+    Which prediction is considered extrapolation?
 
     *Add response here.*
 
@@ -82,7 +80,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 ## Model fitting
 
--   **Demo:** Fit a model to predict fish weights from their heights.
+-   Fit a model to predict fish weights from their heights.
 
 ```{python}
 #| label: fit-model
@@ -90,7 +88,7 @@ We're going to investigate the relationship between the weights and heights of f
 # add code here
 ```
 
--   **Your turn (3 minutes):** Predict what the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm using this model.
+-   Predict what the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm using this model.
 
 ```{python}
 #| label: predict-by-hand
@@ -98,7 +96,7 @@ We're going to investigate the relationship between the weights and heights of f
 # add code here
 ```
 
--   **Demo:** Calculate predicted weights for all fish in the data and visualize the residuals under this model.
+-   Calculate predicted weights for all fish in the data and visualize the residuals under this model.
 
 ```{python}
 #| label: residuals
@@ -108,7 +106,7 @@ We're going to investigate the relationship between the weights and heights of f
 
 ## Model summary
 
--   **Demo:** Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
+-   Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
 
 ```{python}
 #| label: model-summary
@@ -116,7 +114,7 @@ We're going to investigate the relationship between the weights and heights of f
 # add code here
 ```
 
--   **Demo:** Write out your model using mathematical notation.
+-   Write out your model using mathematical notation.
 
 *Add response here.*
 
@@ -124,15 +122,14 @@ We're going to investigate the relationship between the weights and heights of f
 
 We can also assess correlation between two quantitative variables.
 
--   **Your turn (5 minutes):**
-
-    -   What is correlation? What are values correlation can take?
+-   What is correlation?
+    What are values correlation can take?
 
     *Add response here.*
 
     -   Are you good at guessing correlation? Give it a try! <https://www.rossmanchance.com/applets/2021/guesscorrelation/GuessCorrelation.html>
 
--   **Demo:** What is the correlation between heights and weights of fish?
+-   What is the correlation between heights and weights of fish?
 
 ```{python}
 #| label: correlation
@@ -142,7 +139,7 @@ We can also assess correlation between two quantitative variables.
 
 ## Adding a third variable
 
--   **Demo:** Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
+-   Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
 
 ```{python}
 #| label: plot-hws-lm
@@ -152,7 +149,7 @@ We can also assess correlation between two quantitative variables.
 
 ## Fitting other models
 
--   **Demo:** We can fit more models than just a straight line. Change the following code below to read `lowess=False`. What is different from the plot created before?
+-   We can fit more models than just a straight line. Change the following code below to read `lowess=False`. What is different from the plot created before?
 
 ```{python}
 #| label: plot-hw-loess

@@ -36,7 +36,7 @@ Each row represents a \_\_.
 
 Remove rows with missing values in the `arr_delay` and `distance` columns.
 
-**Your turn:** What are the names of the variables in `flights`.
+What are the names of the variables in `flights`.
 
 ```{python}
 #| label: remove-NaNs

@@ -17,7 +17,7 @@ This document should be used as reference only, it's not designed to be an exhau
 
 ## Part 1 - Data scraping
 
-See [`chronicle-scrape.R`](https://github.com/sta199-f22-1/sta199-f22-1.github.io/blob/main/ae/_chronicle-scrape-A.R) for suggested scraping code.
+See [wildcat-scrape.py](https://github.com/INFO-511-F24/info-511-f24/blob/main/slides/08-web-scraping/wildcat-scrape.py) for suggested scraping code.
 
 ## Part 2 - Data analysis
 
@@ -33,7 +33,7 @@ import seaborn as sns
 import re
 ```
 
--   **Your turn (1 minute):** Load the data you saved into the `data` folder and name it `wildcat`.
+-   Load the data you saved into the `data` folder and name it `wildcat`.
 
 ```{python}
 #| label: load-data
@@ -42,7 +42,7 @@ import re
 wildcat = pd.read_csv("data/wildcat.csv")
 ```
 
--   **Your turn (3 minutes):** Who are the most prolific authors of the 100 most recent opinion articles in The Arizona Daily Wildcat?
+-   Who are the most prolific authors of the 100 most recent opinion articles in The Arizona Daily Wildcat?
 
 ```{python}
 #| label: union-title-abstract
@@ -52,7 +52,7 @@ author_counts.columns = ['author', 'count']
 print(author_counts)
 ```
 
--   **Demo:** Draw a line plot of the number of opinion articles published per day in The Arizona Daily Wildcat.
+-   Draw a line plot of the number of opinion articles published per day in The Arizona Daily Wildcat.
 
 ```{python}
 #| label: articles-per-day
@@ -70,7 +70,7 @@ plt.ylabel('Number of Articles')
 plt.show()
 ```
 
--   **Demo:** What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "climate" in their title?
+-   What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "climate" in their title?
 
 ```{python}
 #| label: climate-title
@@ -85,7 +85,7 @@ climate_mentions.columns = ['climate_mentioned', 'percentage']
 print(climate_mentions)
 ```
 
--   **Your turn (5 minutes):** What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "election" in their title or abstract?
+-   What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "election" in their title or abstract?
 
 ```{python}
 #| label: election-title
@@ -100,7 +100,7 @@ climate_mentions.columns = ['election_mentioned', 'percentage']
 print(climate_mentions)
 ```
 
--   **Time permitting:** What are the most common words in the titles of the 100 most recent articles?
+-   What are the most common words in the titles of the 100 most recent articles?
 
 ```{python}
 from nltk.corpus import stopwords

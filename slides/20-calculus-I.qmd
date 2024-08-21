@@ -3,7 +3,6 @@ title: "Calculus I"
 subtitle: "Lecture 20"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -577,6 +576,6 @@ You'll learn more about this in [INFO 521: Introduction to Machine Learning](htt
 
 ![](images/gradient_descent_line_graph.gif){fig-align="center"}
 
-## `ae-14`
+## `ae-13-derivation`
 
 Derivations (**you will be tested on this in Exam 2**)

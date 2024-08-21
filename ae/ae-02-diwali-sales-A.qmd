@@ -17,6 +17,7 @@ execute:
 1.  **Read in the data:**
 
     -   Read the Diwali sales data into a Pandas DataFrame and display the first few rows.
+    -   **Hint:** use `, encoding = 'iso-8859-1'` within the `pd.___()` function.
 
 ```{python}
 #| label: read-data

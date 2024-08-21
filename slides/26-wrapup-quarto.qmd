@@ -3,7 +3,6 @@ title: "Customizing Quarto reports and presentations"
 subtitle: "Lecture 26"
 format:
   revealjs: default
-  pptx: default
 ---
 
 ## Project presentations due Dec 10! 🥳 {.smaller}

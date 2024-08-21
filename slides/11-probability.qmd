@@ -3,7 +3,6 @@ title: "Intro to Probability"
 subtitle: "Lecture 11"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

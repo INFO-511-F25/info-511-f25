@@ -101,26 +101,26 @@ website:
             text: Lab 0
           - href: labs/lab-1.qmd
             text: Lab 1
-          - href: labs/lab-2.qmd
-            text: Lab 2
-          - href: labs/lab-3.qmd
-            text: Lab 3            
-          - href: labs/lab-4.qmd
-            text: Lab 4
-          - href: labs/lab-5.qmd
-            text: Lab 5 
-          - href: labs/lab-6.qmd
-            text: Lab 6             
-          - href: labs/lab-7.qmd
-            text: Lab 7 
+          #- href: labs/lab-2.qmd
+           # text: Lab 2
+          #- href: labs/lab-3.qmd
+           # text: Lab 3            
+          #- href: labs/lab-4.qmd
+            #text: Lab 4
+          #- href: labs/lab-5.qmd
+            #text: Lab 5 
+          #- href: labs/lab-6.qmd
+            #text: Lab 6             
+          #- href: labs/lab-7.qmd
+          #  text: Lab 7 
           - href: labs/ds-experience.qmd
             text: Data Science Experience
-      - section: "Exam review"
-        contents:
-          - href: exam-review/exam-1-review.qmd
-            text: Exam 1
-          - href: exam-review/exam-2-review.qmd
-            text: Exam 2
+      #- section: "Exam review"
+        #contents:
+          #- href: exam-review/exam-1-review.qmd
+            #text: Exam 1
+          #- href: exam-review/exam-2-review.qmd
+            #text: Exam 2
             
   page-footer:
     right: 'This page is built with [{{< fa heart >}}]{style="color: #FFBE98;"} and [Quarto](https://quarto.org/).'

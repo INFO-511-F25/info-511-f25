@@ -3,7 +3,6 @@ title: "Linear regression"
 subtitle: "Lecture 15"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -566,10 +565,9 @@ $$\widehat{\text{audience}} = 32.3 + 0.519 \times \text{critics}$$
 
 # Application exercise
 
-## Application exercise: `ae-11-penguins-modeling`
+## Application exercise: `ae-10-modeling-fish`
 
 ::: appex
 -   Go back to your project called `ae`.
 -   If there are any uncommitted files, commit them, and push.
--   Pull, and then work on `ae-11-penguins-modeling.qmd`.
 :::

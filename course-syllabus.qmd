@@ -93,22 +93,22 @@ An up-to-date schedule, assignments, and due dates can be found on the course we
 
 ## Course Community
 
-### UArizona Community Standard
+### U of A Community Standard
 
-All students must adhere to the [UArizona Student Rights & Responsibilities](https://deanofstudents.arizona.edu/student-rights-responsibilities#:~:text=The%20Code%20of%20Academic%20Integrity%20and%20Student%20Code,conduct%20expected%20within%20the%20University%20of%20Arizona%20community.): The University of Arizona is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, and accountability.
+All students must adhere to the [U of A Student Rights & Responsibilities](https://deanofstudents.arizona.edu/student-rights-responsibilities#:~:text=The%20Code%20of%20Academic%20Integrity%20and%20Student%20Code,conduct%20expected%20within%20the%20University%20of%20Arizona%20community.): The University of Arizona is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, and accountability.
 Citizens of this community commit to reflect upon these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.
 
 ### Inclusive community
 
 It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit.
-It is my intent to present materials and activities that are respectful of diversity and in alignment with [UArizona's Commitment to Diversity and Inclusion](https://provost.arizona.edu/content/diversity-inclusion).
+It is my intent to present materials and activities that are respectful of diversity and in alignment with [U of A's Commitment to Diversity and Inclusion](https://provost.arizona.edu/content/diversity-inclusion).
 Your suggestions are encouraged and appreciated.
 Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
 
 Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities.
 To help accomplish this:
 
--   If you have a name that differs from those that appear in your official UArizona records, please let me know! You'll be able to note this in the Getting to know you survey.
+-   If you have a name that differs from those that appear in your official U of A records, please let me know! You'll be able to note this in the Getting to know you survey.
 -   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.
 -   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please let me or a member of the teaching team know.
 
@@ -146,9 +146,9 @@ You are expected to meaningfully contribute to in-class exercises and discussion
 
 You are expected to bring a laptop to each class so that you can take part in the in-class exercises.
 Please make sure your laptop is fully charged before you come to class as the number of outlets in the classroom will not be sufficient to accommodate everyone.
-See the [UArizona Libraries loaner technology](https://lib.arizona.edu/borrow/tech/laptops) if you need a loaner laptop.
+See the [U of A Libraries loaner technology](https://lib.arizona.edu/borrow/tech/laptops) if you need a loaner laptop.
 
-## **Activities & Assessment**
+## Activities & Assessment
 
 You will be assessed based on five components: application exercises, labs, exams, project, and teamwork.
 
@@ -160,7 +160,7 @@ These AEs are due by the end of the week of the corresponding lecture period (Su
 To submit the AEs all you need to do is to push your work to your GitHub repo.
 
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
-Successful on-time completion of at least 80% of AEs (will result in full credit for AEs in the final course grade.
+Successful on-time completion of **at least 50%** of AEs (will result in full credit for AEs in the final course grade.
 
 ### **Labs**
 
@@ -192,7 +192,7 @@ The write-up will be due on the same day.
 
 More information about the project will be provided during the semester.
 
-## **Grading**
+## Grading
 
 The final course grade will be calculated as follows:
 
@@ -219,7 +219,7 @@ The final letter grade will be determined based on the following thresholds:
 
 These are upper bounds for grade cutoffs, depending on the class performance the cutoffs may be lowered but they won’t be increased.
 
-## **Five tips for success**
+## Five tips for success
 
 Your success on this course depends very much on you and the effort you put into it.
 The course has been organized so that the burden of learning is on you.
@@ -249,7 +249,7 @@ I will help you be providing you with materials and answering questions and sett
     Don’t let the week end with unanswered questions.
     But if you find yourself falling behind and not knowing where to begin asking, come to office hours and work with a member of the teaching team to help you identify a good (re)starting point.
 
-## **Course policies**
+## Course policies
 
 ### **Academic honesty**
 
@@ -282,8 +282,6 @@ Please abide by the following as you work on assignments in this course:
 
     1.  *Cognitive dimension:* Working with AI should not reduce your ability to think clearly. We will practice using AI to facilitate—rather than hinder—learning.
 
-    <!-- -->
-
     2.  *Ethical dimension***:** Students using AI should be transparent about their use and make sure it aligns with academic integrity.
 
     -   **✅ AI tools for code:** You may make use of the technology for coding examples on assignments; if you do so, you must explicitly cite where you obtained the code.
@@ -299,12 +297,12 @@ Please abide by the following as you work on assignments in this course:
 
 If you are unsure if the use of a particular resource complies with the academic honesty policy, please ask a member of the teaching team.
 
-## **iSchool Academic Integrity Policy**
+## InfoSci Academic Integrity Policy
 
-This policy agreed upon by faculty in the UArizona iSchool applies in addition to the Dean of Students' [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity).
+This policy agreed upon by faculty in the U of A InfoSci applies in addition to the Dean of Students' [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity).
 
-Students in courses at the UArizona iSchool are expected to maintain rigor in their academic performance with intent to learn, practice, and overcome challenges toward personal growth and enrichment.
-As future professionals in digital environments, iSchool students are also expected to exercise transparency and integrity in collaborations and in the use of tools and resources that may aid completion in assignments for our courses.
+Students in courses at the U of A InfoSci are expected to maintain rigor in their academic performance with intent to learn, practice, and overcome challenges toward personal growth and enrichment.
+As future professionals in digital environments, InfoSci students are also expected to exercise transparency and integrity in collaborations and in the use of tools and resources that may aid completion in assignments for our courses.
 
 **Consider the following PROHIBITED** practices in this course, unless the instructor has specifically written instructions or permission to do otherwise:
 
@@ -325,11 +323,11 @@ As future professionals in digital environments, iSchool students are also expec
 ***Exceptions: Clear Instructions will be Provided***
 
 In any cases in which this course requires or permits students to use practices in the list above, clear written instructions will specify the tools allowed or required, so students can be certain they are working as instructed.
-See the [UArizona iSchool Academic Integrity Policy](https://ischool.arizona.edu/node/519), the [UArizona Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and [Syllabus policy](https://catalog.arizona.edu/syllabus-policies) for more information.
+See the [U of A InfoSci Academic Integrity Policy](https://infosci.arizona.edu/students-and-career/academic-integrity), the [U of A Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and [Syllabus policy](https://catalog.arizona.edu/syllabus-policies) for more information.
 
 ### **LLMs and ChatGPT**
 
-Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for R labs and short answer questions.
+Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for Python labs and short answer questions.
 You are encouraged to use ChatGPT to debug code and experiment.
 However, abuse of ChatGPT can be traced (e.g., failing to give credit or cite ChatGPT when it is used) which could result in your suspension or termination from the course and even your program of study.
 Keep in mind, too, that while the code may appear legitimate, early studies have shown ChatGPT is not all that accurate with sophisticated coding.
@@ -379,7 +377,7 @@ If the incomplete is not removed by the instructor within one year the I grade w
 
 ### **Tutoring**
 
-Tutoring can be found through the UArizona [Think Tank](#0 "https://thinktank.arizona.edu/").
+Tutoring can be found through the U of A [Think Tank](#0 "https://thinktank.arizona.edu/").
 
 ### Attendance policy
 
@@ -429,9 +427,9 @@ Also watch the video available at <https://arizona.sabacloud.com/Saba/Web_spf/N
 -   **Sunday, November 03**: Last day to withdraw from a class online through UAccess
 -   **Monday, November 11**: Veteran's Day, no class
 -   **Wednesday, December 11**: Last day of class, no registration changes can be made
--   **TBD**: Project presentations, time TBD
+-   **Friday, December 13**: Project presentations, due by 5pm AZ time
 
-For more important dates, see the full [UArizona Academic Calendar](https://catalog.arizona.edu/2023-2024-academic-calendar).
+For more important dates, see the full [U of A Academic Calendar](https://catalog.arizona.edu/2023-2024-academic-calendar).
 
 ## Graduate Student Resources
 

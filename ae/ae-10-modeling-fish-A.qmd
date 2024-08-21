@@ -50,7 +50,7 @@ The data dictionary is below:
 
 We're going to investigate the relationship between the weights and heights of fish.
 
--   **Demo:** Create an appropriate plot to investigate this relationship. Add appropriate labels to the plot.
+-   Create an appropriate plot to investigate this relationship. Add appropriate labels to the plot.
 
 ```{python}
 #| label: plot-hw
@@ -63,12 +63,10 @@ plt.title("Relationship between Heights and Weights of Fish")
 plt.show()
 ```
 
--   **Your turn (5 minutes):**
+-   If you were to draw a a straight line to best represent the relationship between the heights and weights of fish, where would it go?
+    Why?
 
-    -   If you were to draw a a straight line to best represent the relationship between the heights and weights of fish, where would it go?
-        Why?
-
-        *Start from the bottom and go up Identify the first and last point and draw a line through most the others.*
+    *Start from the bottom and go up Identify the first and last point and draw a line through most the others.*
 
     -   Now, let Python draw the line for you.
         Refer to the documentation at <https://seaborn.pydata.org/generated/seaborn.lmplot.html>.
@@ -99,13 +97,11 @@ plt.show()
 
         *Is there a relationship between fish heights and weights of fish?*
 
--   ***Your turn (3 minutes):***
+    We can use this line to make predictions.
+    Predict what you think the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm.
+    Which prediction is considered extrapolation?
 
-    -   We can use this line to make predictions.
-        Predict what you think the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm.
-        Which prediction is considered extrapolation?
-
-        *At 10 cm, we estimate a weight of 375 grams. At 15 cm, we estimate a weight of 600 grams At 20 cm, we estimate a weight of 975 grams. 20 cm would be considered extrapolation.*
+    -   *At 10 cm, we estimate a weight of 375 grams. At 15 cm, we estimate a weight of 600 grams At 20 cm, we estimate a weight of 975 grams. 20 cm would be considered extrapolation.*
 
     -   What is a residual?
 
@@ -113,7 +109,7 @@ plt.show()
 
 # Model fitting
 
--   **Demo:** Fit a model to predict fish weights from their heights.
+-   Fit a model to predict fish weights from their heights.
 
 ```{python}
 #| label: fit-model
@@ -125,7 +121,7 @@ fish['predicted_weight'] = model.predict(X)
 fish['residual'] = fish['weight'] - fish['predicted_weight']
 ```
 
--   **Your turn (3 minutes):** Predict what the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm using this model.
+-   Predict what the weight of a fish would be with a height of 10 cm, 15 cm, and 20 cm using this model.
 
 ```{python}
 #| label: predict-by-hand
@@ -136,7 +132,7 @@ for height, weight in zip(heights, predicted_weights):
     print(f"Predicted weight for height {height[0]} cm: {weight:.2f} g")
 ```
 
--   **Demo:** Calculate predicted weights for all fish in the data and visualize the residuals under this model.
+-   Calculate predicted weights for all fish in the data and visualize the residuals under this model.
 
 ```{python}
 #| label: residuals
@@ -155,7 +151,7 @@ plt.show()
 
 # Model summary
 
--   **Demo:** Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
+-   Display the model summary including estimates for the slope and intercept along with measurements of uncertainty around them. Show how you can extract these values from the model output.
 
 ```{python}
 #| label: model-summary
@@ -166,7 +162,7 @@ print(f"Slope: {slope:.2f}")
 print(f"Intercept: {intercept:.2f}")
 ```
 
--   **Demo:** Write out your model using mathematical notation.
+-   Write out your model using mathematical notation.
 
 $\widehat{weight} = -288 + 60.9 \times height$
 
@@ -174,16 +170,13 @@ $\widehat{weight} = -288 + 60.9 \times height$
 
 We can also assess correlation between two quantitative variables.
 
--   **Your turn (5 minutes):**
-    -   What is correlation?
-        What are values correlation can take?
-
-        *Strength and direction of a linear relationship. It's bounded by -1 and 1.*
+-   What is correlation? What are values correlation can take?
+    -   *Strength and direction of a linear relationship. It's bounded by -1 and 1.*
 
     -   Are you good at guessing correlation?
         Give it a try!
         <https://www.rossmanchance.com/applets/2021/guesscorrelation/GuessCorrelation.html>
--   **Demo:** What is the correlation between heights and weights of fish?
+-   What is the correlation between heights and weights of fish?
 
 ```{python}
 correlation = fish['height'].corr(fish['weight'])
@@ -192,7 +185,7 @@ print(f"Correlation between height and weight: {correlation:.2f}")
 
 # Adding a third variable
 
--   **Demo:** Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
+-   Does the relationship between heights and weights of fish change if we take into consideration species? Plot two separate straight lines for the Bream and Roach species.
 
 ```{python}
 #| label: plot-hws-lm
@@ -207,7 +200,7 @@ plt.show()
 
 # Fitting other models
 
--   **Demo:** We can fit more models than just a straight line. Change the following code below to read `lowess=True`. What is different from the plot created before?
+-   We can fit more models than just a straight line. Change the following code below to read `lowess=True`. What is different from the plot created before?
 
 ```{python}
 #| label: plot-hw-loess

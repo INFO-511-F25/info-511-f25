@@ -3,7 +3,6 @@ title: "Web scraping"
 subtitle: "Lecture 8"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -12,10 +11,9 @@ execute:
   error: false
 ---
 
-# Setup
+## Setup
 
 ```{python}
-#| echo: false
 #| message: false
 
 import requests
@@ -36,13 +34,15 @@ except AttributeError:
     pass
 else:
     ssl._create_default_https_context = _create_unverified_https_context
+
 nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('punkt_tab')
 
 sns.set_style("whitegrid")
 ```
 
-## While you wait for class to begin...
+## Before continuing...
 
 ::: nonincremental
 -   If you haven't yet done so: Install a Chrome browser and the SelectorGadget extension:
@@ -401,7 +401,7 @@ print(div_text)
 
 ::: small
 | Selector            | Example         | Description                                        |
-|:-----------------|:-----------------|:-----------------------------------|
+|:------------------|:------------------|:---------------------------------|
 | .class              | `.title`        | Select all elements with class="title"             |
 | #id                 | `#name`         | Select all elements with id="name"                 |
 | element             | `p`             | Select all \<p\> elements                          |
@@ -492,7 +492,7 @@ How many articles are on the page?
 
 ::: columns
 ::: {.column width="50%"}
--   Scrape data and organize it in a tidy format in R
+-   Scrape data and organize it in a tabular format in Python
 -   Perform light text parsing to clean data
 -   Summarize and visualze the data
 :::
@@ -519,13 +519,8 @@ How many articles are on the page?
 ## A new Python workflow {.smaller}
 
 -   When working in a Jupyter notebook, your analysis is re-run each time you execute the notebook
-
-<!-- -->
-
 -   If web scraping in a notebook, you'd be re-scraping the data each time you run the notebook, which is undesirable (and not *nice*)!
-
 -   An alternative workflow:
-
     -   Use a Python script to save your code
 
     -   Saving interim data scraped using the code in the script as CSV or pickle files
@@ -536,7 +531,7 @@ How many articles are on the page?
 
 ## Ethics: "Can you?" vs "Should you?"
 
-![](images/ok-cupid-1.png){fig-align="center" width="800"}
+![](images/ok-cupid-1.png){fig-align="center" width="579"}
 
 ::: aside
 Source: Brian Resnick, [Researchers just released profile data on 70,000 OkCupid users without permission](https://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release), Vox.

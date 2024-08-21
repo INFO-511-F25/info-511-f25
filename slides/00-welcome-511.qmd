@@ -3,7 +3,6 @@ title: "Welcome to INFO 511"
 subtitle: "Lecture 0"
 format:
   revealjs: default
-  pptx: default
 jupyter: python3
 ---
 

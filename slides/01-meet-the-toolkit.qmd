@@ -3,7 +3,6 @@ title: "Meet the toolkit"
 subtitle: "Lecture 1"
 format:
   revealjs: default
-  pptx: default
 ---
 
 ## Announcements

@@ -3,7 +3,6 @@ title: "Exploratory data analysis"
 subtitle: "Lecture 4"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -449,7 +448,7 @@ plt.show()
 ```
 
 ::: fragment
-**Positive-skew (left-tailed)**
+**Negative-skew (left-tailed)**
 :::
 
 ## Conclusions

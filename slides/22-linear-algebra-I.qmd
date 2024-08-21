@@ -3,7 +3,6 @@ title: "Linear algebra I"
 subtitle: "Lecture 22"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -348,6 +347,6 @@ determinant = det(A)
 print(determinant)
 ```
 
-## `ae-16`
+## `ae-15-linear-algebra`
 
 Practice matrix operations (**you will be tested on this in Exam 2**)

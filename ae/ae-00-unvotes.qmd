@@ -15,7 +15,7 @@ Answering these questions (at a high level) is the focus of this analysis.
 
 ### Packages
 
-We will use the **pandas**, **matplotlib**, and **seaborn** packages for data wrangling and visualization, and the **itables** package for interactive display of tabular output.
+We will use the **pandas**, **matplotlib**, and **seaborn** packages for data wrangling and visualization.
 
 ```{python}
 #| label: load-packages
@@ -25,7 +25,6 @@ We will use the **pandas**, **matplotlib**, and **seaborn** packages for data wr
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from itables import show, init_notebook_mode
 ```
 
 ### Data
@@ -91,23 +90,12 @@ Below is a list of countries in the dataset:
 #| label: list-countries
 #| echo: false
 
-# Load the custom CSS
-from IPython.core.display import HTML
-def load_custom_css():
-    css = open("style/custom_itables.css").read()
-    return HTML(f"<style>{css}</style>")
-
-# Initialize itables for Jupyter Notebook
-init_notebook_mode(all_interactive=True)
-
-# Load the custom CSS
-load_custom_css()
 
 # Assuming unvotes DataFrame is already loaded and available
 countries = unvotes['country'].unique()
 countries.sort()
 countries_df = pd.DataFrame(countries, columns=['country'])
 
-# Display the interactive table
-show(countries_df, style="table-layout:auto;width:100%;float:left")
+# Display the table
+countries_df
 ```

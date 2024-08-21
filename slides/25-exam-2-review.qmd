@@ -3,7 +3,6 @@ title: "Exam 2 review"
 subtitle: "Lecture 25"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 ---

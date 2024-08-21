@@ -24,7 +24,7 @@ Let's start by loading the packages we will need:
 import pandas as pd
 ```
 
--   **Your turn (1 minute):** Load the data you saved into the `data` folder and name it `wildcat`.
+-   Load the data you saved into the `data` folder and name it `wildcat`.
 
 ```{python}
 #| label: load-data
@@ -33,7 +33,7 @@ import pandas as pd
 # add code here
 ```
 
--   **Your turn (3 minutes):** Who are the most prolific authors of the 100 most recent opinion articles in The Arizona Daily Wildcat?
+-   Who are the most prolific authors of the 100 most recent opinion articles in The Arizona Daily Wildcat?
 
 ```{python}
 #| label: union-title-abstract
@@ -41,7 +41,7 @@ import pandas as pd
 # add code here
 ```
 
--   **Demo:** Draw a line plot of the number of opinion articles published per day in The Arizona Daily Wildcat.
+-   Draw a line plot of the number of opinion articles published per day in The Arizona Daily Wildcat.
 
 ```{python}
 #| label: articles-per-day
@@ -49,7 +49,7 @@ import pandas as pd
 # add code here
 ```
 
--   **Demo:** What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "climate" in their title?
+-   What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "climate" in their title?
 
 ```{python}
 #| label: climate-title
@@ -57,7 +57,7 @@ import pandas as pd
 # add code here
 ```
 
--   **Your turn (5 minutes):** What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "election" in their title or abstract?
+-   What percent of the most recent 100 opinion articles in The Arizona Daily Wildcat mention "election" in their title or abstract?
 
 ```{python}
 #| label: election-title
@@ -65,7 +65,7 @@ import pandas as pd
 # add code here
 ```
 
--   **Time permitting:** Come up with another question and try to answer it using the data.
+-   Come up with another question and try to answer it using the data.
 
 ```{python}
 # add code here

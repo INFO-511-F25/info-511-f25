@@ -3,7 +3,6 @@ title: "Sampling distributions + inference"
 subtitle: "Lecture 14"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

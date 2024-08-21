@@ -3,18 +3,15 @@ title: "Visualizing various types of data"
 subtitle: "Lecture 5"
 format:
   revealjs: default
-  pptx: default
 jupyter: python3
 execute: 
   warning: false
   error: false
 ---
 
-# Setup
+## Setup
 
 ```{python}
-#| echo: false
-
 # Import necessary libraries
 import pandas as pd
 import seaborn as sns
@@ -28,30 +25,13 @@ penguins = load_penguins()
 sns.set_theme(style="whitegrid")
 ```
 
-## Questions from last time {.smaller}
-
--   ...
-
-## Announcements
-
--   ...
-
 # Data Visualization
 
 ## Examining data visualization {.smaller}
 
 ::: columns
 ::: {.column width="60%"}
-Discuss the following for the visualization.
-
-```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/STA199S24?from=status-bar?" width="100%"></iframe>
-```
-```{r}
-#| echo: false
-
-countdown(minutes = 4, left = 0, color_text = "#325b74")
-```
+Discuss the following for the visualization in the #lecture-discussions Slack Channel.
 :::
 
 ::: {.column width="40%"}

@@ -2,7 +2,6 @@
 title: "Communicating data science results effectively"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 ---

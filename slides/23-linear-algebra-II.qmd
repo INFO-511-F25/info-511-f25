@@ -3,7 +3,6 @@ title: "Linear algebra II"
 subtitle: "Lecture 23"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -108,7 +107,7 @@ $$
 :::
 :::
 
-## `ae-17` {.smaller}
+## `ae-16-pca` {.smaller}
 
 **Principal Component Analysis**
 

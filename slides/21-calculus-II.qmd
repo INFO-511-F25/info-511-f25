@@ -3,7 +3,6 @@ title: "Calculus II"
 subtitle: "Lecture 21"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -335,6 +334,6 @@ You'll learn more about this in [INFO 521: Introduction to Machine Learning](htt
 :::
 :::
 
-## `ae-15`
+## `ae-14-integration`
 
 Practice integration (**you will be tested on this in Exam 2**)

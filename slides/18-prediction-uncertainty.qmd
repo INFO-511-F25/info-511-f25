@@ -3,7 +3,6 @@ title: "Prediction + uncertainty"
 subtitle: "Lecture 18"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3

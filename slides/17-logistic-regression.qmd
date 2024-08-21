@@ -3,7 +3,6 @@ title: "Logistic regression"
 subtitle: "Lecture 17"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -29,9 +28,8 @@ sns.set_theme(style="whitegrid", rc={"figure.figsize": (10, 6), "axes.labelsize"
 
 ```
 
-# From last time
 
-## Recap: `ae-11-modeling-loans` {.smaller}
+## Recap: Modeling Loans{.smaller}
 
 -   What is the practical difference between a model with parallel and non-parallel lines?
 

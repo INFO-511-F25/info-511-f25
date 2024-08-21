@@ -3,7 +3,6 @@ title: "Data preprocessing"
 subtitle: "Lecture 6"
 format:
   revealjs: default
-  pptx: default
 editor_options: 
   chunk_output_type: console
 jupyter: python3
@@ -45,16 +44,13 @@ sns.set_theme(style = "whitegrid")
 It's essentially data cleaning.
 :::
 
-## Datasets {.smaller}
+## Dataset {.smaller}
 
 ```{python}
 #| echo: false
 hfi = pd.read_csv("data/hfi.csv")
-esi = pd.read_csv("data/esi.csv")
 ```
 
-::: columns
-::: {.column width="50%"}
 **Human Freedom Index**
 
 The Human Freedom Index is a report that attempts to summarize the idea of "freedom" through variables for many countries around the globe.
@@ -71,50 +67,14 @@ ax.set(ylabel = "Personal Freedom")
 ax.set(title = "Human Freedom Index")
 plt.show()
 ```
-:::
-
-::: {.column width="50%"}
-**Environmental Sustainability**
-
-Countries are given an overall sustainability score as well as scores in each of several different environmental areas.
-
-<br>
-
-```{python}
-#| echo: false
-hfi['country'] = hfi['countries']
-data = esi.merge(hfi, how = 'left', on = 'country')
-
-plt.figure(figsize = (5, 3))
-ax = sns.scatterplot(data = data, x = "sys_wqn", y = "vul_sus",
-                hue = "region", palette = "colorblind")
-ax.legend(title = "Region",
-          bbox_to_anchor = (1.02, 1), loc = 'upper left', borderaxespad = 0)
-ax.set(xlabel = "Water Quantity")
-ax.set(ylabel = "Basic Human Sustenance")
-ax.set(title = "Environmental Sustainability")
-plt.show()
-```
-:::
-:::
 
 ## Question {.smaller}
 
-How does **environmental stability** correlate with **human freedom indices** in different countries, and what trends can be observed?
+What trends are there within **human freedom indices** in different regions?
 
-::: columns
-::: {.column width="50%"}
-![](images/environmental-stability.jpeg){fig-align="center" width="919"}
-:::
-
-::: {.column width="50%"}
 ![](images/human-freedom.jpg){fig-align="center" width="1214"}
-:::
 
-> Note that this will take us **two** lectures to answer.
-:::
-
-## Dataset #1: Human Freedom Index
+## Dataset: Human Freedom Index
 
 ```{python}
 hfi = pd.read_csv("data/hfi.csv")
@@ -308,7 +268,7 @@ plt.show()
 **How it Works**: Replace missing values with the **mode** of the non-missing values in the same variable.
 
 ::: fragment
-**Pros** (same as mean):
+**Pros**
 
 ::: incremental
 -   Easy and fast.
@@ -362,7 +322,7 @@ plt.show()
 
 # Data type conversion
 
-## Recap: logical operators {.smaller}
+## Logical operators {.smaller}
 
 | operator | definition                   |
 |:---------|:-----------------------------|
@@ -373,25 +333,10 @@ plt.show()
 | `==`     | is exactly equal to?         |
 | `!=`     | is not equal to?             |
 
-## Recap: logical operators {.smaller}
-
-Here is the equivalent recap of logical operators in Python:
-
-## Recap: logical operators
-
-| operator | definition                   |
-|:---------|:-----------------------------|
-| `<`      | is less than?                |
-| `<=`     | is less than or equal to?    |
-| `>`      | is greater than?             |
-| `>=`     | is greater than or equal to? |
-| `==`     | is exactly equal to?         |
-| `!=`     | is not equal to?             |
-
-## Recap: logical operators
+## Logical operators cont. {.smaller}
 
 | operator        | definition                                               |
-|:------------------|:----------------------------------------------------|
+|:---------------------|:-------------------------------------------------|
 | `x and y`       | is x AND y?                                              |
 | `x or y`        | is x OR y?                                               |
 | `x is None`     | is x None?                                               |
@@ -822,4 +767,18 @@ plt.show()
 -   The data is **bimodal**, so no transformation is perfect
 :::
 
-# To be continued... <br> ...in Week 9 🫠 {style="text-align:center;"}
+## Answering our question {.smaller}
+
+What trends are there within **human freedom indices** in different regions?
+
+```{python}
+#| echo: false
+hfi_clean['region'] = hfi_clean['region'].astype('category')
+ax = sns.kdeplot(data=hfi_clean, x='hf_score_square', hue='region', fill=True, palette="colorblind")
+
+plt.show()
+```
+
+:::fragment
+Probably...
+:::
