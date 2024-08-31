@@ -29,7 +29,7 @@ School of Information
 
 **Office**: Harvill 420
 
-**Office Hours**: By Appointment, via Zoom
+**Office Hours**: Tuesdays, 11:30am-12:30pm, or by appointment via Zoom
 
 ## Prerequisites
 
@@ -86,6 +86,14 @@ All remaining books are **freely available online**.
     Russell A. Poldrack.
 
     2023. 
+
+## Course competencies
+
+This course is a core requirement for the MS in Data Science. It will help you master the following competencies:
+
+- MS1. Students will establish the ability to exercise the four key techniques of computational thinking: decomposition, pattern recognition, abstraction, and algorithms.
+
+- MS2. Students will obtain the skills of collecting, manipulating, and analyzing different types of data at different scales, and interpreting the results properly.
 
 ## Course Schedule
 
@@ -152,7 +160,7 @@ See the [U of A Libraries loaner technology](https://lib.arizona.edu/borrow/tech
 
 You will be assessed based on five components: application exercises, labs, exams, project, and teamwork.
 
-### **Application exercises**
+### Application exercises
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs).
 These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment.
@@ -160,9 +168,9 @@ These AEs are due by the end of the week of the corresponding lecture period (Su
 To submit the AEs all you need to do is to push your work to your GitHub repo.
 
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
-Successful on-time completion of **at least 50%** of AEs (will result in full credit for AEs in the final course grade.
+Successful on-time completion of **at least 80%** of AEs (will result in full credit for AEs in the final course grade.
 
-### **Labs**
+### Labs
 
 In labs, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
 You may discuss lab assignments with other students; however, lab should be completed and submitted individually.
@@ -172,7 +180,7 @@ Labs are due at 5pm AZ time on the indicated due date.
 
 *The lowest lab grade will be dropped at the end of the semester.*
 
-### **Exams**
+### Exams
 
 There will be two exams in this course.
 Each exam will be open-note take-home.
@@ -182,7 +190,7 @@ The content of the exam will be related to the content in videos and reading ass
 
 More detail about the exams will be given during the semester.
 
-### **Project**
+### Project
 
 The purpose of the project is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.
 The project will be completed with in teams, and each team will present their work in the final exam session of the semester.
@@ -192,6 +200,8 @@ The write-up will be due on the same day.
 
 More information about the project will be provided during the semester.
 
+{{< pagebreak >}}
+
 ## Grading
 
 The final course grade will be calculated as follows:
@@ -200,9 +210,9 @@ The final course grade will be calculated as follows:
 |-----------------------|------------|
 | Labs                  | 30%        |
 | Project               | 25%        |
-| Exam 1                | 20%        |
-| Exam 2                | 20%        |
-| Application Exercises | 5%         |
+| Exam 1                | 10%        |
+| Exam 2                | 10%        |
+| Application Exercises | 25%        |
 
 While there are no specific points allocated to participation, we will be recording your participation (mainly via slack) in periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 
@@ -251,7 +261,7 @@ I will help you be providing you with materials and answering questions and sett
 
 ## Course policies
 
-### **Academic honesty**
+### Academic honesty
 
 **TL;DR: Don’t cheat!**
 
@@ -297,9 +307,9 @@ Please abide by the following as you work on assignments in this course:
 
 If you are unsure if the use of a particular resource complies with the academic honesty policy, please ask a member of the teaching team.
 
-## InfoSci Academic Integrity Policy
+## College of Information Science Academic Integrity Policy
 
-This policy agreed upon by faculty in the U of A InfoSci applies in addition to the Dean of Students' [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity).
+This policy agreed upon by faculty in the College of Information Science at the University of Arizona (InfoSci) applies in addition to the Dean of Students' [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity).
 
 Students in courses at the U of A InfoSci are expected to maintain rigor in their academic performance with intent to learn, practice, and overcome challenges toward personal growth and enrichment.
 As future professionals in digital environments, InfoSci students are also expected to exercise transparency and integrity in collaborations and in the use of tools and resources that may aid completion in assignments for our courses.
@@ -325,7 +335,7 @@ As future professionals in digital environments, InfoSci students are also expec
 In any cases in which this course requires or permits students to use practices in the list above, clear written instructions will specify the tools allowed or required, so students can be certain they are working as instructed.
 See the [U of A InfoSci Academic Integrity Policy](https://infosci.arizona.edu/students-and-career/academic-integrity), the [U of A Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and [Syllabus policy](https://catalog.arizona.edu/syllabus-policies) for more information.
 
-### **LLMs and ChatGPT**
+### LLMs and ChatGPT
 
 Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for Python labs and short answer questions.
 You are encouraged to use ChatGPT to debug code and experiment.
@@ -335,7 +345,7 @@ Exercise your scholarly discretion and maintain a sense of integrity in your sta
 
 *See my additional policies on this subject above.*
 
-### **Late work & extensions**
+## Late work & extensions
 
 The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner.
 We understand that things come up periodically that could make it difficult to submit an assignment by the deadline.
@@ -359,7 +369,7 @@ This waiver may only be used for once in the semester, so only use it for a trul
 If there are circumstances that are having a longer-term impact on your academic performance, please let your academic dean know, as they can be a resource.
 Please let me know if you need help contacting your academic dean.
 
-### **Regrade requests**
+## Regrade requests
 
 Regrade requests must be submitted on GitHub within a week of when an assignment is returned.
 Regrade requests will be considered if there was an error in the grade calculation or if you feel a correct answer was mistakenly marked as incorrect.
@@ -368,18 +378,18 @@ Note that by submitting a regrade request, the entire question will be graded wh
 
 *No grades will be changed after the project presentations.*
 
-### "Incomplete" grade
+## "Incomplete" grade
 
 The grade of "I" may be awarded only at the end of a term, when all but a minor portion of the course work has been satisfactorily completed.
 The grade of I is not to be awarded in place of a failing grade or when the student is expected to repeat the course; in such a case, a grade other than I must be assigned.
 Students should make arrangements with the instructor to receive an incomplete grade before the end of the term.
 If the incomplete is not removed by the instructor within one year the I grade will revert to a failing grade.
 
-### **Tutoring**
+## Tutoring
 
 Tutoring can be found through the U of A [Think Tank](#0 "https://thinktank.arizona.edu/").
 
-### Attendance policy
+## Attendance policy
 
 Responsibility for class attendance rests with individual students.
 Since regular and punctual class attendance is expected, students must accept the consequences of failure to attend.
@@ -405,6 +415,10 @@ If you must miss the equivalent of more than one week of class and have an emerg
 The Dean of Students considers the following as qualified emergencies: the birth of a child, mental health hospitalization, domestic violence matter, house fire, hospitalization for physical health (concussion/emergency surgery/coma/COVID-19 complications/ICU), death of immediate family, Title IX matters, etc.
 
 Please understand that there is no guarantee of an extension when you are absent from class and/or miss a deadline.
+
+## Accessibility
+
+Accessibility and Accommodations: At the University of Arizona, we strive to make learning experiences as accessible as possible. If you anticipate or experience barriers based on disability or pregnancy, please contact the Disability Resource Center (520-621-3268, https://drc.arizona.edu) to establish reasonable accommodations.
 
 *Note: If you've read this far in the syllabus, email me a picture of your pet if you have one or your favorite meme!*
 
