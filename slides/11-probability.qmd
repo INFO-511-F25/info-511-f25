@@ -11,7 +11,7 @@ execute:
   error: false
 ---
 
-## What we've done so far...
+## What we've done so far... {.smaller}
 
 -   Use visualization techniques to *visualize* data\
 -   Use descriptive statistics to *describe* and *summarize* data
@@ -47,14 +47,13 @@ Statistics is a process that converts data into useful information, where practi
 ## The population of interest {.small}
 
 The **population** is the group we'd like to learn something about.
-For example:
 
 ::: incremental
 -   What is the prevalence of diabetes among **U.S. adults**, and has it changed over time?
 
--   Does the average amount of caffeine vary by vendor in **12 oz. cups of** **coffee at Duke coffee shops**?
+-   Does the average amount of caffeine vary by vendor in **12 oz. cups of** **coffee at U of A coffee shops**?
 
--   Is there a relationship between tumor type and five-year mortality among **breast cancer patients**?\]
+-   Is there a relationship between tumor type and five-year mortality among **breast cancer patients**?
 :::
 
 ::: fragment
@@ -83,7 +82,7 @@ We'll use probability and statistical inference (more on this later!) to draw co
 
 ## Interpretations of probability {.smaller style="text-align: center"}
 
-![](images/box.png){fig-align="center" width="50%"}
+![](images/box.png){fig-align="center" width="83"}
 
 *"There is a 1 in 3 chance of selecting a white ball"*
 
@@ -107,7 +106,7 @@ We'll use probability and statistical inference (more on this later!) to draw co
 
 # Formalizing probabilities {.smaller}
 
-## What do we need?
+## What do we need? {.smaller}
 
 We can think of probabilities as objects that model random phenomena.
 We'll use three components to talk about probabilities:
@@ -124,7 +123,7 @@ We'll use three components to talk about probabilities:
 3️⃣ **Probability**: Proportion of times an event would occur if we observed the random phenomenon an infinite number of times.
 :::
 
-## Sample spaces
+## Sample spaces {.smaller}
 
 Sample spaces depend on the random phenomenon in question
 
@@ -136,15 +135,13 @@ Sample spaces depend on the random phenomenon in question
 -   Guessing the answer on a multiple choice question with choices *a, b, c, d*.
 :::
 
-<br>
-
 ::: fragment
 ::: question
 What are the sample spaces for the random phenomena above?
 :::
 :::
 
-## Events
+## Events {.smaller}
 
 **Events** are subsets of the sample space that comprise all possible outcomes from that event.
 These are the "plausibly reasonable" outcomes we may want to calculate the probabilities for:
@@ -183,14 +180,16 @@ Consider the following possible events and their corresponding probabilities:
 
 # Working with probabilities
 
-## Set operations
+## Set operations {.smaller}
 
 Remember that events are (sub)sets of the outcome space.
 For two sets (in this case events) $A$ and $B$, the most common relationships are:
 
+::: incremental
 -   **Intersection** $(A \text{ and } B)$: $A$ **and** $B$ both occur
 -   **Union** $(A \text{ or } B)$: $A$ **or** $B$ occurs (including when both occur)
 -   **Complement** $(A^c)$: $A$ does **not** occur
+:::
 
 <br>
 
@@ -198,7 +197,7 @@ For two sets (in this case events) $A$ and $B$, the most common relationships ar
 Two sets $A$ and $B$ are said to be **disjoint** or **mutually exclusive** if they cannot happen at the same time, i.e. $A \text{ and } B = \emptyset$.
 :::
 
-## Combining set operations
+## Combining set operations {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -278,8 +277,6 @@ Source: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5788283/>
 | Does not drink coffee      |        5438 | 1039 |
 | Drinks coffee occasionally |       29712 | 4440 |
 | Drinks coffee regularly    |       24934 | 3601 |
-
-<br>
 
 ::: fragment
 ::: question
