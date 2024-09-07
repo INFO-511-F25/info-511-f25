@@ -27,28 +27,32 @@ np.random.seed(1)
 
 ## Variability of sample statistics
 
+::: incremental
 -   We've seen that each sample from the population yields a slightly different sample statistic (sample mean, sample proportion, etc.)
 
 -   Previously we've quantified this value via simulation
 
 -   Today we talk about some of the theory underlying **sampling distributions**, particularly as they relate to sample means.
+:::
 
 ------------------------------------------------------------------------
 
 ## Statistical inference
 
+::: incremental
 -   Statistical inference is the act of generalizing from a sample in order to make conclusions regarding a population.
 
 -   We are interested in population parameters, which we do not observe.
     Instead, we must calculate statistics from our sample in order to learn about them.
 
 -   As part of this process, we must quantify the degree of uncertainty in our sample statistic.
+:::
 
 ------------------------------------------------------------------------
 
 ## Sampling distribution of the mean {.smaller}
 
-Suppose we’re interested in the mean resting heart rate of students at Duke, and are able to do the following:
+Suppose we’re interested in the mean resting heart rate of students at U of A, and are able to do the following:
 
 ::: incremental
 1.  Take a random sample of size $n$ from this population, and calculate the mean resting heart rate in this sample, $\bar{X}_1$
@@ -313,7 +317,7 @@ How do the shapes, centers, and spreads of these distributions compare?
 #| echo: false
 
 # Plot comparison of population and sampling distributions stacked row-wise
-plt.figure(figsize=(8, 8))
+plt.figure(figsize=(4, 8))
 
 # Population distribution
 plt.subplot(2, 1, 1)
@@ -383,7 +387,7 @@ Knowing the distribution of the sample statistic $\bar{X}$ can help us
 ::: incremental
 -   Estimate a population parameter as **point estimate** $\boldsymbol{\pm}$ **margin of error**
 
-    -   The **margin of error** is comprised of a measure of how confident we want to be and how variable the sample statistic is
+    The **margin of error** is comprised of a measure of how confident we want to be and how variable the sample statistic is
 
 <br>
 

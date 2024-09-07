@@ -119,7 +119,7 @@ In statistical hypothesis testing we **always** first assume that the null hypot
 
 ## 1. Defining the hypotheses {.smaller}
 
-The null and alternative hypotheses are defined for **parameters** not statistics.
+The null and alternative hypotheses are defined for **parameters**.
 
 ::: question
 What will our null and alternative hypotheses be for this example?
