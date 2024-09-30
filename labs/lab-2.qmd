@@ -145,16 +145,10 @@ Make sure to commit and push all changed files so that your Git pane is empty af
 ### Question 4
 
 Now, let's examine the relationship between the same two variables, once again using different colors and shapes to represent each state, and using a separate plot for each state, i.e., with faceting using `sns.FacetGrid`.
-In addition to points (`sns.scatterplot()`), represent the data with a smooth curve fit to the data with `sns.lineplot()`, with the argument `ci=None` to remove the confidence bands.
+In addition to points (`sns.scatterplot()`).
 Make sure to set informative titles, axis, and legend labels for your plot.
 Which plot do you prefer - this plot or the plot in Question 3?
 Briefly explain your choice.
-
-::: callout-note
-`ci=None` removes the confidence bands around the line.
-These bands show the uncertainty around the smooth curve.
-We'll discuss uncertainty around estimates later in the course and bring these bands back then.
-:::
 
 ::: render-commit-push
 Run all, commit, and sync your changes to GitHub with the commit message "Added answer for Question 4".

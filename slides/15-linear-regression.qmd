@@ -104,10 +104,15 @@ This association was age dependent.
 
 ## Modeling cars {.smaller}
 
+::: panel-tabset
+## Questions
+
 ::: question
 -   What is the relationship between cars' weights and their mileage?
 -   What is your best guess for a car's MPG that weighs 3,500 pounds?
 :::
+
+## Plot
 
 ```{python}
 #| echo: false
@@ -120,6 +125,7 @@ plt.ylabel("Miles per gallon (MPG)")
 plt.title("MPG vs. weights of cars")
 plt.show()
 ```
+:::
 
 ## Modelling cars {.smaller}
 
@@ -218,12 +224,17 @@ plt.show()
 :::
 :::
 
-## Outcome (response variable)
+## Outcome (response variable) {.smaller}
 
 ::: columns
 ::: {.column width="25%"}
 ```{python}
 #| echo: false
+
+subset = mtcars[['mpg', 'weight']].head(6).copy()
+subset = subset.astype(str)
+ellipsis_row = pd.DataFrame([["...", "..."]], columns=subset.columns)
+subset = pd.concat([subset, ellipsis_row], ignore_index=True)
 
 (
   GT(subset)
@@ -371,6 +382,7 @@ plt.show()
 
 ```{python}
 #| message: false
+#| code-fold: true
 
 sns.lmplot(x="weight", y="mpg", data=mtcars, ci=None, scatter_kws={"s": 50, "alpha": 0.5}, line_kws={"color": "#325b74"})
 plt.xlabel("Weight (1,000 lbs)")
@@ -519,28 +531,6 @@ print(f"Slope: {slope:.2f}, Intercept: {intercept:.2f}")
 -   Sum of the residuals is zero: $\sum_{i = 1}^n \epsilon_i = 0$
 
 -   Residuals and $X$ values are uncorrelated
-:::
-
-## Interpreting the slope {.smaller}
-
-::: panel-tabset
-## Question
-
-::: poll
-The slope of the model for predicting audience score from critics score is 0.519.
-Which of the following is the best interpretation of this value?
-:::
-
-a.  For every one point increase in the critics score, the audience score goes up by 0.519 points, on average.
-b.  For every one point increase in the critics score, we expect the audience score to be higher by 0.519 points, on average.
-c.  For every one point increase in the critics score, the audience score goes up by 0.519 points.
-d.  For every one point increase in the audience score, the critics score goes up by 0.519 points, on average.
-
-## Submit
-
-```{=html}
-<iframe allowfullscreen frameborder="0" height="100%" mozallowfullscreen style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/STA199S24?from=status-bar?" width="100%"></iframe>
-```
 :::
 
 ## Interpreting slope & intercept

@@ -5,14 +5,6 @@ format:
   revealjs: default
 ---
 
-# Warm up
-
-## Project proposals
-
-::: task
-Any questions?
-:::
-
 # Model selection and overfitting
 
 ## R-squared ($R^2$) {.smaller}
@@ -124,4 +116,3 @@ $$
 
 -   In other words, we prefer the simplest best model, i.e. **parsimonious** model.
 :::
-

@@ -308,31 +308,24 @@ sampling_mean, sampling_se
 ##  {.smaller}
 
 ::: question
-How do the shapes, centers, and spreads of these distributions compare?
+Compare the shapes, centers, and spreads of these distributions:
 :::
 
 ::: columns
 ::: {.column width="50%"}
+**The true population**
+
 ```{python}
 #| echo: false
+population_stats = {'mu': mu, 'sigma': sigma}
+population_stats
 
-# Plot comparison of population and sampling distributions stacked row-wise
-plt.figure(figsize=(4, 8))
+plt.figure(figsize=(4, 4))
 
 # Population distribution
-plt.subplot(2, 1, 1)
 sns.histplot(rs_pop['x'], kde=True, color='skyblue', edgecolor='darkblue', bins=100)
 plt.title('Population distribution')
 plt.xlabel('')
-plt.ylabel('')
-plt.xlim(-5, 100)
-plt.yticks([])
-
-# Sampling distribution
-plt.subplot(2, 1, 2)
-sns.histplot(sampling_df['xbar'], bins=30, color='skyblue', edgecolor='darkblue')
-plt.title('Sampling distribution of sample means')
-plt.xlabel('Sample means')
 plt.ylabel('')
 plt.xlim(-5, 100)
 plt.yticks([])
@@ -343,22 +336,23 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-**The true population parameters**
-
-```{python}
-#| echo: false
-population_stats = {'mu': mu, 'sigma': sigma}
-population_stats
-```
-
-<br>
-
 **The sample statistics**
 
 ```{python}
 #| echo: false
 sampling_stats = {'mean': sampling_mean, 'se': sampling_se}
 sampling_stats
+
+# Sampling distribution
+plt.figure(figsize=(4, 4))
+sns.histplot(sampling_df['xbar'], bins=30, color='skyblue', edgecolor='darkblue')
+plt.title('Sampling distribution of sample means')
+plt.xlabel('Sample means')
+plt.ylabel('')
+plt.xlim(-5, 100)
+plt.yticks([])
+plt.tight_layout()
+plt.show()
 ```
 :::
 :::
