@@ -1,5 +1,5 @@
 ---
-title: "Midterm Review"
+title: "Midterm Assignment"
 format:
   html: default
   pdf: default
@@ -23,8 +23,6 @@ import seaborn as sns
 
 ::: callout-note
 You can find the `blizzard_salary.csv` data [here](https://raw.githubusercontent.com/INFO-511-F24/data/main/blizzard_salary.csv).
-
-Suggested answers can be found [here](/exam-review/exam-1-review-A.qmd), but resist the urge to peek before you go through it yourself.
 :::
 
 ```{python}
@@ -139,7 +137,8 @@ Suppose your teammate wrote the following code as part of their analysis of the 
 
 ```{python}
 #| label: blizzard-summarize
-#| results: false
+#| eval: false
+#| echo: true
 
 blizzard_summary = blizzard_salary.groupby('salary_type').agg(
     mean_annual_salary=('annual_salary', 'mean'),
@@ -314,7 +313,7 @@ $\vspace{2cm}$
 :::
 
 **Question 10:** Below are the proportions of performance ratings for hourly and salaried workers.
-Place these values in the corresponding segments in @fig-salary-performance-rating-2.
+Recreate the plot in @fig-salary-performance-rating-2, then interpret how the results from the table and within the plot relate to each other.
 
 ```{python}
 #| label: salary-type-perfecormance-table

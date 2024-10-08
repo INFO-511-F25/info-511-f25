@@ -366,7 +366,7 @@ $$
 1.  **Identify the Outer and Inner Functions**
 
 ::: incremental
--   Outer function: $u^4$
+-   Outer function: $u^5$
 
 -   Inner function: $u = 3x^2 + 2$
 :::

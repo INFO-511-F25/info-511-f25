@@ -118,7 +118,7 @@ website:
       - section: "Summative"
         contents:
           - href: summative/midterm.qmd
-            text: Exam 1
+            text: Midterm
           #- href: exam-review/exam-2-review.qmd
             #text: Exam 2
             
