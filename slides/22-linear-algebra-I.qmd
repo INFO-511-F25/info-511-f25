@@ -187,7 +187,7 @@ plt.show()
 ```
 :::
 
-## Linearly independent and span {.smaller}
+# Linearly independent and span
 
 ## Span
 

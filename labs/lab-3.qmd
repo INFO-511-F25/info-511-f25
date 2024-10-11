@@ -110,13 +110,13 @@ Briefly comment on how the inflation rates for these countries compare to the in
 
 ### Question 3
 
-In a single pipeline,
+Copy the `inf_ratio` data set and perform the following:
 
 -   calculate the ratio of the inflation in 2021 and inflation in 1993 for each country and store this information in a new column called `inf_ratio`,
 -   arrange the data frame in decreasing order of `inf_ratio`, and
--   select the variables `country` and `inf_ratio` to display as the result of the pipeline.
+-   select the variables `country` and `inf_ratio` to display as the result.
 
-Do not save this new variable in `inf_ratio`, only calculate and display it so you can answer the following question based on the output of the pipeline.
+Do not save this new variable in `inf_ratio`, but instead keep it within the copy.
 
 Which country's inflation change is the largest over this time period?
 Did inflation increase of decrease between 1993 and 2021 in this country?
@@ -137,20 +137,20 @@ The remaining questions in Part 1 require the use of the pivoted data frame from
 
 ### Question 5
 
-Use a separate, single pipeline to answer each of the following questions.
+Use a separate copy of the data to answer each of the following questions.
 
 Requirement: Your code must use the `query()` function for each part, not `sort_values()`.
 
 a.  What is the highest inflation rate observed between 1993 and 2021?
-    The output of the pipeline should be a data frame with one row and three columns.
+    The output of this copy should be a data frame with one row and three columns.
     In addition to code and output, your response should include a single sentence stating the country and year.
 
 b.  What is the lowest inflation rate observed between 1993 and 2021?
-    The output of the pipeline should be a data frame with one row and three columns.
+    The output of this copy should be a data frame with one row and three columns.
     In addition to code and output, your response should include a single sentence stating the country and year.
 
 c.  Putting (a) and (b) together: What are the highest and the lowest inflation rates observed between 1993 and 2021?
-    The output of the pipeline should be a data frame with two rows and three columns.
+    The output of the copy should be a data frame with two rows and three columns.
 
 ### Question 6
 
@@ -177,9 +177,9 @@ Make sure that the spelling of your countries matches how they appear in the dat
 :::
 
 b\.
-In a single pipeline, filter your reshaped dataset to include only the `countries_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
+In a separate data copy, filter your reshaped dataset to include only the `countries_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
 Use a short but informative name.
-Then, in a new pipeline, find the `unique()` countries in the data frame you created.
+Then, in a new copy, find the `unique()` countries in the data frame you created.
 
 ::: callout-tip
 The number of distinct countries in the filtered data frame you created in part (b) should equal the number of countries you chose in part (a).
@@ -276,9 +276,9 @@ Refer back to the guidance provided in [Question 6] if you're not sure how to cr
 :::
 
 b\.
-In a single pipeline, filter your reshaped dataset to include only the `divisions_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
+In a copy of the data, filter your reshaped dataset to include only the `divisions_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with.
 Use a short but informative name.
-Then, in a new pipeline, find the `unique()` divisions in the data frame you created.
+Then, in a new copy of the data, find the `unique()` divisions in the data frame you created.
 
 ### Question 10
 
