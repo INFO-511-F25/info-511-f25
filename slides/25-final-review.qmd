@@ -7,17 +7,17 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Exam 2
+## Final Assignment
 
-Same as Exam 1!
+Same as Midterm assignment!
 
--   Exam format / flow
+-   Assignment format / flow
 
--   Asking questions during office hours
+-   Asking questions!
 
-# Exam Review
+# Final Review
 
-## Concepts covered {.smaller}
+## Concepts covered (+ Midterm) {.xsmall}
 
 ::: incremental
 -   A hypothesis test is a statistical technique used to evaluate competing claims (null and alternative hypotheses) using data.

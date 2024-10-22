@@ -237,7 +237,7 @@ print(A)
 
 ## Matrix transposition {.smaller}
 
--   Matrix transposition involves swapping the rows and columns of a matrix.
+-   Matrix transposition involves swapping the rows and columns.
 
 -   Notation: If $\mathbf{A}$ is a matrix, then its transpose is denoted as $\mathbf{A}^T$.
 
@@ -250,7 +250,7 @@ $$
 -   The matrix $\mathbf{A}^T$ is:
 
 $$
-\mathbf{A}^T=\begin{bmatrix}a_{11} & a_{21} & a_{31}\\a_{21} & a_{22} & a_{32}\\a_{13} & a_{23} & a_{33}\end{bmatrix}
+\mathbf{A}^T=\begin{bmatrix}a_{11} & a_{21} & a_{31}\\a_{12} & a_{22} & a_{32}\\a_{13} & a_{23} & a_{33}\end{bmatrix}
 $$
 
 ## Matrix transposition: Python
@@ -328,7 +328,7 @@ plt.show()
 
 ## Determinants {.smaller}
 
-> The **determinant** is a function that maps square [matrices](https://mbernste.github.io/posts/matrices/) to real numbers: $\text{Det}:ℝ^{m×m}→ℝ$
+> The [**determinant**](https://mbernste.github.io/posts/determinants/) is a function that maps square [matrices](https://mbernste.github.io/posts/matrices/) to real numbers: $\text{Det}:ℝ^{m×m}→ℝ$
 >
 > where the absolute value of the determinant describes the volume of the parallelepided formed by the matrix’s columns.
 

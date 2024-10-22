@@ -14,7 +14,7 @@ editor_options:
 
 -   Have a clear plan for who is doing what, open issues on your repo, and assign them to individuals who can then close the issues as they finish a task.
 
--   Schedule at least one team meting between today and your presentation to practice your presentation together.
+-   Schedule at least one team meeting between today and your presentation to practice your presentation together.
 
 ::: task
 Any project questions?
@@ -30,17 +30,7 @@ Any project questions?
 Source: [https://alison.netlify.app/rlm-sad-plot-better](alison.netlify.app/rlm-sad-plot-better)
 :::
 
-# Application exercise
-
-## Application exercise: `ae-14-effective-dataviz` {.smaller}
-
-::: appex
--   Go to your project called `ae`.
--   If there are any uncommitted files, commit them, and push. Then pull.
--   Work on `ae-14-effective-dataviz.qmd`.
-:::
-
-## Recap {.smaller}
+## Recap of data viz {.smaller}
 
 ::: incremental
 -   Represent percentages as parts of a whole
@@ -58,11 +48,11 @@ Source: [https://alison.netlify.app/rlm-sad-plot-better](alison.netlify.app/rlm-
 
 ## Project presentations due Dec 18! 🥳 {.smaller}
 
--   Make sure your presentation is pushed to your GitHub repo before your lab section.
+-   Make sure your presentation is pushed to your GitHub repo before the due date.
 
 -   **All team members must take part in the presentation**
 
--   Deliver or play your 5-minute presentation -- you'll lose 1 point/ minute over 5.
+-   Record your 10-minute presentation -- you'll lose 1 point/ minute over 10.
 
 -   Fill out feedback forms while you listen to others' presentations.
 
@@ -117,7 +107,7 @@ Beyond, if you like -- "you" is the whole team!
 > Discuss issues pertaining to the reliability and validity of your data, and appropriateness of the statistical analysis.
 
 ::: callout-tip
-You can critique the current research without talking about a hypothetical future research,.
+You can critique the current research without talking about a hypothetical future research.
 :::
 
 <br>
@@ -184,19 +174,6 @@ There is no specific, secret number of visualizations I'm expecting, the right n
 -   Presentation: <https://datasciaz.netlify.app/project/4-writeup-presentation.html#presentation-slides>
 :::
 
-## Something else 💛 {.smaller}
-
-::: question
-I have enjoyed this semester, and I want to continue learning Python.
-What classes do you recommend I take to continue my learning?
-:::
-
--   INFO 523: Data Mining and Discovery - Python essentially for applied ML
-
--   INFO 521: Intro to Machine Learning - Python as a part of the ML curriculum
-
-# Quarto demo / Code review recap
-
 ## Your project write-up with Quarto {.smaller}
 
 -   Chunk options around what makes it in your final report: `message`, `echo`, etc.
@@ -207,7 +184,7 @@ What classes do you recommend I take to continue my learning?
 
 ## Building your project website with Quarto
 
--   The `docs` folder.
+-   The `_site` folder.
 
 -   Making sure your website reflects your latest changes.
 
@@ -218,5 +195,16 @@ What classes do you recommend I take to continue my learning?
 -   **Option 1:** Make your slides not in Quarto but make sure they're available in your Quarto project website.
 
 -   **Option 2:** Make your slides with Quarto.
+
+## Something else 💛 {.smaller}
+
+::: question
+I have enjoyed this semester, and I want to continue learning Python.
+What classes do you recommend I take to continue my learning?
+:::
+
+-   INFO 523: Data Mining and Discovery - Python essentially for applied ML
+
+-   INFO 521: Intro to Machine Learning - Python as a part of the ML curriculum
 
 # Thank you!! 🥳 {style="text-align: center;"}
