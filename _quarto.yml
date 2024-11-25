@@ -105,10 +105,10 @@ website:
             text: Lab 2
           - href: labs/lab-3.qmd
             text: Lab 3            
-          #- href: labs/lab-4.qmd
-            #text: Lab 4
-          #- href: labs/lab-5.qmd
-            #text: Lab 5 
+          - href: labs/lab-4.qmd
+            text: Lab 4
+          - href: labs/lab-5.qmd
+            text: Lab 5 
           #- href: labs/lab-6.qmd
             #text: Lab 6             
           #- href: labs/lab-7.qmd
@@ -119,8 +119,8 @@ website:
         contents:
           - href: summative/midterm.qmd
             text: Midterm
-          #- href: exam-review/exam-2-review.qmd
-            #text: Exam 2
+          - href: summative/final.qmd
+            text: Final
             
   page-footer:
     right: 'This page is built with [{{< fa heart >}}]{style="color: #FFBE98;"} and [Quarto](https://quarto.org/).'

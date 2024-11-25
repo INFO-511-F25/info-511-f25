@@ -7,7 +7,7 @@ execute:
 
 ::: callout-important
 Completion of the DS Experience counts as a replacement for one lab from Lab 01 to Lab 04.
-Labs 05-07 need to be completed with your project team.
+Lab 05 need to be completed with your project team.
 :::
 
 -   [Part 1: Experience data science outside of the classroom](#part-1-experience-data-science-outside-of-the-classroom)

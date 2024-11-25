@@ -90,37 +90,18 @@ As a team you should spend \~30 minutes on each team's project.
 
 # Review pairings
 
-TBD
+The peer review assignments for **peer reviews** are as follows:
 
 ```{r}
 #| message: false
-#| eval: false
-library(tidyverse)
-library(gt)
-library(googlesheets4)
-gs4_deauth()
-
-teams <- read_sheet("https://docs.google.com/spreadsheets/d/15vBETwwne7qjZ7EpGvpdk_yZ0zFd07N4cuihF6LpkhY/edit#gid=0") |>
-  mutate(team_to_review = paste0("[", team_to_review, "](", url, ")")) |>
-  select(-url)
-
-make_pairing_table <- function(df, section_no) {
-  df |>
-    filter(section == section_no) |>
-    gt() |>
-    fmt_markdown(
-      columns = team_to_review
-    ) |>
-    cols_align(
-      align = "center",
-      columns = section
-    ) |>
-    cols_label(
-      section = "Lab section",
-      your_team_name = "Your team name",
-      team_to_review = "Team to review"
-    )
-}
+#| echo: false
+#| eval: true
+if (!require(pacman))
+  install.packages("pacman")
+pacman::p_load(tidyverse,
+               gt)
+p1_pr <- read_csv("project-final-peer-review.csv")
+gt(p1_pr) 
 ```
 
 # Grading

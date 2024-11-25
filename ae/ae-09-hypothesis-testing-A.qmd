@@ -142,7 +142,7 @@ Now, let's actually quantify it using a p-value.
 
 The probability of the observed sample statistic, or something more extreme in the direction of the alternative hypothesis, if in fact the null hypothesis is true.
 
--   Visualize the p-value.
+-   Visualize the p-value. Note that the two-sided approach would visualize two lines, one for the sample mean and another for $H_0 - (\mu - H_0)$ or $100 - (\mu - 100)$
 
 ```{python}
 #| label: p-value-visualize
@@ -156,7 +156,7 @@ print(f"Two-sided P-value = {p_value_two_sided}")
 # Visualize the p-value
 sns.histplot(null_dist, kde=True)
 plt.axvline(116.24, color='red', linestyle='solid', linewidth=2)
-plt.axvline(73.77, color='red', linestyle='dashed', linewidth=2)
+plt.axvline(83.76, color='red', linestyle='dashed', linewidth=2)
 plt.xlabel('Sample Mean')
 plt.ylabel('Frequency')
 plt.title('Null Distribution with P-value')
@@ -176,7 +176,7 @@ The data provide convincing evidence that the average price per guest of propert
 
 -   Interpret the p-value in context of the data and the research question.
 
-If in fact the true average price per guest of properties on Airbnb in Tucson is \$100, the probability of observing a random sample of 50 Tucson Airbnb listings where the average price per guest is \$116.23 or higher or \$73.77 or lower is 0.862.
+If in fact the true average price per guest of properties on Airbnb in Tucson is \$100, the probability of observing a random sample of 50 Tucson Airbnb listings where the average price per guest is \$116.24 or higher or \$83.76 or lower is 0.862.
 
 # Get real...
 

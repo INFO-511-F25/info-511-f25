@@ -54,9 +54,7 @@ We're going to investigate the relationship between the weights and heights of f
 
     *Add response here.*
 
-    -   Now, let Python draw the line for you.
-        Refer to the documentation at <https://seaborn.pydata.org/generated/seaborn.lmplot.html>.
-        Specifically, refer to the `method` section.
+    -   Now, let Python draw the line for you. Refer to the documentation at <https://seaborn.pydata.org/generated/seaborn.lmplot.html>. Specifically, refer to the `method` section.
 
     ```{python}
     #| label: plot-hw-lm
@@ -149,7 +147,7 @@ We can also assess correlation between two quantitative variables.
 
 ## Fitting other models
 
--   We can fit more models than just a straight line. Change the following code below to read `lowess=False`. What is different from the plot created before?
+-   We can fit more models than just a straight line. Change the `sns.regplot()` code you previously used to include `lowess=True`. What is different from the plot created before?
 
 ```{python}
 #| label: plot-hw-loess

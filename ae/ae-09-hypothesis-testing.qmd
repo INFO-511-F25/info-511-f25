@@ -122,7 +122,7 @@ Now, let's actually quantify it using a p-value.
 
 *Add response here.*
 
--   **Demo:** Visualize the p-value.
+-   **Demo:** Visualize the p-value. Note that the two-sided approach would visualize two lines, one for the sample mean and another for $H_0 - (\mu - H_0)$ or $100 - (\mu - 100)$
 
 ```{python}
 #| label: p-value-visualize

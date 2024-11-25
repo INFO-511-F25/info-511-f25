@@ -1,5 +1,5 @@
 ---
-title: "Exam 2 Review"
+title: "Final Assignment"
 format:
   html: default
   pdf: default
@@ -27,10 +27,6 @@ import statsmodels.formula.api as smf
 from plotnine import *
 from mizani.labels import label_dollar, label_percent
 ```
-
-::: callout-note
-Suggested answers can be found [here](/exam-review/exam-2-review-A.qmd), but resist the urge to peek before you go through it yourself.
-:::
 
 # Part 1 - Employment
 

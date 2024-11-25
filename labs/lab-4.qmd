@@ -97,12 +97,12 @@ print(datasaurus.head(10))
 
 ## Question 3
 
-In a single pipeline, calculate the mean of `x`, mean of `y`, standard deviation of `x`, standard deviation of `y`, and the correlation between `x` and `y` for each level of the `dataset` variable.
+Calculate the mean of `x`, mean of `y`, standard deviation of `x`, standard deviation of `y`, and the correlation between `x` and `y` for each level of the `dataset` variable.
 Then, in 1-2 sentences, comment on how these summary statistics compare across groups (datasets).
 
 ::: callout-tip
 There are 13 groups but `DataFrame`s only print out 10 rows by default.
-Add `print(n = 13)` as the last step of your pipeline to display all rows.
+Add `print(n = 13)` as the last step to display all rows.
 :::
 
 ## Question 4
@@ -157,7 +157,7 @@ survey_pivot = survey_counts.pivot(index='___', columns='___', values='___')
 survey_pivot
 ```
 
-For parts b-d below, use a your response single pipeline starting with `survey_counts`, calculate the desired proportions, and make sure the result is an **ungrouped** data frame with a column for relevant counts, a column for relevant proportions, and a column for the groups you're interested in.
+For parts b-d below, use your response starting with `survey_counts`, calculate the desired proportions, and make sure the result is an **ungrouped** data frame with a column for relevant counts, a column for relevant proportions, and a column for the groups you're interested in.
 
 b.  Calculate the proportions of 18-49 year olds and 50+ year olds in this sample.
 

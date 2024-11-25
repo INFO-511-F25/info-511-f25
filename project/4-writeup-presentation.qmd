@@ -133,10 +133,9 @@ Here is a *suggested* outline as you think through the slides; you [**do not**]{
 ## Presentation
 
 Presentations will take place in class during the last lab of the semester.
-**The presentation must be no longer than 5 minutes.** You can choose to present live in class (recommended) or pre-record a video to be shown in class.
-Either way you must attend the lab session for the Q&A following your presentation.
+**The presentation must be no longer than 5 minutes.** You will pre-record a video using one of the options below.
 
-If you choose to pre-record your presentation, you may use can use any platform that works best for your group to record your presentation.
+To pre-record your presentation, you may use can use any platform that works best for your group to record your presentation.
 Below are a few resources on recording videos:
 
 -   [Recording presentations in Zoom](https://kb.siue.edu/61721)
@@ -144,23 +143,23 @@ Below are a few resources on recording videos:
 -   [Windows 10 built-in screen recording functionality](https://www.youtube.com/watch?v=OfPbr1mRDuo)
 -   [Kap for screen recording](https://getkap.co/)
 
-Once your video is ready, upload the video to Warpwire or another video platform (e.g., YouTube), then add a link to your video in your repo README.
+Once your video is ready, upload the video to Panopto or another video platform (e.g., YouTube), then add a link to your video in your repo README.
 
-To upload your video to Warpwire:
+To create your video with Panopto:
 
--   Click the Warpwire tab in the course Canvas site.
--   Click the "+" and select "Upload files".
--   Locate the video on your computer and click to upload.
--   Once you've uploaded the video to Warpwire, click to share the video and copy the video's URL. You will need this when you post the video in the discussion forum.
+-   Go to <https://arizona.hosted.panopto.com/> and sign in via your NetID
+-   Click the "+" and select "Upload media".
+-   Drag and drop your recorded video.
+-   Once you've uploaded the video to Panopto, click to share the video and copy the video's URL. You will need this when you post the video in the discussion forum.
 
 ## Grading
 
 The presentation is worth 25 points, broken down as follows:
 
-| Total                         | 25 pts |
-|-------------------------------|--------|
-| **Slides**                    | 10 pts |
-| **Presentation**              | 15 pts |
+| Total            | 25 pts |
+|------------------|--------|
+| **Slides**       | 10 pts |
+| **Presentation** | 15 pts |
 
 ### Slides
 
@@ -168,14 +167,13 @@ Are the slides well organized, readable, not full of text, featuring figures wit
 
 ### Presentation
 
-- Time management: Did the team divide the time well amongst themselves or got cut off going over time?
-- Professionalism: How well did the team present? Does the presentation appear to be well practiced? Did everyone get a chance to say something meaningful about the project?
-- Teamwork: Did the team present a unified story, or did it seem like independent pieces of work patched together?
-- Creativity and critical thought: Is the project carefully thought out? Does it appear that time and effort went into the planning and implementation of the project?
-- Content: Including, but not limited to the following:
-  - Is the question well articulated in the presentation?
-  - Can the question be answered with the data?
-  - Does the analysis answer the question?
-  - Are the conclusion(s) made based on the analysis justifiable?
-  - Are the limitations carefully considered and articulated?
-
+-   Time management: Did the team divide the time well amongst themselves or got cut off going over time?
+-   Professionalism: How well did the team present? Does the presentation appear to be well practiced? Did everyone get a chance to say something meaningful about the project?
+-   Teamwork: Did the team present a unified story, or did it seem like independent pieces of work patched together?
+-   Creativity and critical thought: Is the project carefully thought out? Does it appear that time and effort went into the planning and implementation of the project?
+-   Content: Including, but not limited to the following:
+    -   Is the question well articulated in the presentation?
+    -   Can the question be answered with the data?
+    -   Does the analysis answer the question?
+    -   Are the conclusion(s) made based on the analysis justifiable?
+    -   Are the limitations carefully considered and articulated?

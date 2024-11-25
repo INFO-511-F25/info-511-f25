@@ -1,5 +1,5 @@
 ---
-title: "AE 12: Building a spam filter"
+title: "AE 11: Building a spam filter"
 categories: 
   - Application exercise
 editor: visual
