@@ -7,10 +7,6 @@ execute:
   error: false
 ---
 
-::: callout-important
-This is a *Team* Lab, meaning you can and should work with your project team on it.
-:::
-
 # Introduction
 
 In this lab you'll start your practice of statistical modeling.
@@ -41,35 +37,10 @@ There will be periodic reminders in this assignment to remind you to **Run all, 
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
 :::
 
-All team members should clone the team GitHub repository for the lab.
-Then, one team member should edit the document Markdown cell by adding the team name to the `Team name` field and adding the names of the team members contributing to lab to the `Authors` field.
-Hopefully that's everyone, but if someone doesn't contribute during the lab session or throughout the week before the deadline, their name should not be added.
-If you have 4 members in your team, you can delete the line for the 5th team member.
-Then, this team member should render the document and commit and push the changes.
-All others should **not** touch the document at this stage.
-
-``` markdown
-# Lab 6 - Modeling I
-### Team name
-### Authors: 
-  - "Team member 1"
-  - "Team member 2"
-  - "Team member 3"
-  - "Team member 4"
-  - "Team member 5"
-### Date: ADD DATE HERE
-```
-
 Additionally, if you’re using functions that are not introduced in the course materials, you must cite your sources.
 
 ::: callout-important
 Failure to cite outside resources used, including Large Language Models like Chat GPT, is a violation of the University of Arizona [Code of Academic Integrity](https://deanofstudents.arizona.edu/policies/code-academic-integrity) and will be treated as such.
-:::
-
-::: callout-important
-Pick another member of the team write the answer to Part 1.
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
 :::
 
 # Part 1 - Smoking during pregnancy
@@ -112,13 +83,6 @@ c.  Interpret the intercept in the context of the data and the research question
 
 d.  Interpret the slope in the context of the data and the research question.
 
-::: callout-important
-After the team member working on Part 1 renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 2 (up to question 5).
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
-
 # Part 2 - Parasites
 
 Parasites can cause infectious disease – but not all animals are affected by the same parasites.
@@ -160,13 +124,6 @@ c.  Visualize the relationship between the two variables.
 
 d.  Use the visualization to describe the relationship between the two variables.
 
-::: callout-important
-After the team member working on Part 2 (up to question 5) renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 2 (questions 5-7).
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
-
 ## Question 4
 
 Next, model this relationship.
@@ -184,11 +141,10 @@ d.  What do you notice about the prediction (regression) line that may be strang
 Since `parsim` takes values between 0 and 1, we want to transform this variable so that it can range between (−∞,+∞).
 This will be better suited for fitting a regression model (and interpreting predicted values!)
 
-a.  Create a new variable `transformed_parsim` that is calculated as `math.log(parsim/(1-parsim))`.
-    Add this variable to your data frame.
+a.  Create a new variable `transformed_parsim` that is calculated as `math.log(parsim/(1-parsim))`. Add this variable to your data frame.
 
 ::: callout-note
-`math.log()` in Python represents the **nautral log**.
+`math.log()` in Python represents the **natural log**.
 :::
 
 b.  Then, visualize the relationship between divergence_time and `transformed_parsim`.
@@ -236,13 +192,6 @@ a.  Calculate and report $R^2$ for each model fit in the previous exercise.
 b.  To answer our question of interest, would it be useful to compare the $R^2$ in each model to choose the variable that is the strongest predictor of parasite similarity?
     Why or why not?
 
-::: callout-important
-After the team member working on Part 2 (questions 5-7) renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 3 (question 8).
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
-
 # Part 3 - GDP and life expectancy
 
 Gapminder is a “fact tank” that uses publicly available world data to produce data visualizations and teaching resources on global development.
@@ -271,29 +220,22 @@ a.  **Data:** For our analysis, we will only be working with data from 2007.
 b.  **Visualization:** We are interested in learning more about GDP, and we’ll start with exploring the relationship between life expectancy and GDP.
     Create two visualizations:
 
-  -   Scatter plot of `gdpPercap` vs. `lifeExp`.
+-   Scatter plot of `gdpPercap` vs. `lifeExp`.
 
-  -   Scatter plot of `gdpPercap_log` vs. `lifeExp`, where `gdpPercap_log` is a new variable you add to the data set by taking the natural log of `gdpPercap`.
+-   Scatter plot of `gdpPercap_log` vs. `lifeExp`, where `gdpPercap_log` is a new variable you add to the data set by taking the natural log of `gdpPercap`.
 
 First describe the relationship between each pair of the variables.
 Then, comment on which relationship would be better modeled using a linear model, and explain your reasoning.
 
 c.  **Model fitting:**
 
-  -   Fit a linear model predicting log gross domestic product from life expectancy. Display the tidy summary.
+-   Fit a linear model predicting log gross domestic product from life expectancy. Display the tidy summary.
 
 d.  **Model evaluation:**
 
-  -   Calculate the R-squared of the model using `.rsquared` from a model.
+-   Calculate the R-squared of the model using `.rsquared` from a model.
 
-  -   Interpret R-squared in the context of the data and the research question.
-
-::: callout-important
-After the team member working on Part 3 (question 8) renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 3 (questions 9-10).
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
+-   Interpret R-squared in the context of the data and the research question.
 
 ## Question 9
 
@@ -306,12 +248,12 @@ a.  **Justification:** Create a scatter plot of `gdpPercap_log` vs. `lifeExp`, 
 
 b.  **Model fitting and interpretation:**
 
-  -   Regardless of your answer in part (a), fit an [additive model]{.underline} (main effects) that predicts `gdpPercap_log` from life expectancy and continent (with Africas as the baseline level).
-        Display a tidy summary of the model output.
+-   Regardless of your answer in part (a), fit an [additive model]{.underline} (main effects) that predicts `gdpPercap_log` from life expectancy and continent (with Africas as the baseline level).
+    Display a tidy summary of the model output.
 
-  -   Interpret the *intercept* of the model, making sure that your interpretation is in the units of the original data (not on log scale).
+-   Interpret the *intercept* of the model, making sure that your interpretation is in the units of the original data (not on log scale).
 
-  -   Interpret the *slope* of the model, making sure that your interpretation is in the units of the original data (not on log scale).
+-   Interpret the *slope* of the model, making sure that your interpretation is in the units of the original data (not on log scale).
 
 c.  **Prediction:** Predict the GDP of a country in Asia where the average life expectancy is 70 years old.
 

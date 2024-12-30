@@ -31,7 +31,7 @@ By the end of the lab, you will...
 
 ### Clone the repo & start new VS Code window
 
--   Go to the course organization at [github.com/INFO-511-F24](https://github.com/INFO-511-F24) organization on GitHub.
+-   Go to the course organization at [github.com/INFO-511-S25](https://github.com/INFO-511-S25) organization on GitHub.
     Click on the repo with the prefix **lab-3**.
     It contains the starter documents you need to complete the lab.
 

@@ -7,11 +7,6 @@ execute:
   error: false
 ---
 
-::: callout-important
-This is a *Team* Lab, meaning you can and should work with your project team on it.
-Each member will need to submit the assignment individually, but all team member names should be represented as authors.
-:::
-
 ```{python}
 #| include: false
 #| eval: true
@@ -44,34 +39,7 @@ There will be periodic reminders in this assignment to remind you to **Run all, 
 You should have at least 3 commits with meaningful commit messages by the end of the assignment.
 :::
 
-# Getting started
-
-All team members should clone the team GitHub repository for the lab.
-Then, one team member should edit the document Markdown cell by adding the team name to the `Team name` field and adding the names of the team members contributing to lab to the `Authors` field.
-Hopefully that's everyone, but if someone doesn't contribute during the lab session or throughout the week before the deadline, their name should not be added.
-If you have 4 members in your team, you can delete the line for the 5th team member.
-Then, this team member should render the document and commit and push the changes.
-All others should **not** touch the document at this stage.
-
-``` markdown
-# Lab 5 - Probability and Simpson’s Paradox
-### Team name
-### Authors: 
-  - "Team member 1"
-  - "Team member 2"
-  - "Team member 3"
-  - "Team member 4"
-  - "Team member 5"
-### Date: ADD DATE HERE
-```
-
 # Questions
-
-::: callout-important
-Pick another member of the team write the answer to Part 1.
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
 
 ## Part 1 - Probability and you
 
@@ -81,13 +49,6 @@ We use probabilities all the time when making decisions.
 *As a group*, provide *two* real world examples of when you've used probability to make decisions in your every day life.
 Think critically.
 Be creative.
-
-::: callout-important
-After the team member working on Part 1 renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 2.
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
 
 ## Part 2 - Risk of coronary heart disease
 
@@ -126,13 +87,6 @@ What is the probability of a random individual having high school or GED educati
 
 What is the probability that a random individual who is already high risk for cardiovascular disease has a college education?
 
-::: callout-important
-After the team member working on Part 2 renders, commits, and pushes, another team member should pull their changes and render the document.
-Then, they should write the answer to Part 3.
-All others should contribute to the discussion but only one person should type up the answer, render the document, commit, and push to GitHub.
-All others should **not** touch the document.
-:::
-
 ## Part 3 - Bike rentals
 
 Bike sharing systems are new generation of traditional bike rentals where whole process from membership, rental and return back has become automatic.
@@ -142,7 +96,7 @@ You will be investigating data for the months June, July, September, and Novembe
 Below is a list of variables and their definitions:
 
 | Variable  | Definition                                                                     |
-|-----------|--------------------------------------------------------------------------------|
+|--------------|----------------------------------------------------------|
 | `season`  | Numerical representation of Spring (2), Summer (3), and Fall (4)               |
 | `year`    | Numerical representation of 2011 (0) or 2012 (1)                               |
 | `month`   | Month in which data were collected                                             |

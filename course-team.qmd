@@ -11,7 +11,6 @@ Greg is a data scientist, educator, and behavioral ecologist.
 He is passionate about telling stories through data.
 He accomplishes this by leveraging his interdisciplinary background to provide an innovative approach to answering complex questions.
 
-| Office hours      | Location            |
-|-------------------|---------------------|
-| Wed 11 am - 12 pm | Harvill 420         |
-| By appointment    | Harvill 420 or Zoom |
+| Office hours   | Location |
+|----------------|----------|
+| By appointment | Zoom     |

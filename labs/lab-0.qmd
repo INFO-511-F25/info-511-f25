@@ -72,6 +72,6 @@ Follow the [**Setting up Git**](https://datasciaz.netlify.app/computing/computin
 
 Fill out the course "Getting to know you" survey:
 
-<https://forms.gle/hQGUKCJtScmeDWpU9>
+<https://forms.gle/p7CCY6HdfaSy8KhA8>
 
 We will use the information collected in this survey for a variety of goals, from inviting you to the course GitHub organization (more on that later) to getting to know you as a person and your course goals and concerns.

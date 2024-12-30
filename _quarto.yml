@@ -4,36 +4,36 @@ project:
 website:
   page-navigation: true
   title: "INFO 511"
-  description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Fall 2024."
+  description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Spring 2025."
   favicon: /img/logo.png
   site-url: "https://datasciaz.netlify.app"
 
-  repo-url: https://github.com/INFO-511-F24/info-511-f24.github.io
+  repo-url: https://github.com/INFO-511-S25/info-511-s25
   repo-actions: [edit, issue]
 
   open-graph: true
 
   sidebar:
-    background: "#0C234B" # Arizona Blue - Fall 2024
+    background: "#0C234B" # Arizona Blue - Spring 2025
     logo: "img/logo.png"
     pinned: true
     align: center
     tools:
       - icon: github
-        href: https://github.com/INFO-511-F24
+        href: https://github.com/INFO-511-F25
         text: "GitHub organization"
 
       - icon: life-preserver
         href: course-support.html#office-hours
         text: "Office hours"
       - icon: chat-dots-fill
-        href: https://info511fall2024.slack.com
+        href: https://info511spring2025.slack.com
         text: "Slack"
       - icon: camera-reels-fill
         href: https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4
         text: "Class recordings"
       - icon: check-square-fill
-        href: https://d2l.arizona.edu/d2l/home/1478216
+        href: https://d2l.arizona.edu/d2l/home/1550484
         text: "D2L"
 
     style: docked
@@ -85,16 +85,16 @@ website:
         contents:
           - href: project/description.qmd
             text: Description
-          - href: project/1-working-collaboratively.qmd
-            text: Milestone 1
-          - href: project/2-proposal.qmd
-            text: Milestone 2
-          - href: project/3-peer-review.qmd
-            text: Milestone 3
-          - href: project/4-writeup-presentation.qmd
-            text: Milestone 4            
-          - href: project/tips-resources.qmd
-            text: Tips + resources
+          #- href: project/1-working-collaboratively.qmd
+           # text: Milestone 1
+          #- href: project/2-proposal.qmd
+           # text: Milestone 2
+          #- href: project/3-peer-review.qmd
+           # text: Milestone 3
+          #- href: project/4-writeup-presentation.qmd
+           # text: Milestone 4            
+          #- href: project/tips-resources.qmd
+            #text: Tips + resources
       - section: "Labs"
         contents:
           - href: labs/lab-0.qmd
@@ -117,22 +117,22 @@ website:
             text: Data Science Experience
       - section: "Summative"
         contents:
-          - href: summative/midterm.qmd
-            text: Midterm
-          - href: summative/final.qmd
-            text: Final
+          #- href: summative/midterm.qmd
+           # text: Midterm
+          #- href: summative/final.qmd
+            #text: Final
             
   page-footer:
     right: 'This page is built with [{{< fa heart >}}]{style="color: #FFBE98;"} and [Quarto](https://quarto.org/).'
-    left: "&copy; Copyright 2024, Greg Chism"
-    background: "#0C234B" # Arizona Blue - Fall 2024
+    left: "&copy; Copyright 2025, Greg Chism"
+    background: "#0C234B" # Arizona Blue - Spring 2025
 
 format:
   html:
     theme:
       light: [cosmo, style/info511.scss]
       dark: [cosmo, style/info511.scss, style/dark.scss]
-    linkcolor: "#AB0520" # Arizona Red - Fall 2024
+    linkcolor: "#AB0520" # Arizona Red - Spring 2025
     toc: true
     code-copy: true
     code-overflow: wrap

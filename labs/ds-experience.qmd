@@ -6,8 +6,7 @@ execute:
 ---
 
 ::: callout-important
-Completion of the DS Experience counts as a replacement for one lab from Lab 01 to Lab 04.
-Lab 05 need to be completed with your project team.
+Completion of the DS Experience counts as a replacement for one lab from Lab 01 to Lab 05.
 :::
 
 -   [Part 1: Experience data science outside of the classroom](#part-1-experience-data-science-outside-of-the-classroom)
@@ -20,7 +19,7 @@ The world of data science is vast and continually growing!
 The goal of the data science experience assignments is to help you engage with the data science communities outside of the classroom.
 
 There will be one *optional* data science experience assignment that will replace up to one lab grade (among labs 01-04).
-**The submission for the statistics experience is due on Friday, December 06 at 11:59pm AZ time on GitHub (you will have an assigned repo). No late work will be accepted for the data science experience.** You may submit the data science experience assignment anytime between now and the deadline.
+**The submission for the statistics experience is due on Friday, April 25 at 11:59pm AZ time on GitHub (you will have an assigned repo). No late work will be accepted for the data science experience.** You may submit the data science experience assignment anytime between now and the deadline.
 
 Each experience has two parts:
 
@@ -118,4 +117,4 @@ Creativity is encouraged!
 
 ## Submission {#submission}
 
-Submit the reflection as a PDF under the **Data Science Experience** assignment on GitHub by **Friday, December 06 at 11:59pm.** It must be submitted by the deadline on GitHub to be considered for grading.
+Submit the reflection as a PDF under the **Data Science Experience** assignment on GitHub by **Friday, April 25 at 11:59pm AZ time.** It must be submitted by the deadline on GitHub to be considered for grading.

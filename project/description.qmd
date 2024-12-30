@@ -1,74 +1,95 @@
 ---
-title: "Project description"
+title: "Flood Risk Prediction Challenge"
 ---
 
-# Introduction
+# Overview
 
-**TL;DR**: *Ask a question you're curious about and answer it with a dataset of your choice. This is your project in a nutshell.*
+Flooding is one of the most common and destructive natural disasters in the United States, causing billions of dollars in damage each year.
+Accurate flood risk prediction is essential for disaster preparedness, resource allocation, and mitigation efforts.
 
-**May be too long, but please do read**
+This project challenges you to analyze a real-world dataset of environmental and geospatial features and build a machine learning model that predicts flood risk scores for various regions.
+You will apply your skills in data cleaning, exploratory data analysis (EDA), feature engineering, and predictive modeling to solve this practical problem.
 
-The project for this class will consist of analysis on a dataset of your own choosing.
-The dataset may already exist, or you may collect your own data using a survey or by conducting an experiment.
-You can choose the data based on your teams' interests or based on work in other courses or research projects.
-The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like) and apply them to a novel dataset in a meaningful way.
+# **Objectives**
 
-The goal is not to do an exhaustive data analysis i.e., do not calculate every statistic and procedure you have learned for every variable, but rather let me know that you are proficient at asking meaningful questions and answering them with results of data analysis, that you are proficient in using Python, and that you are proficient at interpreting and presenting the results.
-Focus on methods that help you begin to answer your research questions.
-You do not have to apply every statistical procedure we learned.
-Also, critique your own methods and provide suggestions for improving your analysis.
-Issues pertaining to the reliability and validity of your data, and appropriateness of the statistical analysis should be discussed here.
+In this project, you will:
 
-The project is very open ended.
-You should create some kind of compelling visualization(s) of this data in Python.
-There is no limit on what tools or packages you may use but sticking to packages we learned in class is required.
-You do not need to visualize all of the data at once.
-A single high-quality visualization will receive a much higher grade than a large number of poor-quality visualizations.
-Also pay attention to your presentation.
-Neatness, coherency, and clarity will count.
-All analyses must be done in VSCode (or other IDE), using Python, and all components of the project **must be reproducible** (with the exception of the presentation).
+1.  **Explore and Analyze**: Conduct exploratory data analysis to uncover patterns and relationships in the dataset.
 
-You will work on the project with your lab teams.
+2.  **Clean and Prepare**: Preprocess the data to handle missing values, outliers, and inconsistencies.
 
-The four milestones for the final project are
+3.  **Engineer Features**: Create new features to improve model performance.
 
-1.  Milestone 1 - Working collaboratively
-2.  Milestone 2 - Proposals, with three dataset ideas
-3.  Milestone 3 - Peer review, on another team's project
-4.  Milestone 4 - Presentation with slides and a reproducible project writeup of your analysis, with a draft along the way.
+4.  **Build a Predictive Model**: Train a regression model to predict flood risk scores.
 
-Submission of these deliverables will happen on GitHub and feedback will be provided as GitHub issues that you need to engage with and close.
-The collection of the documents in your GitHub repo will create a webpage for your project.
-To create the webpage go to the Build tab in RStudio, and click on Render Website.
+5.  **Evaluate and Communicate**: Assess your model’s performance using metrics like Mean Absolute Error (MAE) and present your findings.
 
-# Milestone 1 - Working collaboratively
+### **Dataset**
 
-For the first milestone of your project you'll practice a collaborative Git workflow with your team members.
-Instructions are outlined in [Milestone 1: Working collaboratively](/project/1-working-collaboratively.html).
-Each team member taking part in the collaborative working activity will get 5 points towards their project.
+*Subject to change up to the project announcement.*
 
-# Milestone 2 - Proposal {#project-proposal}
+The dataset includes environmental and historical data about regions in the United States.
+Each row represents a region, and the columns contain features relevant to flood risk prediction:
 
-There are two main purposes of the project proposal:
+| **Feature Name**    | **Description**                                     |
+|---------------------|-----------------------------------------------------|
+| `region_id`         | Unique identifier for each region                   |
+| `rainfall`          | Average annual rainfall (mm)                        |
+| `river_flow`        | Average river flow rate (m³/s)                      |
+| `urban_density`     | Percentage of urban area in the region              |
+| `elevation`         | Average elevation above sea level (meters)          |
+| `historical_floods` | Number of floods recorded in the last decade        |
+| `flood_risk_score`  | (Target variable) Normalized flood risk score (0-1) |
 
--   To help you think about the project early, so you can get a head start on finding data, reading relevant literature, thinking about the questions you wish to answer, etc.
--   To ensure that the data you wish to analyze, methods you plan to use, and the scope of your analysis are feasible and will allow you to be successful for this project.
+# **Deliverables** {#project-proposal}
 
-Instructions and grading criteria for this milestone are outlined in [Milestone 2: Proposal](/project/2-proposal.html).
+You will submit the following:
 
-# Milestone 3 - Peer review {#peer-review}
+1.  **Jupyter Notebook**:
 
-Critically reviewing others' work is a crucial part of the scientific process, and INFO 511 is no exception.
-You will be assigned two teams to review.
-This feedback is intended to help you create a high quality final project, as well as give you experience reading and constructively critiquing the work of others.
+    -   Document your workflow with clear explanations and visualizations.
 
-Instructions and grading criteria for this milestone are outlined in [Milestone 3: Peer review](/project/3-peer-review.html).
+    -   Include data preprocessing, EDA, feature engineering, and model development.
 
-# Milestone 4 - Writeup and presentation
+2.  **Prediction CSV File**:
 
-Instructions and grading criteria for this milestone are outlined in [Milestone 4: Writeup + presentation](/project/4-writeup-presentation.html).
+    -   File containing your predictions for the test dataset in the required format.
 
-# Other
+    -   Format: `region_id`, `flood_risk_score`.
+
+3.  **Summary of Findings**:
+
+    -   A concise explanation of your approach, insights, and key results (can be included in the notebook).
+
+# **Evaluation Criteria** {#peer-review}
+
+Your submission will be graded based on the following criteria:
+
+1.  **Data Preprocessing (25%)**: Handling of missing values, outliers, and overall data cleaning process.
+
+2.  **Exploratory Data Analysis (20%)**: Quality of visualizations and insights derived from the data.
+
+3.  **Feature Engineering (20%)**: Creativity and relevance of new features and their impact on model performance.
+
+4.  **Model Development (25%)**: Accuracy of predictions based on MAE, justification of chosen model, and optimization techniques.
+
+5.  **Communication (10%)**: Clarity of the notebook, organization of the workflow, and explanation of findings.Other
+
+### **Bonus Points**
+
+-   **Cross-Validation**: Applying cross-validation for more robust model evaluation.
+
+-   **Feature Importance Analysis**: Using SHAP or feature importance tools to interpret your model.
+
+-   **Advanced Techniques**: Exploring innovative methods to improve predictions.
+
+A general breakdown of scoring is as follows:
+
+-   *90%-100%*: Outstanding effort. Student understands how to apply all data science concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.
+-   *80%-89%*: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.
+-   *70%-79%*: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.
+-   *60%-69%*: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.
+-   *Below 60%*: Student is not making a sufficient effort.
 
 ## Reproducibility + organization {#reproducibility-organization}
 
@@ -77,47 +98,30 @@ All written work (with exception of presentation slides) should be reproducible,
 Points for reproducibility + organization will be based on the reproducibility of the write-up and the organization of the project GitHub repo.
 The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.
 
-## Teamwork
+## **Getting Started**
 
-You will be asked to fill out a survey where you rate the contribution and teamwork of each team member by assigning a contribution percentage for each team member.
-Filling out the survey is a prerequisite for getting credit on the team member evaluation.
-If you are suggesting that an individual did less than half the expected contribution given your team size (e.g., for a team of four students, if a student contributed less than 12.5% of the total effort), please provide some explanation.
-If any individual gets an average peer score indicating that this was the case, their grade will be assessed accordingly and penalties may apply beyond the teamwork component of the grade.
+1.  **Download the Dataset**: Access the training and test datasets from the project repository.
 
-If you have concerns with the teamwork and/or contribution from any team members, please email me by the project presentation deadline.
-**You only need to email me if you have concerns.** Otherwise, I will assume everyone on the team equally contributed and will receive full credit for the teamwork portion of the grade.
+2.  **Set Up Your Environment**: Ensure you have Python and essential libraries installed (e.g., Pandas, NumPy, Scikit-learn, Matplotlib).
 
-# Grading
+3.  **Follow the Workflow**: Preprocess the data, conduct EDA, engineer features, train your model, and make predictions.
 
-The grade breakdown is as follows:
+4.  **Submit Your Work**: Upload your notebook and predictions to the provided submission platform.
 
-| Total                              | 110 pts |
-|------------------------------------|---------|
-| **M1: Working collaboratively**    | 5 pts   |
-| **M2: Project proposal**           | 10 pts  |
-| **M3: Peer review**                | 5 pts   |
-| **M4: Write-up**                   | 40 pts  |
-| **M4: Slides + presentation**      | 25 pts  |
-| **Reproducibility + organization** | 5 pts   |
-| **Teamwork**                       | 20 pts  |
+# **Timeline**
 
-## Grading summary
+-   **Start Date**: TBD
 
-Grading of the project will take into account the following:
+-   **Submission Deadline**: TBD
 
--   Content - What is the quality of research and/or policy question and relevancy of data to those questions?
--   Correctness - Are statistical procedures carried out and explained correctly?
--   Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations?
--   Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+## **Tools and Resources**
 
-A general breakdown of scoring is as follows:
+-   **Programming Language**: Python
 
--   *90%-100%*: Outstanding effort. Student understands how to apply all statistical concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.
--   *80%-89%*: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.
--   *70%-79%*: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.
--   *60%-69%*: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.
--   *Below 60%*: Student is not making a sufficient effort.
+-   **Key Libraries**: Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
 
-## Late work policy
+-   **Resources**: Documentation on regression models, MAE, and data visualization techniques.
+
+# Late work policy
 
 **There is no late work accepted on this project.** Be sure to turn in your work early to avoid any technological mishaps.
