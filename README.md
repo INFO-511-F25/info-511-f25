@@ -1,4 +1,4 @@
-# info511-f24.github.io
+# info511-s24.github.io
 
 ## Colors
 
