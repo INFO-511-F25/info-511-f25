@@ -159,11 +159,11 @@ See the [U of A Libraries loaner technology](https://lib.arizona.edu/borrow/tech
 
 ## Activities & Assessment
 
-You will be assessed based on five components: application exercises, labs, assignments, project, and teamwork.
+You will be assessed based on five components: application exercises, assignments, and final project.
 
 ### Application exercises
 
-**Each due Friday the following week after assigned**
+**Each due Friday the following week after assigned, there will be 16 in total**
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs).
 These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment.
@@ -173,15 +173,17 @@ To submit the AEs all you need to do is to push your work to your GitHub repo.
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
 Successful on-time completion of **at least 80%** of AEs (will result in full credit for AEs in the final course grade.
 
-### Labs
+### Homework assignments
 
-In labs, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
-You may discuss lab assignments with other students; however, lab should be completed and submitted individually.
-Lab assignments must be typed up using Quarto or Jupyter, all work must be pushed to your GitHub repository for the lab by the deadline.
+**There will be 6 in total**
 
-Labs are due at 5pm AZ time on the indicated due date.
+In homework assignments, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
+You may discuss homework assignments with other students; however, homeworks should be completed and submitted individually.
+Homework assignments must be typed up using the provided *ds.py* scripts, all work must be pushed to your GitHub repository for the homework by the deadline.
 
-*The lowest lab grade will be dropped at the end of the semester.*
+Homework assignments are due at 5pm AZ time on the indicated due date.
+
+*The lowest homework grade will be dropped at the end of the semester.*
 
 ### Summative assignments
 
@@ -189,14 +191,14 @@ There will be two summative assignments in this course.
 Each assignment will be open-note take-home.
 Through these assignments you have the opportunity to demonstrate what you’ve learned in the course thus far.
 The assignments will focus on both conceptual understanding of the content and application through analysis and computational tasks.
-The content of the assignment will be related to the content in videos and reading assignments, lectures, application exercises, and labs.
+The content of the assignment will be related to the content in videos and reading assignments, lectures, application exercises, and homework assignments.
 
 More detail about the assignments will be given during the semester.
 
 ### Project
 
 The purpose of the project is to apply what you’ve learned throughout the semester to analyze an interesting data-driven research question.
-The project will be completed individually, working through coda bench to meet a benchmark.
+The project will be completed individually, working through codabench to meet a benchmark.
 The top 5 individuals will receive 5% extra credit in the class.
 The write-up will be due on the same day as the end of the competition.
 *More to come on this.*
@@ -211,13 +213,13 @@ More information about the project will be provided during the semester.
 
 The final course grade will be calculated as follows:
 
-| Category               | Percentage |
-|------------------------|------------|
-| Labs                   | 30%        |
-| Project                | 25%        |
-| Summative assignment 1 | 10%        |
-| Summative assignment 2 | 10%        |
-| Application Exercises  | 25%        |
+| Category                            | Percentage |
+|-------------------------------------|------------|
+| Homeworks (6, lowest dropped)       | 30%        |
+| Project                             | 25%        |
+| Summative assignment 1              | 10%        |
+| Summative assignment 2              | 10%        |
+| Application Exercises (13 required) | 25%        |
 
 While there are no specific points allocated to participation, we will be recording your participation (mainly via slack) in periodically throughout the semester, and this information will be used as “extra credit” if you’re in between two grades and a minor bump would help.
 For reference, this would equate to a 1-2% bump.
@@ -249,13 +251,13 @@ I will help you be providing you with materials and answering questions and sett
     Ask me, ask your friends, ask the person sitting next to you.
     This will help you more than anything else.
     If you get a question wrong on an assessment, ask us why.
-    If you’re not sure about the lab, ask.
+    If you’re not sure about the homework, ask.
     If you hear something on the news that sounds related to what we discussed, ask.
     If the reading is confusing, ask.
 
 3.  Do the readings.
 
-4.  Do the lab.
+4.  Do the homework.
     The earlier you start, the better.
     It’s not enough to just mechanically plow through the exercises.
     You should ask yourself how these exercises relate to earlier material, and imagine how they might be changed (to make questions for an assignment, for example).
@@ -275,7 +277,7 @@ Please abide by the following as you work on assignments in this course:
 
 -   **Collaboration:** No work is permitted to be completed collaboratively.
 
-    -   You may discuss lab assignments with other students; however, you may not directly share (or copy) code or write up with other students.
+    -   You may discuss homework assignments with other students; however, you may not directly share (or copy) code or write up with other students.
         Unauthorized sharing (or copying) of the code or write up will be considered a violation for all students involved, resulting in a 0 for the assignment.
 
     -   You may not discuss or otherwise work with others on the assignments.
@@ -342,7 +344,7 @@ See the [U of A InfoSci Academic Integrity Policy](https://infosci.arizona.edu/s
 
 ### LLMs and ChatGPT
 
-Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for Python labs and short answer questions.
+Large language models (LLMs) like ChatGPT are a type of artificial intelligence (AI) engine that can look like it generates the code you need for Python homeworks and short answer questions.
 You are encouraged to use ChatGPT to debug code and experiment.
 However, abuse of ChatGPT can be traced (e.g., failing to give credit or cite ChatGPT when it is used) which could result in your suspension or termination from the course and even your program of study.
 Keep in mind, too, that while the code may appear legitimate, early studies have shown ChatGPT is not all that accurate with sophisticated coding.
@@ -354,9 +356,9 @@ Exercise your scholarly discretion and maintain a sense of integrity in your sta
 
 The due dates for assignments are there to help you keep up with the course material and to ensure the teaching team can provide feedback within a timely manner.
 We understand that things come up periodically that could make it difficult to submit an assignment by the deadline.
-Note that the lowest lab assignment will be dropped to accommodate such circumstances.
+Note that the lowest homework assignment will be dropped to accommodate such circumstances.
 
--   Labs may be submitted up to 2 days late.
+-   homeworks may be submitted up to 2 days late.
     There will be a 5% deduction for each 24-hour period the assignment is late.
 
 -   There is no late work accepted for application exercises, since these are designed to help you prepare for other assessments in the course.
@@ -417,7 +419,7 @@ Also watch the video available at <https://arizona.sabacloud.com/Saba/Web_spf/N
 -   **Monday,** **January 20:** Martin Luther King Jr. Day
 -   **Wednesday, January 22**: Drop/add ends
 -   **Tuesday, February 11**: Last day to drop without a W (withdraw)
--   **Saturday, March 8 - Sunday, March 16:** Spring recess
+-   **Saturday, March 8 - Sunday, March 16:** Spring recess ☀️
 -   **Tuesday, April 01**: Last day to withdraw from a class online through UAccess
 -   **Wednesday, May 07**: Last day of class, no registration changes can be made
 -   **Wednesday, May 14**: Project reports, due by 5pm AZ time

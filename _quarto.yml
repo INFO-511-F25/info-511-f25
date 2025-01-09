@@ -95,20 +95,22 @@ website:
            # text: Milestone 4            
           #- href: project/tips-resources.qmd
             #text: Tips + resources
-      - section: "Labs"
+      - section: "Homework"
         contents:
           - href: labs/lab-0.qmd
-            text: Lab 0
-          - href: labs/lab-1.qmd
-            text: Lab 1
-          - href: labs/lab-2.qmd
-            text: Lab 2
-          - href: labs/lab-3.qmd
-            text: Lab 3            
-          - href: labs/lab-4.qmd
-            text: Lab 4
-          - href: labs/lab-5.qmd
-            text: Lab 5 
+            text: Homework 0
+          - href: labs/workflow.qmd
+            text: Computing workflow
+          - href: labs/codespaces.qmd
+            text: Codespaces
+          #- href: labs/lab-2.qmd
+           # text: Lab 2
+          #- href: labs/lab-3.qmd
+            #text: Lab 3            
+          #- href: labs/lab-4.qmd
+            #text: Lab 4
+          #- href: labs/lab-5.qmd
+            #text: Lab 5 
           #- href: labs/lab-6.qmd
             #text: Lab 6             
           #- href: labs/lab-7.qmd

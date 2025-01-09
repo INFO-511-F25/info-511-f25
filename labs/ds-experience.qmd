@@ -1,12 +1,12 @@
 ---
 title: "Data Science Experience"
-categories: "Lab"
+categories: "Homework"
 execute:
   eval: false
 ---
 
 ::: callout-important
-Completion of the DS Experience counts as a replacement for one lab from Lab 01 to Lab 05.
+Completion of the DS Experience counts as a replacement for one homework from hw-01 to hw-05.
 :::
 
 -   [Part 1: Experience data science outside of the classroom](#part-1-experience-data-science-outside-of-the-classroom)
@@ -18,7 +18,7 @@ Completion of the DS Experience counts as a replacement for one lab from Lab 01 
 The world of data science is vast and continually growing!
 The goal of the data science experience assignments is to help you engage with the data science communities outside of the classroom.
 
-There will be one *optional* data science experience assignment that will replace up to one lab grade (among labs 01-04).
+There will be one *optional* data science experience assignment that will replace up to one homework grade (among homeworks 01-05).
 **The submission for the statistics experience is due on Friday, April 25 at 11:59pm AZ time on GitHub (you will have an assigned repo). No late work will be accepted for the data science experience.** You may submit the data science experience assignment anytime between now and the deadline.
 
 Each experience has two parts:

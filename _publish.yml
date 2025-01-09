@@ -1,4 +1,4 @@
 - source: project
   netlify:
     - id: d99da625-7d86-459f-a173-79ba7c7a6e1e
-      url: 'https://inspiring-kangaroo-fddad7.netlify.app'
+      url: 'https://datasciaz.netlify.app'
