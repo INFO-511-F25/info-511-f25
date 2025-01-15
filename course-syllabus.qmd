@@ -167,7 +167,7 @@ You will be assessed based on five components: application exercises, assignment
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs).
 These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment.
-These AEs are due by the end of the week of the corresponding lecture period (Sunday at midnight).
+These AEs are due by the end of the week of the corresponding lecture period (Friday at midnight).
 To submit the AEs all you need to do is to push your work to your GitHub repo.
 
 Because these AEs are for practice, they will be graded based on completion, i.e., a good-faith effort has been made in attempting all parts.
