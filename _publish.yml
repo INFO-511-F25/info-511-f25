@@ -1,4 +1,4 @@
 - source: project
   netlify:
-    - id: d99da625-7d86-459f-a173-79ba7c7a6e1e
+    - id: d4e8f8fc-e1ff-4074-900b-8a96aac037a1
       url: 'https://datasciaz.netlify.app'

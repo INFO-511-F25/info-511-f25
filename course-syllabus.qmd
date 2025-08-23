@@ -1,6 +1,6 @@
 ---
 title: "INFO 511 - Fundamentals of Data Science"
-subtitle: "Spring 2025"
+subtitle: "Fall 2025"
 format:
   html: default
   pdf: default
@@ -13,7 +13,7 @@ The course establishes the foundation for advanced data-intensive classes, provi
 
 ## Course offering
 
-468-2251-1 INFO 511 201 – Fundamentals of Data Science
+258-2254-1 INFO 511 101 201 – Fundamentals of Data Science
 
 ## Instructor Information
 
@@ -415,14 +415,13 @@ Also watch the video available at <https://arizona.sabacloud.com/Saba/Web_spf/N
 
 ## Important dates
 
--   **Wednesday, January 15:** Classes begin
--   **Monday,** **January 20:** Martin Luther King Jr. Day
--   **Wednesday, January 22**: Drop/add ends
--   **Tuesday, February 11**: Last day to drop without a W (withdraw)
--   **Saturday, March 8 - Sunday, March 16:** Spring recess ☀️
--   **Tuesday, April 01**: Last day to withdraw from a class online through UAccess
--   **Wednesday, May 07**: Last day of class, no registration changes can be made
--   **Wednesday, May 14**: Project reports, due by 5pm AZ time
+-   **Monday, August 25:** Classes begin
+-   **Monday,** **Sept 01:** Labor Day
+-   **Tuesday, September 02**: Drop/add ends
+-   **Sunday, September 21**: Last day to drop without a W (withdraw)
+-   **Sunday, November 02**: Last day to withdraw from a class online through UAccess
+-   **Wednesday, December 10**: Last day of class, no registration changes can be made
+-   **Wednesday, December 17**: Project reports, due by 5pm AZ time
 
 For more important dates, see the full [U of A Academic Calendar](https://archive.catalog.arizona.edu/2022-23/2024-2025-academic-calendar.html).
 

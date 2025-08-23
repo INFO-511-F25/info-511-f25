@@ -4,17 +4,17 @@ project:
 website:
   page-navigation: true
   title: "INFO 511"
-  description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona, Spring 2025."
+  description: "Homepage for INFO 511 - Fundamentals of Data Science at UArizona."
   favicon: /img/logo.png
   site-url: "https://datasciaz.netlify.app"
 
-  repo-url: https://github.com/INFO-511-S25/info-511-s25
+  repo-url: https://github.com/INFO-511-F25/info-511-f25
   repo-actions: [edit, issue]
 
   open-graph: true
 
   sidebar:
-    background: "#0C234B" # Arizona Blue - Spring 2025
+    background: "#0C234B" # Arizona Blue 
     logo: "img/logo.png"
     pinned: true
     align: center
@@ -22,18 +22,14 @@ website:
       - icon: github
         href: https://github.com/INFO-511-F25
         text: "GitHub organization"
-
       - icon: life-preserver
         href: course-support.html#office-hours
         text: "Office hours"
-      - icon: chat-dots-fill
-        href: https://info511spring2025.slack.com
-        text: "Slack"
       - icon: camera-reels-fill
         href: https://arizona.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=61cffeec-57c6-4caa-a60a-b1c3017974d4
         text: "Class recordings"
       - icon: check-square-fill
-        href: https://d2l.arizona.edu/d2l/home/1550484
+        href: https://d2l.arizona.edu/d2l/home/1627867
         text: "D2L"
 
     style: docked

@@ -17,7 +17,7 @@ library(googlesheets4)
 library(gt)
 library(tidyverse)
 gs4_deauth()
-d <- read_sheet("https://docs.google.com/spreadsheets/d/1ZjyBDQtNrtPqVTeJR81IuHhioiGbYscDzck7sM9R3RQ/edit?usp=sharing")
+d <- read_sheet("https://docs.google.com/spreadsheets/d/1IboD7Bljz-6EQttUZOnotpxGG-Jy6BoWtFdl4ugko-4/edit?usp=sharing")
 ```
 
 ```{r}
@@ -25,13 +25,13 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1ZjyBDQtNrtPqVTeJR81IuHh
 
 d |>
   mutate(date = as.Date(date)) |>
-  relocate(due, .after = materials) |>
+  relocate(due, .after = prepare) |>
   gt() |>
   fmt_date(date, date_style = 31) |>
-  sub_missing(columns = c(week, date, prepare, topic, materials, due), missing_text = "") |>
+  sub_missing(columns = c(week, date, topic, recordings, prepare, due), missing_text = "") |>
   cols_align(
     align = "center", 
-    columns = c(week)
+    columns = c(week, recordings)
   ) |>
   cols_align(
     align = "right", 
@@ -39,8 +39,9 @@ d |>
   ) |>
   cols_align(
     align = "left", 
-    columns = c(topic, prepare, materials, due)
+    columns = c(topic, prepare, due)
   ) |>
+  # Borders: date, recordings, prepare
   tab_style(
     style = cell_borders(
       sides = "right",
@@ -48,29 +49,28 @@ d |>
       style = "solid"
     ),
     locations = cells_body(
-      columns = c(date, topic, prepare, materials)
+      columns = c(date, recordings, prepare)
     )
   ) |>
   fmt_markdown(
-    columns = c(topic, prepare, materials, due)
+    columns = c(topic, recordings, prepare, due)
   ) |>
   cols_width(
-    week ~ px(45),
-    date ~ px(100), 
+    week  ~ px(45),
+    date  ~ px(100), 
+    topic ~ px(150),
+    recordings ~ px(75),
     prepare ~ px(300),
-    topic ~ px(250),
-    materials ~ px(75),
-    due ~ px(175)
+    due   ~ px(150)
   ) |>
   cols_label_with(fn = function(x) {
-      janitor::make_clean_names(x, case = "title") |>
-        toupper() |>
-        stringr::str_replace_all("^|$", "**") |>
-        md()
-    }) |>
+    janitor::make_clean_names(x, case = "title") |>  # Title Case
+      stringr::str_replace_all("^|$", "**") |>      # Bold
+      md()
+  }) |>
+  cols_label(recordings = "") |>
   tab_options(table.font.size = 13) |>
   opt_row_striping() |>
-  tab_options(
-    table.font.names = "Lexend",
-  )
+  tab_options(table.font.names = "Lexend")
+
 ```
