@@ -19,9 +19,9 @@ website:
     pinned: true
     align: center
     tools:
-      - icon: github
-        href: https://github.com/INFO-511-F25
-        text: "GitHub organization"
+      #- icon: github
+       # href: https://github.com/INFO-511-F25
+        #text: "GitHub organization"
       - icon: life-preserver
         href: course-support.html#office-hours
         text: "Office hours"
@@ -115,8 +115,8 @@ website:
             text: Data Science Experience
       - section: "Summative"
         contents:
-          #- href: summative/midterm.qmd
-           # text: Midterm
+          - href: summative/midterm.qmd
+            text: Midterm
           #- href: summative/final.qmd
             #text: Final
             

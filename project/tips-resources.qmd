@@ -94,5 +94,3 @@ Arrange plots in a grid, instead of one after the other.
 This is especially useful when displaying plots for exploratory data analysis and to check assumptions.
 
 If you’re using {matplotlib} or {seaborn} functions, the [`subplot_mosaic()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplot_mosaic.html) function makes it straightforward to arrange plots in a grid.
-
-*More to be added soon...*

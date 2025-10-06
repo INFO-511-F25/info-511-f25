@@ -1,127 +1,109 @@
 ---
-title: "Flood Risk Prediction Challenge"
+title: "Healthcare Equity Explorer"
 ---
 
-# Overview
+## Overview
 
-Flooding is one of the most common and destructive natural disasters in the United States, causing billions of dollars in damage each year.
-Accurate flood risk prediction is essential for disaster preparedness, resource allocation, and mitigation efforts.
+Chronic conditions like hypertension, diabetes, and chronic pain affect millions of people and are a key driver of hospital readmissions.
 
-This project challenges you to analyze a real-world dataset of environmental and geospatial features and build a machine learning model that predicts flood risk scores for various regions.
-You will apply your skills in data cleaning, exploratory data analysis (EDA), feature engineering, and predictive modeling to solve this practical problem.
+In this project, you'll work with a synthesized version of the healthcare dataset through [Synthea](https://synthetichealth.github.io/synthea/), modeled on Arizona patients, to build a predictive model that identifies patients at high risk of being readmitted to the hospital within 30 days.
 
-# **Objectives**
+This challenge centers on ethical and practical dimensions of healthcare disparities—students will explore real-world clinical and demographic factors and build a machine learning model to support equitable healthcare outcomes.
+
+## Objectives
 
 In this project, you will:
 
-1.  **Explore and Analyze**: Conduct exploratory data analysis to uncover patterns and relationships in the dataset.
+1.  **Explore and Analyze**: Conduct exploratory data analysis (EDA) to understand patient encounters, demographics, and comorbidities.
 
-2.  **Clean and Prepare**: Preprocess the data to handle missing values, outliers, and inconsistencies.
+2.  **Clean and Prepare**: Handle missing values, encode categorical variables, and standardize numerical inputs.
 
-3.  **Engineer Features**: Create new features to improve model performance.
+3.  **Engineer Features**: Enrich the dataset with new features such as chronic condition flags, cost aggregations, or social determinants.
 
-4.  **Build a Predictive Model**: Train a regression model to predict flood risk scores.
+4.  **Build a Predictive Model**: Train a classifier to predict whether a patient will be readmitted within 30 days of discharge.
 
-5.  **Evaluate and Communicate**: Assess your model’s performance using metrics like Mean Absolute Error (MAE) and present your findings.
+5.  **Evaluate and Communicate**: Measure model performance using ROC AUC and present a clear rationale for your decisions.
 
-### **Dataset**
+### Dataset
 
-*Subject to change up to the project announcement.*
+The dataset has been derived from a simulation of Synthea EHR data focused on Arizona residents.
+Each row represents a hospital encounter, and columns represent patient demographics, costs, conditions, vitals, medications, and more.
 
-The dataset includes environmental and historical data about regions in the United States.
-Each row represents a region, and the columns contain features relevant to flood risk prediction:
+| **Feature Name** | **Description** |
+|----|----|
+| `encounter_id` | Unique ID for the patient encounter |
+| `patient_id` | Unique ID for the patient |
+| `age` | Age of the patient at time of encounter |
+| `gender`, `race`, etc. | Demographic characteristics |
+| `payer_type` | Insurance coverage type (e.g., private, government, uninsured) |
+| `num_meds`, `total_med_cost` | Medication burden and cost during the encounter |
+| `has_chronic_pain` | Binary flag for chronic pain diagnosis |
+| `pain_score` | Reported pain level (0–10) |
+| `readmitted_within_30_days` | **Target variable** indicating a readmission within 30 days |
 
-| **Feature Name**    | **Description**                                     |
-|---------------------|-----------------------------------------------------|
-| `region_id`         | Unique identifier for each region                   |
-| `rainfall`          | Average annual rainfall (mm)                        |
-| `river_flow`        | Average river flow rate (m³/s)                      |
-| `urban_density`     | Percentage of urban area in the region              |
-| `elevation`         | Average elevation above sea level (meters)          |
-| `historical_floods` | Number of floods recorded in the last decade        |
-| `flood_risk_score`  | (Target variable) Normalized flood risk score (0-1) |
-
-# **Deliverables** {#project-proposal}
+## Deliverables {#project-proposal}
 
 You will submit the following:
 
 1.  **Jupyter Notebook**:
-
-    -   Document your workflow with clear explanations and visualizations.
-
-    -   Include data preprocessing, EDA, feature engineering, and model development.
-
+    -   Full notebook that documents your approach, including EDA, modeling, and results.
+    -   Well-commented and structured for reproducibility.
 2.  **Prediction CSV File**:
-
-    -   File containing your predictions for the test dataset in the required format.
-
-    -   Format: `region_id`, `flood_risk_score`.
-
+    -   Format: `encounter_id`, `readmitted_within_30_days`
+    -   Predictions for the **test** set in Codabench.
 3.  **Summary of Findings**:
+    -   A brief write-up summarizing your strategy, key decisions, and insights.
 
-    -   A concise explanation of your approach, insights, and key results (can be included in the notebook).
+## Evaluation Criteria {#peer-review}
 
-# **Evaluation Criteria** {#peer-review}
+Your submission will be evaluated based on:
 
-Your submission will be graded based on the following criteria:
+1.  **Preprocessing (20%)** – Data wrangling, feature cleanup, handling missingness.
+2.  **EDA (20%)** – Insightful visualizations and meaningful hypotheses.
+3.  **Modeling (30%)** – Performance (ROC AUC) and appropriate modeling decisions.
+4.  **Feature Engineering (15%)** – Inclusion of thoughtful, useful features.
+5.  **Communication (15%)** – Clarity and structure of the notebook and analysis.
 
-1.  **Data Preprocessing (25%)**: Handling of missing values, outliers, and overall data cleaning process.
+### Bonus Points
 
-2.  **Exploratory Data Analysis (20%)**: Quality of visualizations and insights derived from the data.
+-   Use of **cross-validation** or calibration techniques.
+-   Thoughtful commentary on **ethical implications** of modeling patient data.
 
-3.  **Feature Engineering (20%)**: Creativity and relevance of new features and their impact on model performance.
+**Top 5 leaderboard entries on the Test Phase will receive +5% extra credit** toward the final course grade!
 
-4.  **Model Development (25%)**: Accuracy of predictions based on MAE, justification of chosen model, and optimization techniques.
+## Reproducibility + Organization {#reproducibility-organization}
 
-5.  **Communication (10%)**: Clarity of the notebook, organization of the workflow, and explanation of findings.Other
+All deliverables must be reproducible and committed to a clean GitHub repository.
+Points will be awarded for:
 
-### **Bonus Points**
+-   Clean folder structure (`/src`, `/data`, `/notebooks`, etc.)
+-   Descriptive `README.md`
+-   Minimal extraneous files or outputs
 
--   **Cross-Validation**: Applying cross-validation for more robust model evaluation.
+## Getting Started
 
--   **Feature Importance Analysis**: Using SHAP or feature importance tools to interpret your model.
+1.  **Download the Dataset**: Get the training and dev data from the Codabench site.
 
--   **Advanced Techniques**: Exploring innovative methods to improve predictions.
+2.  **Train Your Model**: Use the provided baseline models (`logistic_baseline.py`, `train_predict.py`) or start from scratch.
 
-A general breakdown of scoring is as follows:
+3.  **Evaluate and Submit**: Submit predictions to Codabench during both the dev and test phases.
 
--   *90%-100%*: Outstanding effort. Student understands how to apply all data science concepts, can put the results into a cogent argument, can identify weaknesses in the argument, and can clearly communicate the results to others.
--   *80%-89%*: Good effort. Student understands most of the concepts, puts together an adequate argument, identifies some weaknesses of their argument, and communicates most results clearly to others.
--   *70%-79%*: Passing effort. Student has misunderstanding of concepts in several areas, has some trouble putting results together in a cogent argument, and communication of results is sometimes unclear.
--   *60%-69%*: Struggling effort. Student is making some effort, but has misunderstanding of many concepts and is unable to put together a cogent argument. Communication of results is unclear.
--   *Below 60%*: Student is not making a sufficient effort.
+4.  **Track Your Progress**: Watch your rank on the leaderboard!
 
-## Reproducibility + organization {#reproducibility-organization}
+## Timeline
 
-All written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.
+-   **Launch**: Oct 06, 2025\
+-   **Development Phase Ends**: Dec 15, 2025\
+-   **Test Phase Opens**: Dec 15–17, 2025
 
-Points for reproducibility + organization will be based on the reproducibility of the write-up and the organization of the project GitHub repo.
-The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable.
+## Tools and Resources
 
-## **Getting Started**
+-   **Language**: Python\
+-   **Libraries**: pandas, scikit-learn, xgboost, matplotlib, seaborn\
+-   **Platform**: Codabench\
+-   **Resources**: Synthea schema, scikit-learn docs, ROC AUC scoring guides
 
-1.  **Download the Dataset**: Access the training and test datasets from the project repository.
+## Late Work Policy
 
-2.  **Set Up Your Environment**: Ensure you have Python and essential libraries installed (e.g., Pandas, NumPy, Scikit-learn, Matplotlib).
-
-3.  **Follow the Workflow**: Preprocess the data, conduct EDA, engineer features, train your model, and make predictions.
-
-4.  **Submit Your Work**: Upload your notebook and predictions to the provided submission platform.
-
-# **Timeline**
-
--   **Start Date**: TBD
-
--   **Submission Deadline**: TBD
-
-## **Tools and Resources**
-
--   **Programming Language**: Python
-
--   **Key Libraries**: Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
-
--   **Resources**: Documentation on regression models, MAE, and data visualization techniques.
-
-# Late work policy
-
-**There is no late work accepted on this project.** Be sure to turn in your work early to avoid any technological mishaps.
+**There is no late work accepted on this project.**\
+Make sure to upload early and verify your submissions on Codabench.

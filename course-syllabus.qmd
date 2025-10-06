@@ -153,17 +153,13 @@ A lot of what you do in this course will involve writing code, and coding is a s
 Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab.
 You are expected to meaningfully contribute to in-class exercises and discussion.
 
-You are expected to bring a laptop to each class so that you can take part in the in-class exercises.
-Please make sure your laptop is fully charged before you come to class as the number of outlets in the classroom will not be sufficient to accommodate everyone.
-See the [U of A Libraries loaner technology](https://lib.arizona.edu/borrow/tech/laptops) if you need a loaner laptop.
-
 ## Activities & Assessment
 
 You will be assessed based on five components: application exercises, assignments, and final project.
 
 ### Application exercises
 
-**Each due Friday the following week after assigned, there will be 16 in total**
+**Aim to complete each Friday the following week after assigned, there will be 16 in total - Final deadline is at the end of the term (see the course [schedule](datasciaz.netlify.app))**
 
 Parts of some lectures will be dedicated to working on Application Exercises (AEs).
 These exercises which give you an opportunity to practice apply the statistical concepts and code introduced in the prepare assignment.
@@ -175,11 +171,11 @@ Successful on-time completion of **at least 80%** of AEs (will result in full cr
 
 ### Homework assignments
 
-**There will be 6 in total**
+**There will be 5 in total**
 
 In homework assignments, you will apply what you’ve learned in the videos and during lectures to complete data analysis tasks.
 You may discuss homework assignments with other students; however, homeworks should be completed and submitted individually.
-Homework assignments must be typed up using the provided *ds.py* scripts, all work must be pushed to your GitHub repository for the homework by the deadline.
+Homework assignments must be typed up using the provided *`ds.py`* scripts, all work must be pushed to your GitHub repository for the homework by the deadline.
 
 Homework assignments are due at 5pm AZ time on the indicated due date.
 
@@ -215,7 +211,7 @@ The final course grade will be calculated as follows:
 
 | Category                            | Percentage |
 |-------------------------------------|------------|
-| Homeworks (6, lowest dropped)       | 30%        |
+| Homeworks (5)                       | 30%        |
 | Project                             | 25%        |
 | Summative assignment 1              | 10%        |
 | Summative assignment 2              | 10%        |
